@@ -6,12 +6,12 @@ CLASSFILES := $(JAVAFILES:.java=.class)
 CLASSFILES := $(CLASSFILES:$(SOURCEDIR)%=$(CLASSDIR)%)
 
 .PHONY: run
-run: dsgmBox.jar
+run: DSGameMaker.jar
 	@java -jar $<
 
-dsgmBox.jar: $(CLASSFILES)
+DSGameMaker.jar: $(CLASSFILES)
 	javac $(SOURCEDIR)/*.java -d $(CLASSDIR)
-	javafxpackager -createjar -appclass dsgmBox -srcdir "$(CLASSDIR)" -outfile dsgmBox -v
+	javafxpackager -createjar -appclass DSGameMaker -srcdir "$(CLASSDIR)" -outfile DSGameMaker -v
 
 $(CLASSDIR)/%.class: $(SOURCEDIR)/%.java $(CLASSDIR)
 	@# Compiling files individually means they can't access each other
@@ -22,8 +22,8 @@ $(CLASSDIR):
 
 .PHONY: clean
 clean:
-	@rm -f dsgmBox.jar
+	@rm -f DSGameMaker.jar
 	@rm -f $(CLASSDIR)/*.class
-	@rm -f $(CLASSDIR)/dsgmBoxPackage/*.class
-	@rmdir $(CLASSDIR)/dsgmBoxPackage
+	@rm -f $(CLASSDIR)/DSGameMakerPackage/*.class
+	@rmdir $(CLASSDIR)/DSGameMakerPackage
 	@rmdir $(CLASSDIR)

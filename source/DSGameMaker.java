@@ -1,5 +1,3 @@
-import dsgmBoxPackage.dsgmBoxAPI;
-
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
@@ -17,9 +15,8 @@ import java.io.File;
 import java.net.URL;
 import java.net.MalformedURLException; 
 
-public class dsgmBox extends Application {
+public class DSGameMaker extends Application {
 
-	//dsgmBox Properties
 	private static int appWidth = 1024;
 	private static int appHeight = 768;
 	private static String appTitle = "DS Game Maker";
@@ -31,8 +28,6 @@ public class dsgmBox extends Application {
 	public static void main(String[] args) {
 		launch(args);
 	}
-
-	//Request Handling
 
 	//Override Application Start
 	@Override public void start(final Stage passedStage) throws MalformedURLException {
@@ -51,8 +46,6 @@ public class dsgmBox extends Application {
 
 		//Create Web Engine
 		WebEngine theEngine = theView.getEngine();
-		JSObject theWindow = (JSObject)theEngine.executeScript("window");
-		theWindow.setMember("dsgmBox", new dsgmBoxAPI());
 
 		//Load HTML
 		File htmlFile = new File("app/index.html");
