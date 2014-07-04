@@ -1,0 +1,131 @@
+<!DOCTYPE>
+<html>
+	<head>
+		<title></title>
+		<!-- Style -->
+		<link rel="stylesheet" href="css/ui.css">
+		<link rel="stylesheet" href="css/font-awesome-4.1.0/font-awesome.min.css">
+		<!-- JavaScript: jQuery, jQuery Standard Plug-ins-->
+		<script src="js/jquery-2.1.0.min.js"></script>
+		<script src="js/jquery-plugins/base64.js"></script>
+		<script src="js/jquery-plugins/jadaBox.js"></script>
+		<script src="js/jquery-plugins/UI.js"></script>
+		<!-- JavaScript: jQuery Custom Plug-ins -->
+		<script src="js/jquery-plugins-custom/helloWorld.js"></script>
+		<!-- JavaScript: async -->
+		<script src="js/async.js"></script>
+		<!-- JavaScript: Classes -->
+		<script src="js/classes/DSGMClass.js"></script>
+		<script src="js/classes/OptionsClass.js"></script>
+		<script src="js/classes/LanguageClass.js"></script>
+		<!-- JavaScript: Initialise -->
+		<script>
+			jQuery(window).load(function () {
+			  DSGM = new DSGMClass();
+			});
+		</script>
+	</head>
+	<body>
+		<header data-ui="panel">
+			<div data-ui="orb" id="Orb">
+				<a href="#"><img src="img/_orb.png" alt="Orb"></a>
+				<div>
+					<li><span data-role="homebrew-kit"></span>: <span data-role="homebrew-kit-status"></span></li>
+					<li><span data-role="portal"> <span data-role="portal-status"></span></li>
+				</div>
+			</div>
+			<div>
+				<nav>
+					<ul data-ui="menu">
+						<li>
+							<span data-role="file"></span>
+							<ul>
+								<li data-role="new"></li>
+								<li data-role="open"></li>
+								<li data-role="save"></li>
+							</ul>
+						</li>
+						<li>
+							<span data-role="edit"></span>
+							<ul>
+								<li data-role="cut"></li>
+								<li data-role="copy"></li>
+								<li data-role="paste"></li>
+							</ul>
+						</li>
+						<li>
+							<span data-role="tools"></span>
+							<ul>
+								<li data-role="raw2c"></li>
+								<li data-role="ndstool"></li>
+								<li data-role="fontgen"></li>
+							</ul>
+						</li>
+						<li>
+							<span data-role="help"></span>
+							<ul>
+								<li data-role="dsgamemaker.com"></li>
+								<li data-role="forum"></li>
+								<li data-role="about"></li>
+							</ul>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+		<main>
+      <aside>
+        <ul data-ui="tree">
+          <li>
+            <span data-role="sprites"></span>
+            <ul data-role="sprites-list" data-no-translate="">
+            	<li>Pacman</li>
+            	<li>Puck</li>
+            	<li>Ghost</li>
+            </ul>
+          </li>
+          <li>
+            <span data-role="objects"></span>
+            <ul data-role="objects-list" data-no-translate="">
+            	<li>Pacman</li>
+            	<li>Puck</li>
+            	<li>Ghost</li>
+            </ul>
+          </li>
+          <li>
+            <span data-role="rooms"></span>
+            <ul data-role="rooms-list" data-no-translate="">
+            	<li>Menu</li>
+            	<li>Level 1</li>
+            	<li>Level 2</li>
+            </ul>
+          </li>
+        </ul>
+      </aside>
+      <div data-ui="panel">
+        <aside>
+          <div data-gui="tabs">
+            <div>
+              <span data-role="properties"></span>
+              <p>
+                (Properties Tab)
+              </p>
+            </div>
+            <div>
+              <span data-role="extra-properties"></span>
+              <p>
+                (Extra Properties Tab)
+              </p>
+            </div>
+          </div>
+        </aside>
+        <div>
+          <p>
+            Hello, World.
+          </p>
+        </div>
+			</div>
+		</main>
+		<footer data-ui="status">Status Bar</footer>
+	</body>
+</html>
