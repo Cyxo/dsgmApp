@@ -7,13 +7,16 @@
     width: $header-size;
     height: $header-size;
     padding: $padding * 1.5;
+    //background-color: $obvious-color;
     img {
       width: 100%;
       height: 100%;
-      background-color: $obvious-color;
     }
   }
   div {
     display: none;
+  }
+  a:hover {
+    background-color: $obvious-color;
   }
 }

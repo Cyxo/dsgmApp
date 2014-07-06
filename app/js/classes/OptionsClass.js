@@ -6,7 +6,7 @@ function OptionsClass(callback) {
 
   //Load
   this.load = function(callback) {
-    $.jadaBox.request(
+    $.javaLink.request(
       "readFile",
       _options_path,
       function(response) {
@@ -21,7 +21,7 @@ function OptionsClass(callback) {
 
   //Save
   this.save = function(callback) {
-    $.jadaBox.request(
+    $.javaLink.request(
       "writeFile",
       JSON.stringify(_options),
       callback

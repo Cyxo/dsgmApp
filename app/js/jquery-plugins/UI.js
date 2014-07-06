@@ -1,14 +1,12 @@
 $.UI = function($) {
 
   //Initialise
-  function _init(identifier) {
-    $("*[" + identifier + "]:not(*[data-no-translate])").each(function(index, element) {
-      element = $(element);
-      var elementType = element.attr(identifier);
-      //Apply 'panel' class
-      element.addClass("ui-panel");
-      //Apply specific class
-      element.addClass("ui-" + elementType);
+  function _init() {
+    //Tree Test
+    $(".ui-tree").each(function(index, element) {
+      $(element).click(function() {
+        alert("a ok!");
+      });
     });
   }
 

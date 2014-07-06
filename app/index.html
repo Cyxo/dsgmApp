@@ -3,12 +3,11 @@
 	<head>
 		<title></title>
 		<!-- Style -->
-		<link rel="stylesheet" href="css/ui.css">
-		<link rel="stylesheet" href="css/font-awesome-4.1.0/font-awesome.min.css">
+		<link rel="stylesheet" href="css/dsgm.css">
 		<!-- JavaScript: jQuery, jQuery Standard Plug-ins-->
 		<script src="js/jquery-2.1.0.min.js"></script>
 		<script src="js/jquery-plugins/base64.js"></script>
-		<script src="js/jquery-plugins/jadaBox.js"></script>
+		<script src="js/jquery-plugins/javaLink.js"></script>
 		<script src="js/jquery-plugins/UI.js"></script>
 		<!-- JavaScript: jQuery Custom Plug-ins -->
 		<script src="js/jquery-plugins-custom/helloWorld.js"></script>
@@ -26,9 +25,9 @@
 		</script>
 	</head>
 	<body>
-		<header data-ui="panel">
-			<div data-ui="orb" id="Orb">
-				<a href="#"><img src="img/_orb.png" alt="Orb"></a>
+		<header class="ui">
+			<div class="ui ui-orb" id="Orb">
+				<a href="#"><img src="img/orb.png" alt="Orb"></a>
 				<div>
 					<li><span data-role="homebrew-kit"></span>: <span data-role="homebrew-kit-status"></span></li>
 					<li><span data-role="portal"> <span data-role="portal-status"></span></li>
@@ -36,7 +35,7 @@
 			</div>
 			<div>
 				<nav>
-					<ul data-ui="menu">
+					<ul class="ui ui-menu">
 						<li>
 							<span data-role="file"></span>
 							<ul>
@@ -73,12 +72,12 @@
 				</nav>
 			</div>
 		</header>
-		<main>
+		<main class="ui">
       <aside>
-        <ul data-ui="tree">
+        <ul class="ui ui-tree">
           <li>
             <span data-role="sprites"></span>
-            <ul data-role="sprites-list" data-no-translate="">
+            <ul data-role="sprites-list" data-no-translate>
             	<li>Pacman</li>
             	<li>Puck</li>
             	<li>Ghost</li>
@@ -86,7 +85,7 @@
           </li>
           <li>
             <span data-role="objects"></span>
-            <ul data-role="objects-list" data-no-translate="">
+            <ul data-role="objects-list" data-no-translate>
             	<li>Pacman</li>
             	<li>Puck</li>
             	<li>Ghost</li>
@@ -94,7 +93,7 @@
           </li>
           <li>
             <span data-role="rooms"></span>
-            <ul data-role="rooms-list" data-no-translate="">
+            <ul data-role="rooms-list" data-no-translate>
             	<li>Menu</li>
             	<li>Level 1</li>
             	<li>Level 2</li>
@@ -102,7 +101,7 @@
           </li>
         </ul>
       </aside>
-      <div data-ui="panel">
+      <div class="ui ui-panel">
         <aside>
           <div data-gui="tabs">
             <div>
@@ -126,6 +125,6 @@
         </div>
 			</div>
 		</main>
-		<footer data-ui="status">Status Bar</footer>
+		<footer class="ui ui-status">Status Bar</footer>
 	</body>
 </html>

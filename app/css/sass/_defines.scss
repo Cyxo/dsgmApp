@@ -1,0 +1,75 @@
+//Fonts
+$font-name: "Source Sans Pro";
+$font-family: $font-name, "Arial", "Helvetica", sans-serif;
+$font-size: 16px;
+
+//Google Fonts
+@font-face {
+  font-family: $font-name;
+  font-style: normal;
+  font-weight: 400;
+  src: url("fonts/" + $font-name + ".woff") format("woff");
+}
+
+@font-face {
+  font-family: $font-name;
+  font-style: normal;
+  font-weight: 700;
+  src: url("fonts/" + $font-name + " Bold.woff") format("woff");
+}
+
+//Colors
+$background-color: rgb(48, 48, 48);
+$foreground-color: white;
+$foreground-color-2: rgb(96, 96, 96);
+$obvious-color: blue;
+$background-color-invert: white;
+$foreground-color-invert: black;
+
+//Sizes
+$padding: 4px;
+$header-size: 64px;
+$status-size: $header-size / 2;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  background-color: red;
+}
+
+main {
+  clear: both;
+  background-color: green;
+  > * {
+    min-height: 320px;
+  }
+  > aside {
+    float: left !important;
+    width: 200px !important;
+    background-color: $background-color-invert;
+  }
+  > div {
+    margin-left: 200px !important;
+  }
+}
+
+header {
+  padding: 0 !important;
+  height: $header-size;
+  div:nth-child(2) {
+    margin-left: $header-size;
+    height: $header-size;
+    padding-top: $header-size / 2;
+  }
+}
+
+//Rubbish
+p {
+  margin: 0;
+  padding: 0;
+}

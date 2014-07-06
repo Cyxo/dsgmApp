@@ -16,20 +16,22 @@ function DSGMClass() {
       //Translation
       $("*[data-role]").each(function(index, element) {
         element = $(element);
-        element.html(Language.getTerm(element.attr("data-role")));
+        if(element.attr("data-no-translate") == undefined){
+          element.html(Language.getTerm(element.attr("data-role")));
+        }
       });
       //UI
-      $.UI.init("data-ui");
+      $.UI.init();
     }
   ]);
 
-  //jadaBox Test
+  //javaLink Test
   $("#SayHiButton").click(function() {
-    $.jadaBox.request(
+    $.javaLink.request(
       "saySomething",
       "Hello, World",
       function(data) {
-        $("#SayHiResponse").html(data);
+        console.log(data)
       }
     );
   });
