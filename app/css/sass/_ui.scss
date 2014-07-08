@@ -3,4 +3,14 @@
   font-size: $font-size;
   background-color: $background-color;
   color: $foreground-color;
+  cursor: default;
+}
+
+.selected {
+  background-color: $obvious-color;
+  border-radius: 2px;
+}
+
+.selected, .selected * {
+  color: $foreground-color !important;
 }

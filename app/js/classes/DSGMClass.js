@@ -3,6 +3,7 @@ function DSGMClass() {
   //Public variables
   var Options;
   var Language;
+  var UI;
 
   //Construct
   async.waterfall([
@@ -13,15 +14,7 @@ function DSGMClass() {
       Language = new LanguageClass(Options.getOption("language"), next);
     },
     function(next) {
-      //Translation
-      $("*[data-role]").each(function(index, element) {
-        element = $(element);
-        if(element.attr("data-no-translate") == undefined){
-          element.html(Language.getTerm(element.attr("data-role")));
-        }
-      });
-      //UI
-      $.UI.init();
+      UI = new UIClass(next);
     }
   ]);
 

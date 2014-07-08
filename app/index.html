@@ -8,7 +8,6 @@
 		<script src="js/jquery-2.1.0.min.js"></script>
 		<script src="js/jquery-plugins/base64.js"></script>
 		<script src="js/jquery-plugins/javaLink.js"></script>
-		<script src="js/jquery-plugins/UI.js"></script>
 		<!-- JavaScript: jQuery Custom Plug-ins -->
 		<script src="js/jquery-plugins-custom/helloWorld.js"></script>
 		<!-- JavaScript: async -->
@@ -16,7 +15,8 @@
 		<!-- JavaScript: Classes -->
 		<script src="js/classes/DSGMClass.js"></script>
 		<script src="js/classes/OptionsClass.js"></script>
-		<script src="js/classes/LanguageClass.js"></script>
+    <script src="js/classes/LanguageClass.js"></script>
+    <script src="js/classes/UIClass.js"></script>
 		<!-- JavaScript: Initialise -->
 		<script>
 			jQuery(window).load(function () {
@@ -76,27 +76,28 @@
       <aside>
         <ul class="ui ui-tree">
           <li>
-            <span data-role="sprites"></span>
+            <span data-icon="folder"><span data-role="sprites"></span></span>
             <ul data-role="sprites-list" data-no-translate>
-            	<li>Pacman</li>
-            	<li>Puck</li>
-            	<li>Ghost</li>
+            	<li><span data-icon="sprite">Pacman</span></li>
+            	<li><span data-icon="sprite">Puck</span></li>
+            	<li><span data-icon="sprite">Ghost</span></li>
             </ul>
           </li>
           <li>
-            <span data-role="objects"></span>
+            <span data-icon="folder"><span data-role="objects"></span></span>
             <ul data-role="objects-list" data-no-translate>
-            	<li>Pacman</li>
-            	<li>Puck</li>
-            	<li>Ghost</li>
+            	<li><span data-icon="object">Pacman</span></li>
+            	<li><span data-icon="object">Puck</span></li>
+            	<li><span data-icon="object">Ghost</span></li>
             </ul>
           </li>
           <li>
-            <span data-role="rooms"></span>
+            <span data-icon="folder"><span data-role="rooms"></span></span>
             <ul data-role="rooms-list" data-no-translate>
-            	<li>Menu</li>
-            	<li>Level 1</li>
-            	<li>Level 2</li>
+            	<li><span data-icon="room">Menu</span></li>
+              <li><span data-icon="room">Level 1</span></li>
+              <li><span data-icon="room">Level 2</span></li>
+              <li><span data-icon="room">Level 3</span></li>
             </ul>
           </li>
         </ul>

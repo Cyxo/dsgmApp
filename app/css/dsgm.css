@@ -1531,7 +1531,15 @@ p {
   font-family: "Source Sans Pro", "Arial", "Helvetica", sans-serif;
   font-size: 16px;
   background-color: #303030;
-  color: white; }
+  color: white;
+  cursor: default; }
+
+.selected {
+  background-color: #ffc300;
+  border-radius: 2px; }
+
+.selected, .selected * {
+  color: white !important; }
 
 .ui-panel {
   margin: 0;
@@ -1563,7 +1571,6 @@ p {
   height: 32px;
   line-height: 32px; }
   .ui-menu li {
-    cursor: default;
     padding-top: 0;
     padding-bottom: 0;
     padding-left: 7px;
@@ -1586,5 +1593,19 @@ p {
 
 .ui-tree {
   background-color: white;
-  color: black;
-  padding: 4px; }
+  padding: 4px;
+  color: black; }
+  .ui-tree li {
+    list-style-type: none; }
+    .ui-tree li li {
+      margin-left: 12px; }
+  .ui-tree li span.fa {
+    margin-left: 2px;
+    margin-right: 6px;
+    vertical-align: -1.2;
+    font-size: 19.2px; }
+  .ui-tree li > span {
+    display: block;
+    margin-bottom: 4px;
+    padding: 4px;
+    line-height: 24px; }
