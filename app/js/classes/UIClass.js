@@ -6,56 +6,67 @@ function UIClass(callback) {
     //Unknown
     {
       "name": "unknown",
-      "classes": "fa fa-question",
+      "classes": "fa fa-fw fa-question",
       "color": "black"
     },
     //Menu
     {
       "name": "page",
-      "classes": "fa fa-file-o",
+      "classes": "fa fa-fw fa-file-o",
       "color": "#EFEFEF"
     },
     {
       "name": "folder",
-      "classes": "fa fa-folder-o",
+      "classes": "fa fa-fw fa-folder-o",
       "color": "#EABE5C"
     },
     {
       "name": "disk",
-      "classes": "fa fa-floppy-o",
+      "classes": "fa fa-fw fa-floppy-o",
       "color": "skyblue"
     },
     {
       "name": "cut",
-      "classes": "fa fa-scissors",
+      "classes": "fa fa-fw fa-scissors",
       "color": "#999999"
     },
     {
       "name": "copy",
-      "classes": "fa fa-files-o",
+      "classes": "fa fa-fw fa-files-o",
       "color": "#EFEFEF"
     },
     {
       "name": "paste",
-      "classes": "fa fa-clipboard",
+      "classes": "fa fa-fw fa-clipboard",
       "color": "rgb(158, 125, 0)"
     },
     //Resources
     {
       "name": "sprite",
-      "classes": "fa fa-dribbble",
+      "classes": "fa fa-fw fa-dribbble",
       "color": "#FFC300"
     },
     {
       "name": "object",
-      "classes": "fa fa-cube",
+      "classes": "fa fa-fw fa-cube",
       "color": "#0010FF"
     },
     {
       "name": "room",
-      "classes": "fa fa-square-o",
+      "classes": "fa fa-fw fa-square-o",
       "color": "#577DA2"
-    }
+    },
+    //More
+    {
+      "name": "globe",
+      "classes": "fa fa-fw fa-globe",
+      "color": "rgb(32, 255, 32)"
+    },
+    {
+      "name": "info",
+      "classes": "fa fa-fw fa-info",
+      "color": "skyblue"
+    },
   ];
 
   //Update Status Bar
