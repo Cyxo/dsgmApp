@@ -1,10 +1,13 @@
 .ui-tabs {
   .ui-panel {
-    border-bottom-left-radius: $radius;
-    border-bottom-right-radius: $radius;
-    border-top-right-radius: $radius;
+    display: none;
+    border-radius: $radius;
+  }
+  .no-corner {
+    border-top-left-radius: 0;
   }
   .selected {
+    display: block;
     background-color: $foreground-color-2;
   }
 }
@@ -20,8 +23,8 @@
 
 .ui-tabs-changer div {
   float: left;
-  padding-left: $padding;
-  padding-right: $padding;
+  padding-left: $padding * 2;
+  padding-right: $padding * 2;
   margin-right: $padding;
   border-top-left-radius: $radius;
   border-top-right-radius: $radius;
