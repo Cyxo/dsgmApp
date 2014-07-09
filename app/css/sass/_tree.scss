@@ -20,4 +20,10 @@
       padding: $padding;
       line-height: $font-size * 1.5;
   }
+  .selected {
+    background-color: $obvious-color;
+  }
+  .selected, .selected * {
+    color: $foreground-color !important;
+  }
 }

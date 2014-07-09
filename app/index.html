@@ -104,25 +104,25 @@
       </aside>
       <div class="ui ui-panel">
         <div id="Resource">
-          <aside style="background-color: red;">
-            <div class="ui-panel">
-              <div class="ui ui-tabs">
-                <div>
-                  <span data-role="properties"></span>
-                  <p>
-                    (Properties Tab)
-                  </p>
-                </div>
-                <div>
-                  <span data-role="extra-properties"></span>
-                  <p>
-                    (Extra Properties Tab)
-                  </p>
-                </div>
+          <aside style="xbackground-color: red;">
+            <div class="ui ui-tabs">
+              <div class="ui-tabs-changer">
+                <div class="selected">Properties</div>
+                <div>Extra</div>
               </div>
+              <div class="ui ui-panel selected" data-role="properties" data-no-translate>
+                <p>
+                  (Properties Tab)
+                </p>
+              </div>
+              <!-- <div class="ui ui-panel" data-role="extra-properties" data-no-translate> -->
+              <!--   <p> -->
+              <!--     (Extra Properties Tab) -->
+              <!--   </p> -->
+              <!-- </div> -->
             </div>
           </aside>
-          <div class="ui-panel" style="background-color: blue;">
+          <div class="ui-panel" style="xbackground-color: blue;">
             <p>
               Hello, World.
             </p>

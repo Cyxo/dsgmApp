@@ -1501,13 +1501,6 @@
   color: white;
   cursor: default; }
 
-.selected {
-  background-color: #ffc300;
-  border-radius: 2px; }
-
-.selected, .selected * {
-  color: white !important; }
-
 .ui-panel {
   margin: 0;
   padding: 4px; }
@@ -1577,6 +1570,32 @@
     margin-bottom: 4px;
     padding: 4px;
     line-height: 24px; }
+  .ui-tree .selected {
+    background-color: #ffc300; }
+  .ui-tree .selected, .ui-tree .selected * {
+    color: white !important; }
+
+.ui-tabs .ui-panel {
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  border-top-right-radius: 4px; }
+.ui-tabs .selected {
+  background-color: #606060; }
+
+.ui-tabs-changer {
+  clear: both;
+  height: 32px;
+  line-height: 32px; }
+  .ui-tabs-changer .selected {
+    background-color: #606060; }
+
+.ui-tabs-changer div {
+  float: left;
+  padding-left: 4px;
+  padding-right: 4px;
+  margin-right: 4px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px; }
 
 * {
   box-sizing: border-box;
@@ -1612,11 +1631,16 @@ header {
     height: 64px;
     padding-top: 32px; }
 
+#Resource > * {
+  height: 100%;
+  overflow: auto; }
 #Resource > aside {
   float: left !important;
   width: 200px !important; }
 #Resource > div {
-  margin-left: 200px; }
+  margin-left: 204px;
+  background-color: #606060;
+  border-radius: 4px; }
 
 p {
   margin: 0;

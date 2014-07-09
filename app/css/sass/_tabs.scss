@@ -1,0 +1,28 @@
+.ui-tabs {
+  .ui-panel {
+    border-bottom-left-radius: $radius;
+    border-bottom-right-radius: $radius;
+    border-top-right-radius: $radius;
+  }
+  .selected {
+    background-color: $foreground-color-2;
+  }
+}
+
+.ui-tabs-changer {
+  clear: both;
+  height: $tabs-changer-size;
+  line-height: $tabs-changer-size;
+  .selected {
+    background-color: $foreground-color-2;
+  }
+}
+
+.ui-tabs-changer div {
+  float: left;
+  padding-left: $padding;
+  padding-right: $padding;
+  margin-right: $padding;
+  border-top-left-radius: $radius;
+  border-top-right-radius: $radius;
+}
