@@ -1,26 +1,51 @@
 .ui-menu {
-  padding: 0;
-  background-color: $foreground-color-2;
+  position: relative;
+  float: left;
   width: 100%;
   height: $header-size / 2;
+  padding: 0;
   line-height: $header-size / 2;
+  background-color: $foreground-color-2;
+  ul {
+    visibility: hidden;
+    position: absolute;
+    left: 0;
+    width: 216px;
+    z-index: 400;
+    border: 2px solid $obvious-color;
+  }
+  ul li {
+    float: none;
+  }
   li {
+    float: left;
     padding-top: 0;
     padding-bottom: 0;
     padding-left: $padding + 3px;
     padding-right: $padding + 3px;
     list-style-type: none;
-    float: left;
     ul {
       li {
         background-color: $foreground-color-2;
       }
     }
   }
-  li:hover {
-    background-color: $obvious-color;
+  li span.fa {
+    margin-left: $padding / 2;
+    margin-right: $padding * 1.5;
+    vertical-align: -1.2;
+    font-size: $font-size * 1.2;
   }
-  ul {
-    display: none;
+  li:hover > ul { 
+    visibility: visible;
+  }
+  li:hover {
+    position: relative;
+    background-color: $obvious-color;
+    border-top-left-radius: $radius;
+    border-top-right-radius: $radius;
+  }
+  li li:hover * {
+    color: $foreground-color !important;
   }
 }

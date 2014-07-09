@@ -16,7 +16,7 @@ $.javaLink = function($) {
           callback('{"name": "English", "data": {}}');
           break;
         case "options/languages/fr.json":
-          callback('{"name": "French", "data": {"file": "Fichier"}}');
+          callback('{"name": "French", "data": {}}');
           break;
       }
     } else if (command == "writeFile") {

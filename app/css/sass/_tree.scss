@@ -22,6 +22,7 @@
   }
   .selected {
     background-color: $obvious-color;
+    border-radius: $radius;
   }
   .selected, .selected * {
     color: $foreground-color !important;

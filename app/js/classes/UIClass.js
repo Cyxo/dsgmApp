@@ -3,16 +3,44 @@ function UIClass(callback) {
   var _self = this;
   var _animation_speed = "medium";
   var _icons = [
+    //Unknown
     {
       "name": "unknown",
       "classes": "fa fa-question",
       "color": "black"
     },
+    //Menu
+    {
+      "name": "page",
+      "classes": "fa fa-file-o",
+      "color": "#EFEFEF"
+    },
     {
       "name": "folder",
-      "classes": "fa fa-folder",
+      "classes": "fa fa-folder-o",
       "color": "#EABE5C"
     },
+    {
+      "name": "disk",
+      "classes": "fa fa-floppy-o",
+      "color": "skyblue"
+    },
+    {
+      "name": "cut",
+      "classes": "fa fa-scissors",
+      "color": "#999999"
+    },
+    {
+      "name": "copy",
+      "classes": "fa fa-files-o",
+      "color": "#EFEFEF"
+    },
+    {
+      "name": "paste",
+      "classes": "fa fa-clipboard",
+      "color": "rgb(158, 125, 0)"
+    },
+    //Resources
     {
       "name": "sprite",
       "classes": "fa fa-dribbble",
