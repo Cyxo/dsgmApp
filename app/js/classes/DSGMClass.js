@@ -1,20 +1,17 @@
 function DSGMClass() {
 
-  //Public variables
-  var Options;
-  var Language;
-  var UI;
+  var _self = this;
 
   //Construct
   async.waterfall([
     function(next) {
-      Options = new OptionsClass(next);
+      _self.Options = new OptionsClass(next);
     },
     function(next) {
-      Language = new LanguageClass(Options.getOption("language"), next);
+      _self.Language = new LanguageClass(_self.Options.getOption("language"), next);
     },
     function(next) {
-      UI = new UIClass(next);
+      _self.UI = new UIClass(next);
     }
   ]);
 
@@ -28,5 +25,11 @@ function DSGMClass() {
       }
     );
   });
+
+  //Load Resource
+  this.loadResource = function(name, rType) {
+    console.log("name: " + name + ", type: " + rType);
+    DSGM.UI.updateStatusBar("load a resource");
+  }
 
 }

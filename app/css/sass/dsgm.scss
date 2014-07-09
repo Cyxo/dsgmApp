@@ -7,3 +7,61 @@
 @import "_menu.scss";
 @import "_status.scss";
 @import "_tree.scss";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+}
+
+main {
+  clear: both;
+  background-color: green;
+  height: 100%;
+  padding-top: $header-size;
+  padding-bottom: $status-size;
+  > * {
+    height: 100%;
+    overflow: auto;
+  }
+  > aside {
+    float: left !important;
+    width: $resources-size !important;
+    background-color: $background-color-invert;
+  }
+  > div {
+    margin-left: $resources-size !important;
+  }
+}
+
+header {
+  position: absolute;
+  width: 100%;
+  height: $header-size;
+  padding: 0 !important;
+  div:nth-child(2) {
+    margin-left: $header-size;
+    height: $header-size;
+    padding-top: $header-size / 2;
+  }
+}
+
+#Resource {
+  > aside {
+    float: left !important;
+    width: $resources-size !important;
+  }
+  > div {
+    margin-left: $resources-size;
+  }
+}
+
+//Rubbish
+p {
+  margin: 0;
+  padding: 0;
+}

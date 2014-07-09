@@ -1,6 +1,5 @@
 function OptionsClass(callback) {
 
-  //Private Variables
   var _options;
   var _options_path = "options/options.json";
 

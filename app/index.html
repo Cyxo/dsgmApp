@@ -74,58 +74,62 @@
 		</header>
 		<main>
       <aside>
-        <ul class="ui ui-tree">
+        <ul data-role="resources-list" data-no-translate class="ui ui-tree">
           <li>
             <span data-icon="folder"><span data-role="sprites"></span></span>
-            <ul data-role="sprites-list" data-no-translate>
-            	<li><span data-icon="sprite">Pacman</span></li>
-            	<li><span data-icon="sprite">Puck</span></li>
-            	<li><span data-icon="sprite">Ghost</span></li>
+            <ul data-role="sprites-list" data-resource-type="sprite" data-no-translate>
+            	<li><span data-icon="sprite"><span>Pacman</span></span></li>
+            	<li><span data-icon="sprite"><span>Puck</span></span></li>
+            	<li><span data-icon="sprite"><span>Ghost</span></span></li>
             </ul>
           </li>
           <li>
             <span data-icon="folder"><span data-role="objects"></span></span>
-            <ul data-role="objects-list" data-no-translate>
-            	<li><span data-icon="object">Pacman</span></li>
-            	<li><span data-icon="object">Puck</span></li>
-            	<li><span data-icon="object">Ghost</span></li>
+            <ul data-role="objects-list" data-resource-type="object" data-no-translate>
+            	<li><span data-icon="object"><span>Pacman</span></span></li>
+            	<li><span data-icon="object"><span>Puck</span></span></li>
+            	<li><span data-icon="object"><span>Ghost</span></span></li>
             </ul>
           </li>
           <li>
             <span data-icon="folder"><span data-role="rooms"></span></span>
-            <ul data-role="rooms-list" data-no-translate>
-            	<li><span data-icon="room">Menu</span></li>
-              <li><span data-icon="room">Level 1</span></li>
-              <li><span data-icon="room">Level 2</span></li>
-              <li><span data-icon="room">Level 3</span></li>
+            <ul data-role="rooms-list" data-resource-type="room" data-no-translate>
+            	<li><span data-icon="room"><span>Menu</span></span></li>
+              <li><span data-icon="room"><span>Level 1</span></span></li>
+              <li><span data-icon="room"><span>Level 2</span></span></li>
+              <li><span data-icon="room"><span>Level 3</span></span></li>
             </ul>
           </li>
         </ul>
       </aside>
       <div class="ui ui-panel">
-        <aside>
-          <div data-gui="tabs">
-            <div>
-              <span data-role="properties"></span>
-              <p>
-                (Properties Tab)
-              </p>
+        <div id="Resource">
+          <aside style="background-color: red;">
+            <div class="ui-panel">
+              <div class="ui ui-tabs">
+                <div>
+                  <span data-role="properties"></span>
+                  <p>
+                    (Properties Tab)
+                  </p>
+                </div>
+                <div>
+                  <span data-role="extra-properties"></span>
+                  <p>
+                    (Extra Properties Tab)
+                  </p>
+                </div>
+              </div>
             </div>
-            <div>
-              <span data-role="extra-properties"></span>
-              <p>
-                (Extra Properties Tab)
-              </p>
-            </div>
+          </aside>
+          <div class="ui-panel" style="background-color: blue;">
+            <p>
+              Hello, World.
+            </p>
           </div>
-        </aside>
-        <div>
-          <p>
-            Hello, World.
-          </p>
         </div>
 			</div>
 		</main>
-		<footer class="ui ui-status">Status Bar</footer>
+		<footer id="StatusBar" class="ui ui-status">Status Bar</footer>
 	</body>
 </html>

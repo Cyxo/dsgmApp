@@ -30,46 +30,5 @@ $foreground-color-invert: black;
 $padding: 4px;
 $header-size: 64px;
 $status-size: $header-size / 2;
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  margin: 0;
-  background-color: red;
-}
-
-main {
-  clear: both;
-  background-color: green;
-  > * {
-    min-height: 320px;
-  }
-  > aside {
-    float: left !important;
-    width: 200px !important;
-    background-color: $background-color-invert;
-  }
-  > div {
-    margin-left: 200px !important;
-  }
-}
-
-header {
-  padding: 0 !important;
-  height: $header-size;
-  div:nth-child(2) {
-    margin-left: $header-size;
-    height: $header-size;
-    padding-top: $header-size / 2;
-  }
-}
-
-//Rubbish
-p {
-  margin: 0;
-  padding: 0;
-}
+$resources-size: 200px;
+$tabber-size: 400px;

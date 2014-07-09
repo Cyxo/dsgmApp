@@ -1,6 +1,5 @@
 function LanguageClass(language, callback) {
 
-  //Private variables
   var _languages_path = "options/languages/";
   var _language_pairs;
   var _base_object;

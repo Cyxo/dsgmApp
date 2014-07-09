@@ -8,39 +8,6 @@
   font-style: normal;
   font-weight: 700;
   src: url("fonts/Source Sans Pro Bold.woff") format("woff"); }
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0; }
-
-body {
-  margin: 0;
-  background-color: red; }
-
-main {
-  clear: both;
-  background-color: green; }
-  main > * {
-    min-height: 320px; }
-  main > aside {
-    float: left !important;
-    width: 200px !important;
-    background-color: white; }
-  main > div {
-    margin-left: 200px !important; }
-
-header {
-  padding: 0 !important;
-  height: 64px; }
-  header div:nth-child(2) {
-    margin-left: 64px;
-    height: 64px;
-    padding-top: 32px; }
-
-p {
-  margin: 0;
-  padding: 0; }
-
 /*!
  *  Font Awesome 4.1.0 by @davegandy - http://fontawesome.io - @fontawesome
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
@@ -1543,9 +1510,7 @@ p {
 
 .ui-panel {
   margin: 0;
-  padding: 4px;
-  color: white;
-  background-color: #303030; }
+  padding: 4px; }
 
 .ui-orb {
   padding: 0;
@@ -1585,11 +1550,14 @@ p {
     display: none; }
 
 .ui-status {
-  padding: 0 4px 0 4px;
-  background-color: #606060;
+  clear: both;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  padding: 0 4px 0 8px;
   height: 32px;
   line-height: 32px;
-  clear: both; }
+  background-color: #606060; }
 
 .ui-tree {
   background-color: white;
@@ -1609,3 +1577,47 @@ p {
     margin-bottom: 4px;
     padding: 4px;
     line-height: 24px; }
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0; }
+
+body {
+  margin: 0; }
+
+main {
+  clear: both;
+  background-color: green;
+  height: 100%;
+  padding-top: 64px;
+  padding-bottom: 32px; }
+  main > * {
+    height: 100%;
+    overflow: auto; }
+  main > aside {
+    float: left !important;
+    width: 200px !important;
+    background-color: white; }
+  main > div {
+    margin-left: 200px !important; }
+
+header {
+  position: absolute;
+  width: 100%;
+  height: 64px;
+  padding: 0 !important; }
+  header div:nth-child(2) {
+    margin-left: 64px;
+    height: 64px;
+    padding-top: 32px; }
+
+#Resource > aside {
+  float: left !important;
+  width: 200px !important; }
+#Resource > div {
+  margin-left: 200px; }
+
+p {
+  margin: 0;
+  padding: 0; }

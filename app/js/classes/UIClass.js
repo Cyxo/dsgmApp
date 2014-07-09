@@ -1,5 +1,7 @@
 function UIClass(callback) {
 
+  var _self = this;
+  var _animation_speed = "medium";
   var _icons = [
     {
       "name": "unknown",
@@ -28,6 +30,11 @@ function UIClass(callback) {
     }
   ];
 
+  //Update Status Bar
+  this.updateStatusBar = function(status) {
+    $("#StatusBar").html(status);
+  }
+
   //Icons
   $("*[data-icon]").each(function(index, element) {
     element = $(element);
@@ -40,11 +47,23 @@ function UIClass(callback) {
 
   //Tree
   $(".ui-tree li > span").click(function() {
+    var thisSpan = $(this);
+    if (thisSpan.parent().parent().attr("data-role") == "resources-list") {
+      thisSpan.siblings("ul").slideToggle(_animation_speed);
+    }
     $(".ui-tree li > span").removeClass("selected");
-    var element = $(this);
-    element.addClass("selected");
+    $(this).addClass("selected");
   });
 
+  //Resources Tree
+  $("*[data-role=resources-list] li > span").click(function () {
+    var thisSpan = $(this);
+    var thisUl = thisSpan.parent().parent();
+    if (thisUl.attr("data-resource-type") == undefined) return;
+    DSGM.loadResource($(thisSpan.children()[1]).html(), thisUl.attr("data-resource-type"));
+  });
+
+  //Callback
   callback();
 
 }
