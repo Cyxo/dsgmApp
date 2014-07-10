@@ -1,7 +1,9 @@
 {
   "name": "Base",
   "data": {
-    "file": "File",
-    "edit": "Edit"
+    "file-menu": "File",
+    "edit-menu": "Edit",
+    "tools-menu": "Tools",
+    "help-menu": "Help"
   }
 }

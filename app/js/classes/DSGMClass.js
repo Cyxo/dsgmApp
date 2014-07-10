@@ -2,7 +2,6 @@ function DSGMClass() {
 
   var _self = this;
 
-  //Construct
   async.waterfall([
     function(next) {
       _self.Options = new OptionsClass(next);
@@ -12,6 +11,23 @@ function DSGMClass() {
     },
     function(next) {
       _self.UI = new UIClass(next);
+    },
+    function(next) {
+      _self.Links = new LinksClass(next);
+    },
+    function(next) {
+      //Block
+      _self.UI.block(true, next);
+    },
+    function(next) {
+      //Iconification test
+      $("#Resource > div").html("<span data-icon=\"folder\"></span>");
+      _self.UI.iconify($($("#Resource > div > span")[0]));
+      next();
+    },
+    function(next) {
+      //Unblock
+      _self.UI.block(false, next, true);
     }
   ]);
 

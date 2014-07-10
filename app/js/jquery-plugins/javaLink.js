@@ -10,7 +10,7 @@ $.javaLink = function($) {
           callback('{"languages": [], "language": "fr"}');
           break;
         case "options/languages/base.json":
-          callback('{"name": "Base", "data": {"file": "File", "edit": "Edit"}}');
+          callback('{"name": "Base", "data": {"file-menu": "File", "edit-menu": "Edit", "tools-menu": "Tools", "help-menu": "Help"}}');
           break;
         case "options/languages/en.json":
           callback('{"name": "English", "data": {}}');

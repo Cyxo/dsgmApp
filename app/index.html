@@ -17,6 +17,7 @@
 		<script src="js/classes/OptionsClass.js"></script>
     <script src="js/classes/LanguageClass.js"></script>
     <script src="js/classes/UIClass.js"></script>
+    <script src="js/classes/LinksClass.js"></script>
 		<!-- JavaScript: Initialise -->
 		<script>
 			jQuery(window).load(function () {
@@ -25,6 +26,12 @@
 		</script>
 	</head>
 	<body class="ui">
+    <div id="Blocker">
+      <div>
+        <p><span class="fa fa-refresh fa-spin"></span></p>
+        <p><span>Loading...</span></p>
+      </div>
+    </div>
 		<header class="ui">
 			<div class="ui ui-orb" id="Orb">
 				<a href="#"><img src="img/orb.png" alt="Orb"></a>
@@ -37,7 +44,7 @@
 				<nav>
 					<ul class="ui ui-menu">
 						<li>
-							<span data-role="file"></span>
+							<span data-role="file-menu"></span>
 							<ul>
 								<li><span data-icon="page"><span data-role="new"></span></span></li>
 								<li><span data-icon="folder"><span data-role="open"></span></span></li>
@@ -45,7 +52,7 @@
 							</ul>
 						</li>
 						<li>
-							<span data-role="edit"></span>
+							<span data-role="edit-menu"></span>
 							<ul>
 								<li><span data-icon="cut"><span data-role="cut"></span></span></li>
 								<li><span data-icon="copy"><span data-role="copy"></span></span></li>
@@ -53,7 +60,7 @@
 							</ul>
 						</li>
 						<li>
-							<span data-role="tools"></span>
+							<span data-role="tools-menu"></span>
 							<ul>
 								<li data-role="raw2c"></li>
 								<li data-role="ndstool"></li>
@@ -61,10 +68,10 @@
 							</ul>
 						</li>
 						<li>
-							<span data-role="help"></span>
+							<span data-role="help-menu"></span>
 							<ul>
-                <li><span data-icon="globe"><span data-role="dsgamemaker.com" data-no-translate>Website</span></span></li>
-                <li><span data-icon="globe"><span data-role="dsgamemaker-forum" data-no-translate>Forum</span></span></li>
+                <li data-link-name="website"><span data-icon="globe"><span data-role="link" data-no-translate>Website</span></span></li>
+                <li data-link-name="forum"><span data-icon="globe"><span data-role="link" data-no-translate>Forum</span></span></li>
                 <li><span data-icon="info"><span data-role="about"></span></span></li>
 							</ul>
 						</li>

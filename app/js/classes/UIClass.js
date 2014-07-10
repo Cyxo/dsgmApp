@@ -66,8 +66,27 @@ function UIClass(callback) {
       "name": "info",
       "classes": "fa fa-fw fa-info",
       "color": "skyblue"
-    },
+    }
   ];
+
+  //Blocker (major UI progress)
+  this.block = function(firstTime, callback, waitExtra) {
+    if (waitExtra == undefined) waitExtra = false;
+    if (firstTime) {
+      callback();
+      return;
+    }
+    if (waitExtra) {
+      setTimeout(
+        function() {
+          $("#Blocker").fadeToggle(callback);
+        },
+        500
+      );
+    } else {
+      $("#Blocker").fadeToggle(callback);
+    }
+  }
 
   //Update Status Bar
   this.updateStatusBar = function(status) {
@@ -91,14 +110,18 @@ function UIClass(callback) {
     }
   }
 
-  //Icons
-  $("*[data-icon]").each(function(index, element) {
-    element = $(element);
+  this.iconify = function(element) {
     var icon = $.grep(_icons, function(iconElement) {
       return (iconElement.name == element.attr("data-icon"));
     })[0];
     if (icon == undefined) icon = _icons[0];
     element.html("<span class=\"" + icon.classes + "\" style=\"color: " + icon.color + ";\"></span>" + element.html());
+  }
+
+  //Icons
+  $("*[data-icon]").each(function(index, element) {
+    element = $(element);
+    _self.iconify(element);
   });
 
   //Tree
@@ -131,6 +154,15 @@ function UIClass(callback) {
   _self.selectifyTab(0);
   _self.selectify(".ui-tabs .ui-tabs-changer div", function(tabChangerElement) {
     _self.selectifyTab(tabChangerElement.index());
+  });
+
+  //Menu Links
+  $("[data-role=help-menu]").siblings("ul").children().each(function(index, li) {
+    var thisLi = $(li);
+    if (!thisLi.attr("data-link-name")) return;
+    thisLi.click(function() {
+      DSGM.Links.goToLink($(this).attr("data-link-name"));
+    });
   });
 
   //Callback

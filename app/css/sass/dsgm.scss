@@ -8,12 +8,7 @@
 @import "_status.scss";
 @import "_tree.scss";
 @import "_tabs.scss";
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+@import "_blocker.scss";
 
 body {
   margin: 0;
