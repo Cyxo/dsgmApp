@@ -1687,26 +1687,24 @@ button {
     bottom: 50%;
     left: 50%;
     right: 50%;
-    width: 620px;
-    height: 180px;
-    margin-left: -310px;
-    margin-top: -90px;
     background-color: #151515; }
-    #Dialogue > div > div:nth-child(1) {
-      height: 126.0px;
-      line-height: 135px;
-      padding-left: 16px;
-      padding-right: 16px;
-      font-size: 24px;
+    #Dialogue > div > div.contents {
+      padding: 4px;
+      padding-left: 8px;
+      padding-right: 8px;
       background-color: #303030;
       border-top-left-radius: 4px;
       border-top-right-radius: 4px;
       border: 2px solid #ffc300;
       border-bottom: 0; }
-      #Dialogue > div > div:nth-child(1) span.fa {
+    #Dialogue > div > div.contents-line {
+      padding-left: 16px;
+      padding-right: 16px;
+      font-size: 24px; }
+      #Dialogue > div > div.contents-line span.fa {
         font-size: 32px;
         vertical-align: middle; }
-    #Dialogue > div > div:nth-child(2) {
+    #Dialogue > div > div.buttons {
       height: 54px;
       background-color: #ffc300;
       border-bottom-left-radius: 4px;
@@ -1714,12 +1712,12 @@ button {
       border: 2px solid #ffc300;
       border-top: 0;
       padding: 8px; }
-      #Dialogue > div > div:nth-child(2) button {
+      #Dialogue > div > div.buttons button {
         display: block;
         float: left;
         height: 100%;
         margin-right: 8px; }
-      #Dialogue > div > div:nth-child(2) button:last-child {
+      #Dialogue > div > div.buttons button:last-child {
         margin-right: 0; }
 
 body {

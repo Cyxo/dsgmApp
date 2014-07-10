@@ -1,10 +1,13 @@
-function DialogueClass(text, icon, buttons) {
+function DialogueClass(text, icon, buttons, width, height, customText) {
 
   this.text = (text || "");
   this.icon = icon;
   if (buttons == undefined) buttons = [];
   if (buttons.length == 0) buttons = [new ButtonClass("OK", "yes", null)];
   this.buttons = buttons;
+  this.width = (width || 620);
+  this.height = (height || 180);
+  this.customText = ((customText != undefined) ? customText : false);
 
 }
 
@@ -41,23 +44,43 @@ DialogueClass.prototype.askYesNoCancel = function(text, icon, yesCallback, noCal
 
 DialogueClass.prototype.show = function() {
   var _self = this;
-  var jDivs = $("#Dialogue > div div");
-  var divs = [];
-  $.each(jDivs, function(index, jDiv) {
-    var tempDiv = $(jDiv);
-    tempDiv.html("");
-    divs.push(tempDiv);
+  var dialogueDiv = $("#Dialogue > div");
+  var contentsDiv = $("#Dialogue > div div.contents");
+  var buttonsDiv = $("#Dialogue > div div.buttons");
+  var divs = [contentsDiv, buttonsDiv];
+  //Erase
+  $.each(divs, function(index, div) {
+    div.html("");
   });
-  var textSpan = $("<span" + (_self.icon ? " data-icon=\"" + _self.icon + "\"" : "") + ">" + _self.text + "</span>");
-  DSGM.UI.iconify(textSpan);
-  textSpan.appendTo(divs[0]);
+  //Size
+  dialogueDiv
+    .css("width", _self.width.toString() + "px")
+    .css("height", _self.height.toString() + "px")
+    .css("margin-left", (-1 * _self.width / 2).toString() + "px")
+    .css("margin-top", (-1 * _self.height / 2).toString() + "px");
+  contentsDiv
+    .css("height", (_self.height - 54).toString() + "px");
+  if (!_self.customText) {
+    var textSpan = $("<span" + (_self.icon ? " data-icon=\"" + _self.icon + "\"" : "") + ">" + _self.text + "</span>");
+    DSGM.UI.iconify(textSpan);
+    textSpan.appendTo(contentsDiv);
+    contentsDiv
+      .css("line-height", (_self.height - 54).toString() + "px")
+      .addClass("contents-line");
+  } else {
+    contentsDiv
+      .css("line-height", "normal")
+      .removeClass("contents-line");
+    contentsDiv.html(_self.text);
+  }  
+
   $.each(_self.buttons, function(index, button) {
     button.old_callback = button.callback;
     button.callback = function() {
       _self.hide(button.old_callback);
     }
     var buttonElement = button.makeElement();
-    buttonElement.appendTo(divs[1]);
+    buttonElement.appendTo(buttonsDiv);
   });
   async.waterfall([
     function(next) {

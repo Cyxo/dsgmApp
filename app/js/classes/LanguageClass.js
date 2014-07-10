@@ -8,7 +8,6 @@ function LanguageClass(language, callback) {
 
   //Translate
   this.getTerm = function(term) {
-    console.log(term);
     var t = _language_pairs[term];
     return ((t !== undefined) ? t : term.substring(0, 1).toUpperCase() + term.substring(1));
   }

@@ -50,13 +50,13 @@ function DSGMClass() {
         new DialogueClass().askYesNoCancel("Do you want to save your changes?",
           "help",
           function() {
-            alert("save.");
+            console.log("(save)");
           },
           function() {
-            alert("don't save.");
+            console.log("(don't save)");
           },
           function() {
-            alert("don't exit.");
+            console.log("(don't exit)");
           }
         );
       });

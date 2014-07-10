@@ -183,7 +183,12 @@ function UIClass(callback) {
 
   //(Menu) Help > About
   $("[data-role=about]").click(function() {
-    new DialogueClass().showInfo("DS Game Maker rocks, period.");
+    //$("*[data-role=main-menu] li ul").css("visibility", "hidden");
+    var aboutDialogue = new DialogueClass(
+      "I love DS Game Maker.",
+      null, [], 320, 480, true
+    );
+    aboutDialogue.show();
   });
 
   callback();
