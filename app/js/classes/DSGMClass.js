@@ -29,14 +29,14 @@ function DSGMClass() {
       $("#Tester").click(function() {
         async.waterfall([
           function(next2) {
-            var marryDialogue = new DialogueClass("Will you marry me?", null, [
+            var marryDialogue = new DialogueClass("Will you marry me?", "heart", [
               new ButtonClass("Yes", "yes", next2),
               new ButtonClass("No", "no")
             ]);
             marryDialogue.show();
           },
           function(next2) {
-            var crazyDialogue = new DialogueClass("Are you crazy!?", null, [
+            var crazyDialogue = new DialogueClass("Are you crazy!?", "info", [
               new ButtonClass("Yes", "yes"),
               new ButtonClass("No", "no")
             ]);

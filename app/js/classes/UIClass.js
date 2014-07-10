@@ -67,6 +67,11 @@ function UIClass(callback) {
       "classes": "fa fa-fw fa-info",
       "color": "skyblue"
     },
+    {
+      "name": "heart",
+      "classes": "fa fa-fw fa-heart",
+      "color": "red"
+    },
     //Dialogues
     {
       "name": "yes",

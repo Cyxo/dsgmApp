@@ -15,7 +15,7 @@ function DialogueClass(text, icon, buttons) {
       tempDiv.html("");
       divs.push(tempDiv);
     });
-    var textSpan = $("<span" + (this.icon ? "data-icon=\"" + this.icon + "\"" : "") + ">" + this.text + "</span>");
+    var textSpan = $("<span" + (_self.icon ? " data-icon=\"" + _self.icon + "\"" : "") + ">" + _self.text + "</span>");
     DSGM.UI.iconify(textSpan);
     textSpan.appendTo(divs[0]);
     $.each(buttons, function(index, button) {
