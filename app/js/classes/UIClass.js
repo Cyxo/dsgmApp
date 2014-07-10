@@ -156,7 +156,7 @@ function UIClass(callback) {
     _self.selectifyTab(tabChangerElement.index());
   });
 
-  //Menu Links
+  //(Menu) Help > Generic Links
   $("[data-role=help-menu]").siblings("ul").children().each(function(index, li) {
     var thisLi = $(li);
     if (!thisLi.attr("data-link-name")) return;
@@ -164,6 +164,9 @@ function UIClass(callback) {
       DSGM.Links.goToLink($(this).attr("data-link-name"));
     });
   });
+
+  //(Menu) Help > About
+  //$("[data-role=about]")
 
   //Callback
   callback();
