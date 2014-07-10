@@ -8,6 +8,7 @@ function LanguageClass(language, callback) {
 
   //Translate
   this.getTerm = function(term) {
+    console.log(term);
     var t = _language_pairs[term];
     return ((t !== undefined) ? t : term.substring(0, 1).toUpperCase() + term.substring(1));
   }
@@ -42,10 +43,10 @@ function LanguageClass(language, callback) {
         _language_pairs[term] = value;
       });
       //Perform Translation
-      $("*[data-role]").each(function(index, element) {
+      $("*[data-translate]").each(function(index, element) {
         element = $(element);
         if(element.attr("data-no-translate") == undefined){
-          element.html(_self.getTerm(element.attr("data-role")));
+          element.html(_self.getTerm(element.attr("data-translate")));
         }
       });
       next();

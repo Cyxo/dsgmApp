@@ -17,8 +17,8 @@ function LinksClass(callback) {
       return (link.identifier == identifier);
     })[0];
     if (link == undefined) return;
-    window.location = link.url;
-    //console.log("go to: " + link.url);
+    //window.location = link.url;
+    console.log("java go to: " + link.url);
   }
 
   callback();

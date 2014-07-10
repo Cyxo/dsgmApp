@@ -182,7 +182,9 @@ function UIClass(callback) {
   });
 
   //(Menu) Help > About
-  //$("[data-role=about]")
+  $("[data-role=about]").click(function() {
+    new DialogueClass().showInfo("DS Game Maker rocks, period.");
+  });
 
   callback();
 
