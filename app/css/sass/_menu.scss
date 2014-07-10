@@ -12,10 +12,18 @@
     left: 0;
     width: 216px;
     z-index: 400;
+    background-color: $obvious-color;
     border: 2px solid $obvious-color;
   }
   ul li {
     float: none;
+  }
+  ul, ul li:first-child {
+    border-top-right-radius: $radius;
+  }
+  ul, ul li:last-child {
+    border-bottom-left-radius: $radius;
+    border-bottom-right-radius: $radius;
   }
   li {
     float: left;
@@ -30,18 +38,14 @@
       }
     }
   }
-  li span.fa {
-    margin-left: $padding / 2;
-    margin-right: $padding * 1.5;
-    vertical-align: -1.2;
-    font-size: $font-size * 1.2;
-  }
   li:hover > ul { 
     visibility: visible;
   }
   li:hover {
     position: relative;
     background-color: $obvious-color;
+  }
+  > li {
     border-top-left-radius: $radius;
     border-top-right-radius: $radius;
   }

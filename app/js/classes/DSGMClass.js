@@ -20,9 +20,29 @@ function DSGMClass() {
       _self.UI.block(true, next);
     },
     function(next) {
+
       //Iconification test
-      $("#Resource > div").html("<span data-icon=\"folder\"></span>");
-      _self.UI.iconify($($("#Resource > div > span")[0]));
+      //$("#Resource > div").html("<span data-icon=\"folder\"></span>");
+      //_self.UI.iconify($($("#Resource > div > span")[0]));
+
+      //Dialogue Test
+      async.waterfall([
+        function(next2) {
+          $("#Tester").click(function() {
+            DSGM.UI.showDialogue("Will you marry me?", null, [
+              new ButtonClass("Yes", "yes", next2),
+              new ButtonClass("No", "no")
+            ]);
+          });
+        },
+        function(next2) {
+          DSGM.UI.showDialogue("Are you crazy?", null, [
+            new ButtonClass("Yes", "yes", next2),
+            new ButtonClass("No", "no")
+          ]);
+        }
+      ]);
+
       next();
     },
     function(next) {

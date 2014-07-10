@@ -1,7 +1,7 @@
 function UIClass(callback) {
 
   var _self = this;
-  var _animation_speed = "medium";
+  var _animation_speed = "fast";
   var _icons = [
     //Unknown
     {
@@ -66,6 +66,17 @@ function UIClass(callback) {
       "name": "info",
       "classes": "fa fa-fw fa-info",
       "color": "skyblue"
+    },
+    //Dialogues
+    {
+      "name": "yes",
+      "classes": "fa fa-fw fa-check",
+      "color": "rgb(32, 255, 32)"
+    },
+    {
+      "name": "no",
+      "classes": "fa fa-fw fa-ban",
+      "color": "rgb(224, 0, 0)"
     }
   ];
 
@@ -86,6 +97,47 @@ function UIClass(callback) {
     } else {
       $("#Blocker").fadeToggle(callback);
     }
+  }
+
+  //Modal Dialogue
+  this.showDialogue = function(text, icon, buttons) {
+    var jDivs = $("#Dialogue > div div");
+    var divs = [];
+    $.each(jDivs, function(index, jDiv) {
+      var tempDiv = $(jDiv);
+      tempDiv.html("");
+      divs.push(tempDiv);
+    });
+    var textSpan = $("<span" + (icon ? "data-icon=\"" + icon + "\"" : "") + ">" + text + "</span>");
+    DSGM.UI.iconify(textSpan);
+    textSpan.appendTo(divs[0]);
+    if (buttons == undefined) buttons = [];
+    if (buttons.length == 0) buttons = [new ButtonClass("OK", "yes", null)];
+    $.each(buttons, function(index, button) {
+      var buttonElement = button.makeElement();
+      buttonElement.appendTo(divs[1]);
+    });
+    async.waterfall([
+      function(next) {
+        $("#Dialogue").fadeIn(_animation_speed, next);
+      },
+      function(next) {
+        $("#Dialogue > div").fadeIn(_animation_speed, next);
+      }
+    ]);    
+  }
+  this.hideDialogue = function(callback) {
+    async.waterfall([
+      function(next) {
+        $("#Dialogue > div").fadeOut(_animation_speed, next);
+      },
+      function(next) {
+        $("#Dialogue").fadeOut(_animation_speed, next);
+      },
+      function(next) {
+        if (callback) callback();
+      }
+    ]);
   }
 
   //Update Status Bar
@@ -110,15 +162,15 @@ function UIClass(callback) {
     }
   }
 
+  //Icons
   this.iconify = function(element) {
+    if (element.attr("data-icon") == undefined) return;
     var icon = $.grep(_icons, function(iconElement) {
       return (iconElement.name == element.attr("data-icon"));
     })[0];
     if (icon == undefined) icon = _icons[0];
     element.html("<span class=\"" + icon.classes + "\" style=\"color: " + icon.color + ";\"></span>" + element.html());
   }
-
-  //Icons
   $("*[data-icon]").each(function(index, element) {
     element = $(element);
     _self.iconify(element);

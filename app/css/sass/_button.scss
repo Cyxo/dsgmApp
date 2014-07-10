@@ -1,0 +1,12 @@
+button {
+  padding: $padding;
+  padding-left: $padding * 2;
+  padding-right: $padding * 2;
+  background-color: $foreground-color-2;
+  font-family: $font-family;
+  font-size: $font-size;
+  min-width: 48px;
+  color: $foreground-color;
+  border-radius: $radius;
+  border: 2px solid $background-color;
+}
