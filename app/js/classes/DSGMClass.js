@@ -26,23 +26,24 @@ function DSGMClass() {
       //_self.UI.iconify($($("#Resource > div > span")[0]));
 
       //Dialogue Test
-      async.waterfall([
-        function(next2) {
-          $("#Tester").click(function() {
-            DSGM.UI.showDialogue("Will you marry me?", null, [
+      $("#Tester").click(function() {
+        async.waterfall([
+          function(next2) {
+            var marryDialogue = new DialogueClass("Will you marry me?", null, [
               new ButtonClass("Yes", "yes", next2),
               new ButtonClass("No", "no")
             ]);
-          });
-        },
-        function(next2) {
-          DSGM.UI.showDialogue("Are you crazy?", null, [
-            new ButtonClass("Yes", "yes", next2),
-            new ButtonClass("No", "no")
-          ]);
-        }
-      ]);
-
+            marryDialogue.show();
+          },
+          function(next2) {
+            var crazyDialogue = new DialogueClass("Are you crazy!?", null, [
+              new ButtonClass("Yes", "yes"),
+              new ButtonClass("No", "no")
+            ]);
+            crazyDialogue.show();
+          }
+        ]);
+      });
       next();
     },
     function(next) {

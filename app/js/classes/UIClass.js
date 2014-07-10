@@ -99,47 +99,6 @@ function UIClass(callback) {
     }
   }
 
-  //Modal Dialogue
-  this.showDialogue = function(text, icon, buttons) {
-    var jDivs = $("#Dialogue > div div");
-    var divs = [];
-    $.each(jDivs, function(index, jDiv) {
-      var tempDiv = $(jDiv);
-      tempDiv.html("");
-      divs.push(tempDiv);
-    });
-    var textSpan = $("<span" + (icon ? "data-icon=\"" + icon + "\"" : "") + ">" + text + "</span>");
-    DSGM.UI.iconify(textSpan);
-    textSpan.appendTo(divs[0]);
-    if (buttons == undefined) buttons = [];
-    if (buttons.length == 0) buttons = [new ButtonClass("OK", "yes", null)];
-    $.each(buttons, function(index, button) {
-      var buttonElement = button.makeElement();
-      buttonElement.appendTo(divs[1]);
-    });
-    async.waterfall([
-      function(next) {
-        $("#Dialogue").fadeIn(_animation_speed, next);
-      },
-      function(next) {
-        $("#Dialogue > div").fadeIn(_animation_speed, next);
-      }
-    ]);    
-  }
-  this.hideDialogue = function(callback) {
-    async.waterfall([
-      function(next) {
-        $("#Dialogue > div").fadeOut(_animation_speed, next);
-      },
-      function(next) {
-        $("#Dialogue").fadeOut(_animation_speed, next);
-      },
-      function(next) {
-        if (callback) callback();
-      }
-    ]);
-  }
-
   //Update Status Bar
   this.updateStatusBar = function(status) {
     $("#StatusBar").html(status);
@@ -220,7 +179,6 @@ function UIClass(callback) {
   //(Menu) Help > About
   //$("[data-role=about]")
 
-  //Callback
   callback();
 
 }
