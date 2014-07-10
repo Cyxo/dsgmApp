@@ -26,24 +26,41 @@ function DSGMClass() {
       //_self.UI.iconify($($("#Resource > div > span")[0]));
 
       //Dialogue Test
+      // $("#Tester").click(function() {
+      //   async.waterfall([
+      //     function(next2) {
+      //       var marryDialogue = new DialogueClass("Will you marry me?", "heart", [
+      //         new ButtonClass("Yes", "yes", next2),
+      //         new ButtonClass("No", "no")
+      //       ]);
+      //       marryDialogue.show();
+      //     },
+      //     function(next2) {
+      //       var crazyDialogue = new DialogueClass("Are you crazy!?", "info", [
+      //         new ButtonClass("Yes", "yes"),
+      //         new ButtonClass("No", "no")
+      //       ]);
+      //       crazyDialogue.show();
+      //     }
+      //   ]);
+      // });
+
+      //Dialogue Test
       $("#Tester").click(function() {
-        async.waterfall([
-          function(next2) {
-            var marryDialogue = new DialogueClass("Will you marry me?", "heart", [
-              new ButtonClass("Yes", "yes", next2),
-              new ButtonClass("No", "no")
-            ]);
-            marryDialogue.show();
+        new DialogueClass().askYesNoCancel("Do you want to save your changes?",
+          "help",
+          function() {
+            alert("save.");
           },
-          function(next2) {
-            var crazyDialogue = new DialogueClass("Are you crazy!?", "info", [
-              new ButtonClass("Yes", "yes"),
-              new ButtonClass("No", "no")
-            ]);
-            crazyDialogue.show();
+          function() {
+            alert("don't save.");
+          },
+          function() {
+            alert("don't exit.");
           }
-        ]);
+        );
       });
+
       next();
     },
     function(next) {

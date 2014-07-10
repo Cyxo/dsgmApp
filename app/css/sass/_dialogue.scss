@@ -1,4 +1,4 @@
-$width: 400px;
+$width: 620px;
 $height: 180px;
 
 #Dialogue {
@@ -23,7 +23,8 @@ $height: 180px;
     > div:nth-child(1) {
       height: $height * 0.7;
       line-height: $height * 0.75;
-      text-align: center;
+      padding-left: $padding * 4;
+      padding-right: $padding * 4;
       font-size: $font-size * 1.5;
       background-color: $background-color;
       border-top-left-radius: $radius;

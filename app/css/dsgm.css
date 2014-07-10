@@ -1687,15 +1687,16 @@ button {
     bottom: 50%;
     left: 50%;
     right: 50%;
-    width: 400px;
+    width: 620px;
     height: 180px;
-    margin-left: -200px;
+    margin-left: -310px;
     margin-top: -90px;
     background-color: #151515; }
     #Dialogue > div > div:nth-child(1) {
       height: 126.0px;
       line-height: 135px;
-      text-align: center;
+      padding-left: 16px;
+      padding-right: 16px;
       font-size: 24px;
       background-color: #303030;
       border-top-left-radius: 4px;

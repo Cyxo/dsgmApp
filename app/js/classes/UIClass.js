@@ -3,11 +3,11 @@ function UIClass(callback) {
   var _self = this;
   var _animation_speed = "fast";
   var _icons = [
-    //Unknown
+    //UHelp
     {
-      "name": "unknown",
+      "name": "help",
       "classes": "fa fa-fw fa-question",
-      "color": "black"
+      "color": "#0094FF"
     },
     //Menu
     {
@@ -23,7 +23,7 @@ function UIClass(callback) {
     {
       "name": "disk",
       "classes": "fa fa-fw fa-floppy-o",
-      "color": "skyblue"
+      "color": "#0094FF"
     },
     {
       "name": "cut",
@@ -38,7 +38,7 @@ function UIClass(callback) {
     {
       "name": "paste",
       "classes": "fa fa-fw fa-clipboard",
-      "color": "rgb(158, 125, 0)"
+      "color": "#7F3300"
     },
     //Resources
     {
@@ -60,28 +60,28 @@ function UIClass(callback) {
     {
       "name": "globe",
       "classes": "fa fa-fw fa-globe",
-      "color": "rgb(32, 255, 32)"
+      "color": "#26D000"
     },
     {
       "name": "info",
       "classes": "fa fa-fw fa-info",
-      "color": "skyblue"
+      "color": "#0094FF"
     },
     {
       "name": "heart",
       "classes": "fa fa-fw fa-heart",
-      "color": "red"
+      "color": "rgb(218, 0, 0)"
     },
     //Dialogues
     {
       "name": "yes",
       "classes": "fa fa-fw fa-check",
-      "color": "rgb(32, 255, 32)"
+      "color": "#26D000"
     },
     {
       "name": "no",
       "classes": "fa fa-fw fa-ban",
-      "color": "rgb(224, 0, 0)"
+      "color": "rgb(218, 0, 0)"
     }
   ];
 
