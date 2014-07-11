@@ -127,8 +127,8 @@ function DSGM_Room(name) {
 function UpdateUI(project) {
 	var i;
 	
-	var projectName = document.querySelector('[data-role="project-name"]');
-	projectName.innerHTML = project.name;
+	//var projectName = document.querySelector('[data-role="project-name"]');
+	//projectName.innerHTML = project.name;
 	
 	var spritesList = document.querySelector('[data-role="sprites-list"]');
 	spritesList.innerHTML = "";

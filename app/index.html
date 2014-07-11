@@ -2,6 +2,9 @@
 <html>
 	<head>
 		<title></title>
+		<!-- Meta Tags -->
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="UTF-8">
 		<!-- Style -->
 		<link rel="stylesheet" href="css/dsgm.css">
 		<!-- JavaScript: jQuery, jQuery Standard Plug-ins-->
@@ -25,6 +28,7 @@
 			jQuery(window).load(function () {
 			  DSGM = new DSGMClass();
 			  project = new DSGM_Project();
+			  UpdateUI(project);
 			});
 		</script>
 	</head>
@@ -91,6 +95,14 @@
             	<li><span data-icon="sprite"><span>Pacman</span></span></li>
             	<li><span data-icon="sprite"><span>Puck</span></span></li>
             	<li><span data-icon="sprite"><span>Ghost</span></span></li>
+            </ul>
+          </li>
+		  <li>
+            <span data-icon="folder"><span data-role="backgrounds"></span></span>
+            <ul data-role="backgrounds-list" data-resource-type="background" data-no-translate>
+            	<li><span data-icon="background"><span>Sunset</span></span></li>
+            	<li><span data-icon="background"><span>Space</span></span></li>
+            	<li><span data-icon="background"><span>Lava</span></span></li>
             </ul>
           </li>
           <li>
