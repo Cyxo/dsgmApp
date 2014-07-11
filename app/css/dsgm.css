@@ -1636,14 +1636,17 @@ button {
   padding: 4px;
   padding-left: 8px;
   padding-right: 8px;
-  background-color: #606060;
+  background-color: #303030;
   font-family: "Source Sans Pro", "Arial", "Helvetica", sans-serif;
   font-size: 16px;
   min-width: 48px;
   color: white;
   border-radius: 4px;
-  border: 2px solid #303030;
-  box-shadow: 0 0 2px #ffc300; }
+  border: 2px solid #606060;
+  box-shadow: 0 0 2px #303030; }
+
+button:hover {
+  box-shadow: 0 0 4px #ffc300; }
 
 #Blocker {
   width: 100%;
@@ -1690,8 +1693,7 @@ button {
     top: 50%;
     bottom: 50%;
     left: 50%;
-    right: 50%;
-    background-color: #151515; }
+    right: 50%; }
     #Dialogue > div > div.contents {
       padding: 4px;
       padding-left: 8px;
