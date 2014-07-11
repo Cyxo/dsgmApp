@@ -9,4 +9,5 @@ button {
   color: $foreground-color;
   border-radius: $radius;
   border: 2px solid $background-color;
+  box-shadow: 0 0 2px $obvious-color;
 }

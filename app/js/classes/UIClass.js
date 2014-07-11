@@ -172,6 +172,17 @@ function UIClass(callback) {
     _self.selectifyTab(tabChangerElement.index());
   });
 
+  //Markup
+  this.getMarkup = function(identifier) {
+    return $($("*[data-role=markup-" + identifier + "]")[0]).clone();
+  }
+  this.switchMainMarkup = function(identifier) {
+    $("main > div").empty();
+    var newElement = _self.getMarkup(identifier);
+    newElement.appendTo($("main > div"));
+    return newElement;
+  }
+
   //(Menu) Help > Generic Links
   $("[data-role=help-menu]").siblings("ul").children().each(function(index, li) {
     var thisLi = $(li);
@@ -184,10 +195,11 @@ function UIClass(callback) {
   //(Menu) Help > About
   $("[data-role=about]").click(function() {
     //$("*[data-role=main-menu] li ul").css("visibility", "hidden");
-    var aboutDialogue = new DialogueClass(
-      $("*[data-role=markup-about]").html(),
-      null, [], 320, 320, true
-    );
+    var markup = _self.getMarkup("about");
+    $("button", markup).click(function() {
+      new DialogueClass().showInfo("Well then.");
+    });
+    var aboutDialogue = new DialogueClass(markup, null, [], 320, 320, true);
     aboutDialogue.show();
   });
 

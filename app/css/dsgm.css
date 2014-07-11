@@ -1642,7 +1642,8 @@ button {
   min-width: 48px;
   color: white;
   border-radius: 4px;
-  border: 2px solid #303030; }
+  border: 2px solid #303030;
+  box-shadow: 0 0 2px #ffc300; }
 
 #Blocker {
   width: 100%;
@@ -1755,17 +1756,17 @@ header {
     height: 64px;
     padding-top: 32px; }
 
-#Resource > * {
+*[data-role=markup-resource] > * {
   height: 100%;
   overflow: auto; }
-#Resource > aside {
+*[data-role=markup-resource] > aside {
   float: left !important;
   width: 200px !important; }
-#Resource > div {
+*[data-role=markup-resource] > div {
   margin-left: 204px;
   background-color: #606060;
   border-radius: 4px; }
 
 p {
-  margin: 0;
+  margin: 4px 0 4px 0;
   padding: 0; }

@@ -51,7 +51,7 @@ header {
   }
 }
 
-#Resource {
+*[data-role=markup-resource] {
   > * {
     height: 100%;
     overflow: auto;
@@ -67,8 +67,7 @@ header {
   }
 }
 
-//Rubbish
 p {
-  margin: 0;
+  margin: $padding 0 $padding 0;
   padding: 0;
 }
