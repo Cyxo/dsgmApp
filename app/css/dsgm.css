@@ -1763,6 +1763,13 @@ header {
   background-color: #606060;
   border-radius: 4px; }
 
+[data-role="sprites"], [data-role="objects"], [data-role="rooms"], [data-role="sprites-list"], [data-role="objects-list"], [data-role="rooms-list"] {
+  user-select: none;
+ -o-user-select:none;
+ -moz-user-select: none;
+ -khtml-user-select: none;
+ -webkit-user-select: none; }
+
 p {
   margin: 0;
   padding: 0; }
