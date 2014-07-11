@@ -17,11 +17,13 @@ body {
 }
 
 main {
+  position: absolute;
   clear: both;
-  background-color: green;
+  width: 100%;
   height: 100%;
   padding-top: $header-size;
   padding-bottom: $status-size;
+  background-color: green;
   > * {
     height: 100%;
     overflow: auto;
@@ -41,6 +43,7 @@ header {
   width: 100%;
   height: $header-size;
   padding: 0 !important;
+  z-index: 400;
   div:nth-child(2) {
     margin-left: $header-size;
     height: $header-size;
