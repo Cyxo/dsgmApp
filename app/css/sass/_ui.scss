@@ -12,6 +12,10 @@
   cursor: default;
 }
 
+.hidden {
+  display: none;
+}
+
 span.fa {
   margin-left: $padding / 2;
   margin-right: $padding * 1.5;

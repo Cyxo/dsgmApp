@@ -1506,6 +1506,9 @@
   color: white;
   cursor: default; }
 
+.hidden {
+  display: none; }
+
 span.fa {
   margin-left: 2px;
   margin-right: 6px;
