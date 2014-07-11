@@ -133,24 +133,24 @@ function UpdateUI(project) {
 	var spritesList = document.querySelector('[data-role="sprites-list"]');
 	spritesList.innerHTML = "";
 	for(i = 0; i < project.sprites.length; i++) {
-		spritesList.innerHTML += "<ul>" + project.sprites[i].name + "</ul>"
+		spritesList.innerHTML += '<li><span data-icon="sprite"><span>' + project.sprites[i].name + "</span></span></li>"
 	}
 	
 	var backgroundsList = document.querySelector('[data-role="backgrounds-list"]');
 	backgroundsList.innerHTML = "";
 	for(i = 0; i < project.backgrounds.length; i++) {
-		backgroundsList.innerHTML += "<ul>" + project.backgrounds[i].name + "</ul>"
+		backgroundsList.innerHTML += '<li><span data-icon="background"><span>' + project.backgrounds[i].name + "</span></span></li>"
 	}
 	
 	var objectsList = document.querySelector('[data-role="objects-list"]');
 	objectsList.innerHTML = "";
 	for(i = 0; i < project.objects.length; i++) {
-		objectsList.innerHTML += "<ul>" + project.objects[i].name + "</ul>"
+		objectsList.innerHTML += '<li><span data-icon="object"><span>' + project.objects[i].name + "</span></span></li>"
 	}
 	
 	var roomsList = document.querySelector('[data-role="rooms-list"]');
 	roomsList.innerHTML = "";
 	for(i = 0; i < project.rooms.length; i++) {
-		roomsList.innerHTML += "<ul>" + project.rooms[i].name + "</ul>"
+		roomsList.innerHTML += '<li><span data-icon="room"><span>' + project.rooms[i].name + "</span></span></li>"
 	}
 }
