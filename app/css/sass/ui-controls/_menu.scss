@@ -38,6 +38,10 @@
       }
     }
   }
+  li.separator {
+    height: 2px;
+    background-color: $obvious-color;
+  }
   li:hover > ul { 
     visibility: visible;
   }

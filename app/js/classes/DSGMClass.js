@@ -32,10 +32,10 @@ function DSGMClass() {
   this.loadResource = function(name, rType) {
     console.log("Load Resource (name: " + name + ", type: " + rType + ")");
     var markupElement = _self.UI.switchMainMarkup("resource");
-    var addSpriteButton = new ButtonClass("Button 1", "info");
+    var addSpriteButton = new ButtonClass("Add a Sprite", "sprite");
     $("> div", markupElement).append(addSpriteButton.getElement());
     addSpriteButton.setHandler(function(whichButton) {
-      _self.UI.resourcesTree.items[0].addItem(new TreeItemClass("Sprite X", "sprite"));
+      _self.UI.resourcesTree.items[0].addItem(new TreeItemClass("A New Sprite", "sprite"));
     });
   }
 

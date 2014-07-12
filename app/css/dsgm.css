@@ -1622,6 +1622,9 @@ span.fa {
     list-style-type: none; }
     .ui-menu li ul li {
       background-color: #606060; }
+  .ui-menu li.separator {
+    height: 2px;
+    background-color: #ffc300; }
   .ui-menu li:hover > ul {
     visibility: visible; }
   .ui-menu li:hover {

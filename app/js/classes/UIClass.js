@@ -2,86 +2,129 @@ function UIClass(callback) {
 
   var _self = this;
   var _animation_speed = "fast";
+
+  var _icon_colors = {
+    "white": "white",
+    "beige": "#EABE5C",
+    "lightgray": "rgb(192, 192, 192)",
+    "darkgray": "#999999",
+    "blue": "#00B6FF",
+    "brown": "#7F3300",
+    "green": "#26D000",
+    "red": "rgb(218, 0, 0)",
+    "orange": "#FFC300",
+    "pink": "#FF00FF"
+  };
+
   var _icons = [
-    //UHelp
+    {
+      "name": "blank",
+      "classes": "fa fa-fw",
+      "color": _icon_colors.white
+    },
     {
       "name": "help",
       "classes": "fa fa-fw fa-question",
-      "color": "#0094FF"
+      "color": _icon_colors.blue
     },
     //Menu
     {
       "name": "page",
       "classes": "fa fa-fw fa-file-o",
-      "color": "#EFEFEF"
+      "color": _icon_colors.lightgray
     },
     {
       "name": "folder",
       "classes": "fa fa-fw fa-folder-o",
-      "color": "#EABE5C"
+      "color": _icon_colors.beige
     },
     {
       "name": "disk",
       "classes": "fa fa-fw fa-floppy-o",
-      "color": "#0094FF"
+      "color": _icon_colors.blue
     },
     {
       "name": "cut",
       "classes": "fa fa-fw fa-scissors",
-      "color": "#999999"
+      "color": _icon_colors.darkgray
     },
     {
       "name": "copy",
       "classes": "fa fa-fw fa-files-o",
-      "color": "#EFEFEF"
+      "color": _icon_colors.lightgray
     },
     {
       "name": "paste",
       "classes": "fa fa-fw fa-clipboard",
-      "color": "#7F3300"
+      "color": _icon_colors.brown
+    },
+    {
+      "name": "play",
+      "classes": "fa fa-fw fa-play",
+      "color": _icon_colors.green
+    },
+    {
+      "name": "search",
+      "classes": "fa fa-fw fa-search",
+      "color": _icon_colors.lightgray
+    },
+    {
+      "name": "globe",
+      "classes": "fa fa-fw fa-globe",
+      "color": _icon_colors.green
+    },
+    {
+      "name": "info",
+      "classes": "fa fa-fw fa-info",
+      "color": _icon_colors.blue
+    },
+    {
+      "name": "wrench",
+      "classes": "fa fa-fw fa-wrench",
+      "color": _icon_colors.lightgray
     },
     //Resources
     {
       "name": "sprite",
       "classes": "fa fa-fw fa-dribbble",
-      "color": "#FFC300"
+      "color": _icon_colors.orange
+    },
+    {
+      "name": "background",
+      "classes": "fa fa-fw fa-picture-o",
+      "color": _icon_colors.pink
     },
     {
       "name": "object",
       "classes": "fa fa-fw fa-cube",
-      "color": "#0010FF"
+      "color": _icon_colors.blue
     },
     {
       "name": "room",
       "classes": "fa fa-fw fa-square-o",
-      "color": "#577DA2"
-    },
-    //More
-    {
-      "name": "globe",
-      "classes": "fa fa-fw fa-globe",
-      "color": "#26D000"
+      "color": _icon_colors.lightgray
     },
     {
-      "name": "info",
-      "classes": "fa fa-fw fa-info",
-      "color": "#0094FF"
+      "name": "sound",
+      "classes": "fa fa-fw fa-volume-up",
+      "color": _icon_colors.brown
     },
+    //Misc
     {
       "name": "heart",
       "classes": "fa fa-fw fa-heart",
-      "color": "rgb(218, 0, 0)"
+      "color": _icon_colors.red
     },
-    //Dialogues
+    //Buttons
     {
       "name": "yes",
       "classes": "fa fa-fw fa-check",
-      "color": "#26D000"
+      "color": _icon_colors.green
     },
     {
       "name": "no",
       "classes": "fa fa-fw fa-ban",
-      "color": "rgb(218, 0, 0)"
+      "color": _icon_colors.red
     }
   ];
 
