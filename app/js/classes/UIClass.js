@@ -28,6 +28,16 @@ function UIClass(callback) {
       "classes": "fa fa-fw fa-question",
       "color": _icon_colors.blue
     },
+    {
+      "name": "loading",
+      "classes": "fa fa-refresh fa-spin",
+      "color": _icon_colors.blue
+    },
+    {
+      "name": "alert",
+      "classes": "fa fa-exclamation-triangle",
+      "color": _icon_colors.orange
+    },
     //Menu
     {
       "name": "page",
@@ -156,12 +166,12 @@ function UIClass(callback) {
   }
 
   //Working (minor UI progress)
-  this.startWork = function(status, callback) {
-    $("#StatusBar").html(status + "...");
+  this.startWork = function(text, callback) {
+    _self.statusBar.setWorking(text);
     $("#Working").fadeIn(callback);
   }
   this.endWork = function(callback) {
-    $("#StatusBar").empty();
+    _self.statusBar.clear();
     $("#Working").fadeOut(callback);
   }
 
@@ -202,7 +212,7 @@ function UIClass(callback) {
     return newElement;
   }
 
-  //Resources Tree
+  //Make Resources Tree
   this.makeResourcesTree = function() {
     _self.resourcesTree = new TreeClass("resources-tree");
     $("main > aside").append(_self.resourcesTree.getElement());
@@ -229,9 +239,15 @@ function UIClass(callback) {
 
   }
 
-  //Dialogue Singleton
+  //Make Dialogue Singleton
   this.makeDialogue = function() {
     _self.Dialogue = new DialogueClass();
+  }
+
+  //Make Status Bar
+  this.makeStatusBar = function() {
+    _self.statusBar = new StatusBarClass();
+    $(document.body).append(_self.statusBar.getElement());
   }
 
   //(Menu) Help > Generic Links

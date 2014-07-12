@@ -21,6 +21,7 @@ function DSGMClass() {
     function(next) {
       _self.UI.makeResourcesTree();
       _self.UI.makeDialogue();
+      _self.UI.makeStatusBar();
       next();
     },
     function(next) {
@@ -46,6 +47,16 @@ function DSGMClass() {
       },
       function(next) {
         _self.UI.endWork(next);
+      },
+      function(next) {
+        _self.UI.statusBar.setAlert("Resource Error", function() {
+          _self.UI.Dialogue.showAlert(
+            "There was a problem with this resource. Sorry.",
+            function() {
+              _self.UI.statusBar.clear();
+            }
+            );
+        });
       }
     ]);
   }

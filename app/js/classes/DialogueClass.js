@@ -17,13 +17,21 @@ function DialogueClass(content, icon, buttons, width, height, customElement) {
 
 }
 
-DialogueClass.prototype.showInfo = function(content, callback) {
+DialogueClass.prototype.showGeneric = function(content, icon, callback) {
   var _self = this;
   _self.content = content;
-  _self.icon = "info";
+  _self.icon = icon;
   _self.buttons = [_self.okButton];
   _self.buttons[0].setHandler(callback);
   _self.show();
+}
+
+DialogueClass.prototype.showInfo = function(content, callback) {
+  this.showGeneric(content, "info", callback);
+}
+
+DialogueClass.prototype.showAlert = function(content, callback) {
+  this.showGeneric(content, "alert", callback);
 }
 
 DialogueClass.prototype.askYesNo = function(content, icon, yesCallback, noCallback) {

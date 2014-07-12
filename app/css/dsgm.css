@@ -1697,6 +1697,8 @@ span.fa {
   height: 32px;
   line-height: 32px;
   background-color: #606060; }
+  .ui-status-bar .fa {
+    vertical-align: -1; }
 
 .ui-tree {
   background-color: white;
