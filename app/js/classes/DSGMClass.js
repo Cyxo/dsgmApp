@@ -16,7 +16,7 @@ function DSGMClass() {
     function(next) {
       _self.Links = new LinksClass();
       //Block
-      _self.UI.block(true, next);
+      _self.UI.load(true, next);
     },
     function(next) {
       _self.UI.makeResourcesTree();
@@ -25,19 +25,29 @@ function DSGMClass() {
     },
     function(next) {
       //Unblock
-      _self.UI.block(false, next, true);
+      _self.UI.load(false, next, true);
     }
   ]);
 
   //Load Resource
-  this.loadResource = function(name, rType) {
-    console.log("Load Resource (name: " + name + ", type: " + rType + ")");
-    var markupElement = _self.UI.switchMainMarkup("resource");
-    var addSpriteButton = new ButtonClass("Add a Sprite", "sprite");
-    $("> div", markupElement).append(addSpriteButton.getElement());
-    addSpriteButton.setHandler(function(whichButton) {
-      _self.UI.resourcesTree.items[0].addItem(new TreeItemClass("A New Sprite", "sprite"));
-    });
+  this.loadResourceByNameAndType = function(name, rType) {
+    async.waterfall([
+      function(next) {
+        _self.UI.startWork("Loading Resource", next);
+      },
+      function(next) {
+        var markupElement = _self.UI.switchMainMarkup("resource");
+        var addSpriteButton = new ButtonClass("Add a Sprite", "sprite");
+        $("> div", markupElement).append(addSpriteButton.getElement());
+        addSpriteButton.setHandler(function(whichButton) {
+          _self.UI.resourcesTree.items[0].addItem(new TreeItemClass("A New Sprite", "sprite"));
+        });
+        setTimeout(next, 2000);
+      },
+      function(next) {
+        _self.UI.endWork(next);
+      }
+    ]);
   }
 
 }

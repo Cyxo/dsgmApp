@@ -136,8 +136,8 @@ function UIClass(callback) {
     }
   ];
 
-  //Blocker (major UI progress)
-  this.block = function(firstTime, callback, waitExtra) {
+  //Loading (major UI progress)
+  this.load = function(firstTime, callback, waitExtra) {
     if (waitExtra == undefined) waitExtra = false;
     if (firstTime) {
       callback();
@@ -146,18 +146,23 @@ function UIClass(callback) {
     if (waitExtra) {
       setTimeout(
         function() {
-          $("#Blocker").fadeToggle(callback);
+          $("#Loading").fadeToggle(callback);
         },
         500
       );
     } else {
-      $("#Blocker").fadeToggle(callback);
+      $("#Loading").fadeToggle(callback);
     }
   }
 
-  //Update Status Bar
-  this.updateStatusBar = function(status) {
-    $("#StatusBar").html(status);
+  //Working (minor UI progress)
+  this.startWork = function(status, callback) {
+    $("#StatusBar").html(status + "...");
+    $("#Working").fadeIn(callback);
+  }
+  this.endWork = function(callback) {
+    $("#StatusBar").empty();
+    $("#Working").fadeOut(callback);
   }
 
   //Slide Toggle
@@ -213,7 +218,7 @@ function UIClass(callback) {
         resourceSubItem.setAttr("resource-name", resourceName);
         resourceSubItem.setAttr("resource-type", resourceTypeName);
         resourceSubItem.setHandler(function(whichItem) {
-          DSGM.loadResource(
+          DSGM.loadResourceByNameAndType(
             whichItem.getAttr("resource-name"),
             whichItem.getAttr("resource-type")
           );
