@@ -88,7 +88,7 @@ DialogueClass.prototype.show = function() {
         button.setHandler(function() {
           _self.hide(button.oldHandler);
         });
-        button.addToElement(buttonsDiv);
+        buttonsDiv.append(button.getElement());
       });
       async.waterfall([
         function(next2) {

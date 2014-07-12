@@ -1,14 +1,14 @@
 function ButtonClass(text, icon, handler) {
 
   var _self = this;
-  var _element;
+  this._element = null;
   this.text = text;
   this.icon = icon;
 
   this.setHandler = function(handler) {
     this.handler = handler;
     this._element.unbind("click");
-    this._element.bind("click", handler)
+    this._element.bind("click", handler);
   }
 
   this.makeElement = function() {
@@ -25,7 +25,7 @@ function ButtonClass(text, icon, handler) {
 
   this._element = this.makeElement();
   this.refresh();
-  this.setHandler(handler);
+  if(handler) this.setHandler(handler);
 
   this.setText = function(text) {
     this.text = text;
@@ -39,10 +39,6 @@ function ButtonClass(text, icon, handler) {
 
   this.getElement = function() {
     return this._element;
-  }
-
-  this.addToElement = function(element) {
-    element.append(this.getElement());
   }
 
 }

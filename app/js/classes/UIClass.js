@@ -109,33 +109,9 @@ function UIClass(callback) {
     $("#StatusBar").html(status);
   }
 
-  //Selection Helper
-  this.selectify = function(elements, callback, clickMode, index) {
-    if (clickMode == undefined) clickMode = true;
-    if (clickMode) {
-      elements.click(function() {
-        elements.removeClass("selected");
-        $(this).addClass("selected");
-        callback($(this));
-      });
-    } else {
-      elements.removeClass("selected");
-      var t = $(elements[index]);
-      t.addClass("selected");
-      console.log("added class");
-      callback(t);
-    }
-  }
-  this.selectifyTab = function(index) {
-    _self.selectify(
-      $(".ui-tabs .ui-panel"),
-      function(tabElement) {
-        tabElement.removeClass("no-corner");
-        if (index == 0) tabElement.addClass("no-corner");
-      },
-      false,
-      index
-    );
+  //Slide Toggle
+  this.slideToggle = function(element) {
+    element.slideToggle(_self.animation_speed);
   }
 
   //Icons
@@ -160,7 +136,6 @@ function UIClass(callback) {
     $("main > div").empty();
     var newElement = _self.getMarkup(identifier);
     newElement.appendTo($("main > div"));
-    _self.handle();
     return newElement;
   }
 
@@ -183,30 +158,6 @@ function UIClass(callback) {
     var aboutDialogue = new DialogueClass(markup, null, [], 320, 320, true);
     aboutDialogue.show();
   });
-
-  //Handle
-  this.handle = function() {
-    //Tabs
-    _self.selectifyTab(0);
-    _self.selectify($(".ui-tabs .ui-tabs-changer div"), function(tabChangerElement) {
-      _self.selectifyTab(tabChangerElement.index());
-    });
-    //Tree
-    this.selectify($(".ui-tree li > span"), function(thisSpan) {
-      if (thisSpan.parent().parent().attr("data-role") == "resources-list") {
-        thisSpan.siblings("ul").slideToggle(_animation_speed);
-      }
-    });
-    //Resources Tree
-    $("*[data-role=resources-list] li > span").click(function () {
-      var thisSpan = $(this);
-      var thisUl = thisSpan.parent().parent();
-      if (thisUl.attr("data-resource-type") == undefined) return;
-      DSGM.loadResource($(thisSpan.children()[1]).html(), thisUl.attr("data-resource-type"));
-    });
-  }
-
-  _self.handle();
 
   callback();
 
