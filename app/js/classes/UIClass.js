@@ -110,21 +110,32 @@ function UIClass(callback) {
   }
 
   //Selection Helper
-  this.selectify = function(selector, callback, clickMode, index) {
+  this.selectify = function(elements, callback, clickMode, index) {
     if (clickMode == undefined) clickMode = true;
     if (clickMode) {
-      $(selector).click(function() {
-        $(selector).removeClass("selected");
+      elements.click(function() {
+        elements.removeClass("selected");
         $(this).addClass("selected");
         callback($(this));
       });
     } else {
-      $(selector).removeClass("selected");
-      var t = $($(selector)[index]);
+      elements.removeClass("selected");
+      var t = $(elements[index]);
       t.addClass("selected");
       console.log("added class");
       callback(t);
     }
+  }
+  this.selectifyTab = function(index) {
+    _self.selectify(
+      $(".ui-tabs .ui-panel"),
+      function(tabElement) {
+        tabElement.removeClass("no-corner");
+        if (index == 0) tabElement.addClass("no-corner");
+      },
+      false,
+      index
+    );
   }
 
   //Icons
@@ -140,19 +151,6 @@ function UIClass(callback) {
     element = $(element);
     _self.iconify(element);
   });
-
-  //Tabs
-  this.selectifyTab = function(index) {
-    _self.selectify(
-      ".ui-tabs .ui-panel",
-      function(tabElement) {
-        tabElement.removeClass("no-corner");
-        if (index == 0) tabElement.addClass("no-corner");
-      },
-      false,
-      index
-    );
-  }
 
   //Markup
   this.getMarkup = function(identifier) {
@@ -190,11 +188,11 @@ function UIClass(callback) {
   this.handle = function() {
     //Tabs
     _self.selectifyTab(0);
-    _self.selectify(".ui-tabs .ui-tabs-changer div", function(tabChangerElement) {
+    _self.selectify($(".ui-tabs .ui-tabs-changer div"), function(tabChangerElement) {
       _self.selectifyTab(tabChangerElement.index());
     });
     //Tree
-    this.selectify(".ui-tree li > span", function(thisSpan) {
+    this.selectify($(".ui-tree li > span"), function(thisSpan) {
       if (thisSpan.parent().parent().attr("data-role") == "resources-list") {
         thisSpan.siblings("ul").slideToggle(_animation_speed);
       }

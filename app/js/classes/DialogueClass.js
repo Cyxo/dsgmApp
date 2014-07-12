@@ -3,7 +3,7 @@ function DialogueClass(content, icon, buttons, width, height, customElement) {
   this.content = (content || "");
   this.icon = icon;
   if (buttons == undefined) buttons = [];
-  if (buttons.length == 0) buttons = [new ButtonClass("OK", "yes", null)];
+  if (buttons.length == 0) buttons = [new ButtonClass("OK", "yes")];
   this.buttons = buttons;
   this.width = (width || 620);
   this.height = (height || 180);
@@ -58,7 +58,6 @@ DialogueClass.prototype.show = function() {
       }
     },
     function(next) {
-      console.log(dialogueDiv.css("display"));
       //Erase
       $.each(divs, function(index, div) {
         div.empty();
@@ -74,23 +73,22 @@ DialogueClass.prototype.show = function() {
       if (!_self.customElement) {
         var textSpan = $("<span" + (_self.icon ? " data-icon=\"" + _self.icon + "\"" : "") + ">" + _self.content + "</span>");
         DSGM.UI.iconify(textSpan);
-        textSpan.appendTo(contentsDiv);
+        contentsDiv.append(textSpan);
         contentsDiv
           .css("line-height", (_self.height - 54).toString() + "px")
           .addClass("contents-line");
       } else {
         contentsDiv
           .css("line-height", "normal")
-          .removeClass("contents-line");
-        _self.content.appendTo(contentsDiv);
+          .removeClass("contents-line")
+          .append(_self.content);
       }
       $.each(_self.buttons, function(index, button) {
-        button.old_callback = button.callback;
-        button.callback = function() {
-          _self.hide(button.old_callback);
-        }
-        var buttonElement = button.makeElement();
-        buttonElement.appendTo(buttonsDiv);
+        button.oldHandler = button.handler;
+        button.setHandler(function() {
+          _self.hide(button.oldHandler);
+        });
+        button.addToElement(buttonsDiv);
       });
       async.waterfall([
         function(next2) {

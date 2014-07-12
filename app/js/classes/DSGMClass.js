@@ -25,22 +25,13 @@ function DSGMClass() {
     }
   ]);
 
-  //javaLink Test
-  $("#SayHiButton").click(function() {
-    $.javaLink.request(
-      "saySomething",
-      "Hello, World",
-      function(data) {
-        console.log(data)
-      }
-    );
-  });
-
   //Load Resource
   this.loadResource = function(name, rType) {
     console.log("Load Resource (name: " + name + ", type: " + rType + ")");
-    var element = _self.UI.switchMainMarkup("resource");
-    $("button", element).click(function() {
+    var markupElement = _self.UI.switchMainMarkup("resource");
+    var newButton = new ButtonClass("Ask a Question", "heart");
+    newButton.addToElement($("> div", markupElement));
+    newButton.setHandler(function() {
       new DialogueClass().askYesNoCancel("Do you want to save your changes?",
         "help",
         function() {
