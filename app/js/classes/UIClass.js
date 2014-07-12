@@ -201,12 +201,14 @@ function UIClass(callback) {
   this.makeResourcesTree = function() {
     _self.resourcesTree = new TreeClass("resources-tree");
     $("main > aside").append(_self.resourcesTree.getElement());
-    var resourceTypesList = ["Sprite", "Object"];
+
+    var resourceTypesList = ["Sprite", "Background", "Object", "Room", "Sound"];
+
     $.each(resourceTypesList, function(index, resourceTypeName) {
       var resourceItem = new TreeItemClass(resourceTypeName + "s", "folder");
       _self.resourcesTree.addItem(resourceItem);
-      for (var i = 1; i < 4; i++) {
-        var resourceName = resourceTypeName + " " + i.toString();
+      for (var i = 1; i <= 2; i++) {
+        var resourceName = resourceTypeName + "_" + i.toString();
         var resourceSubItem = new TreeItemClass(resourceName, resourceTypeName.toLowerCase());
         resourceSubItem.setAttr("resource-name", resourceName);
         resourceSubItem.setAttr("resource-type", resourceTypeName);
@@ -219,6 +221,7 @@ function UIClass(callback) {
         resourceItem.addItem(resourceSubItem);
       }
     });
+
   }
 
   //Dialogue Singleton
