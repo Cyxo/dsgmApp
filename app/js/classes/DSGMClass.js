@@ -20,6 +20,7 @@ function DSGMClass() {
     },
     function(next) {
       _self.UI.makeResourcesTree();
+      _self.UI.makeDialogue();
       next();
     },
     function(next) {

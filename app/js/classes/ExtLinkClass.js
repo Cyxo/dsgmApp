@@ -17,7 +17,7 @@ function ExtLinkClass() {
           callback('{"name": "English", "data": {}}');
           break;
         case "options/languages/fr.json":
-          callback('{"name": "French", "data": {}}');
+          callback('{"name": "French", "data": {"yes": "Oui", "no": "Non", "ok": "OK"}}');
           break;
       }
 

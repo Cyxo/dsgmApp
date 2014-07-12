@@ -208,6 +208,11 @@ function UIClass(callback) {
     });
   }
 
+  //Dialogue Singleton
+  this.makeDialogue = function() {
+    _self.Dialogue = new DialogueClass();
+  }
+
   //(Menu) Help > Generic Links
   $("[data-role=help-menu]").siblings("ul").children().each(function(index, li) {
     var thisLi = $(li);
@@ -215,6 +220,12 @@ function UIClass(callback) {
     thisLi.click(function() {
       DSGM.Links.goToLink($(this).attr("data-link-name"));
     });
+  });
+
+  //(Menu) Tools > Test
+  $("[data-role=test]").click(function() {
+    var testDialogue = new DialogueClass();
+    testDialogue.askYesNoCancel("You suck?");
   });
 
   //(Menu) Help > About

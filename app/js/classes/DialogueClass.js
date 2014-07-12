@@ -1,13 +1,19 @@
 function DialogueClass(content, icon, buttons, width, height, customElement) {
 
-  this.content = (content || "");
-  this.icon = icon;
-  if (buttons == undefined) buttons = [];
-  if (buttons.length == 0) buttons = [new ButtonClass("OK", "yes")];
-  this.buttons = buttons;
-  this.width = (width || 620);
-  this.height = (height || 180);
-  this.customElement = ((customElement != undefined) ? customElement : false);
+  var _self = this;
+
+  _self.yesButton = new ButtonClass(DSGM.Language.getTerm("yes"), "yes");
+  _self.noButton = new ButtonClass(DSGM.Language.getTerm("no"), "no");
+  _self.okButton = new ButtonClass(DSGM.Language.getTerm("ok"), "yes");
+  _self.cancelButton = new ButtonClass(DSGM.Language.getTerm("cancel"));
+
+  _self.content = (content || "");
+  _self.icon = icon;
+  if (!buttons || buttons.length == 0) buttons = [_self.okButton];
+  _self.buttons = buttons;
+  _self.width = (width || 620);
+  _self.height = (height || 180);
+  _self.customElement = ((customElement != undefined) ? customElement : false);
 
 }
 
@@ -15,7 +21,8 @@ DialogueClass.prototype.showInfo = function(content, callback) {
   var _self = this;
   _self.content = content;
   _self.icon = "info";
-  _self.buttons[0].callback = callback;
+  _self.buttons = [_self.okButton];
+  _self.buttons[0].setHandler(callback);
   _self.show();
 }
 
@@ -23,10 +30,9 @@ DialogueClass.prototype.askYesNo = function(content, icon, yesCallback, noCallba
   var _self = this;
   _self.content = content;
   _self.icon = (icon || "help");
-  _self.buttons = [
-    new ButtonClass("Yes", "yes", yesCallback),
-    new ButtonClass("No", "no", noCallback)
-  ];
+  var yesButton = _self.yesButton; yesButton.setHandler(yesCallback);
+  var noButton = _self.noButton; noButton.setHandler(noCallback);
+  _self.buttons = [_self.yesButton, _self.noButton];
   _self.show();
 }
 
@@ -34,11 +40,10 @@ DialogueClass.prototype.askYesNoCancel = function(content, icon, yesCallback, no
   var _self = this;
   _self.content = content;
   _self.icon = (icon || "help");
-  _self.buttons = [
-    new ButtonClass("Yes", "yes", yesCallback),
-    new ButtonClass("No", "no", noCallback),
-    new ButtonClass("Cancel", null, cancelCallback)
-  ];
+  var yesButton = _self.yesButton; yesButton.setHandler(yesCallback);
+  var noButton = _self.noButton; noButton.setHandler(noCallback);
+  var cancelButton = _self.cancelButton; cancelButton.setHandler(cancelCallback);
+  _self.buttons = [yesButton, noButton, cancelButton];
   _self.show();
 }
 
