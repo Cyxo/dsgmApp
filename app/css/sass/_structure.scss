@@ -37,7 +37,7 @@ body > header {
   height: $header-size;
   padding: 0 !important;
   z-index: 400;
-  div:nth-child(2) {
+  > div:nth-child(2) {
     margin-left: $header-size;
     height: $header-size;
     padding-top: $header-size / 2;

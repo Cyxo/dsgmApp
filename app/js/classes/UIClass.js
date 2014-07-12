@@ -9,11 +9,12 @@ function UIClass(callback) {
     "lightgray": "rgb(192, 192, 192)",
     "darkgray": "#999999",
     "blue": "#00B6FF",
-    "brown": "#7F3300",
+    "brown": "#AE5900",
     "green": "#26D000",
     "red": "rgb(218, 0, 0)",
     "orange": "#FFC300",
-    "pink": "#FF00FF"
+    "pink": "#FF00FF",
+    "teal": "00C278"
   };
 
   var _icons = [
@@ -64,6 +65,13 @@ function UIClass(callback) {
       "color": _icon_colors.green
     },
     {
+      "name": "play-save",
+      "classes": "fa fa-fw fa-play",
+      "color": _icon_colors.green,
+      "stack_classes": "fa fa-stack fa-floppy-o",
+      "stack_color": _icon_colors.white
+    },
+    {
       "name": "search",
       "classes": "fa fa-fw fa-search",
       "color": _icon_colors.lightgray
@@ -107,7 +115,7 @@ function UIClass(callback) {
     {
       "name": "sound",
       "classes": "fa fa-fw fa-volume-up",
-      "color": _icon_colors.brown
+      "color": _icon_colors.teal
     },
     //Misc
     {
@@ -164,7 +172,12 @@ function UIClass(callback) {
       return (iconElement.name == element.attr("data-icon"));
     })[0];
     if (icon == undefined) icon = _icons[0];
-    element.html("<span class=\"" + icon.classes + "\" style=\"color: " + icon.color + ";\"></span>" + element.html());
+    var html = "<span class=\"" + icon.classes + "\" style=\"color: " + icon.color + ";\">";
+    html += "</span>";
+    // if (icon.stack_classes) {
+    //   html += "<span class=\"" + icon.stack_classes + "\" style=\"color: " + icon.stack_color + ";\"></span>"
+    // }
+    element.html(html + element.html());
   }
   $("*[data-icon]").each(function(index, element) {
     element = $(element);
