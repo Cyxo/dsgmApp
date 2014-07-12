@@ -8,7 +8,9 @@ function ButtonClass(text, icon, handler) {
   this.setHandler = function(handler) {
     this.handler = handler;
     this._element.unbind("click");
-    this._element.bind("click", handler);
+    this._element.bind("click", function() {
+      handler(_self);
+    });
   }
 
   this.makeElement = function() {

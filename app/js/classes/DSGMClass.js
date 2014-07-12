@@ -25,24 +25,27 @@ function DSGMClass() {
       var resourceTypes = [
         "Sprite"
       ];
-      $.each(resourceTypes, function(index, resourceType) {
-        var resourceItem = new TreeItemClass(resourceType + "s", "folder");
-        resourcesTree.addItem(resourceItem);
-        var resourceSubItems = [];
-        for (var i = 1; i < 4; i++) {
-          var resourceName = resourceType + " " + i.toString();
-          var resourceSubItem = new TreeItemClass(resourceName, resourceType.toLowerCase());
-          resourceSubItem.setHandler(function(whichItem) {
-            _self.loadResource(
-              whichItem.getAttr("resource-name"),
-              whichItem.getAttr("resource-type")
-            );
-          });
-          resourceSubItem.setAttr("resource-name", resourceName);
-          resourceSubItem.setAttr("resource-type", resourceType);
-          resourceItem.addItem(resourceSubItem);
-        }
-      });
+      // $.each(resourceTypes, function(index, resourceType) {
+      //   var resourceItem = new TreeItemClass(resourceType + "s", "folder");
+      //   resourcesTree.addItem(resourceItem);
+      //   var resourceSubItems = [];
+      //   for (var i = 1; i < 4; i++) {
+      //     var resourceName = resourceType + " " + i.toString();
+      //     var resourceSubItem = new TreeItemClass(resourceName, resourceType.toLowerCase());
+      //     console.log("about to call setHandler");
+      //     resourceSubItem.setHandler(function(whichItem) {
+      //       _self.loadResource(
+      //         whichItem.getAttr("resource-name"),
+      //         whichItem.getAttr("resource-type")
+      //       );
+      //     });
+      //     resourceSubItem.setAttr("resource-name", resourceName);
+      //     resourceSubItem.setAttr("resource-type", resourceType);
+      //     resourceItem.addItem(resourceSubItem);
+      //   }
+      // });
+      resourcesTree.addItem(new TreeItemClass("Item 1", "folder"));
+      resourcesTree.addItem(new TreeItemClass("Item 2", "folder"));
       $("main > aside").append(resourcesTree.getElement());
 
       next();
@@ -58,22 +61,35 @@ function DSGMClass() {
   this.loadResource = function(name, rType) {
     console.log("Load Resource (name: " + name + ", type: " + rType + ")");
     var markupElement = _self.UI.switchMainMarkup("resource");
-    var newButton = new ButtonClass("Ask a Question", "heart");
-    newButton.setHandler(function() {
-      new DialogueClass().askYesNoCancel("Do you want to save your changes?",
-        "help",
-        function() {
-          console.log("(save)");
-        },
-        function() {
-          console.log("(don't save)");
-        },
-        function() {
-          console.log("(don't exit)");
-        }
-      );
+    // var newButton = new ButtonClass("Ask a Question", "heart");
+    // newButton.setHandler(function() {
+    //   new DialogueClass().askYesNoCancel("Do you want to save your changes?",
+    //     "help",
+    //     function() {
+    //       console.log("(save)");
+    //     },
+    //     function() {
+    //       console.log("(don't save)");
+    //     },
+    //     function() {
+    //       console.log("(don't exit)");
+    //     }
+    //   );
+    // });
+    // $("> div", markupElement).append(newButton.getElement());
+    var buttons = [];
+    var button1 = new ButtonClass("Button 1", "info");
+    var button2 = new ButtonClass("Button 2", "info");
+    buttons.push(button1);
+    buttons.push(button2);
+    $("> div", markupElement).append(buttons[0].getElement());
+    $("> div", markupElement).append(buttons[1].getElement());
+    button1.setHandler(function(whichButton) {
+      whichButton.setIcon("heart");
     });
-    $("> div", markupElement).append(newButton.getElement());
+    button2.setHandler(function(whichButton) {
+      whichButton.setIcon("folder");
+    });
   }
 
 }

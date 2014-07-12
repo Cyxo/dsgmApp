@@ -1,4 +1,4 @@
-function TreeClass(role, handler) {
+function TreeClass(role) {
 
   var _self = this;
   this._element = null;
@@ -30,7 +30,7 @@ function TreeClass(role, handler) {
     if (doRefresh == undefined) doRefresh = true;
     item._tree = _self;
     this.items.push(item);
-    if (doRefresh) this.refresh();
+    this.refresh();
   }
 
   this.addItems = function(items) {
@@ -53,7 +53,7 @@ function TreeClass(role, handler) {
 function TreeItemClass(text, icon, handler) {
 
   var _self = this;
-  var _element;
+  this._element = null;
 
   this.makeElement = function() {
     var s = "<li><span></span><ul></ul></li>";
@@ -73,7 +73,9 @@ function TreeItemClass(text, icon, handler) {
   }
 
   this.setHandler = function(handler) {
-    $("> span", _self._element).unbind("click");
+    console.log("inside setHandler");
+    //console.log($("> span", _self._element));
+    //console.log($("> span", _self._element).unbind("click"));
     $("> span", _self._element).bind("click", function() {
       _self._tree.unselectAll();
       $(this).addClass("selected");
@@ -88,7 +90,7 @@ function TreeItemClass(text, icon, handler) {
 
   this._element = this.makeElement();
   this.refresh();
-  this.setHandler(handler ? handler : function() {});
+  this.setHandler(handler ? handler : function(whichItem) {});
 
   this.getElement = function() {
     return this._element;
