@@ -130,13 +130,39 @@ function UIClass(callback) {
 
   //Markup
   this.getMarkup = function(identifier) {
-    return $($("*[data-role=markup-" + identifier + "]")[0]).clone();
+    var newElement = $($("*[data-role=markup-" + identifier + "]")[0]).clone();
+    DSGM.Links.bindLinks(newElement);
+    return newElement;
   }
   this.switchMainMarkup = function(identifier) {
     $("main > div").empty();
     var newElement = _self.getMarkup(identifier);
     newElement.appendTo($("main > div"));
     return newElement;
+  }
+
+  //Resources Tree
+  this.makeResourcesTree = function() {
+    _self.resourcesTree = new TreeClass("resources-tree");
+    $("main > aside").append(_self.resourcesTree.getElement());
+    var resourceTypesList = ["Sprite", "Object"];
+    $.each(resourceTypesList, function(index, resourceTypeName) {
+      var resourceItem = new TreeItemClass(resourceTypeName + "s", "folder");
+      _self.resourcesTree.addItem(resourceItem);
+      for (var i = 1; i < 4; i++) {
+        var resourceName = resourceTypeName + " " + i.toString();
+        var resourceSubItem = new TreeItemClass(resourceName, resourceTypeName.toLowerCase());
+        resourceSubItem.setAttr("resource-name", resourceName);
+        resourceSubItem.setAttr("resource-type", resourceTypeName);
+        resourceSubItem.setHandler(function(whichItem) {
+          DSGM.loadResource(
+            whichItem.getAttr("resource-name"),
+            whichItem.getAttr("resource-type")
+          );
+        });
+        resourceItem.addItem(resourceSubItem);
+      }
+    });
   }
 
   //(Menu) Help > Generic Links
@@ -151,7 +177,7 @@ function UIClass(callback) {
   //(Menu) Help > About
   $("[data-role=about]").click(function() {
     var markup = _self.getMarkup("about");
-    var aboutDialogue = new DialogueClass(markup, null, [], 320, 320, true);
+    var aboutDialogue = new DialogueClass(markup, null, [], 450, 450, true);
     aboutDialogue.show();
   });
 

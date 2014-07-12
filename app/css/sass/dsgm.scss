@@ -1,73 +1,23 @@
-@import "_defines.scss";
+//Font Awesome
 @import "_font-awesome.scss";
 
+//Generics
+@import "_defines.scss";
+@import "_core.scss";
+@import "_structure.scss";
 @import "_ui.scss";
-@import "_panel.scss";
-@import "_orb.scss";
-@import "_menu.scss";
-@import "_status.scss";
-@import "_tree.scss";
-@import "_tabs.scss";
-@import "_button.scss";
-@import "_blocker.scss";
-@import "_dialogue.scss";
 
-body {
-  margin: 0;
-}
+//UI Controls
+@import "ui-controls/_panel.scss";
+@import "ui-controls/_orb.scss";
+@import "ui-controls/_menu.scss";
+@import "ui-controls/_status.scss";
+@import "ui-controls/_tree.scss";
+@import "ui-controls/_tabs.scss";
+@import "ui-controls/_button.scss";
+@import "ui-controls/_blocker.scss";
+@import "ui-controls/_dialogue.scss";
 
-main {
-  position: absolute;
-  clear: both;
-  width: 100%;
-  height: 100%;
-  padding-top: $header-size;
-  padding-bottom: $status-size;
-  background-color: green;
-  > * {
-    height: 100%;
-    overflow: auto;
-  }
-  > aside {
-    float: left !important;
-    width: $resources-size !important;
-    background-color: $background-color-invert;
-  }
-  > div {
-    margin-left: $resources-size !important;
-  }
-}
-
-header {
-  position: absolute;
-  width: 100%;
-  height: $header-size;
-  padding: 0 !important;
-  z-index: 400;
-  div:nth-child(2) {
-    margin-left: $header-size;
-    height: $header-size;
-    padding-top: $header-size / 2;
-  }
-}
-
-*[data-role=markup-resource] {
-  > * {
-    height: 100%;
-    overflow: auto;
-  }
-  > aside {
-    float: left !important;
-    width: $resources-size !important;
-  }
-  > div {
-    margin-left: $resources-size + $padding;
-    background-color: $foreground-color-2;
-    border-radius: $radius;
-  }
-}
-
-p {
-  margin: $padding 0 $padding 0;
-  padding: 0;
-}
+//Markups
+@import "markups/_resource.scss";
+@import "markups/_about.scss";

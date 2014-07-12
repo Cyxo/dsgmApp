@@ -1,13 +1,3 @@
-@font-face {
-  font-family: "Source Sans Pro";
-  font-style: normal;
-  font-weight: 400;
-  src: url("fonts/Source Sans Pro.woff") format("woff"); }
-@font-face {
-  font-family: "Source Sans Pro";
-  font-style: normal;
-  font-weight: 700;
-  src: url("fonts/Source Sans Pro Bold.woff") format("woff"); }
 /*!
  *  Font Awesome 4.1.0 by @davegandy - http://fontawesome.io - @fontawesome
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
@@ -1494,10 +1484,74 @@
 .fa-bomb:before {
   content: "\f1e2"; }
 
+@font-face {
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: 400;
+  src: url("fonts/Source Sans Pro.woff") format("woff"); }
+@font-face {
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: 700;
+  src: url("fonts/Source Sans Pro Bold.woff") format("woff"); }
+p {
+  margin: 8px 0 8px 0;
+  padding: 0;
+  text-align: justify; }
+
+p:first-child {
+  margin-top: 0; }
+
+p:last-child {
+  margin-bottom: 0; }
+
+a {
+  color: #ffc300; }
+
+h1 {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  font-size: 20px;
+  text-align: center;
+  font-weight: normal; }
+
+body {
+  margin: 0; }
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0; }
+
+body > main {
+  display: block;
+  position: absolute;
+  clear: both;
+  width: 100%;
+  height: 100%;
+  padding-top: 64px;
+  padding-bottom: 32px;
+  background-color: green; }
+  body > main > * {
+    height: 100%;
+    overflow: auto; }
+  body > main > aside {
+    float: left !important;
+    width: 200px !important;
+    background-color: white; }
+  body > main > div {
+    margin-left: 200px !important; }
+
+body > header {
+  position: absolute;
+  width: 100%;
+  height: 64px;
+  padding: 0 !important;
+  z-index: 400; }
+  body > header div:nth-child(2) {
+    margin-left: 64px;
+    height: 64px;
+    padding-top: 32px; }
 
 .ui {
   font-family: "Source Sans Pro", "Arial", "Helvetica", sans-serif;
@@ -1691,6 +1745,8 @@ button:last-child {
   position: absolute;
   z-index: 500;
   background-color: rgba(0, 0, 0, 0.75); }
+  #Dialogue header {
+    background-color: #ffc300; }
   #Dialogue > div {
     display: none;
     position: absolute;
@@ -1699,9 +1755,6 @@ button:last-child {
     left: 50%;
     right: 50%; }
     #Dialogue > div > div.contents {
-      padding: 4px;
-      padding-left: 8px;
-      padding-right: 8px;
       background-color: #303030;
       border-top-left-radius: 4px;
       border-top-right-radius: 4px;
@@ -1730,38 +1783,6 @@ button:last-child {
       #Dialogue > div > div.buttons button:last-child {
         margin-right: 0; }
 
-body {
-  margin: 0; }
-
-main {
-  position: absolute;
-  clear: both;
-  width: 100%;
-  height: 100%;
-  padding-top: 64px;
-  padding-bottom: 32px;
-  background-color: green; }
-  main > * {
-    height: 100%;
-    overflow: auto; }
-  main > aside {
-    float: left !important;
-    width: 200px !important;
-    background-color: white; }
-  main > div {
-    margin-left: 200px !important; }
-
-header {
-  position: absolute;
-  width: 100%;
-  height: 64px;
-  padding: 0 !important;
-  z-index: 400; }
-  header div:nth-child(2) {
-    margin-left: 64px;
-    height: 64px;
-    padding-top: 32px; }
-
 *[data-role=markup-resource] > * {
   height: 100%;
   overflow: auto; }
@@ -1773,6 +1794,7 @@ header {
   background-color: #606060;
   border-radius: 4px; }
 
-p {
-  margin: 4px 0 4px 0;
-  padding: 0; }
+*[data-role=markup-about] > div {
+  padding: 8px; }
+*[data-role=markup-about] > div.logo > img {
+  width: 50%; }

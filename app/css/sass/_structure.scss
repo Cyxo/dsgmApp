@@ -1,0 +1,45 @@
+body {
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body > main {
+  display: block;
+  position: absolute;
+  clear: both;
+  width: 100%;
+  height: 100%;
+  padding-top: $header-size;
+  padding-bottom: $status-size;
+  background-color: green;
+  > * {
+    height: 100%;
+    overflow: auto;
+  }
+  > aside {
+    float: left !important;
+    width: $resources-size !important;
+    background-color: $background-color-invert;
+  }
+  > div {
+    margin-left: $resources-size !important;
+  }
+}
+
+body > header {
+  position: absolute;
+  width: 100%;
+  height: $header-size;
+  padding: 0 !important;
+  z-index: 400;
+  div:nth-child(2) {
+    margin-left: $header-size;
+    height: $header-size;
+    padding-top: $header-size / 2;
+  }
+}

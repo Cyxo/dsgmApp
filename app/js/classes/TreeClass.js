@@ -31,10 +31,7 @@ function TreeClass(role) {
     if (doFinishing == undefined) doFinishing = true;
     item._tree = _self;
     _self.items.push(item);
-    if (doFinishing) {
-      console.log(item.text);
-      _self.refresh();
-    }
+    if (doFinishing) _self.refresh();
   }
 
   _self.addItems = function(items) {
@@ -92,10 +89,7 @@ function TreeItemClass(text, icon) {
     if (doFinishing == undefined) doFinishing = true;
     item._tree = _self._tree;
     _self.items.push(item);
-    if (doFinishing) {
-      console.log(item.text);
-      _self.refresh();
-    } 
+    if (doFinishing) _self.refresh();
   }
 
   _self.addItems = function(items) {

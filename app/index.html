@@ -1,15 +1,13 @@
 <!DOCTYPE>
 <html>
 	<head>
-		<title></title>
+		<title>DS Game Maker</title>
 		<!-- Style -->
 		<link rel="stylesheet" href="css/dsgm.css">
-		<!-- JavaScript: jQuery, jQuery Standard Plug-ins-->
+		<!-- JavaScript: jQuery and jQuery Plug-ins-->
 		<script src="js/jquery-2.1.0.min.js"></script>
 		<script src="js/jquery-plugins/base64.js"></script>
-		<script src="js/jquery-plugins/javaLink.js"></script>
-		<!-- JavaScript: jQuery Custom Plug-ins -->
-		<script src="js/jquery-plugins-custom/helloWorld.js"></script>
+		<script src="js/jquery-plugins/helloWorld.js"></script>
 		<!-- JavaScript: async -->
 		<script src="js/async.js"></script>
 		<!-- JavaScript: Classes -->
@@ -21,6 +19,7 @@
     <script src="js/classes/ButtonClass.js"></script>
     <script src="js/classes/TreeClass.js"></script>
     <script src="js/classes/LinksClass.js"></script>
+    <script src="js/classes/ExtLinkClass.js"></script>
 		<!-- JavaScript: Initialise -->
 		<script>
 			jQuery(window).load(function () {
@@ -43,13 +42,29 @@
     </div>
     <div data-role-"markups" class="hidden">
       <div data-role="markup-about">
-        <h1>DS Game Maker</h1>
-        <p>
-          Hello, World.  
-        </p>
-        <p>
-          By James Garner and Chris Ertl.
-        </p>
+        <header>
+          <h1>DS Game Maker</h1>
+        </header>
+        <div class="logo">
+          <img src="img/logo.png" alt="DS Game Maker">
+        </div>
+        <div>
+          <p>
+          By <a href="http://jadaradix.com">James Garner</a> and <a href="#">Chris Ertl</a>.
+          </p>
+          <p>
+            Additional components and assistance contributed by Dave Murphy, Michael Noland, Jason Rogers, Gregory Potdevin, Chris Rickard, Nick Thissen, Robert Dixon, Dave Tabba, Cilein Kearns and Baron Khan.
+          </p>
+          <p>
+            Special thanks go to Sam Booth and Alexander Stelfox for opening these doors.
+          </p>
+          <p>
+            For DS Game Maker updates, more information, discussion and games, visit the website:
+          </p>
+          <p>
+          <a data-link="website">DSGameMaker.com</a>
+          </p>
+        </div>
       </div>
       <div data-role="markup-resource">
         <aside>
@@ -86,19 +101,32 @@
 				<nav>
 					<ul data-role="main-menu" class="ui ui-menu">
 						<li>
-							<span data-translate="file-menu"></span>
+							<span data-translate="project-menu"></span>
 							<ul>
 								<li><span data-icon="page"><span data-translate="new"></span></span></li>
 								<li><span data-icon="folder"><span data-translate="open"></span></span></li>
-								<li><span data-icon="disk"><span data-translate="save"></span></span></li>
+                <li><span data-icon="blank"><span data-translate="open-last-project"></span></span></li>
+                <li class="separator"></li>
+                <li><span data-icon="blank"><span data-translate="test"></span></span></li>
+                <li><span data-icon="blank"><span data-translate="compile"></span></span></li>
+                <li class="separator"></li>
+                <li><span data-icon="disk"><span data-translate="save"></span></span></li>
+                <li><span data-icon="blank"><span data-translate="save-as"></span></span></li>
 							</ul>
 						</li>
 						<li>
-							<span data-translate="edit-menu"></span>
+							<span data-translate="resources-menu"></span>
 							<ul>
-								<li><span data-icon="cut"><span data-translate="cut"></span></span></li>
 								<li><span data-icon="copy"><span data-translate="copy"></span></span></li>
-								<li><span data-icon="paste"><span data-translate="paste"></span></span></li>
+								<li><span data-icon="no"><span data-translate="delete"></span></span></li>
+                <li class="separator"></li>
+                <li><span data-icon="search"><span data-translate="find-resource"></span></span></li>
+                <li class="separator"></li>
+                <li><span data-icon="sprite"><span data-translate="add-sprite"></span></span></li>
+                <li><span data-icon="background"><span data-translate="add-background"></span></span></li>
+                <li><span data-icon="object"><span data-translate="add-object"></span></span></li>
+                <li><span data-icon="room"><span data-translate="add-room"></span></span></li>
+                <li><span data-icon="sound"><span data-translate="add-sound"></span></span></li>
 							</ul>
 						</li>
 						<li>
@@ -112,8 +140,10 @@
 						<li>
 							<span data-role="help-menu" data-translate="help-menu"></span>
 							<ul>
-                <li data-link-name="website"><span data-icon="globe"><span data-role="link">Website</span></span></li>
-                <li data-link-name="forum"><span data-icon="globe"><span data-role="link">Forum</span></span></li>
+                <li data-link-name="website"><span data-icon="globe"><span>Website</span></span></li>
+                <li data-link-name="forum"><span data-icon="globe"><span>Forum</span></span></li>
+                <li data-link-name="tutorials"><span data-icon="globe"><span>Tutorials</span></span></li>
+                <li class="separator"></li>
                 <li data-role="about"><span data-icon="info"><span data-translate="about"></span></span></li>
 							</ul>
 						</li>

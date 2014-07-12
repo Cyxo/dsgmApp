@@ -5,6 +5,9 @@
   position: absolute;
   z-index: 500;
   background-color: rgba(0, 0, 0, 0.75);
+  header {
+    background-color: $obvious-color;
+  }
   > div {
     display: none;
     position: absolute;
@@ -13,9 +16,9 @@
     left: 50%;
     right: 50%;
     > div.contents {
-      padding: $padding;
-      padding-left: $padding * 2;
-      padding-right: $padding * 2;
+      //padding: $padding;
+      //padding-left: $padding * 2;
+      //padding-right: $padding * 2;
       background-color: $background-color;
       border-top-left-radius: $radius;
       border-top-right-radius: $radius;

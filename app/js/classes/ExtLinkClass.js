@@ -1,16 +1,17 @@
-$.javaLink = function($) {
+function ExtLinkClass() {
 
-  //Request
-  function _request(command, arguments, callback) {
+  var _self = this;
 
+  this.request = function(command, arguments, callback) {
     //Temporary Simulation
     if (command == "readFile") {
+
       switch(arguments) {
         case "options/options.json":
-          callback('{"languages": [], "language": "fr"}');
+          callback('{"language": "fr"}');
           break;
         case "options/languages/base.json":
-          callback('{"name": "Base", "data": {"file-menu": "File", "edit-menu": "Edit", "tools-menu": "Tools", "help-menu": "Help"}}');
+          callback('{"name": "Base", "data": {"project-menu": "Project", "resources-menu": "Resources", "tools-menu": "Tools", "help-menu": "Help"}}');
           break;
         case "options/languages/en.json":
           callback('{"name": "English", "data": {}}');
@@ -19,15 +20,9 @@ $.javaLink = function($) {
           callback('{"name": "French", "data": {}}');
           break;
       }
-    } else if (command == "writeFile") {
-      console.log("Write to file " + arguments + "!");
+
     }
 
   }
 
-  //Expose
-  return {
-    request: _request
-  };
-
-}(jQuery);
+}
