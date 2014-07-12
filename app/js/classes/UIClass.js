@@ -150,11 +150,7 @@ function UIClass(callback) {
 
   //(Menu) Help > About
   $("[data-role=about]").click(function() {
-    //$("*[data-role=main-menu] li ul").css("visibility", "hidden");
     var markup = _self.getMarkup("about");
-    $("button", markup).click(function() {
-      new DialogueClass().showInfo("Well then.");
-    });
     var aboutDialogue = new DialogueClass(markup, null, [], 320, 320, true);
     aboutDialogue.show();
   });

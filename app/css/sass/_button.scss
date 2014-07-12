@@ -1,4 +1,5 @@
 button {
+  margin-right: $padding * 2;
   padding: $padding;
   padding-left: $padding * 2;
   padding-right: $padding * 2;
@@ -14,4 +15,8 @@ button {
 
 button:hover {
   box-shadow: 0 0 4px $obvious-color;
+}
+
+button:last-child {
+  margin-right: 0;
 }

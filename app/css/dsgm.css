@@ -1633,6 +1633,7 @@ span.fa {
   border-top-right-radius: 4px; }
 
 button {
+  margin-right: 8px;
   padding: 4px;
   padding-left: 8px;
   padding-right: 8px;
@@ -1647,6 +1648,9 @@ button {
 
 button:hover {
   box-shadow: 0 0 4px #ffc300; }
+
+button:last-child {
+  margin-right: 0; }
 
 #Blocker {
   width: 100%;

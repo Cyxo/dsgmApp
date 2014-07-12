@@ -1,121 +1,135 @@
 function TreeClass(role) {
 
   var _self = this;
-  this._element = null;
-  this.items = [];
+  _self._element = null;
+  _self.items = [];
 
-  this.makeElement = function() {
+  _self.makeElement = function() {
     var s = "<ul class=\"ui ui-tree\"></ul>";
     var element = $(s);
     return element;
   }
 
-  this.refresh = function() {
-    _self._element.attr("data-role", this.role);
+  _self.refresh = function() {
+    _self._element.attr("data-role", _self.role);
     _self._element.empty();
-    $.each(this.items, function(index, item) {
+    $.each(_self.items, function(index, item) {
       _self._element.append(item.getElement());
+      item.updateHandler();
     });
   }
 
-  this._element = this.makeElement();
-  this.refresh();
+  _self._element = _self.makeElement();
+  _self.refresh();
 
-  this.setRole = function(role) {
-    this.role = role;
-    this.refresh();
+  _self.setRole = function(role) {
+    _self.role = role;
+    _self.refresh();
   }
 
-  this.addItem = function(item, doRefresh) {
-    if (doRefresh == undefined) doRefresh = true;
+  _self.addItem = function(item, doFinishing) {
+    if (doFinishing == undefined) doFinishing = true;
     item._tree = _self;
-    this.items.push(item);
-    this.refresh();
+    _self.items.push(item);
+    if (doFinishing) {
+      console.log(item.text);
+      _self.refresh();
+    }
   }
 
-  this.addItems = function(items) {
+  _self.addItems = function(items) {
     $.each(items, function(index, item) {
       _self.addItem(item, false);
     });
     _self.refresh();
   }
 
-  this.getElement = function() {
+  _self.getElement = function() {
     return _self._element;
   }
 
-  this.unselectAll = function() {
-    $("li span", this._element).removeClass("selected");
+  _self.unselectAll = function() {
+    $("li span", _self._element).removeClass("selected");
   }
 
 }
 
-function TreeItemClass(text, icon, handler) {
+function TreeItemClass(text, icon) {
 
   var _self = this;
-  this._element = null;
+  _self._element = null;
 
-  this.makeElement = function() {
+  _self.makeElement = function() {
     var s = "<li><span></span><ul></ul></li>";
     var element = $(s);
     return element;
   }
 
-  this.refresh = function() {
+  _self.refresh = function() {
     var thisSpan = $($("> span", _self._element)[0]);
     thisSpan.attr("data-icon", _self.icon);
-    thisSpan.html(this.text);
-    DSGM.UI.iconify($("> span", _self._element));
+    thisSpan.html(_self.text);
+    DSGM.UI.iconify(thisSpan);
     $("> ul", _self._element).empty();
     $.each(_self.items, function(index, item) {
       $("> ul", _self._element).append(item.getElement());
+      item.updateHandler();
     });
+
   }
 
-  this.setHandler = function(handler) {
-    console.log("inside setHandler");
-    //console.log($("> span", _self._element));
-    //console.log($("> span", _self._element).unbind("click"));
-    $("> span", _self._element).bind("click", function() {
-      _self._tree.unselectAll();
-      $(this).addClass("selected");
-      if ($("> ul", _self._element).children().length > 0) DSGM.UI.slideToggle($("> ul", _self._element));
-      handler(_self);
-    });
+  _self.items = [];
+  _self.text = (text || "Tree Item");
+  _self.icon = icon;
+  _self._element = _self.makeElement();
+  _self.refresh();
+
+  _self.getElement = function() {
+    return _self._element;
   }
 
-  this.items = [];
-  this.text = (text || "Tree Item");
-  this.icon = icon;
-
-  this._element = this.makeElement();
-  this.refresh();
-  this.setHandler(handler ? handler : function(whichItem) {});
-
-  this.getElement = function() {
-    return this._element;
-  }
-
-  this.addItem = function(item, doRefresh) {
-    if (doRefresh == undefined) doRefresh = true;
+  _self.addItem = function(item, doFinishing) {
+    if (doFinishing == undefined) doFinishing = true;
     item._tree = _self._tree;
-    this.items.push(item);
-    if (doRefresh) this.refresh();
+    _self.items.push(item);
+    if (doFinishing) {
+      console.log(item.text);
+      _self.refresh();
+    } 
   }
 
-  this.addItems = function(items) {
+  _self.addItems = function(items) {
     $.each(items, function(index, item) {
       _self.addItem(item, false);
     });
     _self.refresh();
   }
 
-  this.setAttr = function(attr, value) {
+  _self.setAttr = function(attr, value) {
     _self._element.attr("data-" + attr, value);
   }
 
-  this.getAttr = function(attr) {
+  _self.getAttr = function(attr) {
     return _self._element.attr("data-" + attr);
+  }
+
+  _self.setHandler = function(handler) {
+    _self.handler = handler;
+    _self.updateHandler();
+  }
+
+  _self.updateHandler = function() {
+    var thisSpan = $("> span", _self._element);
+    thisSpan.unbind("click");
+    thisSpan.bind("click", function() {
+      _self._tree.unselectAll();
+      thisSpan.addClass("selected");
+      if ($("> ul", _self._element).children().length > 0) DSGM.UI.slideToggle($("> ul", _self._element));
+      if (_self.handler != undefined) _self.handler(_self);
+    });
+    $.each(_self.items, function(index, item) {
+      item.updateHandler();
+    });
   }
 
 }

@@ -22,31 +22,25 @@ function DSGMClass() {
     function(next) {
 
       var resourcesTree = new TreeClass("resources-tree");
-      var resourceTypes = [
-        "Sprite"
-      ];
-      // $.each(resourceTypes, function(index, resourceType) {
-      //   var resourceItem = new TreeItemClass(resourceType + "s", "folder");
-      //   resourcesTree.addItem(resourceItem);
-      //   var resourceSubItems = [];
-      //   for (var i = 1; i < 4; i++) {
-      //     var resourceName = resourceType + " " + i.toString();
-      //     var resourceSubItem = new TreeItemClass(resourceName, resourceType.toLowerCase());
-      //     console.log("about to call setHandler");
-      //     resourceSubItem.setHandler(function(whichItem) {
-      //       _self.loadResource(
-      //         whichItem.getAttr("resource-name"),
-      //         whichItem.getAttr("resource-type")
-      //       );
-      //     });
-      //     resourceSubItem.setAttr("resource-name", resourceName);
-      //     resourceSubItem.setAttr("resource-type", resourceType);
-      //     resourceItem.addItem(resourceSubItem);
-      //   }
-      // });
-      resourcesTree.addItem(new TreeItemClass("Item 1", "folder"));
-      resourcesTree.addItem(new TreeItemClass("Item 2", "folder"));
       $("main > aside").append(resourcesTree.getElement());
+      var resourceTypesList = ["Sprite", "Object"];
+      $.each(resourceTypesList, function(index, resourceTypeName) {
+        var resourceItem = new TreeItemClass(resourceTypeName + "s", "folder");
+        resourcesTree.addItem(resourceItem);
+        for (var i = 1; i < 4; i++) {
+          var resourceName = resourceTypeName + " " + i.toString();
+          var resourceSubItem = new TreeItemClass(resourceName, resourceTypeName.toLowerCase());
+          resourceSubItem.setAttr("resource-name", resourceName);
+          resourceSubItem.setAttr("resource-type", resourceTypeName);
+          resourceSubItem.setHandler(function(whichItem) {
+            _self.loadResource(
+              whichItem.getAttr("resource-name"),
+              whichItem.getAttr("resource-type")
+            );
+          });
+          resourceItem.addItem(resourceSubItem);
+        }
+      });
 
       next();
 
