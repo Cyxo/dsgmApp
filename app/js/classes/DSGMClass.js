@@ -43,7 +43,8 @@ function DSGMClass() {
         addSpriteButton.setHandler(function(whichButton) {
           _self.UI.resourcesTree.items[0].addItem(new TreeItemClass("A New Sprite", "sprite"));
         });
-        setTimeout(next, 2000);
+        //Simulate computation
+        setTimeout(next, 1000);
       },
       function(next) {
         _self.UI.endWork(next);
