@@ -1,4 +1,6 @@
 function DSGM_Project() {
+	var that = this;
+	
 	this.name = new String();
 	
 	this.sprites = new Array();
@@ -6,151 +8,120 @@ function DSGM_Project() {
 	this.objects = new Array();
 	this.rooms = new Array();
 	
-	this.load = function(project) {
-		var tempProject = JSON.parse(project);
-		for(var property in tempProject) this[property] = tempProject[property];
-	}
-	
-	this.save = function() {
-		return JSON.stringify(this);
-	}
-	
-	this.copy = function(destination) {
-		this.name = new String();
-		
-		this.sprites = new Array();
-		this.backgrounds = new Array();
-		this.objects = new Array();
-		this.rooms = new Array();
-		
-		if(this.name) destination.name = this.name;
-		
-		if(this.sprites) destination.sprites = this.sprites;
-		if(this.backgrounds) destination.backgrounds = this.backgrounds;
-		if(this.objects) destination.objects = this.objects;
-		if(this.rooms) destination.rooms = this.rooms;
-	}
-	
-	this.debug = function() {
-		var debug = new String();
-		
-		debug += "Name: " + this.name + "\n";
-		
-		debug += "\n";
-		
-		debug += "Sprites: " + this.sprites.length + "\n";
-		var i;
-		for(i = 0; i < this.sprites.length; i++) {
-			debug += this.sprites[i].name + "\n";
-		}
-		
-		debug += "\n";
-		
-		debug += "Backgrounds: " + this.backgrounds.length + "\n";
-		var i;
-		for(i = 0; i < this.backgrounds.length; i++) {
-			debug += this.backgrounds[i].name + "\n";
-		}
-		
-		debug += "\n";
-		
-		debug += "Objects: " + this.objects.length + "\n";
-		var i;
-		for(i = 0; i < this.objects.length; i++) {
-			debug += this.objects[i].name + "\n";
-		}
-		
-		debug += "\n";
-		
-		debug += "Rooms: " + this.rooms.length + "\n";
-		var i;
-		for(i = 0; i < this.rooms.length; i++) {
-			debug += this.rooms[i].name + "\n";
-		}
-		
-		alert(debug);
-	}
-	
 	this.addSprite = function(name) {
-		this.sprites[this.sprites.length] = new DSGM_Sprite(name);
-		return this.sprites.length - 1;
+		//that.sprites[that.sprites.length] = new DSGM_Sprite(name);
+		that.sprites.push(new DSGM_Sprite(name));
+		that.refreshResourcesList("sprites");
+		return that.sprites.length - 1;
 	}
 	
 	this.addBackground = function(name) {
-		this.backgrounds[this.backgrounds.length] = new DSGM_Background(name);
-		return this.backgrounds.length - 1;
+		that.backgrounds.push(new DSGM_Background(name));
+		that.refreshResourcesList("backgrounds");
+		return that.backgrounds.length - 1;
 	}
 	
 	this.addObject = function(name) {
-		this.objects[this.objects.length] = new DSGM_Object(name);
-		return this.objects.length - 1;
+		that.objects.push(new DSGM_Object(name));
+		that.refreshResourcesList("objects");
+		return that.objects.length - 1;
 	}
 	
 	this.addRoom = function(name) {
-		this.rooms[this.rooms.length] = new DSGM_Room(name);
-		return this.rooms.length - 1;
+		that.rooms.push(new DSGM_Room(name));
+		that.refreshResourcesList("rooms");
+		return that.rooms.length - 1;
 	}
 	
-	this.removeSprite = function(index) {
-		this.sprites.splice(index, 1);
+	this.removeResource = function(resource) {
+		if(resource instanceof DSGM_Sprite) {
+			that.sprites.splice(that.sprites.indexOf(resource), 1);
+			that.refreshResourcesList("sprites");
+		}
+		else if(resource instanceof DSGM_Background) {
+			that.backgrounds.splice(that.backgrounds.indexOf(resource), 1);
+			that.refreshResourcesList("backgrounds");
+		}
+		else if(resource instanceof DSGM_Object) {
+			that.objects.splice(that.objects.indexOf(resource), 1);
+			that.refreshResourcesList("objects");
+		}
+		else if(resource instanceof DSGM_Room) {
+			that.rooms.splice(that.rooms.indexOf(resource), 1);
+			that.refreshResourcesList("rooms");
+		}
+		else {
+			console.log("Trying to remove unrecognised resource.");
+		}
 	}
 	
-	this.removeBackground = function(index) {
-		this.backgrounds.splice(index, 1);
+	this.refreshResourcesList = function(resourceType) {
+		var i;
+		
+		if(!resourceType || resourceType == "sprites") {
+			var spritesList = document.querySelector('[data-role="sprites-list"]');
+			spritesList.innerHTML = "";
+			for(i = 0; i < project.sprites.length; i++) {
+				spritesList.innerHTML += '<li><span data-icon="sprite"><span>' + project.sprites[i].name + "</span></span></li>"
+			}
+		}
+		
+		if(!resourceType || resourceType == "backgrounds") {
+			var backgroundsList = document.querySelector('[data-role="backgrounds-list"]');
+			backgroundsList.innerHTML = "";
+			for(i = 0; i < project.backgrounds.length; i++) {
+				backgroundsList.innerHTML += '<li><span data-icon="background"><span>' + project.backgrounds[i].name + "</span></span></li>"
+			}
+		}
+		
+		if(!resourceType || resourceType == "objects") {
+			var objectsList = document.querySelector('[data-role="objects-list"]');
+			objectsList.innerHTML = "";
+			for(i = 0; i < project.objects.length; i++) {
+				objectsList.innerHTML += '<li><span data-icon="object"><span>' + project.objects[i].name + "</span></span></li>"
+			}
+		}
+		
+		if(!resourceType || resourceType == "rooms") {
+			var roomsList = document.querySelector('[data-role="rooms-list"]');
+			roomsList.innerHTML = "";
+			for(i = 0; i < project.rooms.length; i++) {
+				roomsList.innerHTML += '<li><span data-icon="room"><span>' + project.rooms[i].name + "</span></span></li>"
+			}
+		}
 	}
 	
-	this.removeObject = function(index) {
-		this.objects.splice(index, 1);
+	this.load = function(project) {
+		var tempProject = JSON.parse(project);
+		for(var property in tempProject) that[property] = tempProject[property];
+		that.refreshResourcesList();
 	}
 	
-	this.removeRoom = function(index) {
-		this.rooms.splice(index, 1);
+	this.save = function() {
+		return JSON.stringify(that);
 	}
 }
+
+var DSGM_Resource = {
+	name: "New Resource",
+};
 
 function DSGM_Sprite(name) {
-	this.name = name;
+	if(name) this.name = name;
 }
+DSGM_Sprite.prototype = Object.create(DSGM_Resource);
 
 function DSGM_Background(name) {
-	this.name = name;
+	if(name) this.name = name;
 }
+DSGM_Background.prototype = Object.create(DSGM_Resource);
 
 function DSGM_Object(name) {
-	this.name = name;
+	if(name) this.name = name;
 }
+DSGM_Object.prototype = Object.create(DSGM_Resource);
 
 function DSGM_Room(name) {
-	this.name = name;
+	if(name) this.name = name;
 }
-
-function UpdateUI(project) {
-	var i;
-	
-	//var projectName = document.querySelector('[data-role="project-name"]');
-	//projectName.innerHTML = project.name;
-	
-	var spritesList = document.querySelector('[data-role="sprites-list"]');
-	spritesList.innerHTML = "";
-	for(i = 0; i < project.sprites.length; i++) {
-		spritesList.innerHTML += '<li><span data-icon="sprite"><span>' + project.sprites[i].name + "</span></span></li>"
-	}
-	
-	var backgroundsList = document.querySelector('[data-role="backgrounds-list"]');
-	backgroundsList.innerHTML = "";
-	for(i = 0; i < project.backgrounds.length; i++) {
-		backgroundsList.innerHTML += '<li><span data-icon="background"><span>' + project.backgrounds[i].name + "</span></span></li>"
-	}
-	
-	var objectsList = document.querySelector('[data-role="objects-list"]');
-	objectsList.innerHTML = "";
-	for(i = 0; i < project.objects.length; i++) {
-		objectsList.innerHTML += '<li><span data-icon="object"><span>' + project.objects[i].name + "</span></span></li>"
-	}
-	
-	var roomsList = document.querySelector('[data-role="rooms-list"]');
-	roomsList.innerHTML = "";
-	for(i = 0; i < project.rooms.length; i++) {
-		roomsList.innerHTML += '<li><span data-icon="room"><span>' + project.rooms[i].name + "</span></span></li>"
-	}
-}
+DSGM_Room.prototype = Object.create(DSGM_Resource);
