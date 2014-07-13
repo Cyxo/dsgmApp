@@ -7,6 +7,7 @@ function DSGM_Project() {
 	this.backgrounds = [];
 	this.objects = [];
 	this.rooms = [];
+	this.sounds = [];
 	
 	this.addSprite = function(name) {
 		_self.sprites.push(new DSGM_Sprite(name));
@@ -32,6 +33,12 @@ function DSGM_Project() {
 		return _self.rooms.length - 1;
 	}
 	
+	this.addSound = function(name) {
+		_self.sounds.push(new DSGM_Sound(name));
+		_self.refreshResourcesList("sounds");
+		return _self.sounds.length - 1;
+	}
+	
 	this.removeResource = function(resource) {
 		if(resource instanceof DSGM_Sprite) {
 			_self.sprites.splice(_self.sprites.indexOf(resource), 1);
@@ -48,6 +55,10 @@ function DSGM_Project() {
 		else if(resource instanceof DSGM_Room) {
 			_self.rooms.splice(_self.rooms.indexOf(resource), 1);
 			_self.refreshResourcesList("rooms");
+		}
+		else if(resource instanceof DSGM_Sound) {
+			_self.sounds.splice(_self.sounds.indexOf(resource), 1);
+			_self.refreshResourcesList("sounds");
 		}
 		else {
 			console.log("Trying to remove unrecognised resource.");
@@ -80,6 +91,13 @@ function DSGM_Project() {
 			$('[data-role="rooms-list"]').empty();
 			$.each(project.rooms, function(index, room) {
 				$('[data-role="rooms-list"]').append('<li><span data-icon="room"><span>' + room.name + "</span></span></li>");
+			});
+		}
+		
+		if(!resourceType || resourceType == "sounds") {
+			$('[data-role="sounds-list"]').empty();
+			$.each(project.sounds, function(index, sound) {
+				$('[data-role="sounds-list"]').append('<li><span data-icon="sound"><span>' + sound.name + "</span></span></li>");
 			});
 		}
 	}
@@ -118,3 +136,8 @@ function DSGM_Room(name) {
 	if(name) this.name = name;
 }
 DSGM_Room.prototype = Object.create(DSGM_Resource);
+
+function DSGM_Sound(name) {
+	if(name) this.name = name;
+}
+DSGM_Sound.prototype = Object.create(DSGM_Sound);
