@@ -4,7 +4,7 @@ function DSGMClass() {
 
   async.waterfall([
     function(next) {
-      _self.ExtLink = new ExtLinkClass();
+      _self.Command = new CommandClass();
       _self.Options = new OptionsClass(next);
     },
     function(next) {
@@ -22,6 +22,7 @@ function DSGMClass() {
       _self.UI.makeResourcesTree();
       _self.UI.makeDialogue();
       _self.UI.makeStatusBar();
+      _self.Links.bindLinks(document.body);
       next();
     },
     function(next) {

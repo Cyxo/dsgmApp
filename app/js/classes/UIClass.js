@@ -250,15 +250,6 @@ function UIClass(callback) {
     $(document.body).append(_self.statusBar.getElement());
   }
 
-  //(Menu) Help > Generic Links
-  $("[data-role=help-menu]").siblings("ul").children().each(function(index, li) {
-    var thisLi = $(li);
-    if (!thisLi.attr("data-link-name")) return;
-    thisLi.click(function() {
-      DSGM.Links.goToLink($(this).attr("data-link-name"));
-    });
-  });
-
   //(Menu) Tools > Test
   $("[data-role=test]").click(function() {
     var testDialogue = new DialogueClass();
@@ -268,7 +259,7 @@ function UIClass(callback) {
   //(Menu) Help > About
   $("[data-role=about]").click(function() {
     var markup = _self.getMarkup("about");
-    var aboutDialogue = new DialogueClass(markup, null, [], 450, 450, true);
+    var aboutDialogue = new DialogueClass(markup, null, "About DS Game Maker", [], 450, 450, true);
     aboutDialogue.show();
   });
 

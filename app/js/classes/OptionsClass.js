@@ -5,9 +5,8 @@ function OptionsClass(callback) {
 
   //Load
   this.load = function(callback) {
-    DSGM.ExtLink.request(
-      "readFile",
-      _options_path,
+    DSGM.Command.request(
+      "readFile", [_options_path],
       function(response) {
         _options = JSON.parse(response);
         callback();
@@ -20,11 +19,7 @@ function OptionsClass(callback) {
 
   //Save
   this.save = function(callback) {
-    DSGM.ExtLink.request(
-      "writeFile",
-      JSON.stringify(_options),
-      callback
-    );
+    DSGM.Comms.request("writeFile", JSON.stringify(_options), callback);
   }
 
   //Get

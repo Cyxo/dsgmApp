@@ -21,7 +21,7 @@
     <script src="js/classes/StatusBarClass.js"></script>
     <script src="js/classes/TreeClass.js"></script>
     <script src="js/classes/LinksClass.js"></script>
-    <script src="js/classes/ExtLinkClass.js"></script>
+    <script src="js/classes/CommandClass.js"></script>
     <script src="js/classes/ButtonClass.js"></script>
     <!-- JavaScript: Initialise -->
     <script>
@@ -41,15 +41,15 @@
     </div>
     <div id="Dialogue">
       <div>
-        <div class="contents contents-line"></div>
-        <div class="buttons"></div>
+        <div>
+          <header></header>
+          <div class="contents contents-line"></div>
+          <div class="buttons"></div>
+        </div>
       </div>
     </div>
     <div data-role-"markups" class="hidden">
       <div data-role="markup-about">
-        <header>
-          <h1>DS Game Maker</h1>
-        </header>
         <div class="logo">
           <img src="img/logo.png" alt="DS Game Maker">
         </div>
@@ -178,9 +178,9 @@
               <span data-role="help-menu" data-translate="help-menu"></span>
               <ul>
                 <div>
-                  <li data-link-name="website"><span data-icon="globe"><span>Website</span></span></li>
-                  <li data-link-name="forum"><span data-icon="globe"><span>Forum</span></span></li>
-                  <li data-link-name="tutorials"><span data-icon="globe"><span>Tutorials</span></span></li>
+                  <li data-link="website"><span data-icon="globe"><span>Website</span></span></li>
+                  <li data-link="forum"><span data-icon="globe"><span>Forum</span></span></li>
+                  <li data-link="tutorials"><span data-icon="globe"><span>Tutorials</span></span></li>
                 </div>
                 <div>
                   <li data-role="about"><span data-icon="info"><span data-translate="about"></span></span></li>

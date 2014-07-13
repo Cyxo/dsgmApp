@@ -26,7 +26,7 @@ function LinksClass() {
   this.goToLink = function(identifier) {
     var link = _self.getLink(identifier);
     if (link == null) return;
-    console.log("go to: " + link.url);
+    DSGM.Command.request("link", [link.url]);
   }
 
   this.bindLinks = function(element) {
@@ -35,7 +35,7 @@ function LinksClass() {
       var link = _self.getLink(linkEl.attr("data-link"));
       if (link == null) return;
       linkEl
-        .attr("href", link.url)
+        //.attr("href", link.url)
         .unbind("click")
         .bind("click", function() {
          _self.goToLink(link.identifier);

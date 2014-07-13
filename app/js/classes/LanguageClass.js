@@ -26,9 +26,8 @@ function LanguageClass(language, callback) {
   //Construct
   async.waterfall([
     function(next) {
-      DSGM.ExtLink.request(
-        "readFile",
-        _languages_path + "base.json",
+      DSGM.Command.request(
+        "readFile", [_languages_path + "base.json"],
         function(response) {
           base_object = JSON.parse(response);
           next();
@@ -36,9 +35,8 @@ function LanguageClass(language, callback) {
       );
     },
     function(next) {
-      DSGM.ExtLink.request(
-        "readFile",
-        _languages_path + language + ".json",
+      DSGM.Command.request(
+        "readFile", [_languages_path + language + ".json"],
         function(response) {
           language_object = JSON.parse(response);
           next();

@@ -1,4 +1,4 @@
-function DialogueClass(content, icon, buttons, width, height, customElement) {
+function DialogueClass(content, icon, title, buttons, width, height, customElement) {
 
   var _self = this;
 
@@ -9,6 +9,7 @@ function DialogueClass(content, icon, buttons, width, height, customElement) {
 
   _self.content = (content || "");
   _self.icon = icon;
+  _self.title = (title || "DS Game Maker");
   if (!buttons || buttons.length == 0) buttons = [_self.okButton];
   _self.buttons = buttons;
   _self.width = (width || 620);
@@ -58,6 +59,7 @@ DialogueClass.prototype.askYesNoCancel = function(content, icon, yesCallback, no
 DialogueClass.prototype.show = function() {
   var _self = this;
   var dialogueDiv = $("#Dialogue > div");
+  var headerDiv = $("#Dialogue > div header");
   var contentsDiv = $("#Dialogue > div div.contents");
   var buttonsDiv = $("#Dialogue > div div.buttons");
   var divs = [contentsDiv, buttonsDiv];
@@ -71,6 +73,8 @@ DialogueClass.prototype.show = function() {
       }
     },
     function(next) {
+      //Header
+      headerDiv.html(_self.title ? ("<h1>" + _self.title + "</h1>") : "");
       //Erase
       $.each(divs, function(index, div) {
         div.empty();
