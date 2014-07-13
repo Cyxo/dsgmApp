@@ -5,7 +5,14 @@ function ProjectClass() {
 	_self.name = "";
 	_self.resources = [];
 
-	this.addResource = function(name) {
+	this.getResourceByNameAndType = function(name, type) {
+
+	}
+
+	this.getResourcesByType = function(type) {	
+	}
+
+	this.addResource = function(name, type) {
 	}
 
 	this.removeResource = function(resource) {
