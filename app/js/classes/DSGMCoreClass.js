@@ -1,54 +1,53 @@
 function DSGM_Project() {
-	var that = this;
+	var _self = this;
 	
-	this.name = new String();
+	this.name = "";
 	
-	this.sprites = new Array();
-	this.backgrounds = new Array();
-	this.objects = new Array();
-	this.rooms = new Array();
+	this.sprites = [];
+	this.backgrounds = [];
+	this.objects = [];
+	this.rooms = [];
 	
 	this.addSprite = function(name) {
-		//that.sprites[that.sprites.length] = new DSGM_Sprite(name);
-		that.sprites.push(new DSGM_Sprite(name));
-		that.refreshResourcesList("sprites");
-		return that.sprites.length - 1;
+		_self.sprites.push(new DSGM_Sprite(name));
+		_self.refreshResourcesList("sprites");
+		return _self.sprites.length - 1;
 	}
 	
 	this.addBackground = function(name) {
-		that.backgrounds.push(new DSGM_Background(name));
-		that.refreshResourcesList("backgrounds");
-		return that.backgrounds.length - 1;
+		_self.backgrounds.push(new DSGM_Background(name));
+		_self.refreshResourcesList("backgrounds");
+		return _self.backgrounds.length - 1;
 	}
 	
 	this.addObject = function(name) {
-		that.objects.push(new DSGM_Object(name));
-		that.refreshResourcesList("objects");
-		return that.objects.length - 1;
+		_self.objects.push(new DSGM_Object(name));
+		_self.refreshResourcesList("objects");
+		return _self.objects.length - 1;
 	}
 	
 	this.addRoom = function(name) {
-		that.rooms.push(new DSGM_Room(name));
-		that.refreshResourcesList("rooms");
-		return that.rooms.length - 1;
+		_self.rooms.push(new DSGM_Room(name));
+		_self.refreshResourcesList("rooms");
+		return _self.rooms.length - 1;
 	}
 	
 	this.removeResource = function(resource) {
 		if(resource instanceof DSGM_Sprite) {
-			that.sprites.splice(that.sprites.indexOf(resource), 1);
-			that.refreshResourcesList("sprites");
+			_self.sprites.splice(_self.sprites.indexOf(resource), 1);
+			_self.refreshResourcesList("sprites");
 		}
 		else if(resource instanceof DSGM_Background) {
-			that.backgrounds.splice(that.backgrounds.indexOf(resource), 1);
-			that.refreshResourcesList("backgrounds");
+			_self.backgrounds.splice(_self.backgrounds.indexOf(resource), 1);
+			_self.refreshResourcesList("backgrounds");
 		}
 		else if(resource instanceof DSGM_Object) {
-			that.objects.splice(that.objects.indexOf(resource), 1);
-			that.refreshResourcesList("objects");
+			_self.objects.splice(_self.objects.indexOf(resource), 1);
+			_self.refreshResourcesList("objects");
 		}
 		else if(resource instanceof DSGM_Room) {
-			that.rooms.splice(that.rooms.indexOf(resource), 1);
-			that.refreshResourcesList("rooms");
+			_self.rooms.splice(_self.rooms.indexOf(resource), 1);
+			_self.refreshResourcesList("rooms");
 		}
 		else {
 			console.log("Trying to remove unrecognised resource.");
@@ -56,49 +55,43 @@ function DSGM_Project() {
 	}
 	
 	this.refreshResourcesList = function(resourceType) {
-		var i;
-		
 		if(!resourceType || resourceType == "sprites") {
-			var spritesList = document.querySelector('[data-role="sprites-list"]');
-			spritesList.innerHTML = "";
-			for(i = 0; i < project.sprites.length; i++) {
-				spritesList.innerHTML += '<li><span data-icon="sprite"><span>' + project.sprites[i].name + "</span></span></li>"
-			}
+			$($('[data-role="sprites-list"]')).empty();
+			$.each(project.sprites, function(index, sprite) {
+				$('[data-role="sprites-list"]').append('<li><span data-icon="sprite"><span>' + sprite.name + "</span></span></li>");
+			});
 		}
 		
 		if(!resourceType || resourceType == "backgrounds") {
-			var backgroundsList = document.querySelector('[data-role="backgrounds-list"]');
-			backgroundsList.innerHTML = "";
-			for(i = 0; i < project.backgrounds.length; i++) {
-				backgroundsList.innerHTML += '<li><span data-icon="background"><span>' + project.backgrounds[i].name + "</span></span></li>"
-			}
+			$($('[data-role="backgrounds-list"]')).empty();
+			$.each(project.backgrounds, function(index, background) {
+				$('[data-role="backgrounds-list"]').append('<li><span data-icon="background"><span>' + background.name + "</span></span></li>");
+			});
 		}
 		
 		if(!resourceType || resourceType == "objects") {
-			var objectsList = document.querySelector('[data-role="objects-list"]');
-			objectsList.innerHTML = "";
-			for(i = 0; i < project.objects.length; i++) {
-				objectsList.innerHTML += '<li><span data-icon="object"><span>' + project.objects[i].name + "</span></span></li>"
-			}
+			$('[data-role="objects-list"]').empty();
+			$.each(project.objects, function(index, object) {
+				$('[data-role="objects-list"]').append('<li><span data-icon="object"><span>' + object.name + "</span></span></li>");
+			});
 		}
 		
 		if(!resourceType || resourceType == "rooms") {
-			var roomsList = document.querySelector('[data-role="rooms-list"]');
-			roomsList.innerHTML = "";
-			for(i = 0; i < project.rooms.length; i++) {
-				roomsList.innerHTML += '<li><span data-icon="room"><span>' + project.rooms[i].name + "</span></span></li>"
-			}
+			$('[data-role="rooms-list"]').empty();
+			$.each(project.rooms, function(index, room) {
+				$('[data-role="rooms-list"]').append('<li><span data-icon="room"><span>' + room.name + "</span></span></li>");
+			});
 		}
 	}
 	
 	this.load = function(project) {
 		var tempProject = JSON.parse(project);
-		for(var property in tempProject) that[property] = tempProject[property];
-		that.refreshResourcesList();
+		for(var property in tempProject) _self[property] = tempProject[property];
+		_self.refreshResourcesList();
 	}
 	
 	this.save = function() {
-		return JSON.stringify(that);
+		return JSON.stringify(_self);
 	}
 }
 
