@@ -1,13 +1,13 @@
 function ProjectClass() {
 	var _self = this;
 
-	this.name = "";
+	_self.name = "";
 
-	this.sprites = [];
-	this.backgrounds = [];
-	this.objects = [];
-	this.rooms = [];
-	this.sounds = [];
+	_self.sprites = [];
+	_self.backgrounds = [];
+	_self.objects = [];
+	_self.rooms = [];
+	_self.sounds = [];
 
 	this.addSprite = function(name) {
 		_self.sprites.push(new SpriteClass(name));
@@ -62,43 +62,6 @@ function ProjectClass() {
 		}
 		else {
 			console.log("Trying to remove unrecognised resource.");
-		}
-	}
-
-	this.refreshResourcesList = function(resourceType) {
-		if(!resourceType || resourceType == "sprites") {
-			$('[data-role="sprites-list"]').empty();
-			$.each(project.sprites, function(index, sprite) {
-				$('[data-role="sprites-list"]').append('<li><span data-icon="sprite"><span>' + sprite.name + "</span></span></li>");
-			});
-		}
-
-		if(!resourceType || resourceType == "backgrounds") {
-			$('[data-role="backgrounds-list"]').empty();
-			$.each(project.backgrounds, function(index, background) {
-				$('[data-role="backgrounds-list"]').append('<li><span data-icon="background"><span>' + background.name + "</span></span></li>");
-			});
-		}
-
-		if(!resourceType || resourceType == "objects") {
-			$('[data-role="objects-list"]').empty();
-			$.each(project.objects, function(index, object) {
-				$('[data-role="objects-list"]').append('<li><span data-icon="object"><span>' + object.name + "</span></span></li>");
-			});
-		}
-
-		if(!resourceType || resourceType == "rooms") {
-			$('[data-role="rooms-list"]').empty();
-			$.each(project.rooms, function(index, room) {
-				$('[data-role="rooms-list"]').append('<li><span data-icon="room"><span>' + room.name + "</span></span></li>");
-			});
-		}
-
-		if(!resourceType || resourceType == "sounds") {
-			$('[data-role="sounds-list"]').empty();
-			$.each(project.sounds, function(index, sound) {
-				$('[data-role="sounds-list"]').append('<li><span data-icon="sound"><span>' + sound.name + "</span></span></li>");
-			});
 		}
 	}
 
