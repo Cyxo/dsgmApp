@@ -1,0 +1,15 @@
+*[data-role=markup-resource] {
+  > * {
+    height: 100%;
+    overflow: auto;
+  }
+  > aside {
+    float: left !important;
+    width: $resources-size !important;
+  }
+  > div {
+    margin-left: $resources-size + $padding;
+    background-color: $foreground-color-2;
+    border-radius: $radius;
+  }
+}

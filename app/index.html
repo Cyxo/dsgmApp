@@ -1,157 +1,207 @@
 <!DOCTYPE>
 <html>
-	<head>
-		<title></title>
-		<!-- Meta Tags -->
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<meta charset="UTF-8">
-		<!-- Style -->
-		<link rel="stylesheet" href="css/dsgm.css">
-		<!-- JavaScript: jQuery, jQuery Standard Plug-ins-->
-		<script src="js/jquery-2.1.0.min.js"></script>
-		<script src="js/jquery-plugins/base64.js"></script>
-		<script src="js/jquery-plugins/javaLink.js"></script>
-		<!-- JavaScript: jQuery Custom Plug-ins -->
-		<script src="js/jquery-plugins-custom/helloWorld.js"></script>
-		<!-- JavaScript: async -->
-		<script src="js/async.js"></script>
-		<!-- JavaScript: Classes -->
-		<script src="js/classes/DSGMCoreClass.js"></script>
-		<script src="js/classes/DSGMClass.js"></script>
-		<script src="js/classes/OptionsClass.js"></script>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <title>DS Game Maker</title>
+    <!-- Style -->
+    <link rel="stylesheet" href="css/dsgm.css">
+    <!-- JavaScript: jQuery and jQuery Plug-ins-->
+    <script src="js/jquery-2.1.0.min.js"></script>
+    <script src="js/jquery-plugins/base64.js"></script>
+    <script src="js/jquery-plugins/helloWorld.js"></script>
+    <!-- JavaScript: async -->
+    <script src="js/async.js"></script>
+    <!-- JavaScript: Classes -->
+    <script src="js/classes/DSGMClass.js"></script>
+    <script src="js/classes/OptionsClass.js"></script>
     <script src="js/classes/LanguageClass.js"></script>
     <script src="js/classes/UIClass.js"></script>
+    <script src="js/classes/DialogueClass.js"></script>
+    <script src="js/classes/StatusBarClass.js"></script>
+    <script src="js/classes/TreeClass.js"></script>
     <script src="js/classes/LinksClass.js"></script>
-		<!-- JavaScript: Initialise -->
-		<script>
-			var project;
-			jQuery(window).load(function () {
-			  DSGM = new DSGMClass();
-			  project = new DSGM_Project();
-			  project.load('{"name":"Test Project","sprites":[{"name":"Sprite_1"}],"backgrounds":[{"name":"Background_1"}],"objects":[{"name":"Object_1"}],"rooms":[{"name":"Room_1"}]}');
-			});
-		</script>
-	</head>
-	<body class="ui">
-    <div id="Blocker">
+    <script src="js/classes/CommandClass.js"></script>
+    <script src="js/classes/ButtonClass.js"></script>
+    <!-- JavaScript: Initialise -->
+    <script>
+      jQuery(window).load(function () {
+        DSGM = new DSGMClass();
+      });
+    </script>
+  </head>
+  <body class="ui">
+    <div id="Command">
+      <div id="CommandRequest"></div>
+      <div id="CommandResponse"></div>
+    </div>
+    <div id="Loading">
       <div>
         <p><span class="fa fa-refresh fa-spin"></span></p>
-        <p><span>Loading...</span></p>
+        <p><span>loading...</span></p>
       </div>
     </div>
-		<header class="ui">
-			<div class="ui ui-orb" id="Orb">
-				<a href="#"><img src="img/orb.png" alt="Orb"></a>
-				<div>
-					<li><span data-role="homebrew-kit"></span>: <span data-role="homebrew-kit-status"></span></li>
-					<li><span data-role="portal"> <span data-role="portal-status"></span></li>
-				</div>
-			</div>
-			<div>
-				<nav>
-					<ul class="ui ui-menu">
-						<li>
-							<span data-role="file-menu"></span>
-							<ul>
-								<li><span data-icon="page"><span data-role="new"></span></span></li>
-								<li><span data-icon="folder"><span data-role="open"></span></span></li>
-								<li><span data-icon="disk"><span data-role="save"></span></span></li>
-							</ul>
-						</li>
-						<li>
-							<span data-role="edit-menu"></span>
-							<ul>
-								<li><span data-icon="cut"><span data-role="cut"></span></span></li>
-								<li><span data-icon="copy"><span data-role="copy"></span></span></li>
-								<li><span data-icon="paste"><span data-role="paste"></span></span></li>
-							</ul>
-						</li>
-						<li>
-							<span data-role="tools-menu"></span>
-							<ul>
-								<li data-role="raw2c"></li>
-								<li data-role="ndstool"></li>
-								<li data-role="fontgen"></li>
-							</ul>
-						</li>
-						<li>
-							<span data-role="help-menu"></span>
-							<ul>
-                <li data-link-name="website"><span data-icon="globe"><span data-role="link" data-no-translate>Website</span></span></li>
-                <li data-link-name="forum"><span data-icon="globe"><span data-role="link" data-no-translate>Forum</span></span></li>
-                <li><span data-icon="info"><span data-role="about"></span></span></li>
-							</ul>
-						</li>
-					</ul>
-				</nav>
-			</div>
-		</header>
-		<main>
-      <aside>
-        <ul data-role="resources-list" data-no-translate class="ui ui-tree">
-          <li>
-            <span data-icon="folder"><span data-role="sprites"></span></span>
-            <ul data-role="sprites-list" data-resource-type="sprite" data-no-translate>
-            	<li><span data-icon="sprite"><span>Pacman</span></span></li>
-            	<li><span data-icon="sprite"><span>Puck</span></span></li>
-            	<li><span data-icon="sprite"><span>Ghost</span></span></li>
-            </ul>
-          </li>
-		  <li>
-            <span data-icon="folder"><span data-role="backgrounds"></span></span>
-            <ul data-role="backgrounds-list" data-resource-type="background" data-no-translate>
-            	<li><span data-icon="background"><span>Sunset</span></span></li>
-            	<li><span data-icon="background"><span>Space</span></span></li>
-            	<li><span data-icon="background"><span>Lava</span></span></li>
-            </ul>
-          </li>
-          <li>
-            <span data-icon="folder"><span data-role="objects"></span></span>
-            <ul data-role="objects-list" data-resource-type="object" data-no-translate>
-            	<li><span data-icon="object"><span>Pacman</span></span></li>
-            	<li><span data-icon="object"><span>Puck</span></span></li>
-            	<li><span data-icon="object"><span>Ghost</span></span></li>
-            </ul>
-          </li>
-          <li>
-            <span data-icon="folder"><span data-role="rooms"></span></span>
-            <ul data-role="rooms-list" data-resource-type="room" data-no-translate>
-            	<li><span data-icon="room"><span>Menu</span></span></li>
-              <li><span data-icon="room"><span>Level 1</span></span></li>
-              <li><span data-icon="room"><span>Level 2</span></span></li>
-              <li><span data-icon="room"><span>Level 3</span></span></li>
-            </ul>
-          </li>
-        </ul>
-      </aside>
-      <div class="ui ui-panel">
-        <div id="Resource">
-          <aside>
-            <div class="ui ui-tabs">
-              <div class="ui-tabs-changer">
-                <div class="selected">Properties</div>
-                <div>Extra</div>
-              </div>
-              <div class="ui ui-panel selected" data-role="properties" data-no-translate>
-                <p>
-                  (Properties Tab)
-                </p>
-              </div>
-              <div class="ui ui-panel" data-role="extra-properties" data-no-translate>
-                 <p>
-                   (Extra Properties Tab)
-                 </p>
-               </div>
+    <div id="Working">
+    </div>
+    <div id="Dialogue">
+      <div>
+        <div>
+          <header></header>
+          <div class="contents contents-line"></div>
+          <div class="buttons"></div>
+        </div>
+      </div>
+    </div>
+    <div data-role-"markups" class="hidden">
+      <div data-role="markup-about">
+        <div class="logo">
+          <img src="img/logo.png" alt="DS Game Maker">
+        </div>
+        <div>
+          <p>
+            By <a href="http://jadaradix.com">James Garner</a> and <a href="#">Chris Ertl</a>.
+          </p>
+          <p>
+            Additional components and assistance contributed by Dave Murphy, Michael Noland, Jason Rogers, Gregory Potdevin, Chris Rickard, Nick Thissen, Robert Dixon, Dave Tabba, Cilein Kearns and Baron Khan.
+          </p>
+          <p>
+            Special thanks go to Sam Booth and Alexander Stelfox for opening these doors.
+          </p>
+          <p>
+            For DS Game Maker updates, more information, discussion and games, visit the website:
+          </p>
+          <p>
+            <a data-link="website">www.dsgamemaker.com</a>
+          </p>
+        </div>
+      </div>
+      <div data-role="markup-resource">
+        <aside>
+          <div class="ui ui-tabs">
+            <div class="ui-tabs-changer">
+              <div class="selected">Properties</div>
+              <div>Extra</div>
             </div>
-          </aside>
-          <div class="ui-panel">
-            <p>
-              Hello, World.
-            </p>
+            <div class="ui ui-panel selected" data-translate="properties" data-no-translate>
+              <p>
+                (Properties Tab)
+              </p>
+            </div>
+            <div class="ui ui-panel" data-translate="extra-properties" data-no-translate>
+              <p>
+              (Extra Properties Tab)
+              </p>
+            </div>
+          </div>
+        </aside>
+        <div class="ui-panel">
+        </div>
+      </div>
+    </div>
+    <header class="ui">
+      <div class="ui ui-orb" id="Orb">
+        <div>
+          <img src="img/orb.png" alt="Orb">
+          <div>
+            <div>
+              <ul>
+                <li><span data-translate="homebrew-kit"></span> <span data-translate="homebrew-kit-status"></span></li>
+                <li><span data-translate="portal"></span> <span data-translate="portal-status"></span></li>
+              </ul>
+            </div>
           </div>
         </div>
-			</div>
-		</main>
-		<footer id="StatusBar" class="ui ui-status">Status Bar</footer>
-	</body>
+      </div>
+      <div>
+        <nav>
+          <ul data-role="main-menu" class="ui ui-menu">
+            <li>
+              <span data-translate="project-menu"></span>
+              <ul>
+                <div>
+                  <li><span data-icon="page"><span data-translate="new"></span></span></li>
+                  <li><span data-icon="folder"><span data-translate="open"></span></span></li>
+                  <li><span data-icon="blank"><span data-translate="open-last-project"></span></span></li>
+                </div>
+                <div>
+                  <li><span data-icon="play"><span data-translate="test"></span></span></li>
+                  <li><span data-icon="play-save"><span data-translate="compile"></span></span></li>
+                </div>
+                <div>
+                  <li><span data-icon="disk"><span data-translate="save"></span></span></li>
+                  <li><span data-icon="blank"><span data-translate="save-as"></span></span></li>
+                </div>
+              </ul>
+            </li>
+            <li>
+              <span data-translate="resources-menu"></span>
+              <ul>
+                <div>
+                  <li><span data-icon="copy"><span data-translate="copy"></span></span></li>
+                  <li><span data-icon="no"><span data-translate="delete"></span></span></li>
+                </div>
+                <div>
+                  <li><span data-icon="search"><span data-translate="find-resource"></span></span></li>
+                </div>
+                <div>
+                  <li><span data-icon="sprite"><span data-translate="add-sprite"></span></span></li>
+                  <li><span data-icon="background"><span data-translate="add-background"></span></span></li>
+                  <li><span data-icon="object"><span data-translate="add-object"></span></span></li>
+                  <li><span data-icon="room"><span data-translate="add-room"></span></span></li>
+                  <li><span data-icon="sound"><span data-translate="add-sound"></span></span></li>
+                </div>
+              </ul>
+            </li>
+            <li>
+              <span data-translate="tools-menu"></span>
+              <ul>
+                <div>
+                  <li><span data-icon="wrench"><span data-translate="game-options"></span></span></li>
+                  <li><span data-icon="blank"><span data-translate="global-variables"></span></span></li>
+                  <li><span data-icon="blank"><span data-translate="global-structures"></span></span></li>
+                  <li><span data-icon="blank"><span data-translate="global-arrays"></span></span></li>
+                </div>
+                <div>
+                  <li><span data-icon="wrench"><span data-translate="options"></span></span></li>
+                </div>
+                <div>
+                  <li><span data-icon="folder"><span data-translate="open-compile-folder"></span></span></li>
+                  <li><span data-icon="folder"><span data-translate="open-plugins-folder"></span></span></li>
+                </div>
+                <div>
+                  <li><span data-icon="blank"><span data-translate="action-editor"></span></span></li>
+                  <li><span data-icon="blank"><span data-translate="font-viewer"></span></span></li>
+                  <li><span data-icon="blank"><span data-translate="launch-emulator"></span></span></li>
+                </div>
+                <div>
+                  <li data-role="test"><span data-icon="help"><span data-translate="test"></span></span></li>
+                </div>
+              </ul>
+            </li>
+            <li>
+              <span data-role="help-menu" data-translate="help-menu"></span>
+              <ul>
+                <div>
+                  <li data-link="website"><span data-icon="globe"><span>Website</span></span></li>
+                  <li data-link="forum"><span data-icon="globe"><span>Forum</span></span></li>
+                  <li data-link="tutorials"><span data-icon="globe"><span>Tutorials</span></span></li>
+                </div>
+                <div>
+                  <li data-role="about"><span data-icon="info"><span data-translate="about"></span></span></li>
+                </div>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <aside>
+        <!-- Resources Tree -->
+      </aside>
+      <div class="ui ui-panel">
+      </div>
+    </main>
+    <!-- Status Bar -->
+  </body>
 </html>

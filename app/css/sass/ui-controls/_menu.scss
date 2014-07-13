@@ -12,10 +12,31 @@
     left: 0;
     width: 216px;
     z-index: 400;
+    background-color: $obvious-color;
     border: 2px solid $obvious-color;
+    border-radius: $radius;
+    border-top-left-radius: 0;
   }
   ul li {
     float: none;
+  }
+  ul > div {
+    border-top: 1px solid $obvious-color;
+    border-bottom: 1px solid $obvious-color;
+  }
+  ul > div:first-child {
+    border-top: 0;
+  }
+  ul > div:last-child {
+    border-bottom: 0;
+  }
+  ul li:first-child {
+    border-top-left-radius: $radius;
+    border-top-right-radius: $radius;
+  }
+  ul li:last-child {
+    border-bottom-left-radius: $radius;
+    border-bottom-right-radius: $radius;
   }
   li {
     float: left;
@@ -30,11 +51,9 @@
       }
     }
   }
-  li span.fa {
-    margin-left: $padding / 2;
-    margin-right: $padding * 1.5;
-    vertical-align: -1.2;
-    font-size: $font-size * 1.2;
+  li.separator {
+    height: 2px;
+    background-color: $obvious-color;
   }
   li:hover > ul { 
     visibility: visible;
@@ -42,6 +61,8 @@
   li:hover {
     position: relative;
     background-color: $obvious-color;
+  }
+  > li {
     border-top-left-radius: $radius;
     border-top-right-radius: $radius;
   }

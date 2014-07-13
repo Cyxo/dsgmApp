@@ -1,0 +1,25 @@
+p {
+  margin: ($padding * 2) 0 ($padding * 2) 0;
+  padding: 0;
+  text-align: justify;
+}
+
+p:first-child {
+  margin-top: 0;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+a {
+  color: $obvious-color;
+}
+
+h1 {
+  padding-top: $padding * 1.5;
+  padding-bottom: $padding * 1.5;
+  font-size: $font-size * 1.25;
+  text-align: center;
+  font-weight: normal;
+}
