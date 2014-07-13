@@ -61,14 +61,14 @@ function ProjectClass() {
 			_self.refreshResourcesList("sounds");
 		}
 		else {
-			console.log("Trying to remove unrecognised resource.");
+			return false;
 		}
+		return true;
 	}
 
 	this.load = function(project) {
-		var tempProject = JSON.parse(project);
+		var tempProject = $.parseJSON(project);
 		for(var property in tempProject) _self[property] = tempProject[property];
-		_self.refreshResourcesList();
 	}
 
 	this.save = function() {
