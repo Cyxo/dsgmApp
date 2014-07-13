@@ -1,8 +1,9 @@
-function CommandClass() {
+function SimulationHandler() {
 
   var _self = this;
+  _self.name = "simulation";
 
-  this.handleSimulation = function(command, arguments, callback) {
+  _self.handle = function(command, arguments, callback) {
     switch(command) {
       case "link":
         window.open(arguments[0]);
@@ -25,15 +26,50 @@ function CommandClass() {
     }
   }
 
-  this.handleBrowser = function(command, arguments, callback) {
+}
+
+function DesktopHandler() {
+
+  var _self = this;
+  _self.name = "desktop";
+
+  _self.handle = function(command, arguments, callback) {
+    //Write Request
+    $("#CommandRequestCommand").html(command);
+    $("#CommandRequestArguments").empty();
+    $.each(arguments, function(index, argument) {
+      $("#CommandRequestArguments").append($("<li>" + argument + "</li>"));
+    });
+    //Bind
+    $("#CommandResponse").unbind("click");
+    $("#CommandResponse").bind("click", function() {
+      callback($("#CommandResponse").html());
+    });
+    //Simulate
+    $("#CommandResponse").html("response");
+    $("#CommandResponse").click();
+  }
+
+}
+
+function CommandClass(handlerName) {
+
+  var _self = this;
+  _self.handler = null;
+  _self._handlers = [new SimulationHandler(), new DesktopHandler()];
+
+  _self.changeHandler = function(name) {
+    _self.handler = $.grep(_self._handlers, function(handler) {
+      return (handler.name == name);
+    })[0];
 
   }
 
-  this.handleDesktop = function(command, arguments, callback) {
-
+  _self.request = function(command, arguments, callback) {
+    _self.handler.handle(command, arguments, callback);
   }
 
   //Handler (function reference)
-  _self.request = _self.handleSimulation;
+  _self.changeHandler(handlerName);
 
 }

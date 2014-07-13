@@ -14,6 +14,7 @@
     <script src="js/async.js"></script>
     <!-- JavaScript: Classes -->
     <script src="js/classes/DSGMClass.js"></script>
+    <script src="js/classes/CommandClass.js"></script>
     <script src="js/classes/OptionsClass.js"></script>
     <script src="js/classes/LanguageClass.js"></script>
     <script src="js/classes/UIClass.js"></script>
@@ -21,7 +22,6 @@
     <script src="js/classes/StatusBarClass.js"></script>
     <script src="js/classes/TreeClass.js"></script>
     <script src="js/classes/LinksClass.js"></script>
-    <script src="js/classes/CommandClass.js"></script>
     <script src="js/classes/ButtonClass.js"></script>
     <!-- JavaScript: Initialise -->
     <script>
@@ -31,8 +31,9 @@
     </script>
   </head>
   <body class="ui">
-    <div id="Command">
-      <div id="CommandRequest"></div>
+    <div id="Command" class="hidden">
+      <div id="CommandRequestCommand"></div>
+      <ul id="CommandRequestArguments"></ul>
       <div id="CommandResponse"></div>
     </div>
     <div id="Loading">
@@ -204,4 +205,4 @@
     </main>
     <!-- Status Bar -->
   </body>
-</html>
+</html>git

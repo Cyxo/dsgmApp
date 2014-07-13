@@ -4,7 +4,7 @@ function DSGMClass() {
 
   async.waterfall([
     function(next) {
-      _self.Command = new CommandClass();
+      _self.Command = new CommandClass("browser");
       _self.Options = new OptionsClass(next);
     },
     function(next) {
