@@ -1,18 +1,20 @@
 <!DOCTYPE>
 <html>
-	<head>
-		<title>DS Game Maker</title>
-		<!-- Style -->
-		<link rel="stylesheet" href="css/dsgm.css">
-		<!-- JavaScript: jQuery and jQuery Plug-ins-->
-		<script src="js/jquery-2.1.0.min.js"></script>
-		<script src="js/jquery-plugins/base64.js"></script>
-		<script src="js/jquery-plugins/helloWorld.js"></script>
-		<!-- JavaScript: async -->
-		<script src="js/async.js"></script>
-		<!-- JavaScript: Classes -->
-		<script src="js/classes/DSGMClass.js"></script>
-		<script src="js/classes/OptionsClass.js"></script>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <title>DS Game Maker</title>
+    <!-- Style -->
+    <link rel="stylesheet" href="css/dsgm.css">
+    <!-- JavaScript: jQuery and jQuery Plug-ins-->
+    <script src="js/jquery-2.1.0.min.js"></script>
+    <script src="js/jquery-plugins/base64.js"></script>
+    <script src="js/jquery-plugins/helloWorld.js"></script>
+    <!-- JavaScript: async -->
+    <script src="js/async.js"></script>
+    <!-- JavaScript: Classes -->
+    <script src="js/classes/DSGMClass.js"></script>
+    <script src="js/classes/OptionsClass.js"></script>
     <script src="js/classes/LanguageClass.js"></script>
     <script src="js/classes/UIClass.js"></script>
     <script src="js/classes/DialogueClass.js"></script>
@@ -21,14 +23,14 @@
     <script src="js/classes/LinksClass.js"></script>
     <script src="js/classes/ExtLinkClass.js"></script>
     <script src="js/classes/ButtonClass.js"></script>
-		<!-- JavaScript: Initialise -->
-		<script>
-			jQuery(window).load(function () {
-			  DSGM = new DSGMClass();
-			});
-		</script>
-	</head>
-	<body class="ui">
+    <!-- JavaScript: Initialise -->
+    <script>
+      jQuery(window).load(function () {
+        DSGM = new DSGMClass();
+      });
+    </script>
+  </head>
+  <body class="ui">
     <div id="Loading">
       <div>
         <p><span class="fa fa-refresh fa-spin"></span></p>
@@ -82,19 +84,19 @@
               </p>
             </div>
             <div class="ui ui-panel" data-translate="extra-properties" data-no-translate>
-               <p>
-                 (Extra Properties Tab)
-               </p>
-             </div>
+              <p>
+              (Extra Properties Tab)
+              </p>
+            </div>
           </div>
         </aside>
         <div class="ui-panel">
         </div>
       </div>
     </div>
-		<header class="ui">
-			<div class="ui ui-orb" id="Orb">
-				<div>
+    <header class="ui">
+      <div class="ui ui-orb" id="Orb">
+        <div>
           <img src="img/orb.png" alt="Orb">
           <div>
             <ul>
@@ -103,15 +105,15 @@
             </ul>
           </div>
         </div>
-			</div>
-			<div>
-				<nav>
-					<ul data-role="main-menu" class="ui ui-menu">
-						<li>
-							<span data-translate="project-menu"></span>
-							<ul>
-								<li><span data-icon="page"><span data-translate="new"></span></span></li>
-								<li><span data-icon="folder"><span data-translate="open"></span></span></li>
+      </div>
+      <div>
+        <nav>
+          <ul data-role="main-menu" class="ui ui-menu">
+            <li>
+              <span data-translate="project-menu"></span>
+              <ul>
+                <li><span data-icon="page"><span data-translate="new"></span></span></li>
+                <li><span data-icon="folder"><span data-translate="open"></span></span></li>
                 <li><span data-icon="blank"><span data-translate="open-last-project"></span></span></li>
                 <li class="separator"></li>
                 <li><span data-icon="play"><span data-translate="test"></span></span></li>
@@ -119,13 +121,13 @@
                 <li class="separator"></li>
                 <li><span data-icon="disk"><span data-translate="save"></span></span></li>
                 <li><span data-icon="blank"><span data-translate="save-as"></span></span></li>
-							</ul>
-						</li>
-						<li>
-							<span data-translate="resources-menu"></span>
-							<ul>
-								<li><span data-icon="copy"><span data-translate="copy"></span></span></li>
-								<li><span data-icon="no"><span data-translate="delete"></span></span></li>
+              </ul>
+            </li>
+            <li>
+              <span data-translate="resources-menu"></span>
+              <ul>
+                <li><span data-icon="copy"><span data-translate="copy"></span></span></li>
+                <li><span data-icon="no"><span data-translate="delete"></span></span></li>
                 <li class="separator"></li>
                 <li><span data-icon="search"><span data-translate="find-resource"></span></span></li>
                 <li class="separator"></li>
@@ -134,13 +136,13 @@
                 <li><span data-icon="object"><span data-translate="add-object"></span></span></li>
                 <li><span data-icon="room"><span data-translate="add-room"></span></span></li>
                 <li><span data-icon="sound"><span data-translate="add-sound"></span></span></li>
-							</ul>
-						</li>
-						<li>
-							<span data-translate="tools-menu"></span>
-							<ul>
-								<li><span data-icon="wrench"><span data-translate="game-options"></span></span></li>
-								<li><span data-icon="blank"><span data-translate="global-variables"></span></span></li>
+              </ul>
+            </li>
+            <li>
+              <span data-translate="tools-menu"></span>
+              <ul>
+                <li><span data-icon="wrench"><span data-translate="game-options"></span></span></li>
+                <li><span data-icon="blank"><span data-translate="global-variables"></span></span></li>
                 <li><span data-icon="blank"><span data-translate="global-structures"></span></span></li>
                 <li><span data-icon="blank"><span data-translate="global-arrays"></span></span></li>
                 <li class="separator"></li>
@@ -154,28 +156,29 @@
                 <li><span data-icon="blank"><span data-translate="launch-emulator"></span></span></li>
                 <li class="separator"></li>
                 <li data-role="test"><span data-icon="help"><span data-translate="test"></span></span></li>
-							</ul>
-						</li>
-						<li>
-							<span data-role="help-menu" data-translate="help-menu"></span>
-							<ul>
+              </ul>
+            </li>
+            <li>
+              <span data-role="help-menu" data-translate="help-menu"></span>
+              <ul>
                 <li data-link-name="website"><span data-icon="globe"><span>Website</span></span></li>
                 <li data-link-name="forum"><span data-icon="globe"><span>Forum</span></span></li>
                 <li data-link-name="tutorials"><span data-icon="globe"><span>Tutorials</span></span></li>
                 <li class="separator"></li>
                 <li data-role="about"><span data-icon="info"><span data-translate="about"></span></span></li>
-							</ul>
-						</li>
-					</ul>
-				</nav>
-			</div>
-		</header>
-		<main>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main>
       <aside>
+        <!-- Resources Tree -->
       </aside>
       <div class="ui ui-panel">
       </div>
-		</main>
-		<!-- Status Bar -->
-	</body>
+    </main>
+    <!-- Status Bar -->
+  </body>
 </html>
