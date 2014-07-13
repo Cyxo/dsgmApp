@@ -1,4 +1,4 @@
-.ui-status {
+.ui-status-bar {
   clear: both;
   position: absolute;
   width: 100%;
@@ -7,4 +7,7 @@
   height: $status-size;
   line-height: $status-size;
   background-color: $foreground-color-2;
+  .fa {
+    vertical-align: -1;
+  }
 }

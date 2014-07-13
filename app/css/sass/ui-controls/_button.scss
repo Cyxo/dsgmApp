@@ -1,0 +1,22 @@
+button {
+  margin-right: $padding * 2;
+  padding: $padding;
+  padding-left: $padding * 2;
+  padding-right: $padding * 2;
+  background-color: $background-color;
+  font-family: $font-family;
+  font-size: $font-size;
+  min-width: 48px;
+  color: $foreground-color;
+  border-radius: $radius;
+  border: 2px solid $foreground-color-2;
+  box-shadow: 0 0 2px $background-color;
+}
+
+button:hover {
+  box-shadow: 0 0 4px $obvious-color;
+}
+
+button:last-child {
+  margin-right: 0;
+}

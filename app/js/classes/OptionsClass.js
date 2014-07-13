@@ -5,7 +5,7 @@ function OptionsClass(callback) {
 
   //Load
   this.load = function(callback) {
-    $.javaLink.request(
+    DSGM.ExtLink.request(
       "readFile",
       _options_path,
       function(response) {
@@ -20,7 +20,7 @@ function OptionsClass(callback) {
 
   //Save
   this.save = function(callback) {
-    $.javaLink.request(
+    DSGM.ExtLink.request(
       "writeFile",
       JSON.stringify(_options),
       callback

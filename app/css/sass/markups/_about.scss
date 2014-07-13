@@ -1,0 +1,10 @@
+*[data-role=markup-about] {
+  > div {
+    padding: $padding * 2;
+  }
+  > div.logo {
+    > img {
+      width: 50%;
+    }
+  }
+}

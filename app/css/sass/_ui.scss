@@ -1,13 +1,18 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
 .ui {
   font-family: $font-family;
   font-size: $font-size;
   background-color: $background-color;
   color: $foreground-color;
   cursor: default;
+}
+
+.hidden {
+  display: none;
+}
+
+span.fa {
+  margin-left: $padding / 2;
+  margin-right: $padding * 1.5;
+  font-size: $font-size * 1.2;
+  vertical-align: -1.2;
 }

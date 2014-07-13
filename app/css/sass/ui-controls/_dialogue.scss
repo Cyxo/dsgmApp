@@ -1,0 +1,50 @@
+#Dialogue {
+  header {
+    background-color: $obvious-color;
+  }
+  > div {
+    display: none;
+    position: absolute;
+    top: 50%;
+    bottom: 50%;
+    left: 50%;
+    right: 50%;
+    > div.contents {
+      //padding: $padding;
+      //padding-left: $padding * 2;
+      //padding-right: $padding * 2;
+      background-color: $background-color;
+      border-top-left-radius: $radius;
+      border-top-right-radius: $radius;
+      border: 2px solid $obvious-color;
+      border-bottom: 0;
+    }
+    > div.contents-line {
+      padding-left: $padding * 4;
+      padding-right: $padding * 4;
+      font-size: $font-size * 1.25;
+      span.fa {
+        font-size: $font-size * 2;
+        vertical-align: middle;
+      }
+    }
+    > div.buttons {
+      height: 54px;
+      background-color: $obvious-color;
+      border-bottom-left-radius: $radius;
+      border-bottom-right-radius: $radius;
+      border: 2px solid $obvious-color;
+      border-top: 0;
+      padding: $padding * 2;
+      button {
+        display: block;
+        float: left;
+        height: 100%;
+        margin-right: $padding * 2;
+      }
+      button:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}

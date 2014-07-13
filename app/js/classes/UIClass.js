@@ -1,76 +1,153 @@
 function UIClass(callback) {
 
   var _self = this;
-  var _animation_speed = "medium";
+  var _animation_speed = "fast";
+
+  var _icon_colors = {
+    "white": "white",
+    "beige": "#EABE5C",
+    "lightgray": "rgb(192, 192, 192)",
+    "darkgray": "#999999",
+    "blue": "#00B6FF",
+    "brown": "#AE5900",
+    "green": "#26D000",
+    "red": "rgb(218, 0, 0)",
+    "orange": "#FFC300",
+    "pink": "#FF00FF",
+    "teal": "00C278"
+  };
+
   var _icons = [
-    //Unknown
     {
-      "name": "unknown",
+      "name": "blank",
+      "classes": "fa fa-fw",
+      "color": _icon_colors.white
+    },
+    {
+      "name": "help",
       "classes": "fa fa-fw fa-question",
-      "color": "black"
+      "color": _icon_colors.blue
+    },
+    {
+      "name": "loading",
+      "classes": "fa fa-refresh fa-spin",
+      "color": _icon_colors.blue
+    },
+    {
+      "name": "alert",
+      "classes": "fa fa-exclamation-triangle",
+      "color": _icon_colors.orange
     },
     //Menu
     {
       "name": "page",
       "classes": "fa fa-fw fa-file-o",
-      "color": "#EFEFEF"
+      "color": _icon_colors.lightgray
     },
     {
       "name": "folder",
       "classes": "fa fa-fw fa-folder-o",
-      "color": "#EABE5C"
+      "color": _icon_colors.beige
     },
     {
       "name": "disk",
       "classes": "fa fa-fw fa-floppy-o",
-      "color": "skyblue"
+      "color": _icon_colors.blue
     },
     {
       "name": "cut",
       "classes": "fa fa-fw fa-scissors",
-      "color": "#999999"
+      "color": _icon_colors.darkgray
     },
     {
       "name": "copy",
       "classes": "fa fa-fw fa-files-o",
-      "color": "#EFEFEF"
+      "color": _icon_colors.lightgray
     },
     {
       "name": "paste",
       "classes": "fa fa-fw fa-clipboard",
-      "color": "rgb(158, 125, 0)"
+      "color": _icon_colors.brown
+    },
+    {
+      "name": "play",
+      "classes": "fa fa-fw fa-play",
+      "color": _icon_colors.green
+    },
+    {
+      "name": "play-save",
+      "classes": "fa fa-fw fa-play",
+      "color": _icon_colors.green,
+      "stack_classes": "fa fa-stack fa-floppy-o",
+      "stack_color": _icon_colors.white
+    },
+    {
+      "name": "search",
+      "classes": "fa fa-fw fa-search",
+      "color": _icon_colors.lightgray
+    },
+    {
+      "name": "globe",
+      "classes": "fa fa-fw fa-globe",
+      "color": _icon_colors.green
+    },
+    {
+      "name": "info",
+      "classes": "fa fa-fw fa-info",
+      "color": _icon_colors.blue
+    },
+    {
+      "name": "wrench",
+      "classes": "fa fa-fw fa-wrench",
+      "color": _icon_colors.lightgray
     },
     //Resources
     {
       "name": "sprite",
       "classes": "fa fa-fw fa-dribbble",
-      "color": "#FFC300"
+      "color": _icon_colors.orange
+    },
+    {
+      "name": "background",
+      "classes": "fa fa-fw fa-picture-o",
+      "color": _icon_colors.pink
     },
     {
       "name": "object",
       "classes": "fa fa-fw fa-cube",
-      "color": "#0010FF"
+      "color": _icon_colors.blue
     },
     {
       "name": "room",
       "classes": "fa fa-fw fa-square-o",
-      "color": "#577DA2"
-    },
-    //More
-    {
-      "name": "globe",
-      "classes": "fa fa-fw fa-globe",
-      "color": "rgb(32, 255, 32)"
+      "color": _icon_colors.lightgray
     },
     {
-      "name": "info",
-      "classes": "fa fa-fw fa-info",
-      "color": "skyblue"
+      "name": "sound",
+      "classes": "fa fa-fw fa-volume-up",
+      "color": _icon_colors.teal
+    },
+    //Misc
+    {
+      "name": "heart",
+      "classes": "fa fa-fw fa-heart",
+      "color": _icon_colors.red
+    },
+    //Buttons
+    {
+      "name": "yes",
+      "classes": "fa fa-fw fa-check",
+      "color": _icon_colors.green
+    },
+    {
+      "name": "no",
+      "classes": "fa fa-fw fa-ban",
+      "color": _icon_colors.red
     }
   ];
 
-  //Blocker (major UI progress)
-  this.block = function(firstTime, callback, waitExtra) {
+  //Loading (major UI progress)
+  this.load = function(firstTime, callback, waitExtra) {
     if (waitExtra == undefined) waitExtra = false;
     if (firstTime) {
       callback();
@@ -79,82 +156,99 @@ function UIClass(callback) {
     if (waitExtra) {
       setTimeout(
         function() {
-          $("#Blocker").fadeToggle(callback);
+          $("#Loading").fadeToggle(callback);
         },
         500
       );
     } else {
-      $("#Blocker").fadeToggle(callback);
+      $("#Loading").fadeToggle(callback);
     }
   }
 
-  //Update Status Bar
-  this.updateStatusBar = function(status) {
-    $("#StatusBar").html(status);
+  //Working (minor UI progress)
+  this.startWork = function(text, callback) {
+    _self.statusBar.setWorking(text);
+    $("#Working").fadeIn(callback);
+  }
+  this.endWork = function(callback) {
+    _self.statusBar.clear();
+    $("#Working").fadeOut(callback);
   }
 
-  //Selection Helper
-  this.selectify = function(selector, callback, clickMode, index) {
-    if (clickMode == undefined) clickMode = true;
-    if (clickMode) {
-      $(selector).click(function() {
-        $(selector).removeClass("selected");
-        $(this).addClass("selected");
-        callback($(this));
-      });
-    } else {
-      $(selector).removeClass("selected");
-      var t = $($(selector)[index]);
-      t.addClass("selected");
-      callback(t);
-    }
+  //Slide Toggle
+  this.slideToggle = function(element) {
+    element.slideToggle(_self.animation_speed);
   }
 
+  //Icons
   this.iconify = function(element) {
+    if (element.attr("data-icon") == undefined) return;
     var icon = $.grep(_icons, function(iconElement) {
       return (iconElement.name == element.attr("data-icon"));
     })[0];
     if (icon == undefined) icon = _icons[0];
-    element.html("<span class=\"" + icon.classes + "\" style=\"color: " + icon.color + ";\"></span>" + element.html());
+    var html = "<span class=\"" + icon.classes + "\" style=\"color: " + icon.color + ";\">";
+    html += "</span>";
+    // if (icon.stack_classes) {
+    //   html += "<span class=\"" + icon.stack_classes + "\" style=\"color: " + icon.stack_color + ";\"></span>"
+    // }
+    element.html(html + element.html());
   }
-
-  //Icons
   $("*[data-icon]").each(function(index, element) {
     element = $(element);
     _self.iconify(element);
   });
 
-  //Tree
-  this.selectify(".ui-tree li > span", function(thisSpan) {
-    if (thisSpan.parent().parent().attr("data-role") == "resources-list") {
-      thisSpan.siblings("ul").slideToggle(_animation_speed);
-    }
-  });
-
-  //Resources Tree
-  $("*[data-role=resources-list] li > span").click(function () {
-    var thisSpan = $(this);
-    var thisUl = thisSpan.parent().parent();
-    if (thisUl.attr("data-resource-type") == undefined) return;
-    DSGM.loadResource($(thisSpan.children()[1]).html(), thisUl.attr("data-resource-type"));
-  });
-
-  //Tabs
-  this.selectifyTab = function(index) {
-    _self.selectify(
-      ".ui-tabs .ui-panel",
-      function(tabElement) {
-        tabElement.removeClass("no-corner");
-        if (index == 0) tabElement.addClass("no-corner");
-      },
-      false,
-      index
-    );
+  //Markup
+  this.getMarkup = function(identifier) {
+    var newElement = $($("*[data-role=markup-" + identifier + "]")[0]).clone();
+    DSGM.Links.bindLinks(newElement);
+    return newElement;
   }
-  _self.selectifyTab(0);
-  _self.selectify(".ui-tabs .ui-tabs-changer div", function(tabChangerElement) {
-    _self.selectifyTab(tabChangerElement.index());
-  });
+  this.switchMainMarkup = function(identifier) {
+    $("main > div").empty();
+    var newElement = _self.getMarkup(identifier);
+    newElement.appendTo($("main > div"));
+    return newElement;
+  }
+
+  //Make Resources Tree
+  this.makeResourcesTree = function() {
+    _self.resourcesTree = new TreeClass("resources-tree");
+    $("main > aside").append(_self.resourcesTree.getElement());
+
+    var resourceTypesList = ["Sprite", "Background", "Object", "Room", "Sound"];
+
+    $.each(resourceTypesList, function(index, resourceTypeName) {
+      var resourceItem = new TreeItemClass(resourceTypeName + "s", "folder");
+      _self.resourcesTree.addItem(resourceItem);
+      for (var i = 1; i <= 2; i++) {
+        var resourceName = resourceTypeName + "_" + i.toString();
+        var resourceSubItem = new TreeItemClass(resourceName, resourceTypeName.toLowerCase());
+        resourceSubItem.setAttr("resource-name", resourceName);
+        resourceSubItem.setAttr("resource-type", resourceTypeName);
+        resourceSubItem.setHandler(function(whichItem) {
+          DSGM.loadResourceByNameAndType(
+            whichItem.getAttr("resource-name"),
+            whichItem.getAttr("resource-type")
+          );
+        });
+        resourceItem.addItem(resourceSubItem);
+      }
+    });
+
+  }
+
+  //Make Dialogue Singleton
+  this.makeDialogue = function() {
+    _self.Dialogue = new DialogueClass();
+  }
+
+  //Make Status Bar
+  this.makeStatusBar = function() {
+    _self.statusBar = new StatusBarClass();
+    $(document.body).append(_self.statusBar.getElement());
+  }
 
   //(Menu) Help > Generic Links
   $("[data-role=help-menu]").siblings("ul").children().each(function(index, li) {
@@ -165,10 +259,19 @@ function UIClass(callback) {
     });
   });
 
-  //(Menu) Help > About
-  //$("[data-role=about]")
+  //(Menu) Tools > Test
+  $("[data-role=test]").click(function() {
+    var testDialogue = new DialogueClass();
+    testDialogue.askYesNoCancel("You suck?");
+  });
 
-  //Callback
+  //(Menu) Help > About
+  $("[data-role=about]").click(function() {
+    var markup = _self.getMarkup("about");
+    var aboutDialogue = new DialogueClass(markup, null, [], 450, 450, true);
+    aboutDialogue.show();
+  });
+
   callback();
 
 }

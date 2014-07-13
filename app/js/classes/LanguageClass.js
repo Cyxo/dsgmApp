@@ -9,13 +9,24 @@ function LanguageClass(language, callback) {
   //Translate
   this.getTerm = function(term) {
     var t = _language_pairs[term];
-    return ((t !== undefined) ? t : term.substring(0, 1).toUpperCase() + term.substring(1));
+    if (t != undefined) {
+      return t;
+    } else {
+      var t = term.substring(0, 1).toUpperCase() + term.substring(1);
+      var i = 0;
+      //Quick Hack
+      while (i < 5) {
+        t = t.replace("-", " ");
+        i++;
+      }
+      return t;
+    }
   }
 
   //Construct
   async.waterfall([
     function(next) {
-      $.javaLink.request(
+      DSGM.ExtLink.request(
         "readFile",
         _languages_path + "base.json",
         function(response) {
@@ -25,7 +36,7 @@ function LanguageClass(language, callback) {
       );
     },
     function(next) {
-      $.javaLink.request(
+      DSGM.ExtLink.request(
         "readFile",
         _languages_path + language + ".json",
         function(response) {
@@ -42,10 +53,10 @@ function LanguageClass(language, callback) {
         _language_pairs[term] = value;
       });
       //Perform Translation
-      $("*[data-role]").each(function(index, element) {
+      $("*[data-translate]").each(function(index, element) {
         element = $(element);
         if(element.attr("data-no-translate") == undefined){
-          element.html(_self.getTerm(element.attr("data-role")));
+          element.html(_self.getTerm(element.attr("data-translate")));
         }
       });
       next();

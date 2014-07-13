@@ -4,6 +4,7 @@ function DSGMClass() {
 
   async.waterfall([
     function(next) {
+      _self.ExtLink = new ExtLinkClass();
       _self.Options = new OptionsClass(next);
     },
     function(next) {
@@ -13,39 +14,52 @@ function DSGMClass() {
       _self.UI = new UIClass(next);
     },
     function(next) {
-      _self.Links = new LinksClass(next);
-    },
-    function(next) {
+      _self.Links = new LinksClass();
       //Block
-      _self.UI.block(true, next);
+      _self.UI.load(true, next);
     },
     function(next) {
-      //Iconification test
-      $("#Resource > div").html("<span data-icon=\"folder\"></span>");
-      _self.UI.iconify($($("#Resource > div > span")[0]));
+      _self.UI.makeResourcesTree();
+      _self.UI.makeDialogue();
+      _self.UI.makeStatusBar();
       next();
     },
     function(next) {
       //Unblock
-      _self.UI.block(false, next, true);
+      _self.UI.load(false, next, true);
     }
   ]);
 
-  //javaLink Test
-  $("#SayHiButton").click(function() {
-    $.javaLink.request(
-      "saySomething",
-      "Hello, World",
-      function(data) {
-        console.log(data)
-      }
-    );
-  });
-
   //Load Resource
-  this.loadResource = function(name, rType) {
-    console.log("name: " + name + ", type: " + rType);
-    DSGM.UI.updateStatusBar("load a resource");
+  this.loadResourceByNameAndType = function(name, rType) {
+    async.waterfall([
+      function(next) {
+        _self.UI.startWork("Loading Resource", next);
+      },
+      function(next) {
+        var markupElement = _self.UI.switchMainMarkup("resource");
+        var addSpriteButton = new ButtonClass("Add a Sprite", "sprite");
+        $("> div", markupElement).append(addSpriteButton.getElement());
+        addSpriteButton.setHandler(function(whichButton) {
+          _self.UI.resourcesTree.items[0].addItem(new TreeItemClass("A New Sprite", "sprite"));
+        });
+        //Simulate computation
+        setTimeout(next, 1000);
+      },
+      function(next) {
+        _self.UI.endWork(next);
+      },
+      function(next) {
+        _self.UI.statusBar.setAlert("Resource Error", function() {
+          _self.UI.Dialogue.showAlert(
+            "There was a problem with this resource. Sorry.",
+            function() {
+              _self.UI.statusBar.clear();
+            }
+            );
+        });
+      }
+    ]);
   }
 
 }
