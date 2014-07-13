@@ -56,14 +56,14 @@ function DSGM_Project() {
 	
 	this.refreshResourcesList = function(resourceType) {
 		if(!resourceType || resourceType == "sprites") {
-			$('[data-role="sprites-list"]')).empty();
+			$('[data-role="sprites-list"]').empty();
 			$.each(project.sprites, function(index, sprite) {
 				$('[data-role="sprites-list"]').append('<li><span data-icon="sprite"><span>' + sprite.name + "</span></span></li>");
 			});
 		}
 		
 		if(!resourceType || resourceType == "backgrounds") {
-			$('[data-role="backgrounds-list"]')).empty();
+			$('[data-role="backgrounds-list"]').empty();
 			$.each(project.backgrounds, function(index, background) {
 				$('[data-role="backgrounds-list"]').append('<li><span data-icon="background"><span>' + background.name + "</span></span></li>");
 			});
