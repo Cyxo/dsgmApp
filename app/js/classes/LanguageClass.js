@@ -1,6 +1,6 @@
 function LanguageClass(language, callback) {
 
-  var _languages_path = "options/languages/";
+  var _languages_path = "store/languages/";
   var _language_pairs;
   var _base_object;
   var _language_object;

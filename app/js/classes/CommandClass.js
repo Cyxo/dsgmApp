@@ -9,16 +9,16 @@ function SimulationHandler() {
         window.open(arguments[0]);
       case "readFile":
         switch(arguments[0]) {
-          case "options/options.json":
+          case "store/options.json":
             callback('{"language": "fr"}');
             break;
-          case "options/languages/base.json":
+          case "store/languages/base.json":
             callback('{"name": "Base", "data": {"project-menu": "Project", "resources-menu": "Resources", "tools-menu": "Tools", "help-menu": "Help"}}');
             break;
-          case "options/languages/en.json":
+          case "store/languages/en.json":
             callback('{"name": "English", "data": {}}');
             break;
-          case "options/languages/fr.json":
+          case "store/languages/fr.json":
             callback('{"name": "French", "data": {"yes": "Oui", "no": "Non", "ok": "OK"}}');
             break;
         }

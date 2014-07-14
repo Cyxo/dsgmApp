@@ -1,7 +1,7 @@
 function OptionsClass(callback) {
 
   var _options;
-  var _options_path = "options/options.json";
+  var _options_path = "store/options.json";
 
   //Load
   this.load = function(callback) {
