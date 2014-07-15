@@ -78,6 +78,10 @@ public class DSGameMaker extends Application {
                 arguments[i] = argumentEls.item(i).getAttributes().getNamedItem("data-argument").getNodeValue();
               }
               String response = handler.request(command, arguments);
+              response = response.replace("'", "\\'");
+              response = response.replace(System.getProperty("line.separator"), "\\n");
+              response = response.replace("\n", "\\n");
+              response = response.replace("\r", "\\n");
               theEngine.executeScript("DSGM.Command.respond('" + response + "');");
             }
           };

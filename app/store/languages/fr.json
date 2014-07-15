@@ -1,4 +1,7 @@
 {
   "name": "French",
-  "data": {}
+  "data": {
+    "yes": "Oui",
+    "no": "Non"
+  }
 }
