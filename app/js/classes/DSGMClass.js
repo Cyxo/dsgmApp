@@ -43,19 +43,13 @@ function DSGMClass(commandHandler) {
 
   //Load Resource
   this.loadResourceByNameAndType = function(name, type) {
-    async.waterfall([
-      function(next) {
-        _self.UI.startWork("Loading Resource", next);
-      },
-      function(next) {
-        _self.UI.switchMainMarkup("resource");
-        //Simulate computation
-        setTimeout(next, 1000);
-      },
-      function(next) {
-        _self.UI.endWork(next);
-      }
-    ]);
+    var resource = DSGM.currentProject.getResourceByNameAndType(name, type);
+    console.log(resource);
+    var markup = _self.UI.switchMainMarkup("resource-" + resource.type);
+    var firstTabChanger = $($(".ui-tabs .ui-tabs-changer div", markup)[0]);
+    $("span[data-role=resource-name]", firstTabChanger).html(resource.name);
+    var firstTab = $($(".ui-tabs .ui-panel", markup)[0]);
+    firstTab.html("(" + resource.name + " Properties)");
   }
 
 }

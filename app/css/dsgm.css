@@ -1812,13 +1812,13 @@ button:last-child {
       #Dialogue > div > div > div.buttons button:last-child {
         margin-right: 0; }
 
-*[data-role=markup-resource] > * {
+.markup-resource > * {
   height: 100%;
   overflow: auto; }
-*[data-role=markup-resource] > aside {
+.markup-resource > aside {
   float: left !important;
   width: 200px !important; }
-*[data-role=markup-resource] > div {
+.markup-resource > div {
   margin-left: 204px;
   background-color: #606060;
   border-radius: 4px; }
