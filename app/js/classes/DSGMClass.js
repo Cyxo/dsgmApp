@@ -20,18 +20,19 @@ function DSGMClass(commandHandler) {
       _self.UI.load(true, next);
     },
     function(next) {
+      //Make UI Controls
       _self.UI.makeResourcesTree();
       _self.UI.makeDialogue();
       _self.UI.makeStatusBar();
-      _self.Links.bindLinks(document.body);
-
       //New Project
       _self.currentProject = new ProjectClass();
-      _self.currentProject.addResource("Sprite 1", "sprite");
-      _self.currentProject.addResource("Sprite 2", "sprite");
-      _self.currentProject.addResource("Background 1", "background");
-      //console.log(_self.resources);
-
+      //_self.currentProject.addResource("Sprite_1", "sprite");
+      //_self.currentProject.addResource("Sprite_2", "sprite");
+      //_self.currentProject.addResource("Background_1", "background");
+      _self.UI.syncResourcesTree();
+      //Bind Links
+      _self.Links.bindLinks(document.body);
+      //Next
       next();
     },
     function(next) {
@@ -41,18 +42,13 @@ function DSGMClass(commandHandler) {
   ]);
 
   //Load Resource
-  this.loadResourceByNameAndType = function(name, rType) {
+  this.loadResourceByNameAndType = function(name, type) {
     async.waterfall([
       function(next) {
         _self.UI.startWork("Loading Resource", next);
       },
       function(next) {
-        var markupElement = _self.UI.switchMainMarkup("resource");
-        var addSpriteButton = new ButtonClass("Add a Sprite", "sprite");
-        $("> div", markupElement).append(addSpriteButton.getElement());
-        addSpriteButton.setHandler(function(whichButton) {
-          _self.UI.resourcesTree.items[0].addItem(new TreeItemClass("A New Sprite", "sprite"));
-        });
+        _self.UI.switchMainMarkup("resource");
         //Simulate computation
         setTimeout(next, 1000);
       },

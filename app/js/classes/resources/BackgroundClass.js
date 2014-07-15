@@ -1,8 +1,11 @@
 function BackgroundClass(name) {
 
   var _self = this;
-  if (name) _self.name = name;
   _self.type = "background";
+  _self.typeHuman = "Background";
+  _self.typePlural = "Backgrounds";
+  _self.icon = "background";
+
+  if (name) _self.name = name;
 
 }
-BackgroundClass.prototype = new ResourceClass();

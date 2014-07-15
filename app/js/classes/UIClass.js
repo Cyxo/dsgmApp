@@ -204,27 +204,6 @@ function UIClass(callback) {
   this.makeResourcesTree = function() {
     _self.resourcesTree = new TreeClass("resources-tree");
     $("main > aside").append(_self.resourcesTree.getElement());
-
-    var resourceTypesList = ["Sprite", "Background", "Object", "Room", "Sound"];
-
-    $.each(resourceTypesList, function(index, resourceTypeName) {
-      var resourceItem = new TreeItemClass(resourceTypeName + "s", "folder");
-      _self.resourcesTree.addItem(resourceItem);
-      for (var i = 1; i <= 2; i++) {
-        var resourceName = resourceTypeName + "_" + i.toString();
-        var resourceSubItem = new TreeItemClass(resourceName, resourceTypeName.toLowerCase());
-        resourceSubItem.setAttr("resource-name", resourceName);
-        resourceSubItem.setAttr("resource-type", resourceTypeName);
-        resourceSubItem.setHandler(function(whichItem) {
-          DSGM.loadResourceByNameAndType(
-            whichItem.getAttr("resource-name"),
-            whichItem.getAttr("resource-type")
-          );
-        });
-        resourceItem.addItem(resourceSubItem);
-      }
-    });
-
   }
 
   //Make Dialogue Singleton
@@ -237,6 +216,40 @@ function UIClass(callback) {
     _self.statusBar = new StatusBarClass();
     $(document.body).append(_self.statusBar.getElement());
   }
+
+  //Sync Resources Tree
+  this.syncResourcesTree = function() {
+    _self.resourcesTree.emptyItems();
+    $.each(DSGM.currentProject.getStaticResources(), function(index, staticResource) {
+      var newItem = new TreeItemClass(staticResource.typePlural, "folder");
+      _self.resourcesTree.addItem(newItem);
+      var resources = DSGM.currentProject.getResourcesByType(staticResource.type);
+      $.each(resources, function(index, resource) {
+        var newResourceItem = new TreeItemClass(resource.name, staticResource.icon);
+        newResourceItem.setAttr("resource-name", resource.name);
+        newResourceItem.setAttr("resource-type", staticResource.type);
+        newResourceItem.setHandler(function(whichItem) {
+          DSGM.loadResourceByNameAndType(
+            whichItem.getAttr("resource-name"),
+            whichItem.getAttr("resource-type")
+          );
+        });
+        newItem.addItem(newResourceItem);
+      });
+    });
+  }
+
+  //(Menu) Resources > Add Sprite
+  $("[data-role=add-sprite").click(function() {
+    DSGM.currentProject.addResource(null, "sprite");
+    _self.syncResourcesTree();
+  });
+
+  //(Menu) Resources > Add Background
+  $("[data-role=add-background").click(function() {
+    DSGM.currentProject.addResource(null, "background");
+    _self.syncResourcesTree();
+  });
 
   //(Menu) Tools > Test
   $("[data-role=test]").click(function() {

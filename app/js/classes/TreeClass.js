@@ -49,6 +49,10 @@ function TreeClass(role) {
     $("li span", _self._element).removeClass("selected");
   }
 
+  _self.emptyItems = function() {
+    _self.items.length = 0;
+  }
+
 }
 
 function TreeItemClass(text, icon) {
