@@ -5,7 +5,10 @@
     <script src="js/jquery-2.1.0.min.js"></script>
     <script>
 
-      function doThing(command, arguments) {
+      var globalCallback;
+
+      function doThing(command, arguments, callback) {
+        globalCallback = callback;
         var argsHtml = "";
         $.each(arguments, function(index, argument) {
           argsHtml += "<li data-argument=\"" + argument + "\"></li>";
@@ -18,7 +21,13 @@
 
       $(document).ready(function() {
         $("#TestButton").click(function() {
-          doThing("print", ["Hello", "World", "Test"]);
+          doThing(
+            "print",
+            ["Silly", "Billy", "Willy"],
+            function() {
+              $("#TestButton").html("Words were Printed");
+            }
+          );
         });
       });
 
@@ -32,6 +41,6 @@
   <body>
     <ul id="CommandRequestCommand">
     </ul>
-    <button id="TestButton">Test</button>
+    <button id="TestButton">Print Words</button>
   </body>
 </html>

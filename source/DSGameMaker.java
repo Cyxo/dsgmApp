@@ -86,6 +86,7 @@ public class DSGameMaker extends Application {
                 arguments[i] = argumentEls.item(i).getAttributes().getNamedItem("data-argument").getNodeValue();
               }
               request(command, arguments);
+              theEngine.executeScript("globalCallback();");
             }
           };
           ((EventTarget) el).addEventListener("click", listener, false);
