@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Command Test</title>
+    <script src="js/jquery-2.1.0.min.js"></script>
+    <script>
+
+      function doThing(command, arguments) {
+        var argsHtml = "";
+        $.each(arguments, function(index, argument) {
+          argsHtml += "<li data-argument=\"" + argument + "\"></li>";
+        });
+        $("#CommandRequestCommand")
+          .attr("data-request-command", command)
+          .html(argsHtml)
+          .click();
+      }
+
+      $(document).ready(function() {
+        $("#TestButton").click(function() {
+          doThing("print", ["Hello", "World", "Test"]);
+        });
+      });
+
+    </script>
+    <style>
+      #CommandRequestCommand {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <ul id="CommandRequestCommand">
+    </ul>
+    <button id="TestButton">Test</button>
+  </body>
+</html>
