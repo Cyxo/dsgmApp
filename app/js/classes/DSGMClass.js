@@ -24,6 +24,14 @@ function DSGMClass(commandHandler) {
       _self.UI.makeDialogue();
       _self.UI.makeStatusBar();
       _self.Links.bindLinks(document.body);
+
+      //New Project
+      _self.currentProject = new ProjectClass();
+      _self.currentProject.addResource("Sprite 1", "sprite");
+      _self.currentProject.addResource("Sprite 2", "sprite");
+      _self.currentProject.addResource("Background 1", "background");
+      //console.log(_self.resources);
+
       next();
     },
     function(next) {
