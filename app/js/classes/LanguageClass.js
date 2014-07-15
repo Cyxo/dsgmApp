@@ -12,13 +12,15 @@ function LanguageClass(language, callback) {
     if (t != undefined) {
       return t;
     } else {
-      var t = term.substring(0, 1).toUpperCase() + term.substring(1);
-      var i = 0;
-      //Quick Hack
-      while (i < 5) {
-        t = t.replace("-", " ");
-        i++;
-      }
+      var words = $.map(term.split("-"), function(word, index) {
+        return word.substring(0, 1).toUpperCase() + word.substring(1);
+      });
+      var t = "";
+      $.each(words, function(index, word) {
+        t += word + " ";
+      });
+      //Test
+      //t = "";
       return t;
     }
   }
