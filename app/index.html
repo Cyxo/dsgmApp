@@ -14,6 +14,7 @@
     <script src="js/async.js"></script>
     <!-- JavaScript: Classes -->
     <script src="js/classes/DSGMClass.js"></script>
+    <script src="js/classes/CommandClass.js"></script>
     <script src="js/classes/OptionsClass.js"></script>
     <script src="js/classes/LanguageClass.js"></script>
     <script src="js/classes/UIClass.js"></script>
@@ -21,18 +22,18 @@
     <script src="js/classes/StatusBarClass.js"></script>
     <script src="js/classes/TreeClass.js"></script>
     <script src="js/classes/LinksClass.js"></script>
-    <script src="js/classes/CommandClass.js"></script>
     <script src="js/classes/ButtonClass.js"></script>
     <!-- JavaScript: Initialise -->
     <script>
       jQuery(window).load(function () {
-        DSGM = new DSGMClass();
+        DSGM = new DSGMClass("simulation");
+        //DSGM = new DSGMClass("simulation");
       });
     </script>
   </head>
   <body class="ui">
-    <div id="Command">
-      <div id="CommandRequest"></div>
+    <div id="Command" class="hidden">
+      <ul id="CommandRequest"></ul>
       <div id="CommandResponse"></div>
     </div>
     <div id="Loading">
@@ -125,7 +126,7 @@
                 </div>
                 <div>
                   <li><span data-icon="play"><span data-translate="test"></span></span></li>
-                  <li><span data-icon="play-save"><span data-translate="compile"></span></span></li>
+                  <li><span data-icon="play"><span data-translate="compile"></span></span></li>
                 </div>
                 <div>
                   <li><span data-icon="disk"><span data-translate="save"></span></span></li>
@@ -204,4 +205,4 @@
     </main>
     <!-- Status Bar -->
   </body>
-</html>
+</html>git

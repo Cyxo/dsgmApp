@@ -1,9 +1,9 @@
 function UIClass(callback) {
 
   var _self = this;
-  var _animation_speed = "fast";
+  var _animationSpeed = "fast";
 
-  var _icon_colors = {
+  var _iconColors = {
     "white": "white",
     "beige": "#EABE5C",
     "lightgray": "rgb(192, 192, 192)",
@@ -21,128 +21,121 @@ function UIClass(callback) {
     {
       "name": "blank",
       "classes": "fa fa-fw",
-      "color": _icon_colors.white
+      "color": _iconColors.white
     },
     {
       "name": "help",
       "classes": "fa fa-fw fa-question",
-      "color": _icon_colors.blue
+      "color": _iconColors.blue
     },
     {
       "name": "loading",
       "classes": "fa fa-refresh fa-spin",
-      "color": _icon_colors.blue
+      "color": _iconColors.blue
     },
     {
       "name": "alert",
       "classes": "fa fa-exclamation-triangle",
-      "color": _icon_colors.orange
+      "color": _iconColors.orange
     },
     //Menu
     {
       "name": "page",
       "classes": "fa fa-fw fa-file-o",
-      "color": _icon_colors.lightgray
+      "color": _iconColors.lightgray
     },
     {
       "name": "folder",
       "classes": "fa fa-fw fa-folder-o",
-      "color": _icon_colors.beige
+      "color": _iconColors.beige
     },
     {
       "name": "disk",
       "classes": "fa fa-fw fa-floppy-o",
-      "color": _icon_colors.blue
+      "color": _iconColors.blue
     },
     {
       "name": "cut",
       "classes": "fa fa-fw fa-scissors",
-      "color": _icon_colors.darkgray
+      "color": _iconColors.darkgray
     },
     {
       "name": "copy",
       "classes": "fa fa-fw fa-files-o",
-      "color": _icon_colors.lightgray
+      "color": _iconColors.lightgray
     },
     {
       "name": "paste",
       "classes": "fa fa-fw fa-clipboard",
-      "color": _icon_colors.brown
+      "color": _iconColors.brown
     },
     {
       "name": "play",
       "classes": "fa fa-fw fa-play",
-      "color": _icon_colors.green
-    },
-    {
-      "name": "play-save",
-      "classes": "fa fa-fw fa-play",
-      "color": _icon_colors.green,
-      "stack_classes": "fa fa-stack fa-floppy-o",
-      "stack_color": _icon_colors.white
+      "color": _iconColors.green
     },
     {
       "name": "search",
       "classes": "fa fa-fw fa-search",
-      "color": _icon_colors.lightgray
+      "color": _iconColors.lightgray
     },
     {
       "name": "globe",
       "classes": "fa fa-fw fa-globe",
-      "color": _icon_colors.green
+      "color": _iconColors.green
     },
     {
       "name": "info",
       "classes": "fa fa-fw fa-info",
-      "color": _icon_colors.blue
+      "color": _iconColors.blue
     },
     {
       "name": "wrench",
       "classes": "fa fa-fw fa-wrench",
-      "color": _icon_colors.lightgray
+      "color": _iconColors.lightgray
     },
     //Resources
     {
       "name": "sprite",
       "classes": "fa fa-fw fa-dribbble",
-      "color": _icon_colors.orange
+      "color": _iconColors.orange
     },
     {
       "name": "background",
       "classes": "fa fa-fw fa-picture-o",
-      "color": _icon_colors.pink
+      "color": _iconColors.pink
     },
     {
       "name": "object",
       "classes": "fa fa-fw fa-cube",
-      "color": _icon_colors.blue
+      "color": _iconColors.blue
     },
     {
       "name": "room",
       "classes": "fa fa-fw fa-square-o",
-      "color": _icon_colors.lightgray
+      "color": _iconColors.lightgray
     },
     {
       "name": "sound",
       "classes": "fa fa-fw fa-volume-up",
-      "color": _icon_colors.teal
+      "color": _iconColors.teal
     },
     //Misc
     {
       "name": "heart",
       "classes": "fa fa-fw fa-heart",
-      "color": _icon_colors.red
+      "color": _iconColors.red
     },
     //Buttons
     {
       "name": "yes",
       "classes": "fa fa-fw fa-check",
-      "color": _icon_colors.green
+      "color": _iconColors.green
     },
     {
       "name": "no",
       "classes": "fa fa-fw fa-ban",
-      "color": _icon_colors.red
+      "color": _iconColors.red
     }
   ];
 
@@ -177,7 +170,7 @@ function UIClass(callback) {
 
   //Slide Toggle
   this.slideToggle = function(element) {
-    element.slideToggle(_self.animation_speed);
+    element.slideToggle(_self.animationSpeed);
   }
 
   //Icons
@@ -187,12 +180,7 @@ function UIClass(callback) {
       return (iconElement.name == element.attr("data-icon"));
     })[0];
     if (icon == undefined) icon = _icons[0];
-    var html = "<span class=\"" + icon.classes + "\" style=\"color: " + icon.color + ";\">";
-    html += "</span>";
-    // if (icon.stack_classes) {
-    //   html += "<span class=\"" + icon.stack_classes + "\" style=\"color: " + icon.stack_color + ";\"></span>"
-    // }
-    element.html(html + element.html());
+    element.prepend("<span class=\"" + icon.classes + "\" style=\"color: " + icon.color + ";\"></span>");
   }
   $("*[data-icon]").each(function(index, element) {
     element = $(element);
@@ -253,7 +241,9 @@ function UIClass(callback) {
   //(Menu) Tools > Test
   $("[data-role=test]").click(function() {
     var testDialogue = new DialogueClass();
-    testDialogue.askYesNoCancel("You suck?");
+    testDialogue.askYesNoCancel("Print the names of the developers?", "help", function() {
+      DSGM.Command.request("print", ["James Garner", "Chris Ertl"], function(){});
+    });
   });
 
   //(Menu) Help > About

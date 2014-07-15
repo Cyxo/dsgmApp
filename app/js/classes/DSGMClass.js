@@ -1,10 +1,11 @@
-function DSGMClass() {
+function DSGMClass(commandHandler) {
 
   var _self = this;
+  var commandHandler = (commandHandler ? commandHandler : "desktop");
 
   async.waterfall([
     function(next) {
-      _self.Command = new CommandClass();
+      _self.Command = new CommandClass(commandHandler);
       _self.Options = new OptionsClass(next);
     },
     function(next) {
@@ -49,16 +50,6 @@ function DSGMClass() {
       },
       function(next) {
         _self.UI.endWork(next);
-      },
-      function(next) {
-        _self.UI.statusBar.setAlert("Resource Error", function() {
-          _self.UI.Dialogue.showAlert(
-            "There was a problem with this resource. Sorry.",
-            function() {
-              _self.UI.statusBar.clear();
-            }
-            );
-        });
       }
     ]);
   }
