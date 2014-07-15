@@ -1799,7 +1799,8 @@ button:last-child {
       font-size: 20px; }
       #Dialogue > div > div > div.contents-line span.fa {
         font-size: 32px;
-        vertical-align: middle; }
+        vertical-align: middle;
+        margin-right: 12px; }
     #Dialogue > div > div > div.buttons {
       height: 54px;
       background-color: #ffc300;

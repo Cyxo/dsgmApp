@@ -254,9 +254,10 @@ function UIClass(callback) {
   //(Menu) Tools > Test
   $("[data-role=test]").click(function() {
     var testDialogue = new DialogueClass();
-    testDialogue.askYesNoCancel("Print the names of the developers?", "help", function() {
-      DSGM.Command.request("print", ["James Garner", "Chris Ertl"], function(){});
-    });
+    // testDialogue.askYesNoCancel("Print the names of the developers?", "help", function() {
+    //   DSGM.Command.request("print", ["James Garner", "Chris Ertl"], function(){});
+    // });
+    testDialogue.showAlert("It's not going well.");
   });
 
   //(Menu) Help > About
