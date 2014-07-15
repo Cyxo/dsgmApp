@@ -241,7 +241,9 @@ function UIClass(callback) {
   //(Menu) Tools > Test
   $("[data-role=test]").click(function() {
     var testDialogue = new DialogueClass();
-    testDialogue.askYesNoCancel("You suck?");
+    testDialogue.askYesNoCancel("Print the names of the developers?", "help", function() {
+      DSGM.Command.request("print", ["James Garner", "Chris Ertl"], function(){});
+    });
   });
 
   //(Menu) Help > About

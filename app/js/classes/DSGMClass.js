@@ -1,10 +1,11 @@
-function DSGMClass() {
+function DSGMClass(commandHandler) {
 
   var _self = this;
+  var commandHandler = (commandHandler ? commandHandler : "desktop");
 
   async.waterfall([
     function(next) {
-      _self.Command = new CommandClass("simulation");
+      _self.Command = new CommandClass(commandHandler);
       _self.Options = new OptionsClass(next);
     },
     function(next) {

@@ -39,15 +39,7 @@ public class DSGameMaker extends Application {
     launch(args);
   }
 
-  public void request(String command, String[] arguments) {
-    switch(command) {
-      case "print":
-        for (String argument : arguments) {
-          System.out.println(argument);
-        }
-        break;
-    }
-  }
+  private Handler handler = new Handler();
 
   //Override Application Start
   @Override public void start(final Stage passedStage) throws MalformedURLException {
@@ -74,19 +66,19 @@ public class DSGameMaker extends Application {
         public void changed(ObservableValue<? extends State> ov, State oldState, State newState) {   
           if (newState != State.SUCCEEDED) return;
           Document doc = theEngine.getDocument();
-          Element el = doc.getElementById("CommandRequestCommand");
+          Element el = doc.getElementById("CommandRequest");
           EventListener listener = new EventListener() {
             public void handleEvent(Event ev) {
               NamedNodeMap elAttributes = el.getAttributes();
-              String command = elAttributes.getNamedItem("data-request-command").getNodeValue();
+              String command = elAttributes.getNamedItem("data-command").getNodeValue();
               NodeList argumentEls = el.getChildNodes();
               Integer argumentCount = argumentEls.getLength();
               String[] arguments = new String[argumentCount];
               for (Integer i = 0; i < argumentEls.getLength(); i++) {
                 arguments[i] = argumentEls.item(i).getAttributes().getNamedItem("data-argument").getNodeValue();
               }
-              request(command, arguments);
-              theEngine.executeScript("globalCallback();");
+              String response = handler.request(command, arguments);
+              theEngine.executeScript("DSGM.Command.respond('" + response + "');");
             }
           };
           ((EventTarget) el).addEventListener("click", listener, false);
@@ -95,7 +87,7 @@ public class DSGameMaker extends Application {
     );
 
     //Load HTML
-    File htmlFile = new File("app/test.html");
+    File htmlFile = new File("app/index.html");
     theEngine.load(htmlFile.toURI().toURL().toString());
 
     //Create Scene
