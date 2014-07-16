@@ -8,14 +8,13 @@
 @import "_ui.scss";
 
 //UI Controls
-@import "ui-controls/_panel.scss";
-@import "ui-controls/_orb.scss";
-@import "ui-controls/_menu.scss";
-@import "ui-controls/_status-bar.scss";
-@import "ui-controls/_tree.scss";
-@import "ui-controls/_tabs.scss";
 @import "ui-controls/_button.scss";
 @import "ui-controls/_dialogue.scss";
+@import "ui-controls/_menu.scss";
+@import "ui-controls/_orb.scss";
+@import "ui-controls/_status-bar.scss";
+@import "ui-controls/_tabber.scss";
+@import "ui-controls/_tree.scss";
 
 //Markups
 @import "markups/_resource.scss";
