@@ -1,7 +1,13 @@
 function DSGMClass(commandHandler) {
 
   var _self = this;
-  var commandHandler = (commandHandler ? commandHandler : "desktop");
+  if(commandHandler == undefined) {
+    if(window.location.hash) {
+      commandHandler = window.location.hash.substring(1);
+    } else {
+      commandHandler = "simulation";
+    }
+  }
 
   async.waterfall([
     function(next) {
@@ -44,13 +50,13 @@ function DSGMClass(commandHandler) {
   //Load Resource
   this.loadResourceByNameAndType = function(name, type) {
     var resource = DSGM.currentProject.getResourceByNameAndType(name, type);
-    console.log(resource);
     var markup = _self.UI.switchMainMarkup("resource-" + resource.type);
     var firstTabChanger = $($(".ui-tabs .ui-tabs-changer div", markup)[0]);
     $("span[data-role=resource-name]", firstTabChanger).html(resource.name);
     var firstTab = $($(".ui-tabs .ui-panel", markup)[0]);
     var firstTabP = $("> p", firstTab);
     firstTabP.html("(" + resource.name + " Properties)");
+    //console.log(resource);
   }
 
 }

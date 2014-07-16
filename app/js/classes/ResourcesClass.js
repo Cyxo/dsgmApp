@@ -1,7 +1,7 @@
 function ResourcesClass() {
 
   var _self = this;
-  _self._resourceTypes = [SpriteClass, BackgroundClass];
+  _self._resourceTypes = [SpriteClass, BackgroundClass, RoomClass, ObjectClass, SoundClass];
 
   _self._resourceTypeClasses = [];
   $.each(_self._resourceTypes, function(index, resourceType) {

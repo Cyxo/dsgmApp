@@ -9,20 +9,30 @@ function LanguageClass(language, callback) {
   //Translate
   this.getTerm = function(term) {
     var t = _language_pairs[term];
-    if (t != undefined) {
-      return t;
-    } else {
+    if (t == undefined) {
       var words = $.map(term.split("-"), function(word, index) {
-        return word.substring(0, 1).toUpperCase() + word.substring(1);
+        switch(word.toLowerCase()) {
+          case "ds":
+            word = "DS";
+            break;
+          case "ok":
+            word = "OK";
+            break;
+          default:
+            word = word.substring(0, 1).toUpperCase() + word.substring(1);
+            break;
+        }
+        return word;
       });
       var t = "";
+      t += "(";
       $.each(words, function(index, word) {
         t += word + " ";
       });
-      //Test
-      //t = "";
-      return t;
+      t = t.substring(0, t.length - 1);
+      t += ")";
     }
+    return t;
   }
 
   //Construct

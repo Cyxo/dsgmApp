@@ -223,12 +223,12 @@ function UIClass(callback) {
   }
 
   //(Menu) Resources > Add Sprite
-  $("[data-role=add-sprite").click(function() {
+  $("*[data-role=add-sprite]").click(function() {
     var newResource = DSGM.currentProject.addResource(null, "sprite", true);
   });
 
   //(Menu) Resources > Add Background
-  $("[data-role=add-background").click(function() {
+  $("*[data-role=add-background]").click(function() {
     var newResource = DSGM.currentProject.addResource(null, "background", true);
   });
 
@@ -244,7 +244,7 @@ function UIClass(callback) {
   //(Menu) Help > About
   $("[data-role=about]").click(function() {
     var markup = _self.getMarkup("about");
-    var aboutDialogue = new DialogueClass(markup, null, "About DS Game Maker", [], 450, 450, true);
+    var aboutDialogue = new DialogueClass(markup, null, DSGM.Language.getTerm("about-ds-game-maker"), [], 450, 450, true);
     aboutDialogue.show();
   });
 

@@ -92,7 +92,7 @@ public class DSGameMaker extends Application {
 
     //Load HTML
     File htmlFile = new File("app/index.html");
-    theEngine.load(htmlFile.toURI().toURL().toString());
+    theEngine.load(htmlFile.toURI().toURL().toString() + "#desktop");
 
     //Create Scene
     Scene theScene = new Scene(thePane);

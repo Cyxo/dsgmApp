@@ -79,6 +79,10 @@ function CommandClass(handlerName) {
     if (_self._callback) _self._callback(response);
   }
 
+  _self.debug = function(text) {
+    _self.request("print", [text]);
+  }
+
   //Handler (function reference)
   _self.changeHandler(handlerName);
 
