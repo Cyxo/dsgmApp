@@ -1615,34 +1615,32 @@ span.fa {
 
 .ui-orb {
   padding: 0;
-  float: left; }
-  .ui-orb > div {
+  float: left;
+  background-color: #606060;
+  border-top-right-radius: 4px; }
+  .ui-orb > .colors {
+    display: none;
     background-color: #606060;
+    color: #ffc300; }
+  .ui-orb > div {
     display: block;
     width: 64px;
-    height: 64px;
-    border-top-right-radius: 4px; }
+    height: 64px; }
     .ui-orb > div img {
       width: 100%;
       height: 100%; }
-    .ui-orb > div > div {
+    .ui-orb > div .content {
       position: absolute;
       border-radius: 4px;
       border-top-left-radius: 0;
       background-color: #ffc300;
       border: 2px solid #ffc300;
       visibility: hidden; }
-      .ui-orb > div > div > div {
+      .ui-orb > div .content > div {
         border-radius: 4px;
         background-color: #606060;
         min-height: 320px;
         width: 256px; }
-      .ui-orb > div > div ul {
-        display: none; }
-  .ui-orb > div:hover {
-    background-color: #ffc300; }
-  .ui-orb > div:hover > div {
-    visibility: visible; }
 
 .ui-menu {
   position: relative;

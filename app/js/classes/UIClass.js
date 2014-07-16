@@ -200,10 +200,16 @@ function UIClass(callback) {
     return newElement;
   }
 
+  //Make Orb
+  this.makeOrb = function() {
+    _self.orb = new OrbClass();
+    $("body > header").prepend(_self.orb.getElement());
+  }
+
   //Make Resources Tree
   this.makeResourcesTree = function() {
-    _self.resourcesTree = new TreeClass("resources-tree");
-    $("main > aside").append(_self.resourcesTree.getElement());
+    _self.resourcesTree = new TreeClass();
+    $("body > main > aside").append(_self.resourcesTree.getElement());
     _self.resourcesTree.emptyItems();
     $.each(DSGM.Resources.getStaticResources(), function(index, staticResource) {
       var newItem = new TreeItemClass(staticResource.typePlural, "folder");

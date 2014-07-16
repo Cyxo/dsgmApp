@@ -1,0 +1,3037 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-02-27 16:15+0200\n"
+"PO-Revision-Date: 2013-04-13 16:25+0000\n"
+"Last-Translator: Tonnes <tonnes.mb@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 2.5.1-rc1\n"
+"X-POOTLE-MTIME: 1365870332.000000\n"
+
+# Essential terminology list for general software localisation
+# License: GPL
+# Copyright Youssef Chahibi, Friedel Wolff 2006
+msgid "abort"
+msgstr "afbreken"
+
+msgid "absolute"
+msgstr "absoluut"
+
+msgid "abstract"
+msgstr "abstract"
+
+msgid "accelerator"
+msgstr "sneltoets"
+
+msgid "accent"
+msgstr "accent"
+
+msgid "accept"
+msgstr "accepteren"
+
+msgid "access"
+msgstr "toegang"
+
+msgid "accessibility"
+msgstr "toegankelijkheid"
+
+msgid "accessory"
+msgstr "accessoire"
+
+msgid "account"
+msgstr "account"
+
+msgid "accuracy"
+msgstr "nauwkeurigheid"
+
+msgid "acquire"
+msgstr "verkrijgen"
+
+msgid "acronym"
+msgstr "acroniem"
+
+msgid "action"
+msgstr "actie"
+
+msgid "activate"
+msgstr "activeren"
+
+msgid "active"
+msgstr "actief"
+
+msgid "activity"
+msgstr "activiteit"
+
+msgid "adapter"
+msgstr "adapter"
+
+msgid "add"
+msgstr "toevoegen"
+
+msgid "address"
+msgstr "adres"
+
+msgid "adjust"
+msgstr "aanpassen"
+
+msgid "administration"
+msgstr "beheer"
+
+msgid "administrator"
+msgstr "beheerder"
+
+msgid "advanced"
+msgstr "gevorderd"
+
+msgid "agent"
+msgstr "agent"
+
+msgid "agree"
+msgstr "overeenkomen"
+
+msgid "agreement"
+msgstr "overeenkomst"
+
+msgid "alarm"
+msgstr "alarm"
+
+msgid "alert"
+msgstr "waarschuwing"
+
+msgid "algorithm"
+msgstr "algoritme"
+
+msgid "alias"
+msgstr "alias"
+
+# تسنن" مع الرسوميات (الخطوط وخلافه)
+msgid "aliasing"
+msgstr "aliasing"
+
+msgid "align"
+msgstr "uitlijnen"
+
+msgid "alignment"
+msgstr "uitlijning"
+
+msgid "allow"
+msgstr "toestaan"
+
+msgid "alphanumeric"
+msgstr "alfanumeriek"
+
+msgid "alternative"
+msgstr "alternatief"
+
+msgid "amount"
+msgstr "hoeveelheid"
+
+msgid "analysis"
+msgstr "analyse"
+
+msgid "anchor"
+msgstr "anker"
+
+msgid "angle"
+msgstr "hoek"
+
+msgid "animate"
+msgstr "animeren"
+
+msgid "animation"
+msgstr "animatie"
+
+msgid "announce"
+msgstr "aankondigen"
+
+msgid "announcement"
+msgstr "aankondiging"
+
+msgid "anonymous"
+msgstr "anoniem"
+
+msgid "anti-aliasing"
+msgstr "anti-aliasing"
+
+msgid "anti virus"
+msgstr "antivirus"
+
+msgid "appear"
+msgstr "verschijnen"
+
+msgid "append"
+msgstr "toevoegen"
+
+msgid "applet"
+msgstr "applet"
+
+msgid "application"
+msgstr "toepassing"
+
+msgid "apply"
+msgstr "toepassen"
+
+msgid "approval"
+msgstr "goedkeuring"
+
+msgid "approve"
+msgstr "goedkeuren"
+
+msgid "approximate"
+msgstr "bij benadering; ongeveer"
+
+msgid "arbitrary"
+msgstr "twijfelachtig"
+
+msgid "archive"
+msgstr "archief"
+
+msgid "area"
+msgstr "gebied"
+
+msgid "argument"
+msgstr "argument"
+
+msgid "arrangement"
+msgstr "overeenkomst"
+
+msgid "arrow"
+msgstr "pijl"
+
+msgid "article"
+msgstr "artikel"
+
+msgid "ascending"
+msgstr "oplopend"
+
+msgid "aspect"
+msgstr "aspect"
+
+msgid "assign"
+msgstr "toewijzen"
+
+msgid "assignment"
+msgstr "toewijzing"
+
+msgid "asynchronous"
+msgstr "asynchroon"
+
+msgid "attach"
+msgstr "hechten aan"
+
+msgid "attachment"
+msgstr "bijlage"
+
+msgid "attempt"
+msgstr "poging"
+
+msgid "attribute"
+msgstr "attribuut (code); kenmerk (bestanden)"
+
+msgid "audio"
+msgstr "audio"
+
+msgid "authenticate"
+msgstr "authenticeren"
+
+msgid "authentication"
+msgstr "authenticatie"
+
+msgid "authorization"
+msgstr "autorisatie"
+
+msgid "authorize"
+msgstr "autoriseren"
+
+msgid "auto"
+msgstr "auto"
+
+msgid "automatic"
+msgstr "automatisch"
+
+msgid "availability"
+msgstr "beschikbaarheid"
+
+msgid "available"
+msgstr "beschikbaar"
+
+msgid "average"
+msgstr "gemiddelde"
+
+msgid "axis"
+msgstr "as"
+
+msgid "backbone"
+msgstr "ruggegraat"
+
+msgid "back-end"
+msgstr "back-end"
+
+msgid "background"
+msgstr "achtergrond"
+
+msgid "backup"
+msgstr "reservekopie"
+
+msgid "bandwidth"
+msgstr "bandbreedte"
+
+msgid "banner"
+msgstr "banner"
+
+msgid "bar"
+msgstr "balk"
+
+msgid "base"
+msgstr "basis"
+
+msgid "beep"
+msgstr "biep"
+
+msgid "begin"
+msgstr "start"
+
+msgid "behavior"
+msgstr "gedrag"
+
+msgid "binary"
+msgstr "binair"
+
+msgid "bind"
+msgstr "binden"
+
+msgid "bit"
+msgstr "bit"
+
+msgid "bitmap"
+msgstr "bitmap"
+
+msgid "blank"
+msgstr "leeg"
+
+msgid "blink"
+msgstr "knipperen"
+
+msgid "block (unit)"
+msgstr "blok (eenheid)"
+
+msgid "block (verb)"
+msgstr "blokkeren (werkwoord)"
+
+msgid "blog"
+msgstr "blog"
+
+msgid "blur"
+msgstr "vervagen"
+
+msgid "board"
+msgstr "raad"
+
+msgid "body"
+msgstr "lichaam"
+
+msgid "bold"
+msgstr "vet"
+
+msgid "bookmarks"
+msgstr "bladwijzers"
+
+msgid "boot"
+msgstr "schoen"
+
+msgid "border"
+msgstr "rand"
+
+msgid "box"
+msgstr "vak"
+
+msgid "bracket"
+msgstr "haakje"
+
+msgid "branch"
+msgstr "tak"
+
+msgid "break"
+msgstr "breken"
+
+msgid "break (program)"
+msgstr "afbreken (programma)"
+
+msgid "break point"
+msgstr "breekpunt"
+
+msgid "bridge (verb)"
+msgstr "overbruggen"
+
+msgid "bridge (noun)"
+msgstr "brug (zelfst. nw.)"
+
+msgid "broken"
+msgstr "kapot"
+
+msgid "browse"
+msgstr "bladeren"
+
+msgid "browser"
+msgstr "browser"
+
+msgid "buffer"
+msgstr "buffer"
+
+msgid "bug"
+msgstr "bug"
+
+msgid "build"
+msgstr "bouwen"
+
+msgid "built-in"
+msgstr "ingebouwd"
+
+msgid "bullet"
+msgstr "opsommingsteken"
+
+msgid "bus"
+msgstr "bus"
+
+msgid "button"
+msgstr "knop"
+
+msgid "byte"
+msgstr "byte"
+
+msgid "cable"
+msgstr "kabel"
+
+msgid "cache"
+msgstr "cache"
+
+msgid "calculate"
+msgstr "berekenen"
+
+msgid "calculator"
+msgstr "rekenmachine"
+
+msgid "calendar"
+msgstr "agenda"
+
+msgid "call"
+msgstr "aanroep"
+
+msgid "camera"
+msgstr "camera"
+
+msgid "cancel"
+msgstr "annuleren"
+
+msgid "capability"
+msgstr "mogelijkheid (in staat zijn om)"
+
+msgid "capacity"
+msgstr "capaciteit"
+
+msgid "caption"
+msgstr "bijschrift"
+
+msgid "capture"
+msgstr "afbeelding"
+
+msgid "card"
+msgstr "kaart"
+
+msgid "case"
+msgstr "geval; indien"
+
+msgid "case (font)"
+msgstr "hoofd-/kleine letter (lettertype)"
+
+msgid "catalog"
+msgstr "catalogus"
+
+msgid "category"
+msgstr "categorie"
+
+msgid "cell"
+msgstr "cel"
+
+msgid "certificate"
+msgstr "certificaat"
+
+msgid "certify"
+msgstr "certificeren"
+
+msgid "change"
+msgstr "wijzigen"
+
+msgid "channel"
+msgstr "kanaal"
+
+msgid "character"
+msgstr "teken"
+
+msgid "charset"
+msgstr "tekenset"
+
+msgid "chart"
+msgstr "diagram"
+
+msgid "chat"
+msgstr "chatten"
+
+msgid "check"
+msgstr "controleren"
+
+msgid "check box"
+msgstr "keuzevak"
+
+msgid "child"
+msgstr "kind"
+
+msgid "choice"
+msgstr "keuze"
+
+msgid "choose"
+msgstr "kiezen"
+
+msgid "class"
+msgstr "klasse"
+
+msgid "classic"
+msgstr "klassiek"
+
+msgid "classify"
+msgstr "classificeren"
+
+msgid "clean"
+msgstr "schoon"
+
+msgid "clear"
+msgstr "wissen"
+
+msgid "click (noun)"
+msgstr "klik (zelfst. nw.)"
+
+msgid "click (verb)"
+msgstr "klikken (werkwoord)"
+
+msgid "client"
+msgstr "cliënt"
+
+msgid "clip art"
+msgstr "clipart"
+
+msgid "clip board"
+msgstr "klembord"
+
+msgid "clock"
+msgstr "klok"
+
+msgid "close"
+msgstr "sluiten"
+
+msgid "code (program)"
+msgstr "coderen (programmeren)"
+
+msgid "code (symbol)"
+msgstr "code (symbolen)"
+
+msgid "codec"
+msgstr "codec"
+
+msgid "collapse"
+msgstr "inklappen"
+
+msgid "collect"
+msgstr "verzamelen"
+
+msgid "column"
+msgstr "kolom"
+
+msgid "combination"
+msgstr "combinatie"
+
+msgid "comma"
+msgstr "komma"
+
+msgid "command"
+msgstr "opdracht"
+
+msgid "comment"
+msgstr "opmerking; notitie"
+
+msgid "common"
+msgstr "algemeen"
+
+msgid "communication"
+msgstr "communicatie"
+
+msgid "compact"
+msgstr "compact"
+
+msgid "compare"
+msgstr "vergelijken"
+
+msgid "compatibility"
+msgstr "compatibiliteit"
+
+msgid "compatible"
+msgstr "compatibel"
+
+# حويل الشفرة المصرية إلى ملفات ثنائية (برمجة
+msgid "compilation"
+msgstr "compilatie"
+
+msgid "compile"
+msgstr "compileren"
+
+msgid "compiler"
+msgstr "compiler"
+
+msgid "complete"
+msgstr "voltooid"
+
+msgid "component"
+msgstr "component"
+
+msgid "compose"
+msgstr "samenstellen"
+
+msgid "composition"
+msgstr "compositie"
+
+msgid "compress"
+msgstr "comprimeren"
+
+msgid "compression"
+msgstr "compressie"
+
+msgid "computer"
+msgstr "computer"
+
+msgid "computing"
+msgstr "computeren"
+
+msgid "concatenate"
+msgstr "samenvoegen"
+
+msgid "concurrent"
+msgstr "concurrent"
+
+msgid "condense"
+msgstr "vet; verdicht"
+
+msgid "condition"
+msgstr "voorwaarde"
+
+msgid "configuration"
+msgstr "configuratie"
+
+msgid "configure"
+msgstr "configureren"
+
+msgid "confirm"
+msgstr "bevestigen"
+
+msgid "confirmation"
+msgstr "bevestiging"
+
+msgid "conflict"
+msgstr "conflict"
+
+msgid "connect"
+msgstr "verbinding maken"
+
+msgid "connection"
+msgstr "verbinding"
+
+msgid "console"
+msgstr "console"
+
+msgid "contact (noun)"
+msgstr "contact (zelfst. nw.)"
+
+msgid "contact (verb)"
+msgstr "contact opnemen met (werkwoord)"
+
+msgid "content"
+msgstr "inhoud"
+
+msgid "context"
+msgstr "context"
+
+msgid "continue"
+msgstr "doorgaan"
+
+msgid "contrast"
+msgstr "contrast"
+
+msgid "contributor"
+msgstr "medewerker"
+
+msgid "control"
+msgstr "beheer"
+
+msgid "conversion"
+msgstr "conversie"
+
+msgid "convert"
+msgstr "converteren"
+
+msgid "cookie"
+msgstr "cookie"
+
+msgid "cooperative"
+msgstr "meewerkend"
+
+msgid "coordinate"
+msgstr "coördinaat"
+
+msgid "copy (noun)"
+msgstr "kopie; exemplaar"
+
+msgid "copy (verb)"
+msgstr "kopiëren"
+
+msgid "copy left"
+msgstr "links kopiëren"
+
+msgid "copy right"
+msgstr "rechts kopiëren"
+
+msgid "correct"
+msgstr "juist"
+
+msgid "correspondence"
+msgstr "correspondentie"
+
+msgid "correspondent"
+msgstr "correspondent"
+
+msgid "corrupt"
+msgstr "corrupt"
+
+msgid "count"
+msgstr "telling"
+
+msgid "countable"
+msgstr "telbaar"
+
+msgid "crash"
+msgstr "crash"
+
+msgid "create"
+msgstr "maken"
+
+msgid "creation"
+msgstr "maken"
+
+msgid "criteria"
+msgstr "criteria"
+
+msgid "crop"
+msgstr "bijknippen"
+
+msgid "cross-platform"
+msgstr "voor meerdere platformen"
+
+msgid "crypt"
+msgstr "versleutelen"
+
+msgid "cryptology"
+msgstr "versleuteling"
+
+msgid "current"
+msgstr "huidig"
+
+msgid "cursor"
+msgstr "cursor"
+
+msgid "curve"
+msgstr "boog"
+
+msgid "custom"
+msgstr "aangepast"
+
+msgid "customization"
+msgstr "aanpassingen maken"
+
+msgid "customize"
+msgstr "aanpassen"
+
+msgid "cut"
+msgstr "knippen"
+
+msgid "cycle"
+msgstr "cyclus"
+
+msgid "daemon"
+msgstr "daemon"
+
+msgid "damage"
+msgstr "schade"
+
+msgid "data"
+msgstr "gegevens"
+
+msgid "database"
+msgstr "database"
+
+msgid "debug"
+msgstr "debuggen; fouten zoeken"
+
+msgid "debugger"
+msgstr "debugger; foutzoeker"
+
+msgid "decimal"
+msgstr "decimaal"
+
+msgid "decode"
+msgstr "decoderen"
+
+msgid "decompress"
+msgstr "decomprimeren; uitpakken"
+
+msgid "decrease"
+msgstr "verkleinen"
+
+msgid "decrypt"
+msgstr "ontcijferen"
+
+msgid "decryption"
+msgstr "ontcijfering"
+
+msgid "default"
+msgstr "standaard"
+
+msgid "defect"
+msgstr "kapot"
+
+msgid "define"
+msgstr "definiëren"
+
+msgid "definition"
+msgstr "definitie"
+
+msgid "degree"
+msgstr "graad"
+
+msgid "delay"
+msgstr "vertraging"
+
+msgid "delete"
+msgstr "verwijderen"
+
+msgid "deletion"
+msgstr "verwijdering"
+
+msgid "delimiter"
+msgstr "scheidngsteken"
+
+msgid "demo"
+msgstr "demonstratie"
+
+msgid "deny"
+msgstr "ontkennen"
+
+msgid "dependence"
+msgstr "afhankelijk van"
+
+msgid "dependency"
+msgstr "afhankelijkheid"
+
+msgid "depth"
+msgstr "diepte"
+
+msgid "derived"
+msgstr "afgeleid van"
+
+msgid "descending"
+msgstr "aflopend"
+
+msgid "description"
+msgstr "beschrijving"
+
+msgid "deselect"
+msgstr "deselecteren"
+
+msgid "design"
+msgstr "ontwerpen"
+
+msgid "desktop"
+msgstr "bureaublad"
+
+msgid "destination"
+msgstr "bestemming"
+
+msgid "destroy"
+msgstr "vernietigen"
+
+msgid "detach"
+msgstr "losmaken"
+
+msgid "detect"
+msgstr "ontdekken"
+
+msgid "develop"
+msgstr "ontwikkelen"
+
+msgid "development"
+msgstr "ontwikkeling"
+
+msgid "developer"
+msgstr "ontwikkelaar"
+
+msgid "device"
+msgstr "apparaat"
+
+msgid "diagram"
+msgstr "diagram"
+
+msgid "dial"
+msgstr "draaien"
+
+msgid "dialog"
+msgstr "dialoogvenster"
+
+msgid "dialup"
+msgstr "inbellen"
+
+msgid "difference"
+msgstr "verschil"
+
+msgid "digit"
+msgstr "cijfer"
+
+msgid "digital"
+msgstr "digitaal"
+
+msgid "dimension"
+msgstr "dimensie"
+
+msgid "directory"
+msgstr "directory"
+
+msgid "disable"
+msgstr "uitschakelen"
+
+msgid "disc"
+msgstr "schijf"
+
+msgid "discard"
+msgstr "negeren"
+
+msgid "disconnect"
+msgstr "verbinding verbreken"
+
+msgid "discussion"
+msgstr "discussie"
+
+msgid "disk"
+msgstr "schijf"
+
+msgid "dispatch"
+msgstr "verdeler"
+
+msgid "display"
+msgstr "beeldscherm"
+
+msgid "distort"
+msgstr "vervormen"
+
+msgid "distribute"
+msgstr "verdelen"
+
+msgid "distribution"
+msgstr "verdeling"
+
+msgid "distributor"
+msgstr "verdeler"
+
+msgid "dock"
+msgstr "dok"
+
+msgid "document"
+msgstr "document"
+
+msgid "documentation"
+msgstr "documentatie"
+
+msgid "domain"
+msgstr "domein"
+
+msgid "double click"
+msgstr "dubbel klikken"
+
+msgid "download"
+msgstr "downloaden"
+
+msgid "drag"
+msgstr "slepen"
+
+msgid "draw"
+msgstr "tekenen"
+
+msgid "driver"
+msgstr "besturingsprogramma"
+
+msgid "dual"
+msgstr "duaal"
+
+msgid "dump"
+msgstr "dump"
+
+msgid "duplicate"
+msgstr "dupliceren"
+
+msgid "dynamic"
+msgstr "dynamisch"
+
+msgid "echo"
+msgstr "echo"
+
+msgid "edit"
+msgstr "bewerken"
+
+msgid "edition"
+msgstr "editie"
+
+msgid "editor"
+msgstr "editor"
+
+msgid "effect"
+msgstr "effect"
+
+msgid "eject"
+msgstr "uitwerpen"
+
+msgid "electronic"
+msgstr "elektronisch"
+
+msgid "element"
+msgstr "element"
+
+msgid "email"
+msgstr "e-mail"
+
+msgid "embed"
+msgstr "ingebed"
+
+msgid "emoticon"
+msgstr "pictogram van emotie"
+
+msgid "empty"
+msgstr "leeg"
+
+msgid "emulate"
+msgstr "emuleren"
+
+msgid "emulation"
+msgstr "emulatie"
+
+msgid "emulator"
+msgstr "emulator"
+
+msgid "enable"
+msgstr "inschakelen"
+
+msgid "enabled"
+msgstr "ingeschakeld"
+
+msgid "encode"
+msgstr "coderen"
+
+msgid "encoding"
+msgstr "codering"
+
+msgid "encrypt"
+msgstr "versleutelen"
+
+msgid "encrypted"
+msgstr "versleuteld"
+
+msgid "encryption"
+msgstr "versleuteling"
+
+msgid "engine"
+msgstr "engine"
+
+msgid "enhancement"
+msgstr "verbetering"
+
+msgid "enlarge"
+msgstr "vergroten"
+
+msgid "enlargement"
+msgstr "vergroting"
+
+msgid "enter"
+msgstr "invoeren"
+
+msgid "entertainment"
+msgstr "amusement"
+
+msgid "entry"
+msgstr "item"
+
+msgid "environment"
+msgstr "omgeving"
+
+msgid "equalizer"
+msgstr "equalizer"
+
+msgid "erase"
+msgstr "wissen"
+
+msgid "error"
+msgstr "fout"
+
+msgid "escape"
+msgstr "escape"
+
+msgid "evaluation"
+msgstr "evaluatie"
+
+msgid "event"
+msgstr "gebeurtenis"
+
+msgid "exception"
+msgstr "uitzondering"
+
+msgid "executable"
+msgstr "uitvoerbaar bestand"
+
+msgid "execute"
+msgstr "uitvoeren"
+
+msgid "existing"
+msgstr "bestaand"
+
+msgid "exit"
+msgstr "afsluiten"
+
+msgid "expand"
+msgstr "uitvouwen"
+
+msgid "expansion"
+msgstr "uitbreiding"
+
+msgid "explore"
+msgstr "verkennen"
+
+msgid "export"
+msgstr "exporteren"
+
+msgid "expression"
+msgstr "expressie"
+
+msgid "extend"
+msgstr "uitbreiden"
+
+msgid "extensible"
+msgstr "uitbreidbaar"
+
+msgid "extension"
+msgstr "extensie"
+
+msgid "external"
+msgstr "extern"
+
+msgid "extra"
+msgstr "extra"
+
+msgid "extract"
+msgstr "filteren"
+
+msgid "fail"
+msgstr "mislukken"
+
+# فادح: مثل خطأ فادح
+msgid "fatal"
+msgstr "onherstelbaar"
+
+msgid "fault"
+msgstr "fout"
+
+msgid "favorite"
+msgstr "favoriet"
+
+msgid "feature"
+msgstr "functie"
+
+msgid "feed"
+msgstr "feed"
+
+msgid "feedback"
+msgstr "terugkoppeling"
+
+msgid "fetch"
+msgstr "ophalen"
+
+msgid "field"
+msgstr "veld"
+
+msgid "figure"
+msgstr "figuur"
+
+msgid "file"
+msgstr "bestand"
+
+msgid "fill"
+msgstr "opvullen"
+
+msgid "filter"
+msgstr "filteren"
+
+msgid "find"
+msgstr "zoeken"
+
+msgid "firewall"
+msgstr "firewall"
+
+msgid "firmware"
+msgstr "firmware"
+
+msgid "fit"
+msgstr "passen"
+
+msgid "fix"
+msgstr "repareren"
+
+msgid "flag"
+msgstr "markeren"
+
+msgid "flash"
+msgstr "knipperen"
+
+msgid "flat"
+msgstr "plat"
+
+msgid "flip"
+msgstr "omdraaien"
+
+msgid "float (verb)"
+msgstr "drijven"
+
+msgid "flood"
+msgstr "stroom"
+
+msgid "floppy"
+msgstr "diskette"
+
+msgid "folder"
+msgstr "map"
+
+msgid "font"
+msgstr "lettertype"
+
+msgid "footer"
+msgstr "voetnoot"
+
+msgid "form"
+msgstr "formulier"
+
+msgid "format (noun)"
+msgstr "indeling, opmaak (zelfst. nw.)"
+
+msgid "format (verb)"
+msgstr "formatteren (werkwoord)"
+
+msgid "formatted"
+msgstr "geformatteerd"
+
+msgid "formula"
+msgstr "formule"
+
+msgid "forum"
+msgstr "forum"
+
+msgid "fragment"
+msgstr "fragment"
+
+msgid "frame"
+msgstr "frame, kader"
+
+msgid "frame set"
+msgstr "frameset"
+
+msgid "framework"
+msgstr "framework"
+
+msgid "free software"
+msgstr "vrije software"
+
+msgid "freeze"
+msgstr "bevriezen"
+
+msgid "frequency"
+msgstr "frequentie"
+
+msgid "front end"
+msgstr "frontend"
+
+msgid "function"
+msgstr "functie"
+
+msgid "gallery"
+msgstr "galerij"
+
+msgid "game"
+msgstr "spel"
+
+msgid "gateway"
+msgstr "doorgang"
+
+msgid "generate"
+msgstr "genereren"
+
+msgid "generation"
+msgstr "generatie"
+
+msgid "generator"
+msgstr "generator"
+
+msgid "generic"
+msgstr "algemeen"
+
+msgid "geometric"
+msgstr "geometrisch"
+
+msgid "geometry"
+msgstr "geometrie"
+
+msgid "grab"
+msgstr "grijpen"
+
+msgid "gradient"
+msgstr "gradiënt"
+
+msgid "grain"
+msgstr "korrel"
+
+msgid "graph"
+msgstr "grafiek"
+
+msgid "graphic"
+msgstr "grafisch; grafische afbeelding"
+
+msgid "graphical"
+msgstr "grafisch"
+
+msgid "graphics"
+msgstr "beelden"
+
+msgid "gray-scale"
+msgstr "grijswaarden"
+
+msgid "grid"
+msgstr "raster"
+
+msgid "group"
+msgstr "groep"
+
+msgid "guess"
+msgstr "raden"
+
+msgid "guest"
+msgstr "gast"
+
+msgid "handle (noun)"
+msgstr "greep"
+
+msgid "handle (verb)"
+msgstr "afhandelen"
+
+msgid "handler"
+msgstr "afhandelaar"
+
+msgid "hardware"
+msgstr "hardware"
+
+msgid "hash"
+msgstr "hash"
+
+msgid "head"
+msgstr "hoofd"
+
+msgid "header"
+msgstr "hoofding"
+
+msgid "height"
+msgstr "hoogte"
+
+msgid "help"
+msgstr "help"
+
+msgid "hide"
+msgstr "verbergen"
+
+msgid "hierarchy"
+msgstr "hiërarchie"
+
+msgid "high light"
+msgstr "hoog licht"
+
+msgid "history"
+msgstr "geschiedenis"
+
+msgid "host"
+msgstr "host"
+
+msgid "hostname"
+msgstr "hostnaam"
+
+msgid "hyperlink"
+msgstr "hyperlink"
+
+msgid "hypertext"
+msgstr "hypertekst"
+
+msgid "icon"
+msgstr "pictogram"
+
+msgid "identify"
+msgstr "identificeren"
+
+msgid "idle"
+msgstr "wachtend"
+
+msgid "ignore"
+msgstr "negeren"
+
+msgid "image"
+msgstr "afbeelding"
+
+msgid "implement"
+msgstr "implementeren"
+
+msgid "import"
+msgstr "importeren"
+
+msgid "inactive"
+msgstr "inactief"
+
+msgid "inbox"
+msgstr "postvak IN"
+
+msgid "inch"
+msgstr "inch"
+
+msgid "include"
+msgstr "bevatten"
+
+msgid "incoming"
+msgstr "inkomend"
+
+msgid "incompatible"
+msgstr "incompatibel"
+
+msgid "increase"
+msgstr "verhogen"
+
+msgid "increment"
+msgstr "toename"
+
+msgid "indent"
+msgstr "inspringen"
+
+msgid "index"
+msgstr "index"
+
+msgid "indice"
+msgstr "indexen"
+
+msgid "infect"
+msgstr "infecteren"
+
+msgid "infinite"
+msgstr "oneindig"
+
+msgid "information"
+msgstr "informatie, gegevens"
+
+msgid "infrared"
+msgstr "infrarood"
+
+msgid "initial"
+msgstr "eerste"
+
+msgid "initialize"
+msgstr "initialiseren"
+
+msgid "input"
+msgstr "invoer"
+
+msgid "insert"
+msgstr "invoeren"
+
+msgid "install"
+msgstr "installeren"
+
+msgid "installer"
+msgstr "installatieprogramma"
+
+msgid "instance"
+msgstr "instantie"
+
+msgid "instruction"
+msgstr "opdracht"
+
+msgid "integer"
+msgstr "geheel getal"
+
+msgid "integral"
+msgstr "integraal"
+
+msgid "integrate"
+msgstr "integreren"
+
+msgid "integration"
+msgstr "integratie"
+
+msgid "integrity"
+msgstr "integriteit"
+
+msgid "intensity"
+msgstr "intensiteit"
+
+msgid "interactivity"
+msgstr "interactiviteit"
+
+msgid "interface"
+msgstr "interface"
+
+msgid "internal"
+msgstr "inwendig"
+
+msgid "internet"
+msgstr "internet"
+
+msgid "interrupt"
+msgstr "onderbreken"
+
+msgid "invalid"
+msgstr "ongeldig"
+
+msgid "inverse"
+msgstr "omgekeerde"
+
+msgid "invert"
+msgstr "omkeren"
+
+msgid "invoke"
+msgstr "oproepen"
+
+msgid "italic"
+msgstr "cursief"
+
+msgid "item"
+msgstr "item"
+
+msgid "iteration"
+msgstr "herhaling"
+
+msgid "jag"
+msgstr "kerven; opening"
+
+msgid "jam"
+msgstr "vastlopen"
+
+msgid "job"
+msgstr "taak"
+
+msgid "join"
+msgstr "samenvoegen"
+
+msgid "joy stick"
+msgstr "joystick"
+
+msgid "jump"
+msgstr "springen"
+
+msgid "junk"
+msgstr "rommel"
+
+msgid "justify"
+msgstr "rechtvaardigen"
+
+msgid "keep"
+msgstr "houden"
+
+msgid "kernel"
+msgstr "kernel"
+
+msgid "key"
+msgstr "sleutel"
+
+msgid "keyboard"
+msgstr "toetsenbord"
+
+msgid "key stroke"
+msgstr "toetsaanslag"
+
+msgid "key word"
+msgstr "sleutelwoord"
+
+msgid "label"
+msgstr "label"
+
+msgid "landscape"
+msgstr "landschap"
+
+msgid "language"
+msgstr "taal"
+
+msgid "laptop"
+msgstr "laptop"
+
+msgid "launch"
+msgstr "opstarten"
+
+msgid "layer"
+msgstr "laag"
+
+msgid "layout"
+msgstr "lay-out"
+
+msgid "length"
+msgstr "lengte"
+
+msgid "license"
+msgstr "licentie"
+
+msgid "line"
+msgstr "lijn"
+
+msgid "link"
+msgstr "koppeling"
+
+msgid "list"
+msgstr "lijst"
+
+msgid "load"
+msgstr "laden"
+
+msgid "local"
+msgstr "lokaal"
+
+msgid "localization"
+msgstr "lokalisatie"
+
+msgid "location"
+msgstr "locatie"
+
+msgid "log"
+msgstr "logboek"
+
+msgid "lookup"
+msgstr "opzoeken"
+
+msgid "lower-case"
+msgstr "kleine letters"
+
+msgid "machine"
+msgstr "machine"
+
+msgid "main board"
+msgstr "hoofdpaneel"
+
+msgid "maintainer"
+msgstr "onderhouder"
+
+msgid "maintenance"
+msgstr "onderhoud"
+
+msgid "manage"
+msgstr "beheren"
+
+msgid "management"
+msgstr "beheer"
+
+msgid "manager"
+msgstr "beheerder"
+
+msgid "manual"
+msgstr "handleiding"
+
+msgid "margin"
+msgstr "marge"
+
+msgid "mark"
+msgstr "markeren"
+
+msgid "master"
+msgstr "master"
+
+msgid "match"
+msgstr "overeenkomen"
+
+msgid "maximize"
+msgstr "maximaliseren"
+
+msgid "memory"
+msgstr "geheugen"
+
+msgid "menu"
+msgstr "menu"
+
+msgid "merge"
+msgstr "samenvoegen"
+
+msgid "message"
+msgstr "bericht"
+
+msgid "method"
+msgstr "methode"
+
+msgid "minimize"
+msgstr "minimaliseren"
+
+msgid "mode"
+msgstr "modus"
+
+msgid "modem"
+msgstr "modem"
+
+msgid "moderator"
+msgstr "moderator"
+
+msgid "modify"
+msgstr "aanpassen"
+
+msgid "module"
+msgstr "module"
+
+msgid "monitor"
+msgstr "beeldscherm"
+
+msgid "mosaic"
+msgstr "mozaïek"
+
+msgid "motion"
+msgstr "beweging"
+
+msgid "mouse"
+msgstr "muis"
+
+msgid "move"
+msgstr "verplaatsen"
+
+msgid "multimedia"
+msgstr "multimedia"
+
+msgid "multitasking"
+msgstr "multitasken"
+
+msgid "name"
+msgstr "naam"
+
+msgid "navigation"
+msgstr "navigatie"
+
+msgid "navigator"
+msgstr "navigator"
+
+msgid "network"
+msgstr "netwerk"
+
+msgid "news group"
+msgstr "nieuwsgroep"
+
+msgid "next"
+msgstr "volgende"
+
+msgid "nick name"
+msgstr "nicknaam"
+
+msgid "no"
+msgstr "nee"
+
+msgid "node"
+msgstr "node"
+
+msgid "notation"
+msgstr "notatie"
+
+msgid "note"
+msgstr "noteren; noot"
+
+msgid "notebook"
+msgstr "notebook"
+
+msgid "notification"
+msgstr "notificatie"
+
+msgid "notify"
+msgstr "verwittigen"
+
+# في الرياضيات "صفر"
+# الصفة "منعدم"
+msgid "null"
+msgstr "nul"
+
+msgid "number"
+msgstr "nummer"
+
+msgid "numbering"
+msgstr "nummering"
+
+msgid "object"
+msgstr "object"
+
+msgid "occurrence"
+msgstr "gebeurtenis"
+
+msgid "octet"
+msgstr "byte"
+
+msgid "offline"
+msgstr "offline"
+
+msgid "OK"
+msgstr "OK"
+
+msgid "online"
+msgstr "online"
+
+msgid "ongoing"
+msgstr "doorlopend"
+
+msgid "opacity"
+msgstr "ondoorzichtigheid"
+
+msgid "opaque"
+msgstr "ondoorzichtig"
+
+msgid "open"
+msgstr "open"
+
+msgid "operation"
+msgstr "bewerking"
+
+msgid "option"
+msgstr "optie"
+
+msgid "optional"
+msgstr "optioneel"
+
+msgid "order"
+msgstr "volgorde"
+
+msgid "organize"
+msgstr "ordenen"
+
+msgid "orientation"
+msgstr "oriëntatie"
+
+msgid "original"
+msgstr "origineel"
+
+msgid "outgoing"
+msgstr "uitgaand"
+
+msgid "output"
+msgstr "uitvoer"
+
+msgid "overflow"
+msgstr "overloop"
+
+msgid "override"
+msgstr "voorrang hebben op"
+
+msgid "overwrite"
+msgstr "overschrijven"
+
+msgid "owner"
+msgstr "eigenaar"
+
+msgid "pack"
+msgstr "inpakken"
+
+msgid "package"
+msgstr "pakket"
+
+msgid "packet"
+msgstr "pakket"
+
+msgid "padding"
+msgstr "opvulling"
+
+msgid "page"
+msgstr "pagina"
+
+msgid "paint"
+msgstr "schilderen"
+
+msgid "pair"
+msgstr "koppelen"
+
+msgid "palette"
+msgstr "palet"
+
+msgid "panel"
+msgstr "paneel"
+
+msgid "parallel"
+msgstr "parallel"
+
+msgid "parameter"
+msgstr "parameter"
+
+msgid "parcel"
+msgstr "pakket"
+
+msgid "parent"
+msgstr "bovenliggende"
+
+msgid "parity"
+msgstr "pariteit"
+
+msgid "parse"
+msgstr "parsen"
+
+msgid "partition"
+msgstr "partitie"
+
+msgid "pass"
+msgstr "slagen; doorkomen"
+
+msgid "password"
+msgstr "wachtwoord"
+
+msgid "paste"
+msgstr "plakken"
+
+msgid "patch (noun)"
+msgstr "patch"
+
+msgid "patch (verb)"
+msgstr "repareren"
+
+msgid "path"
+msgstr "pad"
+
+msgid "pattern"
+msgstr "patroon"
+
+msgid "pause"
+msgstr "pauzeren"
+
+msgid "peripheral"
+msgstr "rand~"
+
+msgid "permanent"
+msgstr "blijvend"
+
+msgid "permission"
+msgstr "recht, machtiging"
+
+msgid "permutation"
+msgstr "permutatie"
+
+msgid "physical"
+msgstr "fysiek"
+
+msgid "picture"
+msgstr "afbeelding"
+
+msgid "pipe"
+msgstr "pipe"
+
+msgid "pixel"
+msgstr "pixel"
+
+msgid "placement"
+msgstr "plaatsing"
+
+msgid "plain"
+msgstr "plat"
+
+msgid "plot (verb)"
+msgstr "in kaart brengen"
+
+msgid "plotter"
+msgstr "plotter"
+
+msgid "plugin"
+msgstr "plug-in"
+
+msgid "pop up"
+msgstr "pop-up"
+
+msgid "port"
+msgstr "poort"
+
+msgid "position"
+msgstr "positie"
+
+msgid "post"
+msgstr "plaatsen; posten; na~"
+
+msgid "preferences"
+msgstr "voorkeuren"
+
+msgid "prepare"
+msgstr "voorbereiden"
+
+msgid "presentation"
+msgstr "presentatie"
+
+msgid "press"
+msgstr "drukken op; pers"
+
+msgid "prevent"
+msgstr "voorkomen"
+
+msgid "preview"
+msgstr "voorbeeld"
+
+msgid "primary"
+msgstr "primair"
+
+msgid "principal"
+msgstr "voornaamste"
+
+msgid "print"
+msgstr "afdrukken"
+
+msgid "printer"
+msgstr "printer"
+
+msgid "priority"
+msgstr "prioriteit"
+
+msgid "privacy"
+msgstr "privacy"
+
+msgid "private"
+msgstr "privé~"
+
+msgid "privilege"
+msgstr "privilege"
+
+msgid "procedure"
+msgstr "procedure"
+
+msgid "process"
+msgstr "verwerken; proces"
+
+msgid "processor"
+msgstr "processor"
+
+msgid "product"
+msgstr "product"
+
+msgid "profile"
+msgstr "profiel"
+
+msgid "program"
+msgstr "programma"
+
+msgid "programmer"
+msgstr "programmeur"
+
+msgid "project"
+msgstr "project"
+
+msgid "prompt"
+msgstr "vraag"
+
+msgid "property"
+msgstr "eigenschap"
+
+msgid "proprietary"
+msgstr "bedrijfseigen; wettelijk beschermd"
+
+msgid "protect"
+msgstr "beschermen"
+
+msgid "protection"
+msgstr "bescherming"
+
+#, !!!
+msgid "protocol"
+msgstr "protocol"
+
+msgid "provide"
+msgstr "leveren; bieden"
+
+msgid "provider"
+msgstr "provider"
+
+msgid "proxy"
+msgstr "proxy"
+
+msgid "public"
+msgstr "publiekelijk; openbaar"
+
+msgid "publish"
+msgstr "publiceren"
+
+msgid "pull"
+msgstr "trekken"
+
+msgid "push"
+msgstr "duwen"
+
+msgid "quality"
+msgstr "kwaliteit"
+
+msgid "quantity"
+msgstr "kwantiteit"
+
+msgid "quarantine"
+msgstr "quarantine"
+
+msgid "query"
+msgstr "zoekopdracht"
+
+msgid "queue"
+msgstr "rij"
+
+msgid "quit"
+msgstr "afsluiten"
+
+msgid "quota"
+msgstr "quotum"
+
+msgid "quotation"
+msgstr "citaat"
+
+msgid "quote"
+msgstr "citeren"
+
+msgid "raise"
+msgstr "stijgen; stijging"
+
+msgid "random"
+msgstr "willekeurig"
+
+msgid "range"
+msgstr "bereik"
+
+msgid "rate"
+msgstr "waarde; snelheid; ~getal"
+
+msgid "ratio"
+msgstr "verhouding"
+
+msgid "raw"
+msgstr "ruw; grof"
+
+msgid "ray"
+msgstr "straal"
+
+msgid "read"
+msgstr "lezen"
+
+msgid "read only"
+msgstr "alleen-lezen"
+
+msgid "ready"
+msgstr "gereed"
+
+msgid "real"
+msgstr "echt"
+
+msgid "reboot"
+msgstr "herstarten"
+
+msgid "receipt"
+msgstr "ontvangst"
+
+msgid "receive"
+msgstr "ontvangen"
+
+msgid "recognition"
+msgstr "herkenning"
+
+msgid "reconnect"
+msgstr "opnieuw verbinding maken"
+
+msgid "record"
+msgstr "~registratie; ~gegevens"
+
+msgid "record (verb)"
+msgstr "opnemen; vastleggen"
+
+msgid "recover"
+msgstr "herstellen"
+
+msgid "recovery"
+msgstr "herstel"
+
+#
+msgid "recursion"
+msgstr "recursie"
+
+msgid "recursive"
+msgstr "recursief"
+
+msgid "redirect"
+msgstr "omleiden; doorsturen"
+
+msgid "redo"
+msgstr "opnieuw uitvoeren"
+
+msgid "reduce"
+msgstr "verminderen"
+
+msgid "reduction"
+msgstr "vermindering"
+
+msgid "redundant"
+msgstr "redundant"
+
+msgid "reference"
+msgstr "verwijzing"
+
+msgid "referer"
+msgstr "verwijzer"
+
+msgid "referral"
+msgstr "verwijzing"
+
+msgid "reflexive"
+msgstr "wederkerend"
+
+msgid "refresh"
+msgstr "verversen"
+
+msgid "refuse"
+msgstr "weigeren"
+
+msgid "regenerate"
+msgstr "opnieuw genereren"
+
+msgid "register"
+msgstr "registreren"
+
+msgid "registration"
+msgstr "registratie"
+
+msgid "registry"
+msgstr "register"
+
+msgid "regular"
+msgstr "regulier"
+
+msgid "regulate"
+msgstr "reguleren"
+
+msgid "relay"
+msgstr "doorgeven"
+
+msgid "release"
+msgstr "uitgave, versie (ww: uitgeven, vrijgeven)"
+
+msgid "remaining"
+msgstr "resterend"
+
+msgid "remind"
+msgstr "herinneren aan"
+
+msgid "remote"
+msgstr "op afstand"
+
+msgid "removable"
+msgstr "verwijderbaar"
+
+msgid "remove"
+msgstr "verwijderen"
+
+msgid "rename"
+msgstr "hernoemen"
+
+msgid "render"
+msgstr "renderen"
+
+msgid "renew"
+msgstr "vernieuwen"
+
+msgid "repair"
+msgstr "repareren"
+
+msgid "repeat"
+msgstr "herhalen"
+
+msgid "replace"
+msgstr "vervangen"
+
+msgid "replicate"
+msgstr "repliceren"
+
+msgid "replication"
+msgstr "replicatie"
+
+msgid "reply"
+msgstr "antwoorden"
+
+msgid "report"
+msgstr "rapporteren"
+
+msgid "repository"
+msgstr "repository"
+
+msgid "request"
+msgstr "vragen om"
+
+msgid "require"
+msgstr "nodig hebben"
+
+msgid "requirement"
+msgstr "vereiste"
+
+msgid "reset"
+msgstr "herinitialiseren"
+
+msgid "resize"
+msgstr "afmetingen wijzigen"
+
+msgid "resolution"
+msgstr "resolutie"
+
+msgid "resolver"
+msgstr "oplosser"
+
+msgid "resource"
+msgstr "hulpbron; hulpmiddel"
+
+msgid "response"
+msgstr "antwoord"
+
+msgid "restart"
+msgstr "herstarten"
+
+msgid "restore"
+msgstr "terugzetten"
+
+msgid "restrict"
+msgstr "beperken"
+
+msgid "restriction"
+msgstr "beperking"
+
+msgid "result"
+msgstr "resulteren; resultaat"
+
+msgid "resume"
+msgstr "doorgaan"
+
+msgid "retrieve"
+msgstr "ophalen"
+
+msgid "retry"
+msgstr "opnieuw proberen"
+
+msgid "return"
+msgstr "return"
+
+msgid "reverse"
+msgstr "ongedaan maken"
+
+msgid "revert"
+msgstr "terugdraaien"
+
+msgid "revocation"
+msgstr "intrekking"
+
+msgid "revoke"
+msgstr "intrekken"
+
+msgid "root"
+msgstr "root"
+
+msgid "rotate"
+msgstr "draaien"
+
+msgid "route"
+msgstr "route"
+
+msgid "router"
+msgstr "router"
+
+msgid "routine"
+msgstr "routine"
+
+msgid "row"
+msgstr "rij"
+
+msgid "rule"
+msgstr "regel"
+
+msgid "run"
+msgstr "uitvoeren"
+
+msgid "runtime"
+msgstr "runtime"
+
+msgid "safe"
+msgstr "veilig"
+
+msgid "sample"
+msgstr "sample"
+
+msgid "sans"
+msgstr "zonder"
+
+msgid "save"
+msgstr "opslaan"
+
+msgid "scalable"
+msgstr "schaalbaar"
+
+msgid "scale"
+msgstr "schaal"
+
+msgid "scan"
+msgstr "scannen"
+
+msgid "scanner"
+msgstr "scanner"
+
+msgid "schedule"
+msgstr "programma"
+
+msgid "scheme"
+msgstr "schema"
+
+msgid "scratch"
+msgstr "krassen"
+
+msgid "screen"
+msgstr "scherm"
+
+msgid "screw"
+msgstr "schroef"
+
+msgid "script"
+msgstr "script"
+
+# من لف الشئ يلفه
+# فتقول:
+# لف ﻷعلى=scroll up ، وهكذا
+msgid "scroll"
+msgstr "scrollen; schuiven"
+
+msgid "search"
+msgstr "zoeken"
+
+msgid "section"
+msgstr "sectie"
+
+msgid "sector"
+msgstr "sector"
+
+msgid "secure"
+msgstr "veilig"
+
+msgid "security"
+msgstr "beveiliging"
+
+msgid "seek"
+msgstr "zoeken"
+
+msgid "segment"
+msgstr "segment"
+
+msgid "segmentation"
+msgstr "segmentatie"
+
+msgid "select"
+msgstr "selecteren"
+
+msgid "selection"
+msgstr "selectie"
+
+msgid "semantic"
+msgstr "semantisch"
+
+msgid "send"
+msgstr "verzenden"
+
+msgid "sender"
+msgstr "verzender; afzender"
+
+msgid "sensitive"
+msgstr "gevoelig"
+
+msgid "sensor"
+msgstr "sensor"
+
+msgid "serif"
+msgstr "schreef"
+
+msgid "server"
+msgstr "server"
+
+msgid "session"
+msgstr "sessie"
+
+msgid "set"
+msgstr "instellen; aantal"
+
+msgid "settings"
+msgstr "instellingen"
+
+msgid "setup"
+msgstr "set-up; het instellen"
+
+msgid "shading"
+msgstr "schaduwvorming"
+
+msgid "shadow"
+msgstr "schaduw"
+
+msgid "shape"
+msgstr "vormen"
+
+msgid "share"
+msgstr "delen"
+
+msgid "sharp"
+msgstr "scherp"
+
+msgid "sheet"
+msgstr "blad"
+
+msgid "shell"
+msgstr "shell"
+
+msgid "shift"
+msgstr "shift"
+
+msgid "shortcut"
+msgstr "sneltoets"
+
+msgid "show"
+msgstr "tonen"
+
+msgid "shrink"
+msgstr "krimpen"
+
+msgid "shut down"
+msgstr "afsluiten"
+
+msgid "side bar"
+msgstr "zijbalk"
+
+msgid "sign"
+msgstr "teken"
+
+msgid "signal"
+msgstr "signaal"
+
+msgid "signature"
+msgstr "ondertekening"
+
+msgid "site"
+msgstr "website"
+
+msgid "size"
+msgstr "grootte"
+
+msgid "skew"
+msgstr "skew; vervorming"
+
+msgid "skip"
+msgstr "overslaan"
+
+msgid "slave"
+msgstr "slave"
+
+msgid "sleep"
+msgstr "slapen"
+
+msgid "slide"
+msgstr "glijden"
+
+msgid "slot"
+msgstr "plaats"
+
+msgid "smart"
+msgstr "slim"
+
+msgid "smiley"
+msgstr "lachebekje"
+
+msgid "smooth"
+msgstr "vloeiend"
+
+msgid "socket"
+msgstr "socket"
+
+msgid "software"
+msgstr "software"
+
+msgid "solid"
+msgstr "vast"
+
+msgid "sort"
+msgstr "ordenen"
+
+msgid "source"
+msgstr "bron"
+
+msgid "space"
+msgstr "spatie; ruimte"
+
+msgid "spacing"
+msgstr "spatiëring; regelafstand"
+
+msgid "spam"
+msgstr "spam"
+
+msgid "span"
+msgstr "bereik"
+
+msgid "spawn"
+msgstr "genereren"
+
+msgid "specify"
+msgstr "specificeren; opgeven"
+
+msgid "speed"
+msgstr "snelheid"
+
+msgid "spelling"
+msgstr "spelling"
+
+msgid "splash"
+msgstr "splash"
+
+msgid "split"
+msgstr "verdelen"
+
+msgid "spool"
+msgstr "spool-verwerking"
+
+msgid "spread sheet"
+msgstr "spreadsheet"
+
+msgid "stack"
+msgstr "stack"
+
+msgid "stand alone"
+msgstr "stand-alone; op zichzelf staand"
+
+msgid "standard"
+msgstr "standaard"
+
+msgid "start"
+msgstr "beginnen"
+
+msgid "state"
+msgstr "status"
+
+msgid "static"
+msgstr "statisch"
+
+msgid "statistics"
+msgstr "statistieken"
+
+msgid "step"
+msgstr "stap"
+
+msgid "stop"
+msgstr "stoppen"
+
+msgid "storage"
+msgstr "opslag"
+
+msgid "store"
+msgstr "bewaren"
+
+msgid "stream"
+msgstr "stream; stroming"
+
+msgid "stretch"
+msgstr "uitrekken"
+
+msgid "strict"
+msgstr "streng"
+
+msgid "string"
+msgstr "tekenreeks"
+
+msgid "strip"
+msgstr "strook"
+
+msgid "stroke"
+msgstr "slag"
+
+msgid "structure"
+msgstr "structuur"
+
+msgid "stub"
+msgstr "stomp"
+
+msgid "style"
+msgstr "stijl"
+
+msgid "sub directory"
+msgstr "subdirectory"
+
+msgid "sub folder"
+msgstr "submap"
+
+msgid "submission"
+msgstr "inzending"
+
+msgid "submit"
+msgstr "insturen"
+
+msgid "subscribe"
+msgstr "abonneren; inschrijven"
+
+msgid "subscription"
+msgstr "inschrijving"
+
+msgid "subtract"
+msgstr "aftrekken"
+
+msgid "succeed"
+msgstr "slagen"
+
+msgid "suggest"
+msgstr "voorstellen; suggereren"
+
+msgid "suggestion"
+msgstr "voorstel; suggestie"
+
+msgid "sum (noun)"
+msgstr "som"
+
+msgid "sum (verb)"
+msgstr "opsommen"
+
+msgid "summary"
+msgstr "samenvatting; opsomming"
+
+msgid "support"
+msgstr "ondersteuning"
+
+msgid "surface"
+msgstr "oppervlakte"
+
+msgid "suspend"
+msgstr "slaapstand; opschorten"
+
+msgid "suspicious"
+msgstr "verdacht"
+
+msgid "swap"
+msgstr "wisselen"
+
+msgid "switch"
+msgstr "schakelaar; wisselen van"
+
+msgid "symbol"
+msgstr "symbool"
+
+msgid "synchronize"
+msgstr "synchroniseren"
+
+msgid "syntax"
+msgstr "syntaxis"
+
+msgid "system"
+msgstr "systeem"
+
+msgid "tab"
+msgstr "tabblad"
+
+msgid "table"
+msgstr "tabel"
+
+msgid "tag"
+msgstr "tag (code); label"
+
+msgid "target"
+msgstr "doel"
+
+msgid "template"
+msgstr "sjabloon"
+
+msgid "temporary"
+msgstr "tijdelijk"
+
+msgid "terminal"
+msgstr "terminal"
+
+msgid "test"
+msgstr "test; uitproberen"
+
+msgid "text"
+msgstr "tekst"
+
+msgid "texture"
+msgstr "structuur"
+
+msgid "theme"
+msgstr "thema"
+
+msgid "thread"
+msgstr "conversatie"
+
+msgid "thumbnail"
+msgstr "miniatuur"
+
+msgid "tick"
+msgstr "tikken"
+
+msgid "tile"
+msgstr "tegel"
+
+msgid "time"
+msgstr "tijd"
+
+msgid "time out"
+msgstr "time-out"
+
+msgid "tip"
+msgstr "tip"
+
+msgid "title"
+msgstr "titel; functie"
+
+msgid "toggle"
+msgstr "schakelaar; schakelen"
+
+msgid "token"
+msgstr "token; teken"
+
+msgid "tool"
+msgstr "hulpmiddel"
+
+msgid "tool bar"
+msgstr "werkbalk"
+
+msgid "tool box"
+msgstr "werkset"
+
+msgid "topic"
+msgstr "topic; onderwerp"
+
+msgid "trace"
+msgstr "opsporen"
+
+msgid "track"
+msgstr "volgen"
+
+msgid "traffic"
+msgstr "verkeer"
+
+msgid "transfer"
+msgstr "overdracht"
+
+msgid "transform"
+msgstr "omzetten"
+
+msgid "transformation"
+msgstr "omzetting"
+
+msgid "trap"
+msgstr "trap; val"
+
+msgid "trash"
+msgstr "afval"
+
+msgid "trigger"
+msgstr "reactieveroorzaker"
+
+msgid "trouble shoot"
+msgstr "problemen oplossen"
+
+msgid "tune"
+msgstr "afstellen"
+
+msgid "tweak"
+msgstr "fijnafstellen"
+
+msgid "type (noun)"
+msgstr "type"
+
+msgid "type (verb)"
+msgstr "typen"
+
+msgid "type face"
+msgstr "lettertype"
+
+msgid "unavailable"
+msgstr "niet beschikbaar"
+
+msgid "undelete"
+msgstr "terughalen"
+
+msgid "under line"
+msgstr "onderstrepen"
+
+msgid "undo"
+msgstr "ongedaan maken"
+
+msgid "uninstall"
+msgstr "de-installeren"
+
+msgid "unit"
+msgstr "eenheid"
+
+msgid "unknown"
+msgstr "onbekend"
+
+msgid "unload"
+msgstr "ontladen"
+
+msgid "named"
+msgstr "genaamd"
+
+msgid "reachable"
+msgstr "bereikbaar"
+
+msgid "readable"
+msgstr "leesbaar"
+
+msgid "unspecified"
+msgstr "niet gespecificeerd; niet opgegeven"
+
+msgid "unsubscribe"
+msgstr "uitschrijven"
+
+msgid "unsupported"
+msgstr "niet ondersteund"
+
+msgid "update"
+msgstr "update (ww: bijwerken)"
+
+msgid "upgrade"
+msgstr "upgrade (ww: upgraden)"
+
+msgid "upload"
+msgstr "upload, uploaden"
+
+msgid "upper case"
+msgstr "in hoofdletters"
+
+msgid "usage"
+msgstr "gebruik"
+
+msgid "user"
+msgstr "gebruiker"
+
+msgid "user name"
+msgstr "gebruikersnaam"
+
+msgid "utility"
+msgstr "hulpprogramma"
+
+msgid "valid"
+msgstr "geldig"
+
+msgid "validation"
+msgstr "validatie"
+
+msgid "validity"
+msgstr "geldigheid"
+
+msgid "value"
+msgstr "waarde"
+
+msgid "variable"
+msgstr "variabel; variabele"
+
+msgid "vector"
+msgstr "vector"
+
+msgid "verbose"
+msgstr "uitgebreid"
+
+msgid "verify"
+msgstr "verifiëren"
+
+msgid "version"
+msgstr "versie"
+
+msgid "video"
+msgstr "video"
+
+msgid "view"
+msgstr "beeld; bekijken"
+
+msgid "viewer"
+msgstr "viewer"
+
+msgid "virtual"
+msgstr "virtueel"
+
+msgid "virus"
+msgstr "virus"
+
+msgid "visual"
+msgstr "visueel"
+
+msgid "volume"
+msgstr "geluidsniveau"
+
+msgid "wallpaper"
+msgstr "achtergrond"
+
+msgid "warn"
+msgstr "waarschuwen"
+
+msgid "web"
+msgstr "web; internet"
+
+msgid "web cam"
+msgstr "webcam"
+
+msgid "web master"
+msgstr "websitebeheerder"
+
+msgid "web page"
+msgstr "webpagina"
+
+msgid "widget"
+msgstr "widget"
+
+msgid "width"
+msgstr "breedte"
+
+msgid "wi fi"
+msgstr "wifi"
+
+msgid "wild card"
+msgstr "jokerteken"
+
+msgid "window"
+msgstr "venster"
+
+msgid "wizard"
+msgstr "assistent"
+
+msgid "word processor"
+msgstr "woordprocessor"
+
+msgid "work around"
+msgstr "workaround"
+
+msgid "work group"
+msgstr "werkgroep"
+
+msgid "work station"
+msgstr "werkstation"
+
+msgid "wrap"
+msgstr "afbreken"
+
+msgid "yes"
+msgstr "ja"
+
+msgid "zone"
+msgstr "zone"
+
+msgid "zoom"
+msgstr "in-/uitzoomen"

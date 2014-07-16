@@ -28,6 +28,7 @@ function DSGMClass(commandHandler) {
     },
     function(next) {
       //Make UI Controls
+      _self.UI.makeOrb();
       _self.UI.makeResourcesTree();
       _self.UI.makeDialogue();
       _self.UI.makeStatusBar();
