@@ -7,22 +7,41 @@ function OrbClass() {
   _self.makeElement = function() {
     var s = "";
     s += "<div class=\"ui ui-orb\">";
-    s += "  <div class=\"colors\"></div>";
     s += "  <div>";
     s += "    <img src=\"img/orb.png\" alt=\"Orb\">";
-    s += "    <div class=\"content\"><div>&nbsp;</div></div>"
+    s += "    <div><div>&nbsp;</div></div>"
     s += "  </div>";
     s += "</div>";
     var element = $(s);
     element.bind("mouseenter", function() {
-      var hoverColor = $("> .colors", $(this)).css("color");
-      $(this).css("background-color", hoverColor);
-      $(".content", $(this)).css("visibility", "visible");
+      var el = $(this);
+      async.waterfall([
+        function(next) {
+          el.animate({
+            backgroundColor: DSGM.UI.getColor("obvious")
+          }, DSGM.UI._animationSpeed, next);
+        },
+        function(next) {
+          $("> div > div", el)
+            .css("display", "block")
+            .animate({height: "320px"}, DSGM.UI._animationSpeed);
+        }
+      ]);
     });
     element.bind("mouseleave", function() {
-      var originalColor = $("> .colors", $(this)).css("background-color");
-      $(this).css("background-color", originalColor);
-      $(".content", $(this)).css("visibility", "hidden");
+      var el = $(this);
+      async.waterfall([
+        function(next) {
+          $("> div > div", el)
+            .animate({height: "0px"}, DSGM.UI._animationSpeed, next)
+        },
+        function(next) {
+          $("> div > div", el).css("display", "none");
+          el.animate({
+            backgroundColor: DSGM.UI.getColor("background-light")
+          }, DSGM.UI._animationSpeed);
+        }
+      ]);
     });
     return element;
   }

@@ -8,6 +8,15 @@ body {
   padding: 0;
 }
 
+#Colors {
+  .background-light {
+    background-color: $foreground-color-2;
+  }
+  .obvious {
+    background-color: $obvious-color;
+  }
+}
+
 body > main {
   display: block;
   position: absolute;

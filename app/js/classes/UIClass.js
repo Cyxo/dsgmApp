@@ -1,9 +1,9 @@
 function UIClass(callback) {
 
   var _self = this;
-  var _animationSpeed = "fast";
+  _self._animationSpeed = 250;
 
-  var _iconColors = {
+  _self.colors = {
     "white": "white",
     "beige": "#EABE5C",
     "lightgray": "rgb(192, 192, 192)",
@@ -21,121 +21,121 @@ function UIClass(callback) {
     {
       "name": "blank",
       "classes": "fa fa-fw",
-      "color": _iconColors.white
+      "color": _self.colors.white
     },
     {
       "name": "help",
       "classes": "fa fa-fw fa-question",
-      "color": _iconColors.blue
+      "color": _self.colors.blue
     },
     {
       "name": "loading",
       "classes": "fa fa-refresh fa-spin",
-      "color": _iconColors.blue
+      "color": _self.colors.blue
     },
     {
       "name": "alert",
       "classes": "fa fa-exclamation-triangle",
-      "color": _iconColors.orange
+      "color": _self.colors.orange
     },
     //Menu
     {
       "name": "page",
       "classes": "fa fa-fw fa-file-o",
-      "color": _iconColors.lightgray
+      "color": _self.colors.lightgray
     },
     {
       "name": "folder",
       "classes": "fa fa-fw fa-folder-o",
-      "color": _iconColors.beige
+      "color": _self.colors.beige
     },
     {
       "name": "disk",
       "classes": "fa fa-fw fa-floppy-o",
-      "color": _iconColors.blue
+      "color": _self.colors.blue
     },
     {
       "name": "cut",
       "classes": "fa fa-fw fa-scissors",
-      "color": _iconColors.darkgray
+      "color": _self.colors.darkgray
     },
     {
       "name": "copy",
       "classes": "fa fa-fw fa-files-o",
-      "color": _iconColors.lightgray
+      "color": _self.colors.lightgray
     },
     {
       "name": "paste",
       "classes": "fa fa-fw fa-clipboard",
-      "color": _iconColors.brown
+      "color": _self.colors.brown
     },
     {
       "name": "play",
       "classes": "fa fa-fw fa-play",
-      "color": _iconColors.green
+      "color": _self.colors.green
     },
     {
       "name": "search",
       "classes": "fa fa-fw fa-search",
-      "color": _iconColors.lightgray
+      "color": _self.colors.lightgray
     },
     {
       "name": "globe",
       "classes": "fa fa-fw fa-globe",
-      "color": _iconColors.green
+      "color": _self.colors.green
     },
     {
       "name": "info",
       "classes": "fa fa-fw fa-info",
-      "color": _iconColors.blue
+      "color": _self.colors.blue
     },
     {
       "name": "wrench",
       "classes": "fa fa-fw fa-wrench",
-      "color": _iconColors.lightgray
+      "color": _self.colors.lightgray
     },
     //Resources
     {
       "name": "sprite",
       "classes": "fa fa-fw fa-dribbble",
-      "color": _iconColors.orange
+      "color": _self.colors.orange
     },
     {
       "name": "background",
       "classes": "fa fa-fw fa-picture-o",
-      "color": _iconColors.pink
+      "color": _self.colors.pink
     },
     {
       "name": "object",
       "classes": "fa fa-fw fa-cube",
-      "color": _iconColors.blue
+      "color": _self.colors.blue
     },
     {
       "name": "room",
       "classes": "fa fa-fw fa-square-o",
-      "color": _iconColors.lightgray
+      "color": _self.colors.lightgray
     },
     {
       "name": "sound",
       "classes": "fa fa-fw fa-volume-up",
-      "color": _iconColors.teal
+      "color": _self.colors.teal
     },
     //Misc
     {
       "name": "heart",
       "classes": "fa fa-fw fa-heart",
-      "color": _iconColors.red
+      "color": _self.colors.red
     },
     //Buttons
     {
       "name": "yes",
       "classes": "fa fa-fw fa-check",
-      "color": _iconColors.green
+      "color": _self.colors.green
     },
     {
       "name": "no",
       "classes": "fa fa-fw fa-ban",
-      "color": _iconColors.red
+      "color": _self.colors.red
     }
   ];
 
@@ -170,7 +170,18 @@ function UIClass(callback) {
 
   //Slide Toggle
   this.slideToggle = function(element) {
-    element.slideToggle(_self.animationSpeed);
+    element.slideToggle(_self._animationSpeed);
+  }
+
+  //Colors
+  $("#Colors div").each(function(index, colorDiv) {
+    var jColorDiv = $(colorDiv);
+    var colorName = jColorDiv.attr("class");
+    var colorValue = jColorDiv.css("backgroundColor");
+    _self.colors[colorName] = colorValue;
+  });
+  this.getColor = function(name) {
+    return _self.colors[name];
   }
 
   //Icons
