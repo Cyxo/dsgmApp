@@ -16,3 +16,8 @@ span.fa {
   font-size: $font-size * 1.2;
   vertical-align: -1.2;
 }
+
+.ui-panel {
+  margin: 0;
+  padding: $padding;
+}
