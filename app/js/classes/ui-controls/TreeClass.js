@@ -47,6 +47,18 @@ function TreeClass() {
     _self.items.length = 0;
   }
 
+  _self.findItemsByProperty = function(property, value) {
+    return $.grep(_self.items, function(item) {
+      return (item[property] == value);
+    });
+  }
+
+  _self.findItemByProperty = function(property, value) {
+    var items = _self.findItemsByProperty(property, value);
+    var item = (items.length == 0 ? null : items[0]);
+    return item;
+  }
+
 }
 
 function TreeItemClass(text, icon) {
@@ -122,6 +134,11 @@ function TreeItemClass(text, icon) {
     $.each(_self.items, function(index, item) {
       item.updateHandler();
     });
+  }
+
+  _self.setSelected = function() {
+    var thisSpan = $("> span", _self._element);
+    thisSpan.trigger("click");
   }
 
 }

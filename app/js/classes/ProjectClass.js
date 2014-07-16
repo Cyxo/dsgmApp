@@ -5,28 +5,6 @@ function ProjectClass() {
 	_self.name = "";
 	_self._resources = [];
 
-	_self._resourceTypes = [SpriteClass, BackgroundClass];
-
-	_self._resourceTypeClasses = [];
-	$.each(_self._resourceTypes, function(index, resourceType) {
-		_self._resourceTypeClasses.push(new resourceType());
-	});
-
-	_self.getStaticResources = function(property) {
-		return $.map(_self._resourceTypeClasses, function(resourceTypeClass) {
-			return (property ? resourceTypeClass[property] : resourceTypeClass);
-		});
-	}
-
-	_self.createResourceClassFromTypeName = function(type) {
-		var whichClass = $.grep(_self._resourceTypes, function(resourceType) {
-			var newClass = new resourceType();
-			return (type == newClass.type);
-		})[0];
-		if(whichClass == undefined) whichClass = _self._resourceTypes[0];
-		return new whichClass;
-	}
-
 	_self.getResourceByNameAndType = function(name, type) {
 		return $.grep(_self._resources, function(resource) {
 			return (resource.name == name && resource.type == type);
@@ -39,8 +17,9 @@ function ProjectClass() {
 		});
 	}
 
-	_self.addResource = function(name, type) {
-		var newResource = _self.createResourceClassFromTypeName(type);
+	_self.addResource = function(name, type, doSelect) {
+		doSelect = (doSelect ? doSelect : false);
+		var newResource = DSGM.Resources.createResourceClassFromTypeName(type);
 		if (name == null) {
 			var i = 1;
 			while (true) {
@@ -51,6 +30,16 @@ function ProjectClass() {
 		}
 		newResource.name = name;
 		_self._resources.push(newResource);
+		var masterTreeItem = DSGM.UI.resourcesTree.findItemByProperty("text", newResource.typePlural);
+		var newTreeItem = new TreeItemClass(newResource.name, newResource.icon);
+		newTreeItem.setHandler(function() {
+			DSGM.loadResourceByNameAndType(newResource.name, newResource.type);
+		});
+		masterTreeItem.addItem(newTreeItem);
+		if (doSelect) {
+			newTreeItem.setSelected();
+		}
+		return newResource;
 	}
 
 	_self.load = function(projectJson) {
@@ -62,4 +51,4 @@ function ProjectClass() {
 		return JSON.stringify(_self);
 	}
 
-}
+} 

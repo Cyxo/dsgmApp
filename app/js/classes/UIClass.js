@@ -204,6 +204,11 @@ function UIClass(callback) {
   this.makeResourcesTree = function() {
     _self.resourcesTree = new TreeClass("resources-tree");
     $("main > aside").append(_self.resourcesTree.getElement());
+    _self.resourcesTree.emptyItems();
+    $.each(DSGM.Resources.getStaticResources(), function(index, staticResource) {
+      var newItem = new TreeItemClass(staticResource.typePlural, "folder");
+      _self.resourcesTree.addItem(newItem);
+    });
   }
 
   //Make Dialogue Singleton
@@ -217,33 +222,14 @@ function UIClass(callback) {
     $(document.body).append(_self.statusBar.getElement());
   }
 
-  //Sync Resources Tree
-  this.syncResourcesTree = function() {
-    _self.resourcesTree.emptyItems();
-    $.each(DSGM.currentProject.getStaticResources(), function(index, staticResource) {
-      var newItem = new TreeItemClass(staticResource.typePlural, "folder");
-      _self.resourcesTree.addItem(newItem);
-      var resources = DSGM.currentProject.getResourcesByType(staticResource.type);
-      $.each(resources, function(index, resource) {
-        var newResourceItem = new TreeItemClass(resource.name, staticResource.icon);
-        newResourceItem.setHandler(function(whichItem) {
-          DSGM.loadResourceByNameAndType(resource.name, staticResource.type);
-        });
-        newItem.addItem(newResourceItem);
-      });
-    });
-  }
-
   //(Menu) Resources > Add Sprite
   $("[data-role=add-sprite").click(function() {
-    DSGM.currentProject.addResource(null, "sprite");
-    _self.syncResourcesTree();
+    var newResource = DSGM.currentProject.addResource(null, "sprite", true);
   });
 
   //(Menu) Resources > Add Background
   $("[data-role=add-background").click(function() {
-    DSGM.currentProject.addResource(null, "background");
-    _self.syncResourcesTree();
+    var newResource = DSGM.currentProject.addResource(null, "background", true);
   });
 
   //(Menu) Tools > Test

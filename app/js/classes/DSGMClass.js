@@ -16,6 +16,7 @@ function DSGMClass(commandHandler) {
     },
     function(next) {
       _self.Links = new LinksClass();
+      _self.Resources = new ResourcesClass();
       //Block
       _self.UI.load(true, next);
     },
@@ -26,10 +27,9 @@ function DSGMClass(commandHandler) {
       _self.UI.makeStatusBar();
       //New Project
       _self.currentProject = new ProjectClass();
-      //_self.currentProject.addResource("Sprite_1", "sprite");
-      //_self.currentProject.addResource("Sprite_2", "sprite");
-      //_self.currentProject.addResource("Background_1", "background");
-      _self.UI.syncResourcesTree();
+      _self.currentProject.addResource("Sprite_1", "sprite");
+      _self.currentProject.addResource("Sprite_2", "sprite");
+      _self.currentProject.addResource("Background_1", "background");
       //Bind Links
       _self.Links.bindLinks(document.body);
       //Next
