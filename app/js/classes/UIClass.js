@@ -1,7 +1,7 @@
 function UIClass(callback) {
 
   var _self = this;
-  _self._animationSpeed = 250;
+  _self._animationSpeed = 200;
 
   _self.colors = {
     "white": "white",
@@ -168,11 +168,6 @@ function UIClass(callback) {
     $("#Working").fadeOut(callback);
   }
 
-  //Slide Toggle
-  this.slideToggle = function(element) {
-    element.slideToggle(_self._animationSpeed);
-  }
-
   //Colors
   $("#Colors div").each(function(index, colorDiv) {
     var jColorDiv = $(colorDiv);
@@ -185,11 +180,15 @@ function UIClass(callback) {
   }
 
   //Icons
+  this.getIconByName = function(name) {
+    var icon = $.grep(_icons, function(iconElement) {
+      return (iconElement.name == name);
+    })[0];
+    return icon;
+  }
   this.iconify = function(element) {
     if (element.attr("data-icon") == undefined) return;
-    var icon = $.grep(_icons, function(iconElement) {
-      return (iconElement.name == element.attr("data-icon"));
-    })[0];
+    var icon = _self.getIconByName(element.attr("data-icon"));
     if (icon == undefined) icon = _icons[0];
     element.prepend("<span class=\"" + icon.classes + "\" style=\"color: " + icon.color + ";\"></span>");
   }

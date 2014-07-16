@@ -39,10 +39,6 @@ function TreeClass() {
     return _self._element;
   }
 
-  _self.unselectAll = function() {
-    $("li span", _self._element).removeClass("selected");
-  }
-
   _self.emptyItems = function() {
     _self.items.length = 0;
   }
@@ -122,13 +118,44 @@ function TreeItemClass(text, icon) {
     _self.updateHandler();
   }
 
+  _self.setVisuallySelected = function(selected) {
+    var thisSpan = $("> span", _self._element);
+    var els = $.merge(thisSpan, $("span", thisSpan));
+    if (selected) {
+      if (!thisSpan.hasClass("selected")) {
+        els.animate({
+          backgroundColor: DSGM.UI.getColor("obvious"),
+          color: DSGM.UI.getColor("foreground")
+        }, DSGM.UI._animationSpeed);
+      } else {
+        els
+          .css({"background-color": DSGM.UI.getColor("obvious"), color: DSGM.UI.getColor("foreground")});
+      }
+      thisSpan.addClass("selected");
+    } else {
+      els
+        .css({"background-color": _self._tree.getElement().css("background-color"), color: DSGM.UI.getColor("foreground-invert")});
+      $(".fa", els).css("color", DSGM.UI.getIconByName(_self.icon).color);
+      thisSpan
+        .removeClass("selected");
+    }
+    $.each(_self.items, function(index, item) {
+      item.setVisuallySelected(false);
+    });
+  }
+
   _self.updateHandler = function() {
     var thisSpan = $("> span", _self._element);
     thisSpan.unbind("click");
     thisSpan.bind("click", function() {
-      _self._tree.unselectAll();
-      thisSpan.addClass("selected");
-      if ($("> ul", _self._element).children().length > 0) DSGM.UI.slideToggle($("> ul", _self._element));
+      var keepClass = thisSpan.attr("class");
+      $.each(_self._tree.items, function(index, item) {
+        item.setVisuallySelected(false);
+      });
+      thisSpan.attr("class", keepClass);
+      _self.setVisuallySelected(true);
+      var ul = $("> ul", _self._element);
+      if (ul.children().length > 0) ul.slideToggle(DSGM.UI._animationSpeed);
       if (_self.handler != undefined) _self.handler(_self);
     });
     $.each(_self.items, function(index, item) {

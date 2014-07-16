@@ -37,7 +37,8 @@ function ProjectClass() {
 		});
 		masterTreeItem.addItem(newTreeItem);
 		if (doSelect) {
-			newTreeItem.setSelected();
+			//ATTENTION!!!
+			newTreeItem.setSelected(true);
 		}
 		return newResource;
 	}

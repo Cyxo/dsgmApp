@@ -4,7 +4,7 @@ $min-height: 320px;
 .ui-orb {
   padding: 0;
   float: left;
-  background-color: $foreground-color-2;
+  background-color: $background-color-2;
   border-top-right-radius: $radius;
   > div {
     display: block;
@@ -25,7 +25,7 @@ $min-height: 320px;
       border: 2px solid $obvious-color;
       > div {
         border-radius: $radius;
-        background-color: $foreground-color-2;
+        background-color: $background-color-2;
         height: 100%;
       }
     }

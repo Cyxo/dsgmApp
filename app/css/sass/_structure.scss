@@ -9,8 +9,14 @@ body {
 }
 
 #Colors {
+  .foreground {
+    background-color: $foreground-color;
+  }
+  .foreground-invert {
+    background-color: $foreground-color-invert;
+  }
   .background-light {
-    background-color: $foreground-color-2;
+    background-color: $background-color-2;
   }
   .obvious {
     background-color: $obvious-color;

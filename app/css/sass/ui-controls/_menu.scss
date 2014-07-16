@@ -5,7 +5,7 @@
   height: $header-size / 2;
   padding: 0;
   line-height: $header-size / 2;
-  background-color: $foreground-color-2;
+  background-color: $background-color-2;
   ul {
     visibility: hidden;
     position: absolute;
@@ -47,7 +47,7 @@
     list-style-type: none;
     ul {
       li {
-        background-color: $foreground-color-2;
+        background-color: $background-color-2;
       }
     }
   }

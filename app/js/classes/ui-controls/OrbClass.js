@@ -17,13 +17,16 @@ function OrbClass() {
       var el = $(this);
       async.waterfall([
         function(next) {
-          el.animate({
-            backgroundColor: DSGM.UI.getColor("obvious")
-          }, DSGM.UI._animationSpeed, next);
+          el
+            .stop()
+            .animate({
+                backgroundColor: DSGM.UI.getColor("obvious")
+              }, DSGM.UI._animationSpeed, next);
         },
         function(next) {
           $("> div > div", el)
             .css("display", "block")
+            .stop()
             .animate({height: "320px"}, DSGM.UI._animationSpeed);
         }
       ]);
@@ -33,13 +36,16 @@ function OrbClass() {
       async.waterfall([
         function(next) {
           $("> div > div", el)
+            .stop()
             .animate({height: "0px"}, DSGM.UI._animationSpeed, next)
         },
         function(next) {
           $("> div > div", el).css("display", "none");
-          el.animate({
-            backgroundColor: DSGM.UI.getColor("background-light")
-          }, DSGM.UI._animationSpeed);
+          el
+            .stop()
+            .animate({
+              backgroundColor: DSGM.UI.getColor("background-light")
+            }, DSGM.UI._animationSpeed);
         }
       ]);
     });

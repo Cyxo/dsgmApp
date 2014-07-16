@@ -8,7 +8,7 @@
   }
   .selected {
     display: block;
-    background-color: $foreground-color-2;
+    background-color: $background-color-2;
   }
 }
 
@@ -17,7 +17,7 @@
   height: $tabs-changer-size;
   line-height: $tabs-changer-size;
   .selected {
-    background-color: $foreground-color-2;
+    background-color: $background-color-2;
   }
 }
 

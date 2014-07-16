@@ -1523,6 +1523,10 @@ body {
   margin: 0;
   padding: 0; }
 
+#Colors .foreground {
+  background-color: white; }
+#Colors .foreground-invert {
+  background-color: black; }
 #Colors .background-light {
   background-color: #606060; }
 #Colors .obvious {
@@ -1808,10 +1812,7 @@ button:last-child {
     padding: 4px;
     line-height: 24px; }
   .ui-tree .selected {
-    background-color: #ffc300;
     border-radius: 4px; }
-  .ui-tree .selected, .ui-tree .selected * {
-    color: white !important; }
 
 .markup-resource > * {
   height: 100%;
