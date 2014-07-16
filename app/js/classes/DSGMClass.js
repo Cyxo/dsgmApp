@@ -49,7 +49,8 @@ function DSGMClass(commandHandler) {
     var firstTabChanger = $($(".ui-tabs .ui-tabs-changer div", markup)[0]);
     $("span[data-role=resource-name]", firstTabChanger).html(resource.name);
     var firstTab = $($(".ui-tabs .ui-panel", markup)[0]);
-    firstTab.html("(" + resource.name + " Properties)");
+    var firstTabP = $("> p", firstTab);
+    firstTabP.html("(" + resource.name + " Properties)");
   }
 
 }

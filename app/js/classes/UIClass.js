@@ -226,13 +226,8 @@ function UIClass(callback) {
       var resources = DSGM.currentProject.getResourcesByType(staticResource.type);
       $.each(resources, function(index, resource) {
         var newResourceItem = new TreeItemClass(resource.name, staticResource.icon);
-        newResourceItem.setAttr("resource-name", resource.name);
-        newResourceItem.setAttr("resource-type", staticResource.type);
         newResourceItem.setHandler(function(whichItem) {
-          DSGM.loadResourceByNameAndType(
-            whichItem.getAttr("resource-name"),
-            whichItem.getAttr("resource-type")
-          );
+          DSGM.loadResourceByNameAndType(resource.name, staticResource.type);
         });
         newItem.addItem(newResourceItem);
       });

@@ -1,4 +1,4 @@
-function TreeClass(role) {
+function TreeClass() {
 
   var _self = this;
   _self._element = null;
@@ -11,7 +11,6 @@ function TreeClass(role) {
   }
 
   _self.refresh = function() {
-    _self._element.attr("data-role", _self.role);
     _self._element.empty();
     $.each(_self.items, function(index, item) {
       _self._element.append(item.getElement());
@@ -21,11 +20,6 @@ function TreeClass(role) {
 
   _self._element = _self.makeElement();
   _self.refresh();
-
-  _self.setRole = function(role) {
-    _self.role = role;
-    _self.refresh();
-  }
 
   _self.addItem = function(item, doFinishing) {
     if (doFinishing == undefined) doFinishing = true;
