@@ -2,6 +2,7 @@ function UIClass(callback) {
 
   var _self = this;
   _self._animationSpeed = 200;
+  _self._quickAnimationSpeed = 100;
 
   _self.colors = {
     "white": "white",
@@ -17,7 +18,7 @@ function UIClass(callback) {
     "teal": "00C278"
   };
 
-  var _icons = [
+  _self._icons = [
     {
       "name": "blank",
       "classes": "fa fa-fw",
@@ -181,7 +182,7 @@ function UIClass(callback) {
 
   //Icons
   this.getIconByName = function(name) {
-    var icon = $.grep(_icons, function(iconElement) {
+    var icon = $.grep(_self._icons, function(iconElement) {
       return (iconElement.name == name);
     })[0];
     return icon;
@@ -189,7 +190,7 @@ function UIClass(callback) {
   this.iconify = function(element) {
     if (element.attr("data-icon") == undefined) return;
     var icon = _self.getIconByName(element.attr("data-icon"));
-    if (icon == undefined) icon = _icons[0];
+    if (icon == undefined) icon = _self._icons[0];
     element.prepend("<span class=\"" + icon.classes + "\" style=\"color: " + icon.color + ";\"></span>");
   }
   $("*[data-icon]").each(function(index, element) {
@@ -389,31 +390,42 @@ function UIClass(callback) {
     $(document.body).append(_self.statusBar.getElement());
   }
 
-  //(Menu) Resources > Add Sprite
-  $("*[data-role=add-sprite]").click(function() {
-    var newResource = DSGM.currentProject.addResource(null, "sprite", true);
-  });
-
-  //(Menu) Resources > Add Background
-  $("*[data-role=add-background]").click(function() {
-    var newResource = DSGM.currentProject.addResource(null, "background", true);
-  });
-
-  //(Menu) Tools > Test
-  $("[data-role=test]").click(function() {
-    var testDialogue = new DialogueClass();
-    // testDialogue.askYesNoCancel("Print the names of the developers?", "help", function() {
-    //   DSGM.Command.request("print", ["James Garner", "Chris Ertl"], function(){});
-    // });
-    testDialogue.showAlert("It's not going well.");
-  });
-
-  //(Menu) Help > About
-  $("[data-role=about]").click(function() {
-    var markup = _self.getMarkup("about");
-    var aboutDialogue = new DialogueClass(markup, null, DSGM.Language.getTerm("about-ds-game-maker"), [], 450, 450, true);
-    aboutDialogue.show();
-  });
+  //Drop Down Element
+  _self.dropUpDown = function(isDown, topEl, subEl, dropFade, doAsync, fadeSpeed, dropSpeed) {
+    dropFade = (dropFade ? dropFade : false);
+    doAsync = (doAsync ? doAsync : false);
+    if (fadeSpeed === undefined) fadeSpeed = _self._animationSpeed;
+    if (dropSpeed === undefined) dropSpeed = _self._animationSpeed;
+    var topElFade = function(isDown, speed, callback) {
+      topEl.stop().animate({
+        backgroundColor: DSGM.UI.getColor(isDown ? "obvious" : "background-light")
+      }, speed, callback);
+    };
+    var subElState = function(isDown, speed, doFade, callback) {
+      if (speed == 0) {
+        subEl.toggle();
+      } else {
+        subEl.stop();
+        if (!dropFade)
+          subEl.slideToggle(dropSpeed, callback)
+        else
+          subEl.fadeToggle(dropSpeed, callback)
+      }
+    }
+    if (doAsync) {
+      topElFade(isDown, fadeSpeed);
+      subElState(isDown, dropSpeed, dropFade);
+    } else {
+      async.waterfall([
+        function(next) {
+          topElFade(isDown, fadeSpeed, next);
+        },
+        function(next) {
+          subElState(isDown, dropSpeed, dropFade, next);
+        }
+      ]);
+    }
+  }
 
   callback();
 

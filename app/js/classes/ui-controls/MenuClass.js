@@ -48,40 +48,11 @@ function MenuMasterItemClass(text) {
   _self.updateHandler = function() {
     _self._element.unbind("mouseenter");
     _self._element.bind("mouseenter", function() {
-      var el = $(this);
-      console.log(el);
-      async.waterfall([
-        function(next) {
-          el
-            .stop()
-            .animate({
-                backgroundColor: DSGM.UI.getColor("obvious")
-              }, DSGM.UI._animationSpeed, next);
-        },
-        function(next) {
-          $("> div", el)
-            .stop()
-            .slideDown(DSGM.UI._animationSpeed);
-        }
-      ]);
+      DSGM.UI.dropUpDown(true, $(this), $("> div", $(this)), true, true, DSGM.UI.animationSpeed, DSGM.UI.quickAnimationSpeed);
     });
     _self._element.unbind("mouseleave");
     _self._element.bind("mouseleave", function() {
-      var el = $(this);
-      async.waterfall([
-        function(next) {
-          $("> div", el)
-            .stop()
-            .slideUp(DSGM.UI._animationSpeed, next);
-        },
-        function(next) {
-          el
-            .stop()
-            .animate({
-              backgroundColor: DSGM.UI.getColor("background-light")
-            }, DSGM.UI._animationSpeed);
-        }
-      ]);
+      DSGM.UI.dropUpDown(false, $(this), $("> div", $(this)), true, true, DSGM.UI.animationSpeed, DSGM.UI.quickAnimationSpeed);
     });
   }
 

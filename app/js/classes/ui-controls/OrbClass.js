@@ -14,38 +14,10 @@ function OrbClass() {
     s += "</div>";
     var element = $(s);
     element.bind("mouseenter", function() {
-      var el = $(this);
-      async.waterfall([
-        function(next) {
-          el
-            .stop()
-            .animate({
-                backgroundColor: DSGM.UI.getColor("obvious")
-              }, DSGM.UI._animationSpeed, next);
-        },
-        function(next) {
-          $("> div > div", el)
-            .stop()
-            .slideDown(DSGM.UI._animationSpeed);
-        }
-      ]);
+      DSGM.UI.dropUpDown(true, $(this), $("> div > div", $(this)));
     });
     element.bind("mouseleave", function() {
-      var el = $(this);
-      async.waterfall([
-        function(next) {
-          $("> div > div", el)
-            .stop()
-            .slideUp(DSGM.UI._animationSpeed, next)
-        },
-        function(next) {
-          el
-            .stop()
-            .animate({
-              backgroundColor: DSGM.UI.getColor("background-light")
-            }, DSGM.UI._animationSpeed);
-        }
-      ]);
+      DSGM.UI.dropUpDown(false, $(this), $("> div > div", $(this)));
     });
     return element;
   }
