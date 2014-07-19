@@ -23,7 +23,7 @@
     <!-- JavaScript: UI Classes -->
     <script src="js/classes/ui-controls/ButtonClass.js"></script>
     <script src="js/classes/ui-controls/DialogueClass.js"></script>
-    <!-- (Menu) -->
+    <script src="js/classes/ui-controls/MenuClass.js"></script>
     <script src="js/classes/ui-controls/OrbClass.js"></script>
     <script src="js/classes/ui-controls/StatusBarClass.js"></script>
     <!-- (Tabber) -->
@@ -132,84 +132,7 @@
     <header class="ui">
       <div>
         <nav>
-          <ul data-role="main-menu" class="ui ui-menu">
-            <li>
-              <span data-translate="project-menu"></span>
-              <ul>
-                <div>
-                  <li><span data-icon="page"><span data-translate="new"></span></span></li>
-                  <li><span data-icon="folder"><span data-translate="open"></span></span></li>
-                  <li><span data-icon="blank"><span data-translate="open-last-project"></span></span></li>
-                </div>
-                <div>
-                  <li><span data-icon="play"><span data-translate="test"></span></span></li>
-                  <li><span data-icon="play"><span data-translate="compile"></span></span></li>
-                </div>
-                <div>
-                  <li><span data-icon="disk"><span data-translate="save"></span></span></li>
-                  <li><span data-icon="blank"><span data-translate="save-as"></span></span></li>
-                </div>
-              </ul>
-            </li>
-            <li>
-              <span data-translate="resources-menu"></span>
-              <ul>
-                <div>
-                  <li><span data-icon="copy"><span data-translate="copy"></span></span></li>
-                  <li><span data-icon="no"><span data-translate="delete"></span></span></li>
-                </div>
-                <div>
-                  <li><span data-icon="search"><span data-translate="find-resource"></span></span></li>
-                </div>
-                <div>
-                  <li data-role="add-sprite"><span data-icon="sprite"><span data-translate="add-sprite"></span></span></li>
-                  <li data-role="add-background"><span data-icon="background"><span data-translate="add-background"></span></span></li>
-                  <li data-role="add-object"><span data-icon="object"><span data-translate="add-object"></span></span></li>
-                  <li data-role="add-room"><span data-icon="room"><span data-translate="add-room"></span></span></li>
-                  <li data-role="add-sound"><span data-icon="sound"><span data-translate="add-sound"></span></span></li>
-                </div>
-              </ul>
-            </li>
-            <li>
-              <span data-translate="tools-menu"></span>
-              <ul>
-                <div>
-                  <li><span data-icon="wrench"><span data-translate="game-options"></span></span></li>
-                  <li><span data-icon="blank"><span data-translate="global-variables"></span></span></li>
-                  <li><span data-icon="blank"><span data-translate="global-structures"></span></span></li>
-                  <li><span data-icon="blank"><span data-translate="global-arrays"></span></span></li>
-                </div>
-                <div>
-                  <li><span data-icon="wrench"><span data-translate="options"></span></span></li>
-                </div>
-                <div>
-                  <li><span data-icon="folder"><span data-translate="open-compile-folder"></span></span></li>
-                  <li><span data-icon="folder"><span data-translate="open-plugins-folder"></span></span></li>
-                </div>
-                <div>
-                  <li><span data-icon="blank"><span data-translate="action-editor"></span></span></li>
-                  <li><span data-icon="blank"><span data-translate="font-viewer"></span></span></li>
-                  <li><span data-icon="blank"><span data-translate="launch-emulator"></span></span></li>
-                </div>
-                <div>
-                  <li data-role="test"><span data-icon="help"><span data-translate="test"></span></span></li>
-                </div>
-              </ul>
-            </li>
-            <li>
-              <span data-role="help-menu" data-translate="help-menu"></span>
-              <ul>
-                <div>
-                  <li data-link="website"><span data-icon="globe"><span data-translate="website">Website</span></span></li>
-                  <li data-link="forum"><span data-icon="globe"><span data-translate="forum">Forum</span></span></li>
-                  <li data-link="tutorials"><span data-icon="globe"><span data-translate="tutorials">Tutorials</span></span></li>
-                </div>
-                <div>
-                  <li data-role="about"><span data-icon="info"><span data-translate="about"></span></span></li>
-                </div>
-              </ul>
-            </li>
-          </ul>
+          <!-- Main Menu -->
         </nav>
       </div>
     </header>
@@ -218,6 +141,7 @@
         <!-- Resources Tree -->
       </aside>
       <div class="ui ui-panel">
+        <!-- Test Menu -->
       </div>
     </main>
     <!-- Status Bar -->

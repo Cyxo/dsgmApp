@@ -1688,53 +1688,46 @@ button:last-child {
   padding: 0;
   line-height: 32px;
   background-color: #606060; }
-  .ui-menu ul {
-    visibility: hidden;
-    position: absolute;
-    left: 0;
-    width: 216px;
-    z-index: 400;
-    background-color: #ffc300;
-    border: 2px solid #ffc300;
-    border-radius: 4px;
-    border-top-left-radius: 0; }
-  .ui-menu ul li {
-    float: none; }
-  .ui-menu ul > div {
-    border-top: 1px solid #ffc300;
-    border-bottom: 1px solid #ffc300; }
-  .ui-menu ul > div:first-child {
-    border-top: 0; }
-  .ui-menu ul > div:last-child {
-    border-bottom: 0; }
-  .ui-menu ul li:first-child {
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px; }
-  .ui-menu ul li:last-child {
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px; }
   .ui-menu li {
-    float: left;
+    list-style-type: none;
     padding-top: 0;
     padding-bottom: 0;
     padding-left: 7px;
-    padding-right: 7px;
-    list-style-type: none; }
-    .ui-menu li ul li {
-      background-color: #606060; }
-  .ui-menu li.separator {
-    height: 2px;
-    background-color: #ffc300; }
-  .ui-menu li:hover > ul {
-    visibility: visible; }
-  .ui-menu li:hover {
-    position: relative;
-    background-color: #ffc300; }
+    padding-right: 7px; }
   .ui-menu > li {
+    position: relative;
+    float: left;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px; }
-  .ui-menu li li:hover * {
-    color: white !important; }
+    .ui-menu > li > div {
+      position: absolute;
+      display: none;
+      left: 0;
+      width: 216px;
+      z-index: 400;
+      background-color: #ffc300;
+      border: 2px solid #ffc300;
+      border-radius: 4px;
+      border-top-left-radius: 0; }
+      .ui-menu > li > div > ul > div {
+        border-top: 1px solid #ffc300;
+        border-bottom: 1px solid #ffc300; }
+        .ui-menu > li > div > ul > div li {
+          float: none;
+          background-color: #606060; }
+        .ui-menu > li > div > ul > div li:first-child {
+          border-top-left-radius: 4px;
+          border-top-right-radius: 4px; }
+        .ui-menu > li > div > ul > div li:last-child {
+          border-bottom-left-radius: 4px;
+          border-bottom-right-radius: 4px; }
+        .ui-menu > li > div > ul > div li.separator {
+          height: 2px;
+          background-color: #ffc300; }
+      .ui-menu > li > div > ul > div:first-child {
+        border-top: 0; }
+      .ui-menu > li > div > ul > div:last-child {
+        border-bottom: 0; }
 
 .ui-orb {
   padding: 0;
@@ -1749,10 +1742,10 @@ button:last-child {
       width: 100%;
       height: 100%; }
     .ui-orb > div > div {
-      display: none;
       position: absolute;
+      display: none;
+      height: 320px;
       width: 256px;
-      height: 0;
       border-radius: 4px;
       border-top-left-radius: 0;
       background-color: #ffc300;

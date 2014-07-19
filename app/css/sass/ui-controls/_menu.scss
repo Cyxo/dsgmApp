@@ -6,67 +6,61 @@
   padding: 0;
   line-height: $header-size / 2;
   background-color: $background-color-2;
-  ul {
-    visibility: hidden;
-    position: absolute;
-    left: 0;
-    width: 216px;
-    z-index: 400;
-    background-color: $obvious-color;
-    border: 2px solid $obvious-color;
-    border-radius: $radius;
-    border-top-left-radius: 0;
-  }
-  ul li {
-    float: none;
-  }
-  ul > div {
-    border-top: 1px solid $obvious-color;
-    border-bottom: 1px solid $obvious-color;
-  }
-  ul > div:first-child {
-    border-top: 0;
-  }
-  ul > div:last-child {
-    border-bottom: 0;
-  }
-  ul li:first-child {
-    border-top-left-radius: $radius;
-    border-top-right-radius: $radius;
-  }
-  ul li:last-child {
-    border-bottom-left-radius: $radius;
-    border-bottom-right-radius: $radius;
-  }
+  //All Items
   li {
-    float: left;
+    list-style-type: none;
     padding-top: 0;
     padding-bottom: 0;
     padding-left: $padding + 3px;
     padding-right: $padding + 3px;
-    list-style-type: none;
-    ul {
-      li {
-        background-color: $background-color-2;
-      }
-    }
   }
-  li.separator {
-    height: 2px;
-    background-color: $obvious-color;
-  }
-  li:hover > ul { 
-    visibility: visible;
-  }
-  li:hover {
-    position: relative;
-    background-color: $obvious-color;
-  }
+  //Master Item
   > li {
+    position: relative;
+    float: left;
     border-top-left-radius: $radius;
     border-top-right-radius: $radius;
-  }
-  li li:hover * {
-    color: $foreground-color !important;
+    > div {
+      position: absolute;
+      display: none;
+      left: 0;
+      width: 216px;
+      z-index: 400;
+      background-color: $obvious-color;
+      border: 2px solid $obvious-color;
+      border-radius: $radius;
+      border-top-left-radius: 0;
+      //Master Item List
+      > ul {
+        //Group
+        > div {
+          border-top: 1px solid $obvious-color;
+          border-bottom: 1px solid $obvious-color;
+          //Group Items
+          li {
+            float: none;
+            background-color: $background-color-2;
+          }
+          li:first-child {
+            border-top-left-radius: $radius;
+            border-top-right-radius: $radius;
+          }
+          li:last-child {
+            border-bottom-left-radius: $radius;
+            border-bottom-right-radius: $radius;
+          }
+          li.separator {
+            height: 2px;
+            background-color: $obvious-color;
+          }
+        }
+        > div:first-child {
+          border-top: 0;
+        }
+        > div:last-child {
+          border-bottom: 0;
+        }
+      }
+    }
   }
 }

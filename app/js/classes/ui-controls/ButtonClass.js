@@ -1,46 +1,46 @@
 function ButtonClass(text, icon, handler) {
 
   var _self = this;
-  this._element = null;
-  this.text = text;
-  this.icon = icon;
+  _self._element = null;
+  _self.text = (text || "Button");
+  _self.icon = (icon || null);
 
-  this.setHandler = function(handler) {
-    this.handler = handler;
-    this._element.unbind("click");
-    this._element.bind("click", function() {
+  _self.setHandler = function(handler) {
+    _self.handler = handler;
+    _self._element.unbind("click");
+    _self._element.bind("click", function() {
       handler(_self);
     });
   }
 
-  this.makeElement = function() {
+  _self.makeElement = function() {
     var s = "<button></button>";
     var element = $(s);
     return element;
   }
 
-  this.refresh = function() {
-    if(this.icon) this._element.attr("data-icon", this.icon);
-    this._element.html(this.text);
-    DSGM.UI.iconify(this._element);
+  _self.refresh = function() {
+    if(_self.icon) _self._element.attr("data-icon", _self.icon);
+    _self._element.html(_self.text);
+    DSGM.UI.iconify(_self._element);
   }
 
-  this._element = this.makeElement();
-  this.refresh();
-  if(handler) this.setHandler(handler);
+  _self._element = _self.makeElement();
+  _self.refresh();
+  if(handler) _self.setHandler(handler);
 
-  this.setText = function(text) {
-    this.text = text;
-    this.refresh();
+  _self.setText = function(text) {
+    _self.text = text;
+    _self.refresh();
   }
 
-  this.setIcon = function(icon) {
-    this.icon = icon;
-    this.refresh();
+  _self.setIcon = function(icon) {
+    _self.icon = icon;
+    _self.refresh();
   }
 
-  this.getElement = function() {
-    return this._element;
+  _self.getElement = function() {
+    return _self._element;
   }
 
 }

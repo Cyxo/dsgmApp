@@ -227,6 +227,157 @@ function UIClass(callback) {
     });
   }
 
+  this.makeMainMenu = function() {
+    _self.mainMenu = new MenuClass();
+    $("body > header > div > nav").append(_self.mainMenu.getElement());
+
+    //Project
+    var projectMenuItem = new MenuMasterItemClass(DSGM.Language.getTerm("project"));
+    _self.mainMenu.addMasterItem(projectMenuItem);
+      //Group 1
+      var projectGroup1 = new MenuGroupClass();
+      projectMenuItem.addGroup(projectGroup1);
+        //New
+        var newMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("new"), "page");
+        projectGroup1.addItem(newMenuItem);
+        //Open
+        var openMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("open"), "folder");
+        projectGroup1.addItem(openMenuItem);
+        //Open Last Project
+        var openLastProjectMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("open-last-project"));
+        projectGroup1.addItem(openLastProjectMenuItem);
+      //Group 2
+      var projectGroup2 = new MenuGroupClass();
+      projectMenuItem.addGroup(projectGroup2);
+        //Test
+        var testMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("test"), "play");
+        projectGroup2.addItem(testMenuItem);
+        //Compile
+        var compileMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("compile"), "play");
+        projectGroup2.addItem(compileMenuItem);
+      //Group 3
+      var projectGroup3 = new MenuGroupClass();
+      projectMenuItem.addGroup(projectGroup3);
+        //Test
+        var saveMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("save"), "disk");
+        projectGroup3.addItem(saveMenuItem);
+        //Compile
+        var saveAsMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("save-as"));
+        projectGroup3.addItem(saveAsMenuItem);
+
+    //Resources
+    var resourcesMenuItem = new MenuMasterItemClass("Resources");
+    _self.mainMenu.addMasterItem(resourcesMenuItem);
+      //Group 1
+      var resourcesGroup1 = new MenuGroupClass();
+      resourcesMenuItem.addGroup(resourcesGroup1);
+        //Copy
+        var copyMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("copy-resource"), "copy");
+        resourcesGroup1.addItem(copyMenuItem);
+        //Delete
+        var deleteMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("delete-resource"), "no");
+        resourcesGroup1.addItem(deleteMenuItem);
+      //Group 2
+      var resourcesGroup2 = new MenuGroupClass();
+      resourcesMenuItem.addGroup(resourcesGroup2);
+        //Search
+        var findMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("find-resource"), "search");
+        resourcesGroup2.addItem(findMenuItem);
+      //Group 3
+      var resourcesGroup1 = new MenuGroupClass();
+      resourcesMenuItem.addGroup(resourcesGroup1);
+        //Add Sprite
+        var addSpriteMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("add-sprite"), "sprite");
+        resourcesGroup1.addItem(addSpriteMenuItem);
+        //Add Background
+        var addBackgroundMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("add-background"), "background");
+        resourcesGroup1.addItem(addBackgroundMenuItem);
+        //Add Object
+        var addObjectMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("add-object"), "object");
+        resourcesGroup1.addItem(addObjectMenuItem);
+        //Add Room
+        var addRoomMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("add-room"), "room");
+        resourcesGroup1.addItem(addRoomMenuItem);
+        //Add Sound
+        var addSoundMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("add-sound"), "sound");
+        resourcesGroup1.addItem(addSoundMenuItem);
+
+    //Tools
+    var toolsMenuItem = new MenuMasterItemClass("Tools");
+    _self.mainMenu.addMasterItem(toolsMenuItem);
+      //Group 1
+      var toolsGroup1 = new MenuGroupClass();
+      toolsMenuItem.addGroup(toolsGroup1);
+        //Game Options
+        var gameOptionsMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("game-options"), "wrench");
+        toolsGroup1.addItem(gameOptionsMenuItem);
+        //Global Variables
+        var globalVariablesMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("global-variables"));
+        toolsGroup1.addItem(globalVariablesMenuItem);
+        //Global Structures
+        var globalStructuresMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("global-structures"));
+        toolsGroup1.addItem(globalStructuresMenuItem);
+        //Global Arrays
+        var globalArraysMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("global-arrays"));
+        toolsGroup1.addItem(globalArraysMenuItem);
+      //Group 2
+      var toolsGroup2 = new MenuGroupClass();
+      toolsMenuItem.addGroup(toolsGroup2);
+        //Options
+        var optionsMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("options"), "wrench");
+        toolsGroup2.addItem(optionsMenuItem);
+      //Group 3
+      var toolsGroup3 = new MenuGroupClass();
+      toolsMenuItem.addGroup(toolsGroup3);
+        //Game Options
+        var openCompileFolderMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("open-compile-folder"), "folder");
+        toolsGroup3.addItem(openCompileFolderMenuItem);
+        //Global Variables
+        var openPluginsFolderMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("open-plugins-folder"), "folder");
+        toolsGroup3.addItem(openPluginsFolderMenuItem);
+      //Group 4
+      var toolsGroup4 = new MenuGroupClass();
+      toolsMenuItem.addGroup(toolsGroup4);
+        //Action Editor
+        var actionEditorMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("action-editor"));
+        toolsGroup4.addItem(actionEditorMenuItem);
+        //Font Viewer
+        var fontViewerMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("font-viewer"));
+        toolsGroup4.addItem(fontViewerMenuItem);
+        //Launch Emulator
+        var launchEmulatorMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("launch-emulator"));
+        toolsGroup4.addItem(launchEmulatorMenuItem);
+      //Group 5
+      var toolsGroup5 = new MenuGroupClass();
+      toolsMenuItem.addGroup(toolsGroup5);
+        //Action Editor
+        var testMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("test"), "help");
+        toolsGroup5.addItem(testMenuItem);
+
+    //Help
+    var helpMenuItem = new MenuMasterItemClass("Help");
+    _self.mainMenu.addMasterItem(helpMenuItem);
+      //Group 1
+      var helpGroup1 = new MenuGroupClass();
+      helpMenuItem.addGroup(helpGroup1);
+        //Website
+        var websiteMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("website"), "globe");
+        helpGroup1.addItem(websiteMenuItem);
+        //Forum
+        var forumMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("forum"), "globe");
+        helpGroup1.addItem(forumMenuItem);
+        //Tutorials
+        var tutorialsMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("tutorials"), "globe");
+        helpGroup1.addItem(tutorialsMenuItem);
+      //Group 2
+      var helpGroup2 = new MenuGroupClass();
+      helpMenuItem.addGroup(helpGroup2);
+        //Website
+        var aboutMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("about"), "info");
+        helpGroup2.addItem(aboutMenuItem);
+
+  }
+
   //Make Dialogue Singleton
   this.makeDialogue = function() {
     _self.Dialogue = new DialogueClass();
