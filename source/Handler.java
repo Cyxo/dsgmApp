@@ -3,7 +3,18 @@ import java.nio.file.Paths;
 import java.nio.charset.StandardCharsets;
 import java.io.IOException;
 
+import javafx.application.Application;
+import javafx.application.HostServices;
+
+
 public class Handler {
+
+
+  private HostServices hostServices;
+  public void setHostServices(HostServices hostServices) {
+    this.hostServices = hostServices;
+  }
+
 
   public String readFile(String path) {
     try {
@@ -13,40 +24,33 @@ public class Handler {
     }
   }
 
+
+  public void openUrl(String url) {
+    hostServices.showDocument(url);
+  }
+
+
   public String request(String command, String[] arguments) {
+
     String response = "";
 
     switch(command) {
-      case "link":
-        System.out.println("open " + arguments[0]);
-        break;
       case "print":
         for (String argument : arguments) {
           System.out.println(argument);
         }
         break;
+      case "link":
+        openUrl(arguments[0]);
+        break;
       case "readFile":
         response = readFile("app/" + arguments[0]);
         break;
-        // switch(arguments[0]) {
-        //   case "store/options.json":
-        //     response = "{\"language\": \"fr\"}";
-        //     break;
-        //   case "store/languages/base.json":
-        //     response = "{\"name\": \"Base\", \"data\": {\"project-menu\": \"Project\", \"resources-menu\": \"Resources\", \"tools-menu\": \"Tools\", \"help-menu\": \"Help\"}}";
-        //     break;
-        //   case "store/languages/en.json":
-        //     response = "{\"name\": \"English\", \"data\": {}}";
-        //     break;
-        //   case "store/languages/fr.json":
-        //     response = "{\"name\": \"French\", \"data\": {\"yes\": \"Oui\", \"no\": \"Non\", \"ok\": \"OK\"}}";
-        //     break;
-        // }
-        // break;
     }
 
     return response;
 
   }
+
 
 }

@@ -31,6 +31,8 @@ function MenuClass() {
   }
 
 }
+MenuClass.prototype = new UIPrototype();
+
 
 function MenuMasterItemClass(text) {
 
@@ -78,10 +80,6 @@ function MenuMasterItemClass(text) {
   _self._element = _self.makeElement();
   _self.refresh();
 
-  _self.getElement = function() {
-    return _self._element;
-  }
-
   _self.addGroup = function(item) {
     item._masterItem = _self;
     _self.groups.push(item);
@@ -89,6 +87,8 @@ function MenuMasterItemClass(text) {
   }
 
 }
+MenuMasterItemClass.prototype = new UIPrototype();
+
 
 function MenuGroupClass() {
 
@@ -119,10 +119,6 @@ function MenuGroupClass() {
   _self._element = _self.makeElement();
   _self.refresh();
 
-  _self.getElement = function() {
-    return _self._element;
-  }
-
   _self.addItem = function(item, doFinishing) {
     if (doFinishing == undefined) doFinishing = true;
     item._group = _self;
@@ -138,6 +134,8 @@ function MenuGroupClass() {
   }
 
 }
+MenuGroupClass.prototype = new UIPrototype();
+
 
 function MenuGroupItemClass(text, icon, handler) {
 
@@ -171,10 +169,10 @@ function MenuGroupItemClass(text, icon, handler) {
     _self._element.unbind("click");
     _self._element.bind("click", function() {
       _self._group._masterItem.dropUpDown(false, function() {
-        _self._group._masterItem.fireDropEvents = true;      
+        _self._group._masterItem.fireDropEvents = true;
+        if (_self.handler != undefined) _self.handler(_self);
       });
       _self._group._masterItem.fireDropEvents = false;
-      if (_self.handler != undefined) _self.handler(_self);
     });
   }
 
@@ -205,16 +203,5 @@ function MenuGroupItemClass(text, icon, handler) {
     _self.refresh();
   }
 
-  _self.setAttr = function(attr, value) {
-    _self._element.attr("data-" + attr, value);
-  }
-
-  _self.getAttr = function(attr) {
-    return _self._element.attr("data-" + attr);
-  }
-
-  _self.getElement = function() {
-    return _self._element;
-  }
-
 }
+MenuGroupItemClass.prototype = new UIPrototype();

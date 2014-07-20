@@ -1,18 +1,20 @@
 function LinksClass() {
 
   var _self = this;
+  //_self._link_base = "http://dsgamemaker.com";
+  _self._link_base = "http://dsgamemaker.com/zero";
   _self._links = [
     {
       "identifier": "website",
-      "url": "http://dsgamemaker.com/"
+      "url": _self._link_base + "/"
     },
     {
       "identifier": "tutorials",
-      "url": "http://dsgamemaker.com/tutorials/"
+      "url": _self._link_base + "/tutorials/"
     },
     {
       "identifier": "forum",
-      "url": "http://dsgamemaker.com/dsgmforum/"
+      "url": _self._link_base + "/forum/"
     }
   ];
 

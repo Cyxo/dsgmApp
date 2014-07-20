@@ -28,8 +28,5 @@ function OrbClass() {
   _self._element = _self.makeElement();
   _self.refresh();
 
-  _self.getElement = function() {
-    return _self._element;
-  }
-
 }
+OrbClass.prototype = new UIPrototype();

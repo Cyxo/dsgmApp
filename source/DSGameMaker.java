@@ -39,10 +39,14 @@ public class DSGameMaker extends Application {
     launch(args);
   }
 
-  private Handler handler = new Handler();
+  private Handler handler;
 
   //Override Application Start
   @Override public void start(final Stage passedStage) throws MalformedURLException {
+
+    //Handler
+    handler = new Handler();
+    handler.setHostServices(this.getHostServices());
 
     //Stage Object Reference
     this.mainStage = passedStage;

@@ -141,33 +141,49 @@ function UIClass(callback) {
     }
   ];
 
-  //Loading (major UI progress)
-  this.load = function(firstTime, callback, waitExtra) {
-    if (waitExtra == undefined) waitExtra = false;
-    if (firstTime) {
-      callback();
-      return;
-    }
-    if (waitExtra) {
-      setTimeout(
-        function() {
-          $("#Loading").fadeToggle(callback);
-        },
-        500
-      );
+  //Working (minor UI progress)
+  _self.workBlackoutNone = 1;
+  _self.workBlackoutDim = 2;
+  _self.workBlackoutFull = 3;
+  _self.workBlackoutExtent = null;
+  _self.workUseStatusBar = false;
+  this.startWork = function(work, useStatusBar, callback, blackoutExtent) {
+    work = work + "...";
+    var blackoutExtent = (blackoutExtent ? blackoutExtent : _self.workBlackoutDim);
+    var useStatusBar = (useStatusBar == undefined ? true : useStatusBar);
+    _self.workBlackoutExtent = blackoutExtent;
+    _self.workUseStatusBar = useStatusBar;
+    if (useStatusBar) {
+      _self.statusBar.setText(work);
+      _self.statusBar.setIcon("loading");
+      $("#Work").addClass("show-status");
     } else {
-      $("#Loading").fadeToggle(callback);
+      $("#Work > div > p span.text").html(work);
+      $("#Work > div").show();
+      $("#Work").removeClass("show-status");
+    }
+    switch(blackoutExtent) {
+      case _self.workBlackoutNone:
+        break;
+      case _self.workBlackoutDim:
+        $("#Work").fadeTo(_self.slowSpeed, 0.5, callback)
+        break;
+      case _self.workBlackoutFull:
+        $("#Work").fadeTo(_self.slowSpeed, 1, callback)
+        break;
     }
   }
 
-  //Working (minor UI progress)
-  this.startWork = function(text, callback) {
-    _self.statusBar.setWorking(text);
-    $("#Working").fadeIn(callback);
-  }
   this.endWork = function(callback) {
-    _self.statusBar.clear();
-    $("#Working").fadeOut(callback);
+    setTimeout(function() {
+      if (_self.workUseStatusBar) {
+        _self.statusBar.clear();
+      }
+      $("#Work").fadeOut(_self.slowSpeed, function() {
+        $("#Work > div").hide();
+        callback();
+      });
+    }, _self.slowSpeed * 2);
   }
 
   //Colors
@@ -260,15 +276,15 @@ function UIClass(callback) {
       //Group 3
       var projectGroup3 = new MenuGroupClass();
       projectMenuItem.addGroup(projectGroup3);
-        //Test
+        //Save
         var saveMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("save"), "disk");
         projectGroup3.addItem(saveMenuItem);
-        //Compile
+        //Save As
         var saveAsMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("save-as"));
         projectGroup3.addItem(saveAsMenuItem);
 
     //Resources
-    var resourcesMenuItem = new MenuMasterItemClass("Resources");
+    var resourcesMenuItem = new MenuMasterItemClass(DSGM.Language.getTerm("resources"));
     _self.mainMenu.addMasterItem(resourcesMenuItem);
       //Group 1
       var resourcesGroup1 = new MenuGroupClass();
@@ -299,7 +315,7 @@ function UIClass(callback) {
         });
 
     //Tools
-    var toolsMenuItem = new MenuMasterItemClass("Tools");
+    var toolsMenuItem = new MenuMasterItemClass(DSGM.Language.getTerm("tools"));
     _self.mainMenu.addMasterItem(toolsMenuItem);
       //Group 1
       var toolsGroup1 = new MenuGroupClass();
@@ -346,12 +362,16 @@ function UIClass(callback) {
       //Group 5
       var toolsGroup5 = new MenuGroupClass();
       toolsMenuItem.addGroup(toolsGroup5);
-        //Test
-        var testMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("test"), "help");
-        toolsGroup5.addItem(testMenuItem);
+        //Debug
+        var debugMenuItem = new MenuGroupItemClass("(Debug) Print Words", "help");
+        toolsGroup5.addItem(debugMenuItem);
+        debugMenuItem.setHandler(function() {
+          DSGM.Command.debug("test");
+          DSGM.Command.request("print", ["Hello", "Beautiful", "World"]);
+        });
 
     //Help
-    var helpMenuItem = new MenuMasterItemClass("Help");
+    var helpMenuItem = new MenuMasterItemClass(DSGM.Language.getTerm("help"));
     _self.mainMenu.addMasterItem(helpMenuItem);
       //Group 1
       var helpGroup1 = new MenuGroupClass();
@@ -359,12 +379,21 @@ function UIClass(callback) {
         //Website
         var websiteMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("website"), "globe");
         helpGroup1.addItem(websiteMenuItem);
+        websiteMenuItem.setHandler(function() {
+          DSGM.Links.goToLink("website");
+        });
         //Forum
         var forumMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("forum"), "globe");
         helpGroup1.addItem(forumMenuItem);
+        forumMenuItem.setHandler(function() {
+          DSGM.Links.goToLink("forum");
+        });
         //Tutorials
         var tutorialsMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("tutorials"), "globe");
         helpGroup1.addItem(tutorialsMenuItem);
+        tutorialsMenuItem.setHandler(function() {
+          DSGM.Links.goToLink("tutorials");
+        });
       //Group 2
       var helpGroup2 = new MenuGroupClass();
       helpMenuItem.addGroup(helpGroup2);
@@ -462,5 +491,22 @@ function UIClass(callback) {
   }
 
   callback();
+
+}
+
+
+var UIPrototype = function() {
+
+  this.setAttr = function(attr, value) {
+    this._element.attr("data-" + attr, value);
+  }
+
+  this.getAttr = function(attr) {
+    return this._element.attr("data-" + attr);
+  }
+
+  this.getElement = function() {
+    return this._element;
+  }
 
 }

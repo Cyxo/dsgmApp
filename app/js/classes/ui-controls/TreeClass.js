@@ -56,6 +56,8 @@ function TreeClass() {
   }
 
 }
+TreeClass.prototype = new UIPrototype();
+
 
 function TreeItemClass(text, icon) {
 
@@ -87,10 +89,6 @@ function TreeItemClass(text, icon) {
   _self._element = _self.makeElement();
   _self.refresh();
 
-  _self.getElement = function() {
-    return _self._element;
-  }
-
   _self.addItem = function(item, doFinishing) {
     if (doFinishing == undefined) doFinishing = true;
     item._tree = _self._tree;
@@ -105,14 +103,6 @@ function TreeItemClass(text, icon) {
     _self.refresh();
   }
 
-  _self.setAttr = function(attr, value) {
-    _self._element.attr("data-" + attr, value);
-  }
-
-  _self.getAttr = function(attr) {
-    return _self._element.attr("data-" + attr);
-  }
-
   _self.setText = function(text) {
     _self.text = text;
     _self.refresh();
@@ -122,11 +112,6 @@ function TreeItemClass(text, icon) {
     return _self.text;
   }
 
-  _self.setHandler = function(handler) {
-    _self.handler = handler;
-    _self.updateHandler();
-  }
-
   _self.unselectifyHelper = function(item) {
     DSGM.UI.selectify(false, item.getElement());
     if (item.items) {
@@ -134,6 +119,11 @@ function TreeItemClass(text, icon) {
         _self.unselectifyHelper(subItem);
       });
     }
+  }
+
+  _self.setHandler = function(handler) {
+    _self.handler = handler;
+    _self.updateHandler();
   }
 
   _self.updateHandler = function() {
@@ -169,3 +159,4 @@ function TreeItemClass(text, icon) {
   }
 
 }
+TreeItemClass.prototype = new UIPrototype();

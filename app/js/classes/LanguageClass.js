@@ -25,12 +25,12 @@ function LanguageClass(language, callback) {
         return word;
       });
       var t = "";
-      t += "(";
+      //t += "(";
       $.each(words, function(index, word) {
         t += word + " ";
       });
       t = t.substring(0, t.length - 1);
-      t += ")";
+      //t += ")";
     }
     return t;
   }

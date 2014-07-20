@@ -39,8 +39,5 @@ function ButtonClass(text, icon, handler) {
     _self.refresh();
   }
 
-  _self.getElement = function() {
-    return _self._element;
-  }
-
 }
+ButtonClass.prototype = new UIPrototype();
