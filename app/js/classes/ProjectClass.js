@@ -19,7 +19,7 @@ function ProjectClass() {
 
 	_self.addResource = function(name, type, doSelect) {
 		doSelect = (doSelect ? doSelect : false);
-		var newResource = DSGM.Resources.createResourceClassFromTypeName(type);
+		var newResource = MyApplication.Resources.createResourceClassFromTypeName(type);
 		if (name == null) {
 			var i = 1;
 			while (true) {
@@ -30,12 +30,12 @@ function ProjectClass() {
 		}
 		newResource.name = name;
 		_self._resources.push(newResource);
-		var masterTreeItem = DSGM.UI.resourcesTree.findItemByProperty("text", newResource.typePlural);
+		var masterTreeItem = MyApplication.UI.resourcesTree.findItemByProperty("text", newResource.typePlural);
 		var newTreeItem = new TreeItemClass(newResource.name, newResource.icon);
 		newTreeItem.setAttr("resource-name", newResource.name);
 		newTreeItem.setAttr("resource-type", newResource.type);
 		newTreeItem.setHandler(function() {
-			DSGM.loadResourceByNameAndType(this.getAttr("resource-name"), this.getAttr("resource-type"));
+			MyApplication.loadResourceByNameAndType(this.getAttr("resource-name"), this.getAttr("resource-type"));
 		});
 		masterTreeItem.addItem(newTreeItem);
 		if (doSelect) newTreeItem.select(true);

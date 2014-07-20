@@ -28,7 +28,7 @@ function LinksClass() {
   this.goToLink = function(identifier) {
     var link = _self.getLink(identifier);
     if (link == null) return;
-    DSGM.Command.request("link", [link.url]);
+    MyApplication.Command.request("link", [link.url]);
   }
 
   this.bindLinks = function(element) {

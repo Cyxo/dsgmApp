@@ -2,10 +2,10 @@ function DialogueClass(content, icon, title, buttons, width, height, customEleme
 
   var _self = this;
 
-  _self.yesButton = new ButtonClass(DSGM.Language.getTerm("yes"), "yes");
-  _self.noButton = new ButtonClass(DSGM.Language.getTerm("no"), "no");
-  _self.okButton = new ButtonClass(DSGM.Language.getTerm("ok"), "yes");
-  _self.cancelButton = new ButtonClass(DSGM.Language.getTerm("cancel"));
+  _self.yesButton = new ButtonClass(MyApplication.Language.getTerm("yes"), "yes");
+  _self.noButton = new ButtonClass(MyApplication.Language.getTerm("no"), "no");
+  _self.okButton = new ButtonClass(MyApplication.Language.getTerm("ok"), "yes");
+  _self.cancelButton = new ButtonClass(MyApplication.Language.getTerm("cancel"));
 
   _self.content = (content || "");
   _self.icon = icon;
@@ -89,7 +89,7 @@ DialogueClass.prototype.show = function() {
         .css("height", (_self.height - 54).toString() + "px");
       if (!_self.customElement) {
         var textSpan = $("<span" + (_self.icon ? " data-icon=\"" + _self.icon + "\"" : "") + ">" + _self.content + "</span>");
-        DSGM.UI.iconify(textSpan);
+        MyApplication.UI.iconify(textSpan);
         contentsDiv.append(textSpan);
         contentsDiv
           .css("line-height", (_self.height - 54).toString() + "px")
@@ -109,10 +109,10 @@ DialogueClass.prototype.show = function() {
       });
       async.waterfall([
         function(next2) {
-          $("#Dialogue").fadeIn(DSGM.UI.genericSpeed, next2);
+          $("#Dialogue").fadeIn(MyApplication.UI.genericSpeed, next2);
         },
         function(next2) {
-          $("#Dialogue > div").fadeIn(DSGM.UI.genericSpeed, next2);
+          $("#Dialogue > div").fadeIn(MyApplication.UI.genericSpeed, next2);
         }
       ]);
     }
@@ -123,11 +123,11 @@ DialogueClass.prototype.hide = function(callback, fullMonty) {
   fullMonty = (fullMonty != undefined ? fullMonty : true);
   async.waterfall([
     function(next) {
-      $("#Dialogue > div").fadeOut(DSGM.UI.genericSpeed, next);
+      $("#Dialogue > div").fadeOut(MyApplication.UI.genericSpeed, next);
     },
     function(next) {
       if (fullMonty) {
-        $("#Dialogue").fadeOut(DSGM.UI.genericSpeed, next);
+        $("#Dialogue").fadeOut(MyApplication.UI.genericSpeed, next);
       } else {
         next();
       }

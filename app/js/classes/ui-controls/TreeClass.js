@@ -74,7 +74,7 @@ function TreeItemClass(text, icon) {
     var thisSpan = $($("> span", _self._element)[0]);
     thisSpan.attr("data-icon", _self.icon);
     thisSpan.html(_self.text);
-    DSGM.UI.iconify(thisSpan);
+    MyApplication.UI.iconify(thisSpan);
     $("> ul", _self._element).empty();
     $.each(_self.items, function(index, item) {
       $("> ul", _self._element).append(item.getElement());
@@ -113,7 +113,7 @@ function TreeItemClass(text, icon) {
   }
 
   _self.unselectifyHelper = function(item) {
-    DSGM.UI.selectify(false, item.getElement());
+    MyApplication.UI.selectify(false, item.getElement());
     if (item.items) {
       $.each(item.items, function(index, subItem) {
         _self.unselectifyHelper(subItem);
@@ -134,7 +134,7 @@ function TreeItemClass(text, icon) {
       $.each(_self._tree.items, function(index, item) {
         _self.unselectifyHelper(item);
       });
-      DSGM.UI.selectify(true, _self.getElement(), doFade);
+      MyApplication.UI.selectify(true, _self.getElement(), doFade);
       _self.expand();
       if (_self.handler != undefined) _self.handler(_self);
     });
@@ -147,9 +147,9 @@ function TreeItemClass(text, icon) {
     var ul = $("> ul", _self._element);
     if (ul.children().length > 0) {
       if (!forceDown)
-        ul.slideToggle(DSGM.UI.genericSpeed)
+        ul.slideToggle(MyApplication.UI.genericSpeed)
       else
-        ul.slideDown(DSGM.UI.genericSpeed);
+        ul.slideDown(MyApplication.UI.genericSpeed);
     }
   }
 

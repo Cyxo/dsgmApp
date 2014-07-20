@@ -5,7 +5,7 @@ function OptionsClass(callback) {
 
   //Load
   this.load = function(callback) {
-    DSGM.Command.request(
+    MyApplication.Command.request(
       "readFile", [_options_path],
       function(response) {
         _options = JSON.parse(response);
@@ -19,7 +19,7 @@ function OptionsClass(callback) {
 
   //Save
   this.save = function(callback) {
-    DSGM.Comms.request("writeFile", JSON.stringify(_options), callback);
+    MyApplication.Comms.request("writeFile", JSON.stringify(_options), callback);
   }
 
   //Get

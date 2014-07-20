@@ -221,7 +221,7 @@ function UIClass(callback) {
   //Markup
   this.getMarkup = function(identifier) {
     var newElement = $($("*[data-role=markup-" + identifier + "]")[0]).clone();
-    DSGM.Links.bindLinks(newElement);
+    MyApplication.Links.bindLinks(newElement);
     return newElement;
   }
   this.switchMainMarkup = function(identifier) {
@@ -242,7 +242,7 @@ function UIClass(callback) {
     _self.resourcesTree = new TreeClass();
     $("body > main > aside").append(_self.resourcesTree.getElement());
     _self.resourcesTree.emptyItems();
-    $.each(DSGM.Resources.getStaticResources(), function(index, staticResource) {
+    $.each(MyApplication.Resources.getStaticResources(), function(index, staticResource) {
       var newItem = new TreeItemClass(staticResource.typePlural, "folder");
       _self.resourcesTree.addItem(newItem);
     });
@@ -253,114 +253,114 @@ function UIClass(callback) {
     $("body > header > div > nav").append(_self.mainMenu.getElement());
 
     //Project
-    var projectMenuItem = new MenuMasterItemClass(DSGM.Language.getTerm("project"));
+    var projectMenuItem = new MenuMasterItemClass(MyApplication.Language.getTerm("project"));
     _self.mainMenu.addMasterItem(projectMenuItem);
       //Group 1
       var projectGroup1 = new MenuGroupClass();
       projectMenuItem.addGroup(projectGroup1);
         //New
-        var newMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("new"), "page");
+        var newMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("new"), "page");
         projectGroup1.addItem(newMenuItem);
         //Open
-        var openMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("open"), "folder");
+        var openMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("open"), "folder");
         projectGroup1.addItem(openMenuItem);
         //Open Last Project
-        var openLastProjectMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("open-last-project"));
+        var openLastProjectMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("open-last-project"));
         projectGroup1.addItem(openLastProjectMenuItem);
       //Group 2
       var projectGroup2 = new MenuGroupClass();
       projectMenuItem.addGroup(projectGroup2);
         //Test
-        var testMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("test"), "play");
+        var testMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("test"), "play");
         projectGroup2.addItem(testMenuItem);
         //Compile
-        var compileMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("compile"), "play");
+        var compileMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("compile"), "play");
         projectGroup2.addItem(compileMenuItem);
       //Group 3
       var projectGroup3 = new MenuGroupClass();
       projectMenuItem.addGroup(projectGroup3);
         //Save
-        var saveMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("save"), "disk");
+        var saveMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("save"), "disk");
         projectGroup3.addItem(saveMenuItem);
         //Save As
-        var saveAsMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("save-as"));
+        var saveAsMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("save-as"));
         projectGroup3.addItem(saveAsMenuItem);
 
     //Resources
-    var resourcesMenuItem = new MenuMasterItemClass(DSGM.Language.getTerm("resources"));
+    var resourcesMenuItem = new MenuMasterItemClass(MyApplication.Language.getTerm("resources"));
     _self.mainMenu.addMasterItem(resourcesMenuItem);
       //Group 1
       var resourcesGroup1 = new MenuGroupClass();
       resourcesMenuItem.addGroup(resourcesGroup1);
         //Copy
-        var copyMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("copy-resource"), "copy");
+        var copyMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("copy-resource"), "copy");
         resourcesGroup1.addItem(copyMenuItem);
         //Delete
-        var deleteMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("delete-resource"), "no");
+        var deleteMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("delete-resource"), "no");
         resourcesGroup1.addItem(deleteMenuItem);
       //Group 2
       var resourcesGroup2 = new MenuGroupClass();
       resourcesMenuItem.addGroup(resourcesGroup2);
         //Search
-        var findMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("find-resource"), "search");
+        var findMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("find-resource"), "search");
         resourcesGroup2.addItem(findMenuItem);
       //Group 3
       var resourcesGroup3 = new MenuGroupClass();
       resourcesMenuItem.addGroup(resourcesGroup3);
         //Add Resources
-        $.each(DSGM.Resources.getStaticResources(), function(index, staticResource) {
-          var newResourcesMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("add-" + staticResource.type), staticResource.icon);
+        $.each(MyApplication.Resources.getStaticResources(), function(index, staticResource) {
+          var newResourcesMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("add-" + staticResource.type), staticResource.icon);
           resourcesGroup3.addItem(newResourcesMenuItem);
           newResourcesMenuItem.setAttr("resource-type", staticResource.type);
           newResourcesMenuItem.setHandler(function() {
-            DSGM.currentProject.addResource(null, this.getAttr("resource-type"), true);
+            MyApplication.currentProject.addResource(null, this.getAttr("resource-type"), true);
           });
         });
 
     //Tools
-    var toolsMenuItem = new MenuMasterItemClass(DSGM.Language.getTerm("tools"));
+    var toolsMenuItem = new MenuMasterItemClass(MyApplication.Language.getTerm("tools"));
     _self.mainMenu.addMasterItem(toolsMenuItem);
       //Group 1
       var toolsGroup1 = new MenuGroupClass();
       toolsMenuItem.addGroup(toolsGroup1);
         //Game Options
-        var gameOptionsMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("game-options"), "wrench");
+        var gameOptionsMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("game-options"), "wrench");
         toolsGroup1.addItem(gameOptionsMenuItem);
         //Global Variables
-        var globalVariablesMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("global-variables"));
+        var globalVariablesMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("global-variables"));
         toolsGroup1.addItem(globalVariablesMenuItem);
         //Global Structures
-        var globalStructuresMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("global-structures"));
+        var globalStructuresMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("global-structures"));
         toolsGroup1.addItem(globalStructuresMenuItem);
         //Global Arrays
-        var globalArraysMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("global-arrays"));
+        var globalArraysMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("global-arrays"));
         toolsGroup1.addItem(globalArraysMenuItem);
       //Group 2
       var toolsGroup2 = new MenuGroupClass();
       toolsMenuItem.addGroup(toolsGroup2);
         //Options
-        var optionsMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("options"), "wrench");
+        var optionsMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("options"), "wrench");
         toolsGroup2.addItem(optionsMenuItem);
       //Group 3
       var toolsGroup3 = new MenuGroupClass();
       toolsMenuItem.addGroup(toolsGroup3);
         //Open Compile Folder
-        var openCompileFolderMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("open-compile-folder"), "folder");
+        var openCompileFolderMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("open-compile-folder"), "folder");
         toolsGroup3.addItem(openCompileFolderMenuItem);
         //Open Plugins Folder
-        var openPluginsFolderMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("open-plugins-folder"), "folder");
+        var openPluginsFolderMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("open-plugins-folder"), "folder");
         toolsGroup3.addItem(openPluginsFolderMenuItem);
       //Group 4
       var toolsGroup4 = new MenuGroupClass();
       toolsMenuItem.addGroup(toolsGroup4);
         //Action Editor
-        var actionEditorMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("action-editor"));
+        var actionEditorMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("action-editor"));
         toolsGroup4.addItem(actionEditorMenuItem);
         //Font Viewer
-        var fontViewerMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("font-viewer"));
+        var fontViewerMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("font-viewer"));
         toolsGroup4.addItem(fontViewerMenuItem);
         //Launch Emulator
-        var launchEmulatorMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("launch-emulator"));
+        var launchEmulatorMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("launch-emulator"));
         toolsGroup4.addItem(launchEmulatorMenuItem);
       //Group 5
       var toolsGroup5 = new MenuGroupClass();
@@ -369,42 +369,42 @@ function UIClass(callback) {
         var debugMenuItem = new MenuGroupItemClass("(Debug) Print Words", "help");
         toolsGroup5.addItem(debugMenuItem);
         debugMenuItem.setHandler(function() {
-          DSGM.Command.request("print", ["Hello", "Beautiful", "World"]);
+          MyApplication.Command.request("print", ["Hello", "Beautiful", "World"]);
         });
 
     //Help
-    var helpMenuItem = new MenuMasterItemClass(DSGM.Language.getTerm("help"));
+    var helpMenuItem = new MenuMasterItemClass(MyApplication.Language.getTerm("help"));
     _self.mainMenu.addMasterItem(helpMenuItem);
       //Group 1
       var helpGroup1 = new MenuGroupClass();
       helpMenuItem.addGroup(helpGroup1);
         //Website
-        var websiteMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("website"), "globe");
+        var websiteMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("website"), "globe");
         helpGroup1.addItem(websiteMenuItem);
         websiteMenuItem.setHandler(function() {
-          DSGM.Links.goToLink("website");
+          MyApplication.Links.goToLink("website");
         });
         //Forum
-        var forumMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("forum"), "globe");
+        var forumMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("forum"), "globe");
         helpGroup1.addItem(forumMenuItem);
         forumMenuItem.setHandler(function() {
-          DSGM.Links.goToLink("forum");
+          MyApplication.Links.goToLink("forum");
         });
         //Tutorials
-        var tutorialsMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("tutorials"), "globe");
+        var tutorialsMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("tutorials"), "globe");
         helpGroup1.addItem(tutorialsMenuItem);
         tutorialsMenuItem.setHandler(function() {
-          DSGM.Links.goToLink("tutorials");
+          MyApplication.Links.goToLink("tutorials");
         });
       //Group 2
       var helpGroup2 = new MenuGroupClass();
       helpMenuItem.addGroup(helpGroup2);
         //About
-        var aboutMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("about"), "info");
+        var aboutMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("about"), "info");
         helpGroup2.addItem(aboutMenuItem);
         aboutMenuItem.setHandler(function() {
           var markup = _self.getMarkup("about");
-          var aboutDialogue = new DialogueClass(markup, null, DSGM.Language.getTerm("about-ds-game-maker"), [], 450, 450, true);
+          var aboutDialogue = new DialogueClass(markup, null, MyApplication.Language.getTerm("about-ds-game-maker"), [], 450, 450, true);
           aboutDialogue.show();
         });
   }
@@ -428,7 +428,7 @@ function UIClass(callback) {
     if (dropSpeed === undefined) dropSpeed = _self.genericSpeed;
     var topElFade = function(isDown, speed, callback) {
       topEl.stop().animate({
-        backgroundColor: DSGM.UI.getColor(isDown ? "obvious" : "background-light")
+        backgroundColor: MyApplication.UI.getColor(isDown ? "obvious" : "background-light")
       }, speed, callback);
     };
     var subElState = function(isDown, speed, doFade, callback) {
@@ -469,8 +469,8 @@ function UIClass(callback) {
     var exteriorSpan = $("> span", element);
     var iconSpan = $("> span", exteriorSpan);
     var iconColor = _self.getIcon(exteriorSpan.attr("data-icon")).color;
-    backgroundColor = (backgroundColor ? backgroundColor : DSGM.UI.getColor(!isSelected ? "foreground" : "obvious"));
-    foregroundColor = (foregroundColor ? foregroundColor : DSGM.UI.getColor(!isSelected ? "foreground-invert" : "foreground"));
+    backgroundColor = (backgroundColor ? backgroundColor : MyApplication.UI.getColor(!isSelected ? "foreground" : "obvious"));
+    foregroundColor = (foregroundColor ? foregroundColor : MyApplication.UI.getColor(!isSelected ? "foreground-invert" : "foreground"));
     if (speed === undefined) speed = _self.genericSpeed;
     if (isSelected) {
       element.addClass("selected");

@@ -1,4 +1,4 @@
-function DSGMClass(commandHandler) {
+function ApplicationClass(commandHandler) {
 
   var _self = this;
   if(commandHandler == undefined) {
@@ -49,9 +49,11 @@ function DSGMClass(commandHandler) {
 
   //Load Resource
   this.loadResourceByNameAndType = function(name, type) {
-    var resource = DSGM.currentProject.getResourceByNameAndType(name, type);
-    var markup = _self.UI.switchMainMarkup("resource-" + resource.type);
+    var resource = MyApplication.currentProject.getResourceByNameAndType(name, type);
+    var markup = _self.UI.switchMainMarkup("resource");
     var firstTabChanger = $($(".ui-tabs .ui-tabs-changer div", markup)[0]);
+    firstTabChanger.attr("data-icon", resource.icon);
+    _self.UI.iconify(firstTabChanger);
     $("span[data-role=resource-name]", firstTabChanger).html(resource.name);
     var firstTab = $($(".ui-tabs .ui-panel", markup)[0]);
     var firstTabP = $("> p", firstTab);

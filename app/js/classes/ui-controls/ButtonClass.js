@@ -22,7 +22,7 @@ function ButtonClass(text, icon, handler) {
   _self.refresh = function() {
     if(_self.icon) _self._element.attr("data-icon", _self.icon);
     _self._element.html(_self.text);
-    DSGM.UI.iconify(_self._element);
+    MyApplication.UI.iconify(_self._element);
   }
 
   _self._element = _self.makeElement();

@@ -51,7 +51,7 @@ function MenuMasterItemClass(text) {
   _self.fireDropEvents = true;
   _self.dropUpDown = function(isDown, callback) {
     if(!_self.fireDropEvents) return;
-    DSGM.UI.dropUpDown(isDown, _self._element, $("> div", _self._element), true, true, DSGM.UI.genericSpeed, DSGM.UI.fastSpeed, callback);
+    MyApplication.UI.dropUpDown(isDown, _self._element, $("> div", _self._element), true, true, MyApplication.UI.genericSpeed, MyApplication.UI.fastSpeed, callback);
   }
 
   _self.updateHandler = function() {
@@ -152,18 +152,18 @@ function MenuGroupItemClass(text, icon, handler) {
   _self.updateHandler = function() {
     _self._element.unbind("mouseenter");
     _self._element.bind("mouseenter", function() {
-      DSGM.UI.selectify(true, $(this), false,
-        DSGM.UI.getColor("obvious"),
-        DSGM.UI.getColor("foreground"),
-        DSGM.UI.slowSpeed
+      MyApplication.UI.selectify(true, $(this), false,
+        MyApplication.UI.getColor("obvious"),
+        MyApplication.UI.getColor("foreground"),
+        MyApplication.UI.slowSpeed
       );
     });
     _self._element.unbind("mouseleave");
     _self._element.bind("mouseleave", function() {
-      DSGM.UI.selectify(false, $(this), true,
-        DSGM.UI.getColor("background-light"),
-        DSGM.UI.getColor("foreground"),
-        DSGM.UI.fastSpeed
+      MyApplication.UI.selectify(false, $(this), true,
+        MyApplication.UI.getColor("background-light"),
+        MyApplication.UI.getColor("foreground"),
+        MyApplication.UI.fastSpeed
       );
     });
     _self._element.unbind("click");
@@ -186,7 +186,7 @@ function MenuGroupItemClass(text, icon, handler) {
     var thisSpan = $($("> span", _self._element)[0]);
     if(_self.icon) thisSpan.attr("data-icon", _self.icon);
     thisSpan.html(_self.text);
-    DSGM.UI.iconify(thisSpan);
+    MyApplication.UI.iconify(thisSpan);
   }
 
   _self._element = _self.makeElement();

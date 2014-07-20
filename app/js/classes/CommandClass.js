@@ -28,14 +28,14 @@ function RemoteHandler() {
     switch(command) {
       case "link":
         window.open(arguments[0]);
-        DSGM.Command.respond(false);
+        MyApplication.Command.respond(false);
         return;
         break;
       case "print":
         $.each(arguments, function(index, argument) {
           console.log(argument);
         });
-        DSGM.Command.respond(false);
+        MyApplication.Command.respond(false);
         return;
         break;
     }
@@ -60,11 +60,11 @@ function RemoteHandler() {
     var ajaxRequest = $.ajax(url);
     //Success
     ajaxRequest.done(function(response) {
-      DSGM.Command.respond(response);
+      MyApplication.Command.respond(response);
     });
     //Failure
     ajaxRequest.fail(function() {
-      DSGM.Command.respond(false);
+      MyApplication.Command.respond(false);
     });
   }
 
@@ -94,7 +94,7 @@ function CommandClass(handlerName) {
     _self._callback = callback;
     _self._blockUI = blockUI;
     if (blockUI) {
-      DSGM.UI.startWork("Requesting", true, null, DSGM.UI.workBlackoutDim);
+      MyApplication.UI.startWork("Requesting", true, null, MyApplication.UI.workBlackoutDim);
     }
     var whichHandler = (customHandlerName ? _self.getHandlerByName(customHandlerName) : _self.handler);
     whichHandler.handle(command, arguments);
@@ -105,9 +105,9 @@ function CommandClass(handlerName) {
       if (_self._callback) _self._callback(response);
     }
     if (_self._blockUI) {
-      DSGM.UI.endWork(function() {
+      MyApplication.UI.endWork(function() {
         if (!response) {
-          DSGM.UI.statusBar.setAlert("Request Failed");
+          MyApplication.UI.statusBar.setAlert("Request Failed");
         }
         doCallback();
       });

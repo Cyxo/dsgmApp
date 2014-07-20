@@ -1,4 +1,4 @@
-.markup-resource {
+*[data-role=markup-resource] {
   > * {
     height: 100%;
     overflow: auto;

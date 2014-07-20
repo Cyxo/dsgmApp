@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>DS Game Maker</title>
     <!-- Style -->
-    <link rel="stylesheet" href="css/dsgm.css">
+    <link rel="stylesheet" href="css/myApplication.css">
     <!-- JavaScript: jQuery, jQuery Plug-ins -->
     <script src="js/jquery-2.1.0.min.js"></script>
     <script src="js/jquery.color-2.1.2.min.js"></script>
@@ -13,7 +13,7 @@
     <!-- JavaScript: async -->
     <script src="js/async.js"></script>
     <!-- JavaScript: Generic Classes -->
-    <script src="js/classes/DSGMClass.js"></script>
+    <script src="js/classes/ApplicationClass.js"></script>
     <script src="js/classes/CommandClass.js"></script>
     <script src="js/classes/OptionsClass.js"></script>
     <script src="js/classes/LanguageClass.js"></script>
@@ -38,7 +38,7 @@
     <!-- JavaScript: Initialise -->
     <script>
       jQuery(window).load(function () {
-        DSGM = new DSGMClass();
+        MyApplication = new ApplicationClass();
       });
     </script>
   </head>
@@ -93,38 +93,21 @@
           </p>
         </div>
       </div>
-      <div class="markup-resource" data-role="markup-resource-sprite">
+      <div data-role="markup-resource">
         <aside>
           <div class="ui ui-tabs">
             <div class="ui-tabs-changer">
-              <div class="selected" data-icon="sprite"><span data-role="resource-name"></span></div>
+              <div class="selected"><span data-role="resource-name"></span></div>
             </div>
             <div class="ui ui-panel selected">
               <p>
-                <!-- Sprite Properties -->
+                <!-- Resource Properties -->
               </p>
             </div>
           </div>
         </aside>
         <div class="ui-panel">
-          <!-- Sprite Main -->
-        </div>
-      </div>
-      <div class="markup-resource" data-role="markup-resource-background">
-        <aside>
-          <div class="ui ui-tabs">
-            <div class="ui-tabs-changer">
-              <div class="selected" data-icon="background"><span data-role="resource-name"></span></div>
-            </div>
-            <div class="ui ui-panel selected">
-              <p>
-                <!-- Background Properties -->
-              </p>
-            </div>
-          </div>
-        </aside>
-        <div class="ui-panel">
-          <!-- Background Main -->
+          <!-- Resource Main -->
         </div>
       </div>
     </div>

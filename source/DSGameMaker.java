@@ -86,7 +86,7 @@ public class DSGameMaker extends Application {
               response = response.replace(System.getProperty("line.separator"), "\\n");
               response = response.replace("\n", "\\n");
               response = response.replace("\r", "\\n");
-              theEngine.executeScript("DSGM.Command.respond('" + response + "');");
+              theEngine.executeScript("MyApplication.Command.respond('" + response + "');");
             }
           };
           ((EventTarget) el).addEventListener("click", listener, false);
