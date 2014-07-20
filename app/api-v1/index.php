@@ -29,20 +29,12 @@
       echo NOT_SUPPORTED;
       break;
     case "readFile":
-      switch($arguments[0]) {
-        case "store/options.json":
-          echo '{"language": "fr"}';
-          break;
-        case "store/languages/base.json":
-          echo '{"name": "Base", "data": {"project": "Project", "resources": "Resources", "tools": "Tools", "help": "Help"}}';
-          break;
-        case "store/languages/en.json":
-          echo '{"name": "English", "data": {}}';
-          break;
-        case "store/languages/fr.json":
-          echo '{"name": "French", "data": {"yes": "Oui", "no": "Non"}}';
-          break;
-        }
+      $path = "../" . $arguments[0];
+      if (file_exists($path)) {
+        echo file_get_contents($path);
+      } else {
+        echo "";
+      }
       break;
     default:
       echo NOT_UNDERSTOOD;

@@ -99,7 +99,7 @@ function ProjectClass() {
     $("span[data-role=resource-name]", firstTabChanger).html(resource.name);
     var firstTab = $($(".ui-tabs .ui-panel", markup)[0]);
     var firstTabP = $("> p", firstTab);
-    firstTabP.html("(" + resource.name + " Properties)");
+    firstTabP.html("(" + resource.name + " " + MyApplication.Language.getTerm("properties") + ")");
   }
 
   _self.addResourceByNameAndType(null, "sprite");

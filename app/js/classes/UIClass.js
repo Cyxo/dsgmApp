@@ -415,7 +415,7 @@ function UIClass(callback) {
       var helpGroup2 = new MenuGroupClass();
       helpMenuItem.addGroup(helpGroup2);
         //About
-        var aboutMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("about"), "info");
+        var aboutMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("about-software"), "info");
         helpGroup2.addItem(aboutMenuItem);
         aboutMenuItem.setHandler(function() {
           var markup = _self.getMarkup("about");
@@ -517,7 +517,6 @@ function UIClass(callback) {
       exteriorSpan.stop().css({"background-color": backgroundColor, "color": foregroundColor});
       iconSpan.stop().css("color", iconColor);
     }
-    console.log("changed to " + iconColor);
   }
 
   callback();

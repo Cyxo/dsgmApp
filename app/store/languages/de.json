@@ -2,6 +2,18 @@
   "name": "German",
   "data": {
     "yes": "Ja",
-    "no": "Nein"
+    "no": "Nein",
+    "project": "Projekt",
+    "resources": "Ressourcen",
+    "tools": "Werkzeuge",
+    "help": "Hilfe",
+    "delete-resource-error": "[name] k&ouml;nnte nicht gel&ouml;scht werden.",
+    "load-resource-error": "[name] k&ouml;nnte nicht geladen werden.",
+    "about-software": "&Uuml;ber DS Game Maker",
+    "about": "&Uuml;ber",
+    "website": "Webseite",
+    "tutorials": "&Uuml;bungen",
+    "forum": "Forum",
+    "properties": "Eigenschaften"
   }
 }
