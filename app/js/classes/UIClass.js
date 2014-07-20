@@ -141,14 +141,35 @@ function UIClass(callback) {
     }
   ];
 
+  //Icons
+  this.getIcon = function(name) {
+    var icon = $.grep(_self._icons, function(iconElement) {
+      return (iconElement.name == name);
+    })[0];
+    return icon;
+  }
+  this.iconify = function(element) {
+    if (element.attr("data-icon") == undefined) return;
+    var icon = _self.getIcon(element.attr("data-icon"));
+    if (icon == undefined) icon = _self._icons[0];
+    element.prepend("<span class=\"" + icon.classes + "\" style=\"color: " + icon.color + ";\"></span>");
+  }
+  $("*[data-icon]").each(function(index, element) {
+    element = $(element);
+    _self.iconify(element);
+  });
+
   //Working (minor UI progress)
+  var iconP = $("#Work > div > p.icon");
+  iconP.attr("data-icon", "loading");
+  _self.iconify(iconP);
   _self.workBlackoutNone = 1;
   _self.workBlackoutDim = 2;
   _self.workBlackoutFull = 3;
   _self.workBlackoutExtent = null;
   _self.workUseStatusBar = false;
   this.startWork = function(work, useStatusBar, callback, blackoutExtent) {
-    work = work + "...";
+    if (work.length > 0) work = work + "...";
     var blackoutExtent = (blackoutExtent ? blackoutExtent : _self.workBlackoutDim);
     var useStatusBar = (useStatusBar == undefined ? true : useStatusBar);
     _self.workBlackoutExtent = blackoutExtent;
@@ -196,24 +217,6 @@ function UIClass(callback) {
   this.getColor = function(name) {
     return _self.colors[name];
   }
-
-  //Icons
-  this.getIcon = function(name) {
-    var icon = $.grep(_self._icons, function(iconElement) {
-      return (iconElement.name == name);
-    })[0];
-    return icon;
-  }
-  this.iconify = function(element) {
-    if (element.attr("data-icon") == undefined) return;
-    var icon = _self.getIcon(element.attr("data-icon"));
-    if (icon == undefined) icon = _self._icons[0];
-    element.prepend("<span class=\"" + icon.classes + "\" style=\"color: " + icon.color + ";\"></span>");
-  }
-  $("*[data-icon]").each(function(index, element) {
-    element = $(element);
-    _self.iconify(element);
-  });
 
   //Markup
   this.getMarkup = function(identifier) {
@@ -366,7 +369,6 @@ function UIClass(callback) {
         var debugMenuItem = new MenuGroupItemClass("(Debug) Print Words", "help");
         toolsGroup5.addItem(debugMenuItem);
         debugMenuItem.setHandler(function() {
-          DSGM.Command.debug("test");
           DSGM.Command.request("print", ["Hello", "Beautiful", "World"]);
         });
 

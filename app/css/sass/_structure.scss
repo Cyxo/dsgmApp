@@ -78,27 +78,27 @@ body > header {
     bottom: 50%;
     left: 50%;
     right: 50%;
-    width: $blocker-size;
-    height: $blocker-size;
-    margin-top: $blocker-size / -2;
-    margin-left: $blocker-size / -2;
+    width: $work-size;
+    height: $work-size;
+    margin-top: $work-size / -2;
+    margin-left: $work-size / -2;
     background-color: #151515;
     border-radius: $padding * 2;
     p {
       text-align: center;
     }
     p:nth-child(1), p:nth-child(1) span {
-      height: $blocker-size;
-      line-height: $blocker-size;
-      font-size: $font-size * 6;
+      height: $work-size;
+      line-height: $work-size;
+      font-size: $font-size * 4;
     }
     p:nth-child(2) {
       position: absolute;
       bottom: 0;
       width: 100%;
-      height: $blocker-size * 0.25;
-      line-height: $blocker-size * 0.25;
-      font-size: $font-size * 1.5;
+      height: $work-size * 0.25;
+      line-height: $work-size * 0.25;
+      font-size: $font-size * 1.25;
     }
   }
 }

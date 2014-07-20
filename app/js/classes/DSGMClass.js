@@ -23,7 +23,7 @@ function DSGMClass(commandHandler) {
     },
     function(next) {
       //Start Loading
-      _self.UI.startWork("Loading", false, next, _self.UI.workBlackoutFull);
+      _self.UI.startWork("", false, next, _self.UI.workBlackoutFull);
     },
     function(next) {
       //Resources
