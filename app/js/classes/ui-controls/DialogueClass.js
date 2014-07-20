@@ -9,7 +9,7 @@ function DialogueClass(content, icon, title, buttons, width, height, customEleme
 
   _self.content = (content || "");
   _self.icon = icon;
-  _self.title = (title || "DS Game Maker");
+  _self.title = (title || MyApplication.name);
   if (!buttons || buttons.length == 0) buttons = [_self.okButton];
   _self.buttons = buttons;
   _self.width = (width || 620);

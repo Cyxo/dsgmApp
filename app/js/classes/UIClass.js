@@ -16,7 +16,7 @@ function UIClass(callback) {
     "red": "rgb(218, 0, 0)",
     "orange": "#FFC300",
     "pink": "#FF00FF",
-    "teal": "00C278"
+    "teal": "#00C278"
   };
 
   _self._icons = [
@@ -169,6 +169,7 @@ function UIClass(callback) {
   _self.workBlackoutExtent = null;
   _self.workUseStatusBar = false;
   this.startWork = function(work, useStatusBar, callback, blackoutExtent) {
+    if (!work) work = "";
     if (work.length > 0) work = work + "...";
     var blackoutExtent = (blackoutExtent ? blackoutExtent : _self.workBlackoutDim);
     var useStatusBar = (useStatusBar == undefined ? true : useStatusBar);
@@ -231,6 +232,9 @@ function UIClass(callback) {
     return newElement;
   }
 
+  //Blank Markup
+  this.switchMainMarkup("blank");
+
   //Make Orb
   this.makeOrb = function() {
     _self.orb = new OrbClass();
@@ -244,6 +248,7 @@ function UIClass(callback) {
     _self.resourcesTree.emptyItems();
     $.each(MyApplication.Resources.getStaticResources(), function(index, staticResource) {
       var newItem = new TreeItemClass(staticResource.typePlural, "folder");
+      newItem.setAttr("resource-type", staticResource.type);
       _self.resourcesTree.addItem(newItem);
     });
   }
@@ -292,29 +297,39 @@ function UIClass(callback) {
       //Group 1
       var resourcesGroup1 = new MenuGroupClass();
       resourcesMenuItem.addGroup(resourcesGroup1);
-        //Copy
-        var copyMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("copy-resource"), "copy");
-        resourcesGroup1.addItem(copyMenuItem);
-        //Delete
-        var deleteMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("delete-resource"), "no");
-        resourcesGroup1.addItem(deleteMenuItem);
+        //Add Resources
+        $.each(MyApplication.Resources.getStaticResources(), function(index, staticResource) {
+          var newResourcesMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("add-" + staticResource.type), staticResource.icon);
+          resourcesGroup1.addItem(newResourcesMenuItem);
+          newResourcesMenuItem.setAttr("resource-type", staticResource.type);
+          newResourcesMenuItem.setHandler(function() {
+            MyApplication.currentProject.addResourceByNameAndType(null, this.getAttr("resource-type"), true);
+          });
+        });
       //Group 2
       var resourcesGroup2 = new MenuGroupClass();
       resourcesMenuItem.addGroup(resourcesGroup2);
-        //Search
+        //Find
         var findMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("find-resource"), "search");
         resourcesGroup2.addItem(findMenuItem);
       //Group 3
       var resourcesGroup3 = new MenuGroupClass();
       resourcesMenuItem.addGroup(resourcesGroup3);
-        //Add Resources
-        $.each(MyApplication.Resources.getStaticResources(), function(index, staticResource) {
-          var newResourcesMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("add-" + staticResource.type), staticResource.icon);
-          resourcesGroup3.addItem(newResourcesMenuItem);
-          newResourcesMenuItem.setAttr("resource-type", staticResource.type);
-          newResourcesMenuItem.setHandler(function() {
-            MyApplication.currentProject.addResource(null, this.getAttr("resource-type"), true);
-          });
+        //Copy
+        var copyMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("copy-resource"), "copy");
+        resourcesGroup3.addItem(copyMenuItem);
+        copyMenuItem.setHandler(function() {
+          var selectedResource = _self.isResourceSelected();
+          if (!selectedResource) return;
+          MyApplication.currentProject.copyResource(selectedResource);
+        });
+        //Delete
+        var deleteMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("delete-resource"), "no");
+        resourcesGroup3.addItem(deleteMenuItem);
+        deleteMenuItem.setHandler(function() {
+          var selectedResource = _self.isResourceSelected();
+          if (!selectedResource) return;
+          MyApplication.currentProject.deleteResource(selectedResource);
         });
 
     //Tools
@@ -404,9 +419,21 @@ function UIClass(callback) {
         helpGroup2.addItem(aboutMenuItem);
         aboutMenuItem.setHandler(function() {
           var markup = _self.getMarkup("about");
-          var aboutDialogue = new DialogueClass(markup, null, MyApplication.Language.getTerm("about-ds-game-maker"), [], 450, 450, true);
+          var aboutDialogue = new DialogueClass(markup, null, MyApplication.Language.getTerm("about-software"), [], 450, 450, true);
           aboutDialogue.show();
         });
+  }
+
+  _self.isResourceSelected = function() {
+    var selectedItem = _self.resourcesTree.selectedItem;
+    if (!(selectedItem == null || !selectedItem.getAttr("resource-name"))) {
+      var resourceName = selectedItem.getAttr("resource-name");
+      var resourceType = selectedItem.getAttr("resource-type");
+      var resource = MyApplication.currentProject.getResourceByNameAndType(resourceName, resourceType);
+      return resource;
+    } else {
+      return false;
+    }
   }
 
   //Make Dialogue Singleton
@@ -490,6 +517,7 @@ function UIClass(callback) {
       exteriorSpan.stop().css({"background-color": backgroundColor, "color": foregroundColor});
       iconSpan.stop().css("color", iconColor);
     }
+    console.log("changed to " + iconColor);
   }
 
   callback();
@@ -509,6 +537,49 @@ var UIPrototype = function() {
 
   this.getElement = function() {
     return this._element;
+  }
+
+  this.findItemsByAttr = function(attr, value) {
+    return $.grep(this.items, function(item) {
+      return (item.getAttr(attr) == value);
+    });
+  }
+
+  this.findItemByAttr = function(attr, value) {
+    var items = this.findItemsByAttr(attr, value);
+    var item = (items.length == 0 ? null : items[0]);
+    return item;
+  }
+
+  this.findItemsByProperty = function(property, value) {
+    return $.grep(this.items, function(item) {
+      return (item[property] == value);
+    });
+  }
+
+  this.findItemByProperty = function(property, value) {
+    var items = this.findItemsByProperty(property, value);
+    var item = (items.length == 0 ? null : items[0]);
+    return item;
+  }
+
+  this.removeItem = function(item) {
+    var index = MyApplication.somethingToIndex(this.items, item);
+    if (index == null) return false;
+    this.items.splice(index, 1);
+    this.refresh();
+    return true;
+  }
+
+  this.addItems = function(items) {
+    $.each(items, function(index, item) {
+      this.addItem(item, false);
+    });
+    this.refresh();
+  }
+
+  this.emptyItems = function() {
+    this.items.length = 0;
   }
 
 }

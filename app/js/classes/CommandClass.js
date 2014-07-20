@@ -106,8 +106,9 @@ function CommandClass(handlerName) {
     }
     if (_self._blockUI) {
       MyApplication.UI.endWork(function() {
+        MyApplication.UI.statusBar.clear();
         if (!response) {
-          MyApplication.UI.statusBar.setAlert("Request Failed");
+          MyApplication.UI.statusBar.setAlert("The request failed.");
         }
         doCallback();
       });

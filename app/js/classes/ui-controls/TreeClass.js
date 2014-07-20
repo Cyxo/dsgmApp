@@ -3,6 +3,7 @@ function TreeClass() {
   var _self = this;
   _self._element = null;
   _self.items = [];
+  _self.selectedItem = null;
 
   _self.makeElement = function() {
     var s = "<ul class=\"ui ui-tree\"></ul>";
@@ -26,33 +27,6 @@ function TreeClass() {
     item._tree = _self;
     _self.items.push(item);
     if (doFinishing) _self.refresh();
-  }
-
-  _self.addItems = function(items) {
-    $.each(items, function(index, item) {
-      _self.addItem(item, false);
-    });
-    _self.refresh();
-  }
-
-  _self.getElement = function() {
-    return _self._element;
-  }
-
-  _self.emptyItems = function() {
-    _self.items.length = 0;
-  }
-
-  _self.findItemsByProperty = function(property, value) {
-    return $.grep(_self.items, function(item) {
-      return (item[property] == value);
-    });
-  }
-
-  _self.findItemByProperty = function(property, value) {
-    var items = _self.findItemsByProperty(property, value);
-    var item = (items.length == 0 ? null : items[0]);
-    return item;
   }
 
 }
@@ -96,13 +70,6 @@ function TreeItemClass(text, icon) {
     if (doFinishing) _self.refresh();
   }
 
-  _self.addItems = function(items) {
-    $.each(items, function(index, item) {
-      _self.addItem(item, false);
-    });
-    _self.refresh();
-  }
-
   _self.setText = function(text) {
     _self.text = text;
     _self.refresh();
@@ -136,6 +103,7 @@ function TreeItemClass(text, icon) {
       });
       MyApplication.UI.selectify(true, _self.getElement(), doFade);
       _self.expand();
+      _self._tree.selectedItem = _self;
       if (_self.handler != undefined) _self.handler(_self);
     });
     $.each(_self.items, function(index, item) {

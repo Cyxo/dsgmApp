@@ -1,6 +1,7 @@
-function ApplicationClass(commandHandler) {
+function ApplicationClass(name, commandHandler) {
 
   var _self = this;
+  _self.name = (name || "My Application");
   if(commandHandler == undefined) {
     if(window.location.hash) {
       commandHandler = window.location.hash.substring(1);
@@ -23,7 +24,7 @@ function ApplicationClass(commandHandler) {
     },
     function(next) {
       //Start Loading
-      _self.UI.startWork("", false, next, _self.UI.workBlackoutFull);
+      _self.UI.startWork(null, false, next, _self.UI.workBlackoutFull);
     },
     function(next) {
       //Resources
@@ -47,18 +48,15 @@ function ApplicationClass(commandHandler) {
     }
   ]);
 
-  //Load Resource
-  this.loadResourceByNameAndType = function(name, type) {
-    var resource = MyApplication.currentProject.getResourceByNameAndType(name, type);
-    var markup = _self.UI.switchMainMarkup("resource");
-    var firstTabChanger = $($(".ui-tabs .ui-tabs-changer div", markup)[0]);
-    firstTabChanger.attr("data-icon", resource.icon);
-    _self.UI.iconify(firstTabChanger);
-    $("span[data-role=resource-name]", firstTabChanger).html(resource.name);
-    var firstTab = $($(".ui-tabs .ui-panel", markup)[0]);
-    var firstTabP = $("> p", firstTab);
-    firstTabP.html("(" + resource.name + " Properties)");
-    //console.log(resource);
+  _self.somethingToIndex = function(somethings, something) {
+    var index = null;
+    $.each(somethings, function(lIndex, lSomething) {
+      if (lSomething == something) {
+        index = lIndex;
+        return;
+      }
+    });
+    return index;
   }
 
 }

@@ -4,6 +4,9 @@
     "project-menu": "Project",
     "resources-menu": "Resources",
     "tools-menu": "Tools",
-    "help-menu": "Help"
+    "help-menu": "Help",
+    "delete-resource-error": "[name] couldn't be deleted.",
+    "load-resource-error": "[name] couldn't be loaded.",
+    "about-software": "About DS Game Maker"
   }
 }
