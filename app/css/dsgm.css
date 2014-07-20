@@ -1689,9 +1689,8 @@ button:last-child {
   line-height: 32px;
   background-color: #606060; }
   .ui-menu li {
-    list-style-type: none;
-    padding-top: 0;
-    padding-bottom: 0;
+    list-style-type: none; }
+  .ui-menu li > span {
     padding-left: 7px;
     padding-right: 7px; }
   .ui-menu > li {
@@ -1713,8 +1712,10 @@ button:last-child {
         border-top: 1px solid #ffc300;
         border-bottom: 1px solid #ffc300; }
         .ui-menu > li > div > ul > div li {
-          float: none;
-          background-color: #606060; }
+          float: none; }
+          .ui-menu > li > div > ul > div li > span {
+            display: block;
+            background-color: #606060; }
         .ui-menu > li > div > ul > div li:first-child {
           border-top-left-radius: 4px;
           border-top-right-radius: 4px; }
@@ -1731,16 +1732,16 @@ button:last-child {
 
 .ui-orb {
   padding: 0;
-  float: left;
-  background-color: #606060;
-  border-top-right-radius: 4px; }
+  float: left; }
   .ui-orb > div {
     display: block;
     width: 64px;
     height: 64px; }
     .ui-orb > div img {
       width: 100%;
-      height: 100%; }
+      height: 100%;
+      background-color: #606060;
+      border-top-right-radius: 4px; }
     .ui-orb > div > div {
       position: absolute;
       display: none;
@@ -1804,7 +1805,7 @@ button:last-child {
     margin-bottom: 4px;
     padding: 4px;
     line-height: 24px; }
-  .ui-tree .selected {
+  .ui-tree .selected span {
     border-radius: 4px; }
 
 .markup-resource > * {

@@ -40,30 +40,39 @@ function MenuMasterItemClass(text) {
   _self.text = (text || "Menu Item");
 
   _self.makeElement = function() {
-    var s = "<li><span></span><div><ul></ul></div></li>";
+    var s = "<li class=\"ui-menu-master-item\"><span></span><div><ul></ul></div></li>";
     var element = $(s);
     return element;
+  }
+
+  //To Fix (Dependency)
+  _self.fireDropEvents = true;
+  _self.dropUpDown = function(isDown, callback) {
+    if(!_self.fireDropEvents) return;
+    DSGM.UI.dropUpDown(isDown, _self._element, $("> div", _self._element), true, true, DSGM.UI.genericSpeed, DSGM.UI.fastSpeed, callback);
   }
 
   _self.updateHandler = function() {
     _self._element.unbind("mouseenter");
     _self._element.bind("mouseenter", function() {
-      DSGM.UI.dropUpDown(true, $(this), $("> div", $(this)), true, true, DSGM.UI.animationSpeed, DSGM.UI.quickAnimationSpeed);
+      _self.dropUpDown(true);
     });
     _self._element.unbind("mouseleave");
     _self._element.bind("mouseleave", function() {
-      DSGM.UI.dropUpDown(false, $(this), $("> div", $(this)), true, true, DSGM.UI.animationSpeed, DSGM.UI.quickAnimationSpeed);
+      _self.dropUpDown(false);
+    });
+    $.each(_self.groups, function(index, group) {
+      group.updateHandlers();
     });
   }
 
   _self.refresh = function() {
     $("> span", _self._element).html(_self.text);
     $("> div > ul", _self._element).empty();
-    _self.updateHandler();
     $.each(_self.groups, function(index, group) {
       $("> div > ul", _self._element).append(group.getElement());
-      group.updateHandlers();
     });
+    _self.updateHandler();
   }
 
   _self._element = _self.makeElement();
@@ -74,6 +83,7 @@ function MenuMasterItemClass(text) {
   }
 
   _self.addGroup = function(item) {
+    item._masterItem = _self;
     _self.groups.push(item);
     _self.refresh();
   }
@@ -115,6 +125,7 @@ function MenuGroupClass() {
 
   _self.addItem = function(item, doFinishing) {
     if (doFinishing == undefined) doFinishing = true;
+    item._group = _self;
     _self.items.push(item);
     if (doFinishing) _self.refresh();
   }
@@ -141,22 +152,43 @@ function MenuGroupItemClass(text, icon, handler) {
   }
 
   _self.updateHandler = function() {
+    _self._element.unbind("mouseenter");
+    _self._element.bind("mouseenter", function() {
+      DSGM.UI.selectify(true, $(this), false,
+        DSGM.UI.getColor("obvious"),
+        DSGM.UI.getColor("foreground"),
+        DSGM.UI.slowSpeed
+      );
+    });
+    _self._element.unbind("mouseleave");
+    _self._element.bind("mouseleave", function() {
+      DSGM.UI.selectify(false, $(this), true,
+        DSGM.UI.getColor("background-light"),
+        DSGM.UI.getColor("foreground"),
+        DSGM.UI.fastSpeed
+      );
+    });
     _self._element.unbind("click");
     _self._element.bind("click", function() {
+      _self._group._masterItem.dropUpDown(false, function() {
+        _self._group._masterItem.fireDropEvents = true;      
+      });
+      _self._group._masterItem.fireDropEvents = false;
       if (_self.handler != undefined) _self.handler(_self);
     });
   }
 
   _self.makeElement = function() {
-    var s = "<li></li>";
+    var s = "<li><span></span></li>";
     var element = $(s);
     return element;
   }
 
   _self.refresh = function() {
-    if(_self.icon) _self._element.attr("data-icon", _self.icon);
-    _self._element.html(_self.text);
-    DSGM.UI.iconify(_self._element);
+    var thisSpan = $($("> span", _self._element)[0]);
+    if(_self.icon) thisSpan.attr("data-icon", _self.icon);
+    thisSpan.html(_self.text);
+    DSGM.UI.iconify(thisSpan);
   }
 
   _self._element = _self.makeElement();
@@ -171,6 +203,14 @@ function MenuGroupItemClass(text, icon, handler) {
   _self.setIcon = function(icon) {
     _self.icon = icon;
     _self.refresh();
+  }
+
+  _self.setAttr = function(attr, value) {
+    _self._element.attr("data-" + attr, value);
+  }
+
+  _self.getAttr = function(attr) {
+    return _self._element.attr("data-" + attr);
   }
 
   _self.getElement = function() {

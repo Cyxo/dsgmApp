@@ -32,14 +32,14 @@ function ProjectClass() {
 		_self._resources.push(newResource);
 		var masterTreeItem = DSGM.UI.resourcesTree.findItemByProperty("text", newResource.typePlural);
 		var newTreeItem = new TreeItemClass(newResource.name, newResource.icon);
+		newTreeItem.setAttr("resource-name", newResource.name);
+		newTreeItem.setAttr("resource-type", newResource.type);
 		newTreeItem.setHandler(function() {
-			DSGM.loadResourceByNameAndType(newResource.name, newResource.type);
+			DSGM.loadResourceByNameAndType(this.getAttr("resource-name"), this.getAttr("resource-type"));
 		});
 		masterTreeItem.addItem(newTreeItem);
-		if (doSelect) {
-			//ATTENTION!!!
-			newTreeItem.setSelected(true);
-		}
+		if (doSelect) newTreeItem.select(true);
+		masterTreeItem.expand(true);
 		return newResource;
 	}
 

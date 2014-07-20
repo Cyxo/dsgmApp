@@ -109,10 +109,10 @@ DialogueClass.prototype.show = function() {
       });
       async.waterfall([
         function(next2) {
-          $("#Dialogue").fadeIn(DSGM.UI._animation_speed, next2);
+          $("#Dialogue").fadeIn(DSGM.UI.genericSpeed, next2);
         },
         function(next2) {
-          $("#Dialogue > div").fadeIn(DSGM.UI._animation_speed, next2);
+          $("#Dialogue > div").fadeIn(DSGM.UI.genericSpeed, next2);
         }
       ]);
     }
@@ -123,11 +123,11 @@ DialogueClass.prototype.hide = function(callback, fullMonty) {
   fullMonty = (fullMonty != undefined ? fullMonty : true);
   async.waterfall([
     function(next) {
-      $("#Dialogue > div").fadeOut(DSGM.UI._animation_speed, next);
+      $("#Dialogue > div").fadeOut(DSGM.UI.genericSpeed, next);
     },
     function(next) {
       if (fullMonty) {
-        $("#Dialogue").fadeOut(DSGM.UI._animation_speed, next);
+        $("#Dialogue").fadeOut(DSGM.UI.genericSpeed, next);
       } else {
         next();
       }

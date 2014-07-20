@@ -14,10 +14,10 @@ function OrbClass() {
     s += "</div>";
     var element = $(s);
     element.bind("mouseenter", function() {
-      DSGM.UI.dropUpDown(true, $(this), $("> div > div", $(this)));
+      DSGM.UI.dropUpDown(true, $("> div > img", this), $("> div > div", $(this)));
     });
     element.bind("mouseleave", function() {
-      DSGM.UI.dropUpDown(false, $(this), $("> div > div", $(this)));
+      DSGM.UI.dropUpDown(false, $("> div > img", this), $("> div > div", $(this)));
     });
     return element;
   }

@@ -9,8 +9,8 @@
   //All Items
   li {
     list-style-type: none;
-    padding-top: 0;
-    padding-bottom: 0;
+  }
+  li > span {
     padding-left: $padding + 3px;
     padding-right: $padding + 3px;
   }
@@ -39,7 +39,10 @@
           //Group Items
           li {
             float: none;
-            background-color: $background-color-2;
+            > span {
+              display: block;
+              background-color: $background-color-2;
+            }
           }
           li:first-child {
             border-top-left-radius: $radius;

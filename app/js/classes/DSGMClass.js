@@ -35,9 +35,6 @@ function DSGMClass(commandHandler) {
       _self.UI.makeStatusBar();
       //New Project
       _self.currentProject = new ProjectClass();
-      _self.currentProject.addResource("Sprite_1", "sprite");
-      _self.currentProject.addResource("Sprite_2", "sprite");
-      _self.currentProject.addResource("Background_1", "background");
       //Bind Links
       _self.Links.bindLinks(document.body);
       //Next

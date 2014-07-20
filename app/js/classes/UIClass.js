@@ -1,8 +1,9 @@
 function UIClass(callback) {
 
   var _self = this;
-  _self._animationSpeed = 200;
-  _self._quickAnimationSpeed = 100;
+  _self.slowSpeed = 300;
+  _self.genericSpeed = 200;
+  _self.fastSpeed = 100;
 
   _self.colors = {
     "white": "white",
@@ -181,7 +182,7 @@ function UIClass(callback) {
   }
 
   //Icons
-  this.getIconByName = function(name) {
+  this.getIcon = function(name) {
     var icon = $.grep(_self._icons, function(iconElement) {
       return (iconElement.name == name);
     })[0];
@@ -189,7 +190,7 @@ function UIClass(callback) {
   }
   this.iconify = function(element) {
     if (element.attr("data-icon") == undefined) return;
-    var icon = _self.getIconByName(element.attr("data-icon"));
+    var icon = _self.getIcon(element.attr("data-icon"));
     if (icon == undefined) icon = _self._icons[0];
     element.prepend("<span class=\"" + icon.classes + "\" style=\"color: " + icon.color + ";\"></span>");
   }
@@ -285,23 +286,17 @@ function UIClass(callback) {
         var findMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("find-resource"), "search");
         resourcesGroup2.addItem(findMenuItem);
       //Group 3
-      var resourcesGroup1 = new MenuGroupClass();
-      resourcesMenuItem.addGroup(resourcesGroup1);
-        //Add Sprite
-        var addSpriteMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("add-sprite"), "sprite");
-        resourcesGroup1.addItem(addSpriteMenuItem);
-        //Add Background
-        var addBackgroundMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("add-background"), "background");
-        resourcesGroup1.addItem(addBackgroundMenuItem);
-        //Add Object
-        var addObjectMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("add-object"), "object");
-        resourcesGroup1.addItem(addObjectMenuItem);
-        //Add Room
-        var addRoomMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("add-room"), "room");
-        resourcesGroup1.addItem(addRoomMenuItem);
-        //Add Sound
-        var addSoundMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("add-sound"), "sound");
-        resourcesGroup1.addItem(addSoundMenuItem);
+      var resourcesGroup3 = new MenuGroupClass();
+      resourcesMenuItem.addGroup(resourcesGroup3);
+        //Add Resources
+        $.each(DSGM.Resources.getStaticResources(), function(index, staticResource) {
+          var newResourcesMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("add-" + staticResource.type), staticResource.icon);
+          resourcesGroup3.addItem(newResourcesMenuItem);
+          newResourcesMenuItem.setAttr("resource-type", staticResource.type);
+          newResourcesMenuItem.setHandler(function() {
+            DSGM.currentProject.addResource(null, this.getAttr("resource-type"), true);
+          });
+        });
 
     //Tools
     var toolsMenuItem = new MenuMasterItemClass("Tools");
@@ -330,10 +325,10 @@ function UIClass(callback) {
       //Group 3
       var toolsGroup3 = new MenuGroupClass();
       toolsMenuItem.addGroup(toolsGroup3);
-        //Game Options
+        //Open Compile Folder
         var openCompileFolderMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("open-compile-folder"), "folder");
         toolsGroup3.addItem(openCompileFolderMenuItem);
-        //Global Variables
+        //Open Plugins Folder
         var openPluginsFolderMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("open-plugins-folder"), "folder");
         toolsGroup3.addItem(openPluginsFolderMenuItem);
       //Group 4
@@ -351,7 +346,7 @@ function UIClass(callback) {
       //Group 5
       var toolsGroup5 = new MenuGroupClass();
       toolsMenuItem.addGroup(toolsGroup5);
-        //Action Editor
+        //Test
         var testMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("test"), "help");
         toolsGroup5.addItem(testMenuItem);
 
@@ -373,10 +368,14 @@ function UIClass(callback) {
       //Group 2
       var helpGroup2 = new MenuGroupClass();
       helpMenuItem.addGroup(helpGroup2);
-        //Website
+        //About
         var aboutMenuItem = new MenuGroupItemClass(DSGM.Language.getTerm("about"), "info");
         helpGroup2.addItem(aboutMenuItem);
-
+        aboutMenuItem.setHandler(function() {
+          var markup = _self.getMarkup("about");
+          var aboutDialogue = new DialogueClass(markup, null, DSGM.Language.getTerm("about-ds-game-maker"), [], 450, 450, true);
+          aboutDialogue.show();
+        });
   }
 
   //Make Dialogue Singleton
@@ -391,39 +390,74 @@ function UIClass(callback) {
   }
 
   //Drop Down Element
-  _self.dropUpDown = function(isDown, topEl, subEl, dropFade, doAsync, fadeSpeed, dropSpeed) {
+  _self.dropUpDown = function(isDown, topEl, subEl, dropFade, doAsync, fadeSpeed, dropSpeed, callback) {
     dropFade = (dropFade ? dropFade : false);
     doAsync = (doAsync ? doAsync : false);
-    if (fadeSpeed === undefined) fadeSpeed = _self._animationSpeed;
-    if (dropSpeed === undefined) dropSpeed = _self._animationSpeed;
+    if (fadeSpeed === undefined) fadeSpeed = _self.genericSpeed;
+    if (dropSpeed === undefined) dropSpeed = _self.genericSpeed;
     var topElFade = function(isDown, speed, callback) {
       topEl.stop().animate({
         backgroundColor: DSGM.UI.getColor(isDown ? "obvious" : "background-light")
       }, speed, callback);
     };
     var subElState = function(isDown, speed, doFade, callback) {
+      subEl.stop();
       if (speed == 0) {
-        subEl.toggle();
+        if (isDown) subEl.show(); else subEl.hide();
       } else {
-        subEl.stop();
-        if (!dropFade)
-          subEl.slideToggle(dropSpeed, callback)
-        else
-          subEl.fadeToggle(dropSpeed, callback)
+        if (!dropFade) {
+          if (isDown)
+            subEl.slideDown(dropSpeed, callback)
+          else
+            subEl.slideUp(dropSpeed, callback);
+        } else {
+          if (isDown)
+            subEl.fadeIn(dropSpeed, callback)
+          else
+            subEl.fadeOut(dropSpeed, callback);
+        }
       }
     }
     if (doAsync) {
       topElFade(isDown, fadeSpeed);
-      subElState(isDown, dropSpeed, dropFade);
+      subElState(isDown, dropSpeed, dropFade, callback);
     } else {
       async.waterfall([
         function(next) {
           topElFade(isDown, fadeSpeed, next);
         },
         function(next) {
-          subElState(isDown, dropSpeed, dropFade, next);
-        }
+          subElState(isDown, dropSpeed, dropFade, callback);
+        },
       ]);
+    }
+  }
+
+  _self.selectify = function(isSelected, element, doFade, backgroundColor, foregroundColor, speed) {
+    if (doFade == undefined) doFade = false;
+    var exteriorSpan = $("> span", element);
+    var iconSpan = $("> span", exteriorSpan);
+    var iconColor = _self.getIcon(exteriorSpan.attr("data-icon")).color;
+    backgroundColor = (backgroundColor ? backgroundColor : DSGM.UI.getColor(!isSelected ? "foreground" : "obvious"));
+    foregroundColor = (foregroundColor ? foregroundColor : DSGM.UI.getColor(!isSelected ? "foreground-invert" : "foreground"));
+    if (speed === undefined) speed = _self.genericSpeed;
+    if (isSelected) {
+      element.addClass("selected");
+      iconColor = foregroundColor;
+    } else {
+      element.removeClass("selected");
+    }
+    if (doFade) {
+      exteriorSpan.stop().animate({
+        backgroundColor: backgroundColor,
+        color: foregroundColor
+      }, speed);
+      iconSpan.stop().animate({
+        color: iconColor
+      }, speed);
+    } else {
+      exteriorSpan.stop().css({"background-color": backgroundColor, "color": foregroundColor});
+      iconSpan.stop().css("color", iconColor);
     }
   }
 

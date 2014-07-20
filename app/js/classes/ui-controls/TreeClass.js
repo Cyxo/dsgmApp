@@ -113,49 +113,39 @@ function TreeItemClass(text, icon) {
     return _self._element.attr("data-" + attr);
   }
 
+  _self.setText = function(text) {
+    _self.text = text;
+    _self.refresh();
+  }
+
+  _self.getText = function() {
+    return _self.text;
+  }
+
   _self.setHandler = function(handler) {
     _self.handler = handler;
     _self.updateHandler();
   }
 
-  _self.setVisuallySelected = function(selected) {
-    var thisSpan = $("> span", _self._element);
-    var els = $.merge(thisSpan, $("span", thisSpan));
-    if (selected) {
-      if (!thisSpan.hasClass("selected")) {
-        els.animate({
-          backgroundColor: DSGM.UI.getColor("obvious"),
-          color: DSGM.UI.getColor("foreground")
-        }, DSGM.UI._animationSpeed);
-      } else {
-        els
-          .css({"background-color": DSGM.UI.getColor("obvious"), color: DSGM.UI.getColor("foreground")});
-      }
-      thisSpan.addClass("selected");
-    } else {
-      els
-        .css({"background-color": _self._tree.getElement().css("background-color"), color: DSGM.UI.getColor("foreground-invert")});
-      $(".fa", els).css("color", DSGM.UI.getIconByName(_self.icon).color);
-      thisSpan
-        .removeClass("selected");
+  _self.unselectifyHelper = function(item) {
+    DSGM.UI.selectify(false, item.getElement());
+    if (item.items) {
+      $.each(item.items, function(index, subItem) {
+        _self.unselectifyHelper(subItem);
+      });
     }
-    $.each(_self.items, function(index, item) {
-      item.setVisuallySelected(false);
-    });
   }
 
   _self.updateHandler = function() {
     var thisSpan = $("> span", _self._element);
     thisSpan.unbind("click");
     thisSpan.bind("click", function() {
-      var keepClass = thisSpan.attr("class");
+      var doFade = !$(this).parent().hasClass("selected");
       $.each(_self._tree.items, function(index, item) {
-        item.setVisuallySelected(false);
+        _self.unselectifyHelper(item);
       });
-      thisSpan.attr("class", keepClass);
-      _self.setVisuallySelected(true);
-      var ul = $("> ul", _self._element);
-      if (ul.children().length > 0) ul.slideToggle(DSGM.UI._animationSpeed);
+      DSGM.UI.selectify(true, _self.getElement(), doFade);
+      _self.expand();
       if (_self.handler != undefined) _self.handler(_self);
     });
     $.each(_self.items, function(index, item) {
@@ -163,7 +153,17 @@ function TreeItemClass(text, icon) {
     });
   }
 
-  _self.setSelected = function() {
+  _self.expand = function(forceDown) {
+    var ul = $("> ul", _self._element);
+    if (ul.children().length > 0) {
+      if (!forceDown)
+        ul.slideToggle(DSGM.UI.genericSpeed)
+      else
+        ul.slideDown(DSGM.UI.genericSpeed);
+    }
+  }
+
+  _self.select = function() {
     var thisSpan = $("> span", _self._element);
     thisSpan.trigger("click");
   }
