@@ -22,12 +22,15 @@
 
   //Handle
   switch($commandString) {
+
     case "print":
       echo implode(", ", $arguments);
       break;
+
     case "link":
       echo NOT_SUPPORTED;
       break;
+
     case "readFile":
       $path = "../" . $arguments[0];
       if (file_exists($path)) {
@@ -36,9 +39,22 @@
         echo "";
       }
       break;
+
+    case "getVersion":
+      $directoryIterator = new DirectoryIterator("../store/version");
+      $version = "0.0.0";
+      foreach ($directoryIterator as $fileInfo) {
+        if ($fileInfo->isDot()) continue;
+        $version = $fileInfo->getFilename();
+        break;
+      }
+      echo $version;
+      break;
+
     default:
       echo NOT_UNDERSTOOD;
       break;
+
   }
 
 ?>

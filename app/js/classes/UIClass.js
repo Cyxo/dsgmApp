@@ -389,7 +389,10 @@ function UIClass(callback) {
         var debugMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("debug"), "help");
         toolsGroup5.addItem(debugMenuItem);
         debugMenuItem.setHandler(function() {
-          MyApplication.Command.request("print", ["Hello", "Beautiful", "World"]);
+          MyApplication.Command.requestRemote("getVersion", [], function(response) {
+            console.log(response);
+          });
+          //MyApplication.Command.request("print", ["Hello", "Beautiful", "World"]);
         });
 
     //Help

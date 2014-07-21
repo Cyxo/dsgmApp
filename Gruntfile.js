@@ -4,33 +4,49 @@ module.exports = function(grunt) {
 
     pkg: grunt.file.readJSON('package.json'),
 
+    directories: {
+      source: 'source',
+      build: 'build'
+    },
+
     shell: {
+      versionize: {
+        command: [
+          'rm -rf',
+          'touch "<%= pkg.version %>"'
+        ].join("&&"),
+        options: {
+          execOptions: {
+            cwd: 'app/store/version'
+          }
+        }
+      },
       wipeBuild: {
-        command: 'rm -rf build'
+        command: 'rm -rf <%= directories.build %>'
       },
       createBuild: {
-        command: 'mkdir build'
+        command: 'mkdir <%= directories.build %>'
       },
       compileJava: {
-        command: 'javac source/*.java -d build'
+        command: 'javac <%= directories.source %>/*.java -d <%= directories.build %>'
       },
       packageJava: {
-        command: 'javafxpackager -createjar -appclass DSGameMaker -srcdir build -outfile "build/DSGameMaker.jar" -v'
+        command: 'javafxpackager -createjar -appclass DSGameMaker -srcdir <%= directories.build %> -outfile "<%= directories.build %>/DSGameMaker.jar" -v'
       },
       cleanJava: {
-        command: 'rm -rf build/*.class'
+        command: 'rm -rf <%= directories.build %>/*.class'
       },
       runJava: {
-        command: 'java -jar build/DSGameMaker.jar'
+        command: 'java -jar <%= directories.build %>/DSGameMaker.jar'
       },
       cleanAppFolder: {
         command: [
-          'rm -rf build/app/css/sass',
-          'rm -rf build/app/css/sass-cache'
+          'rm -rf <%= directories.build %>/app/css/sass',
+          'rm -rf <%= directories.build %>/app/css/sass-cache'
         ].join("&&")
       },
       cleanAppAPIFolder: {
-        command: 'rm -rf build/app/api-v1'
+        command: 'rm -rf <%= directories.build %>/app/api-v1'
       },
       moveAppFolderContentsUp1: {
         command: [
@@ -40,27 +56,25 @@ module.exports = function(grunt) {
         ].join("&&"),
         options: {
           execOptions: {
-            cwd: 'build/app'
+            cwd: '<%= directories.build %>/app'
           }
         }
       },
       moveAppFolderContentsUp2: {
-        command: [
-          'rmdir app',
-        ].join("&&"),
+        command: 'rmdir app',
         options: {
           execOptions: {
-            cwd: 'build'
+            cwd: '<%= directories.build %>'
           }
         }
-      }
+      },
     },
 
     copy: {
       copyAppFolder: {
         cwd: 'app',
         src: '**/*',
-        dest: 'build/app',
+        dest: '<%= directories.build %>/app',
         expand: true
       }
     }
@@ -79,6 +93,7 @@ module.exports = function(grunt) {
     'copy:copyAppFolder',
     'shell:cleanAppFolder',
     'shell:cleanAppAPIFolder',
+    'shell:versionize',
   ]);
 
   grunt.registerTask('server', [
@@ -88,6 +103,7 @@ module.exports = function(grunt) {
     'shell:cleanAppFolder',
     'shell:moveAppFolderContentsUp1',
     'shell:moveAppFolderContentsUp2',
+    'shell:versionize',
   ]);
 
   grunt.registerTask('run', [
