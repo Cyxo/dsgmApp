@@ -105,8 +105,6 @@ function ProjectClass() {
     firstTabP.html("(" + resource.name + " " + MyApplication.Language.getTerm("properties") + ")");
   }
 
-  _self.addResourceByNameAndType(null, "sprite");
-  _self.addResourceByNameAndType(null, "sprite");
-  _self.addResourceByNameAndType(null, "sprite", true);
+  _self.addResourceByNameAndType(null, "object", true);
 
 }
