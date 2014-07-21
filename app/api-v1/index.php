@@ -42,7 +42,7 @@
 
     case "getVersion":
       $directoryIterator = new DirectoryIterator("../store/version");
-      $version = "0.0.0";
+      $version = "?.?.?";
       foreach ($directoryIterator as $fileInfo) {
         if ($fileInfo->isDot()) continue;
         $version = $fileInfo->getFilename();

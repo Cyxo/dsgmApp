@@ -89,12 +89,12 @@ function CommandClass(handlerName) {
     _self.handler = _self.getHandlerByName(name);
   }
 
-  _self.request = function(command, arguments, callback, customHandlerName, blockUI, doFade) {
+  _self.request = function(command, arguments, callback, customHandlerName, blockUI) {
     blockUI = (blockUI ? blockUI : false);
     _self._callback = callback;
     _self._blockUI = blockUI;
     if (blockUI) {
-      MyApplication.UI.startWork("Requesting", true, null, (doFade ? MyApplication.UI.workBlackoutDim : MyApplication.UI.workBlackoutNone));
+      MyApplication.UI.startWork("Requesting", true, null, MyApplication.UI.workBlackoutDim);
     }
     var whichHandler = (customHandlerName ? _self.getHandlerByName(customHandlerName) : _self.handler);
     whichHandler.handle(command, arguments);
@@ -123,7 +123,7 @@ function CommandClass(handlerName) {
 
   _self.requestRemote = function(command, arguments, callback, blockUI) {
     if (blockUI == undefined) blockUI = true;
-    _self.request(command, arguments, callback, "remote", blockUI, blockUI);
+    _self.request(command, arguments, callback, "remote", blockUI);
   }
 
   _self.changeHandler(handlerName);

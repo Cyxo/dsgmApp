@@ -4,11 +4,13 @@ function ButtonClass(text, icon, handler) {
   _self._element = null;
   _self.text = (text || "Button");
   _self.icon = (icon || null);
+  _self.hasBeenClicked = false;
 
   _self.setHandler = function(handler) {
     _self.handler = handler;
     _self._element.unbind("mouseenter");
     _self._element.bind("mouseenter", function() {
+      if (_self.hasBeenClicked) return;
       var buttonElement = $(this);
       var foregroundColorCache = MyApplication.UI.getColor("foreground");
       buttonElement.stop().animate({
@@ -21,6 +23,7 @@ function ButtonClass(text, icon, handler) {
     });
     _self._element.unbind("mouseleave");
     _self._element.bind("mouseleave", function() {
+      if (_self.hasBeenClicked) return;
       var buttonElement = $(this);
       buttonElement.stop().animate({
         borderColor: MyApplication.UI.getColor("obvious")
@@ -33,9 +36,11 @@ function ButtonClass(text, icon, handler) {
     });
     _self._element.unbind("click");
     _self._element.bind("click", function() {
+      _self.hasBeenClicked = true;
       var buttonElement = $(this);
+      var iconColor = MyApplication.UI.getIcon(buttonElement.attr("data-icon")).color;
       buttonElement.stop().animate({
-        borderColor: MyApplication.UI.getColor("background")
+        borderColor: iconColor
       }, MyApplication.UI.slowSpeed, function() { handler(_self) });
     });
   }

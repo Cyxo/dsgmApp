@@ -423,13 +423,9 @@ function UIClass(callback) {
         var aboutMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("about-software"), "info");
         helpGroup2.addItem(aboutMenuItem);
         aboutMenuItem.setHandler(function() {
-          MyApplication.Command.request("getVersion", [], function(version) {
-            if (version.length == 0) version = "?.?.?";
-            var markup = _self.getMarkup("about");
-            $("span.version", markup).html(version);
-            var aboutDialogue = new DialogueClass(markup, null, MyApplication.Language.getTerm("about-software"), [], 450, 520, true);
-            aboutDialogue.show();
-          }, false, true, false);
+          var markup = _self.getMarkup("about");
+          var aboutDialogue = new DialogueClass(markup, null, MyApplication.Language.getTerm("about-software"), [], 450, 520, true);
+          aboutDialogue.show();
         });
   }
 
