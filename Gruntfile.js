@@ -32,15 +32,25 @@ module.exports = function(grunt) {
       cleanAppAPIFolder: {
         command: 'rm -rf build/app/api-v1'
       },
-      moveAppFolderContentsUp: {
+      moveAppFolderContentsUp1: {
         command: [
           'cp -rf . ..',
           'rm -rf *',
-          'rmdir ../app',
+          'cd ../',
         ].join("&&"),
         options: {
           execOptions: {
             cwd: 'build/app'
+          }
+        }
+      },
+      moveAppFolderContentsUp2: {
+        command: [
+          'rmdir app',
+        ].join("&&"),
+        options: {
+          execOptions: {
+            cwd: 'build'
           }
         }
       }
@@ -76,7 +86,8 @@ module.exports = function(grunt) {
     'shell:createBuild',
     'copy:copyAppFolder',
     'shell:cleanAppFolder',
-    'shell:moveAppFolderContentsUp',
+    'shell:moveAppFolderContentsUp1',
+    'shell:moveAppFolderContentsUp2',
   ]);
 
   grunt.registerTask('run', [
