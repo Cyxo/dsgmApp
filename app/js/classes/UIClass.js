@@ -329,7 +329,12 @@ function UIClass(callback) {
         deleteMenuItem.setHandler(function() {
           var selectedResource = _self.isResourceSelected();
           if (!selectedResource) return;
-          MyApplication.currentProject.deleteResource(selectedResource);
+          var response = _self.Dialogue.askYesNo(
+            MyApplication.Language.getTerm("delete-are-you-sure", [selectedResource.name]),
+            "alert",
+            function() {
+              MyApplication.currentProject.deleteResource(selectedResource);
+            });
         });
 
     //Tools
@@ -368,20 +373,20 @@ function UIClass(callback) {
       //Group 4
       var toolsGroup4 = new MenuGroupClass();
       toolsMenuItem.addGroup(toolsGroup4);
-        //Action Editor
-        var actionEditorMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("action-editor"));
-        toolsGroup4.addItem(actionEditorMenuItem);
+        //Edit Actions
+        var editActionsMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("edit-actions"));
+        toolsGroup4.addItem(editActionsMenuItem);
         //Font Viewer
-        var fontViewerMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("font-viewer"));
-        toolsGroup4.addItem(fontViewerMenuItem);
-        //Launch Emulator
-        var launchEmulatorMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("launch-emulator"));
-        toolsGroup4.addItem(launchEmulatorMenuItem);
+        var viewFontsMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("view-fonts"));
+        toolsGroup4.addItem(viewFontsMenuItem);
+        //Start Emulator
+        var startEmulatorMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("start-emulator"));
+        toolsGroup4.addItem(startEmulatorMenuItem);
       //Group 5
       var toolsGroup5 = new MenuGroupClass();
       toolsMenuItem.addGroup(toolsGroup5);
         //Debug
-        var debugMenuItem = new MenuGroupItemClass("(Debug) Print Words", "help");
+        var debugMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("debug"), "help");
         toolsGroup5.addItem(debugMenuItem);
         debugMenuItem.setHandler(function() {
           MyApplication.Command.request("print", ["Hello", "Beautiful", "World"]);

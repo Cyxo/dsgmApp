@@ -3,6 +3,7 @@
   "data": {
     "yes": "Yes",
     "no": "No",
+    "ok": "OK",
     "properties": "Properties",
     "about-software": "About DS Game Maker",
     "project": "Project",
@@ -23,12 +24,25 @@
       "copy-resource": "Copy Resource",
       "delete-resource": "Delete Resource",
     "tools": "Tools",
+      "game-options": "Game Options",
+      "global-variables": "Global Variables",
+      "global-structures": "Global Structures",
+      "global-arrays": "Global Arrays",
+      "options": "Options",
+      "open-compile-folder": "Open Compile Folder",
+      "open-plugins-folder": "Open Plugins Folder",
+      "edit-actions": "Edit Actions",
+      "view-fonts": "View Fonts",
+      "start-emulator": "Start Emulator",
+      "debug": "Debug",
     "help": "Help",
       "website": "Website",
       "tutorials": "Tutorials",
       "forum": "Forum",
       "about": "About",
-    "delete-resource-error": "[name] couldn't be deleted.",
-    "load-resource-error": "[name] couldn't be loaded."
+    "delete-resource-error-resource": "The resource couldn't be deleted.",
+    "delete-resource-error-name": "&lsquo;[0]&rsquo; couldn't be deleted.",
+    "load-resource-error": "&lsquo;[0]&rsquo; couldn't be loaded.",
+    "delete-are-you-sure": "Are you sure you would like to delete &lsquo;[0]&rsquo;?"
   }
 }

@@ -7,7 +7,7 @@ function LanguageClass(language, callback) {
   var _self = this;
 
   //Translate
-  this.getTerm = function(term) {
+  this.getTerm = function(term, replacements) {
     var t = _language_pairs[term];
     if (t == undefined) {
       var words = $.map(term.split("-"), function(word, index) {
@@ -31,6 +31,11 @@ function LanguageClass(language, callback) {
       });
       t = t.substring(0, t.length - 1);
       t += ")";
+    }
+    if (replacements) {
+      $.each(replacements, function(index, replacement) {
+        t = t.replace("[" + index.toString() + "]", replacement);
+      });
     }
     return t;
   }

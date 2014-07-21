@@ -57,15 +57,19 @@ function ProjectClass() {
 
   _self.deleteResource = function(resource) {
     var error = function() {
-      var text = MyApplication.Language.getTerm("delete-resource-error");
-      text = text.replace("[name]", resource ? ("&lsquo;" + resource.name + "&rsquo;") : "The resource");
+      var text;
+      if (resource == null) {
+        text = MyApplication.Language.getTerm("delete-resource-error-resource");
+      } else {
+        text = MyApplication.Language.getTerm("delete-resource-error-name", [resource.name]);
+      }
       MyApplication.UI.statusBar.setAlert(text);
     }
+    MyApplication.UI.statusBar.clear();
     if (resource == null) {
       error();
       return;
     }
-    MyApplication.UI.statusBar.clear();
     var resourceIndex = MyApplication.somethingToIndex(_self._resources, resource);
     if (resourceIndex != null) {
       _self._resources.splice(resourceIndex, 1);
@@ -87,8 +91,7 @@ function ProjectClass() {
     var resource = _self.getResourceByNameAndType(name, type);
     MyApplication.UI.statusBar.clear();
     if (resource == undefined) {
-      var text = MyApplication.Language.getTerm("load-resource-error");
-      text = text.replace("[name]", "&lsquo;" + name + "&rsquo;");
+      var text = MyApplication.Language.getTerm("load-resource-error", [name]);
       MyApplication.UI.statusBar.setAlert(text);
       return;
     }
