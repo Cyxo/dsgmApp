@@ -389,10 +389,7 @@ function UIClass(callback) {
         var debugMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("debug"), "help");
         toolsGroup5.addItem(debugMenuItem);
         debugMenuItem.setHandler(function() {
-          MyApplication.Command.requestRemote("getVersion", [], function(response) {
-            console.log(response);
-          });
-          //MyApplication.Command.request("print", ["Hello", "Beautiful", "World"]);
+          MyApplication.Command.request("print", ["Hello", "Beautiful", "World"]);
         });
 
     //Help
@@ -426,9 +423,13 @@ function UIClass(callback) {
         var aboutMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("about-software"), "info");
         helpGroup2.addItem(aboutMenuItem);
         aboutMenuItem.setHandler(function() {
-          var markup = _self.getMarkup("about");
-          var aboutDialogue = new DialogueClass(markup, null, MyApplication.Language.getTerm("about-software"), [], 450, 450, true);
-          aboutDialogue.show();
+          MyApplication.Command.request("getVersion", [], function(version) {
+            if (version.length == 0) version = "?.?.?";
+            var markup = _self.getMarkup("about");
+            $("span.version", markup).html(version);
+            var aboutDialogue = new DialogueClass(markup, null, MyApplication.Language.getTerm("about-software"), [], 450, 520, true);
+            aboutDialogue.show();
+          }, false, true, false);
         });
   }
 

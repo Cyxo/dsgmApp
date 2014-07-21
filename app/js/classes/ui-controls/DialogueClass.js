@@ -86,13 +86,13 @@ DialogueClass.prototype.show = function() {
         .css("margin-left", (-1 * _self.width / 2).toString() + "px")
         .css("margin-top", (-1 * _self.height / 2).toString() + "px");
       contentsDiv
-        .css("height", (_self.height - 54).toString() + "px");
+        .css("height", (_self.height - (54 + 42)).toString() + "px");
       if (!_self.customElement) {
         var textSpan = $("<span" + (_self.icon ? " data-icon=\"" + _self.icon + "\"" : "") + ">" + _self.content + "</span>");
         MyApplication.UI.iconify(textSpan);
         contentsDiv.append(textSpan);
         contentsDiv
-          .css("line-height", (_self.height - 54).toString() + "px")
+          .css("line-height", (_self.height - (54 + 42)).toString() + "px")
           .addClass("contents-line");
       } else {
         contentsDiv

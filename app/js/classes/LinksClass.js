@@ -15,6 +15,18 @@ function LinksClass() {
     {
       "identifier": "forum",
       "url": _self._link_base + "/forum/"
+    },
+    {
+      "identifier": "james-garner",
+      "url": "http://jadaradix.com/"
+    },
+    {
+      "identifier": "chris-ertl",
+      "url": "http://google.com/"
+    },
+    {
+      "identifier": "andreas-propst",
+      "url": "http://andisgamesrealm.wordpress.com/"
     }
   ];
 

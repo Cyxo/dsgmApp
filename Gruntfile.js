@@ -85,6 +85,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
 
   grunt.registerTask('default', [
+    'shell:versionize',
     'shell:wipeBuild',
     'shell:createBuild',
     'shell:compileJava',
@@ -93,25 +94,25 @@ module.exports = function(grunt) {
     'copy:copyAppFolder',
     'shell:cleanAppFolder',
     'shell:cleanAppAPIFolder',
-    'shell:versionize',
+    'shell:runJava'
   ]);
 
   grunt.registerTask('server', [
+    'shell:versionize',
     'shell:wipeBuild',
     'shell:createBuild',
     'copy:copyAppFolder',
     'shell:cleanAppFolder',
     'shell:moveAppFolderContentsUp1',
-    'shell:moveAppFolderContentsUp2',
-    'shell:versionize',
+    'shell:moveAppFolderContentsUp2'
   ]);
 
   grunt.registerTask('run', [
-    'shell:runJava',
+    'shell:runJava'
   ]);
 
   grunt.registerTask('clean', [
-    'shell:wipeBuild',
+    'shell:wipeBuild'
   ]);
 
 };
