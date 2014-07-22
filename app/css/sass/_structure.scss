@@ -6,6 +6,7 @@ body {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  outline: none;
 }
 
 #Colors {
@@ -17,6 +18,9 @@ body {
   }
   .background-light {
     background-color: $background-color-2;
+  }
+  .mid-gray {
+    background-color: $mid-gray-color;
   }
   .obvious {
     background-color: $obvious-color;
@@ -38,11 +42,11 @@ body > main {
   }
   > aside {
     float: left !important;
-    width: $resources-size !important;
+    width: $fixed-width !important;
     background-color: $background-color-invert;
   }
   > div {
-    margin-left: $resources-size !important;
+    margin-left: $fixed-width !important;
   }
 }
 

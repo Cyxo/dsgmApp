@@ -36,6 +36,8 @@ function ApplicationClass(name, commandHandler) {
       _self.UI.startWork(null, false, next, _self.UI.workBlackoutFull);
     },
     function(next) {
+      //Term Validation
+      _self.initTermValidation();
       //Resources
       _self.Resources = new ResourcesClass();
       //Make UI Controls
@@ -66,6 +68,41 @@ function ApplicationClass(name, commandHandler) {
       }
     });
     return index;
+  }
+
+  _self._allowedCharacters = [];
+  _self._forbiddenStartCharacters = [];
+  _self._forbiddenTerms = ["char", "int", "if", "for"];
+  _self.initTermValidation = function() {
+    var allowedCharactersString = "abcdefghijklmnopqrstuvwxyz1234567890_";
+    var forbiddenStartCharactersString = "1234567890";
+    for (var cIndex = 0; cIndex < allowedCharactersString.length; cIndex++) {
+      _self._allowedCharacters.push(allowedCharactersString[cIndex]);
+    }
+    for (var cIndex = 0; cIndex < forbiddenStartCharactersString.length; cIndex++) {
+      _self._forbiddenStartCharacters.push(forbiddenStartCharactersString[cIndex]);
+    }
+  }
+
+  _self.isValidTerm = function(term) {
+    //Forbidden: Too Short
+    if (term.length == 0) {
+      return false;
+    }
+    //Forbidden: Too Long
+    if (term.length > 20) {
+      return false;
+    }
+    //Forbidden: Start Character
+    if ($.inArray(term[0], _self._forbiddenStartCharacters) > -1) return false;
+    //Forbidden: Any Character
+    for (var termIndex = 0; termIndex < term.length; termIndex++) {
+      if ($.inArray(term[termIndex].toLowerCase(), _self._allowedCharacters) == -1) return false;
+    }
+    //Forbidden: Fixed Terms
+    if ($.inArray(term, _self._forbiddenTerms) > -1) return false;
+    //Allowed
+    return true;
   }
 
 }

@@ -9,3 +9,4 @@ function ObjectClass(name) {
   if (name) _self.name = name;
 
 }
+ObjectClass.prototype = new GenericClass();

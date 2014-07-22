@@ -25,8 +25,9 @@ function ButtonClass(text, icon, handler) {
     _self._element.bind("mouseleave", function() {
       if (_self.hasBeenClicked) return;
       var buttonElement = $(this);
+      var grayColorCache = MyApplication.UI.getColor("mid-gray");
       buttonElement.stop().animate({
-        borderColor: MyApplication.UI.getColor("obvious")
+        borderColor: grayColorCache
       }, MyApplication.UI.genericSpeed);
       // var iconElement = $($("> span.fa", buttonElement)[0]);
       // var iconColor = MyApplication.UI.getIcon(buttonElement.attr("data-icon")).color;

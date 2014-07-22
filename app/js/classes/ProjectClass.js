@@ -17,6 +17,16 @@ function ProjectClass() {
 		});
 	}
 
+  _self.resourceOperationError = function(resource, operation) {
+    var text;
+    if (resource == null) {
+      text = MyApplication.Language.getTerm(operation + "-resource-error-resource");
+    } else {
+      text = MyApplication.Language.getTerm(operation + "-resource-error-name", [resource.name]);
+    }
+    MyApplication.UI.statusBar.setAlert(text);
+  }
+
 	_self.addResource = function(resource, doSelect) {
 		doSelect = (doSelect ? doSelect : false);
 		_self._resources.push(resource);
@@ -55,54 +65,48 @@ function ProjectClass() {
     _self.addResource(newResource, true);
   }
 
-  _self.deleteResource = function(resource) {
-    var error = function() {
-      var text;
-      if (resource == null) {
-        text = MyApplication.Language.getTerm("delete-resource-error-resource");
-      } else {
-        text = MyApplication.Language.getTerm("delete-resource-error-name", [resource.name]);
-      }
-      MyApplication.UI.statusBar.setAlert(text);
+  _self.renameResource = function(resource, newName) {
+    if (resource == null) {
+      _self.resourceOperationError(resource, "rename");
+      return;
     }
+    var masterTreeItem = MyApplication.UI.resourcesTree.findItemByAttr("resource-type", resource.type);
+    var resourceTreeItem = masterTreeItem.findItemByAttr("resource-name", resource.name);
+    resourceTreeItem.setText(newName);
+    resourceTreeItem.setAttr("resource-name", newName);
+    resource.name = newName;
+  }
+
+  _self.deleteResource = function(resource) {
     MyApplication.UI.statusBar.clear();
     if (resource == null) {
-      error();
+      _self.resourceOperationError(resource, "delete");
       return;
     }
     var resourceIndex = MyApplication.somethingToIndex(_self._resources, resource);
-    if (resourceIndex != null) {
-      _self._resources.splice(resourceIndex, 1);
-      var masterTreeItem = MyApplication.UI.resourcesTree.findItemByAttr("resource-type", resource.type);
-      var resourceTreeItem = masterTreeItem.findItemByAttr("resource-name", resource.name);
-      if (!masterTreeItem.removeItem(resourceTreeItem)) {
-        error();
-        return;
-      }
-      MyApplication.UI.resourcesTree.selectedItem = null;
-      MyApplication.UI.switchMainMarkup("blank");
-    } else {
+    if (resourceIndex == null) {
+      _self.resourceOperationError(resource, "delete");
+      return;
+    }
+    _self._resources.splice(resourceIndex, 1);
+    var masterTreeItem = MyApplication.UI.resourcesTree.findItemByAttr("resource-type", resource.type);
+    var resourceTreeItem = masterTreeItem.findItemByAttr("resource-name", resource.name);
+    if (!masterTreeItem.removeItem(resourceTreeItem)) {
       error();
       return;
     }
+    MyApplication.UI.resourcesTree.selectedItem = null;
+    MyApplication.UI.switchMainMarkup("blank");
   }
 
   _self.loadResourceByNameAndType = function(name, type) {
     var resource = _self.getResourceByNameAndType(name, type);
     MyApplication.UI.statusBar.clear();
     if (resource == undefined) {
-      var text = MyApplication.Language.getTerm("load-resource-error", [name]);
-      MyApplication.UI.statusBar.setAlert(text);
+      _self.resourceOperationError(null, "load");
       return;
     }
-    var markup = MyApplication.UI.switchMainMarkup("resource");
-    var firstTabChanger = $($(".ui-tabs .ui-tabs-changer div", markup)[0]);
-    firstTabChanger.attr("data-icon", resource.icon);
-    MyApplication.UI.iconify(firstTabChanger);
-    $("span[data-role=resource-name]", firstTabChanger).html(resource.name);
-    var firstTab = $($(".ui-tabs .ui-panel", markup)[0]);
-    var firstTabP = $("> p", firstTab);
-    firstTabP.html("(" + resource.name + " " + MyApplication.Language.getTerm("properties") + ")");
+    resource.show();
   }
 
   _self.addResourceByNameAndType(null, "object", true);

@@ -8,4 +8,9 @@ function SpriteClass(name) {
 
   if (name) _self.name = name;
 
+  _self.showSpecific = function(sideElement, mainElement) {
+    mainElement.html("(Sprite-specific UI)");
+  }
+
 }
+SpriteClass.prototype = new GenericClass();

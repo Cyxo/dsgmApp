@@ -9,3 +9,4 @@ function SoundClass(name) {
   if (name) _self.name = name;
 
 }
+SoundClass.prototype = new GenericClass();

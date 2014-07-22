@@ -5,10 +5,10 @@
   }
   > aside {
     float: left !important;
-    width: $resources-size !important;
+    width: $fixed-width !important;
   }
   > div {
-    margin-left: $resources-size + $padding;
+    margin-left: $fixed-width + $padding;
     background-color: $background-color-2;
     border-radius: $radius;
   }

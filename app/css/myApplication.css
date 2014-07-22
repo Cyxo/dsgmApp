@@ -1522,7 +1522,8 @@ body {
 * {
   box-sizing: border-box;
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  outline: none; }
 
 #Colors .foreground {
   background-color: white; }
@@ -1530,6 +1531,8 @@ body {
   background-color: black; }
 #Colors .background-light {
   background-color: #606060; }
+#Colors .mid-gray {
+  background-color: #777777; }
 #Colors .obvious {
   background-color: #ffc300; }
 
@@ -1547,10 +1550,10 @@ body > main {
     overflow: auto; }
   body > main > aside {
     float: left !important;
-    width: 200px !important;
+    width: 242px !important;
     background-color: white; }
   body > main > div {
-    margin-left: 200px !important; }
+    margin-left: 242px !important; }
 
 body > header {
   position: absolute;
@@ -1624,6 +1627,18 @@ span.fa {
   margin: 0;
   padding: 4px; }
 
+.ui-form-control {
+  margin-bottom: 4px; }
+  .ui-form-control > * {
+    display: block;
+    width: 100%; }
+  .ui-form-control label {
+    padding-top: 2px;
+    padding-bottom: 4px; }
+  .ui-form-control label.indent {
+    padding-left: 6px;
+    padding-right: 6px; }
+
 button {
   margin-right: 8px;
   padding: 4px;
@@ -1634,7 +1649,7 @@ button {
   min-width: 48px;
   background-color: #303030;
   color: white;
-  border: 2px solid #ffc300;
+  border: 2px solid #777777;
   box-shadow: 0 0 2px black;
   border-radius: 4px; }
 
@@ -1768,6 +1783,17 @@ button:last-child {
   .ui-status-bar .fa {
     vertical-align: -1; }
 
+input[type=text] {
+  padding: 4px;
+  padding-left: 6px;
+  padding-right: 6px;
+  font-family: "Source Sans Pro", "Arial", "Helvetica", sans-serif;
+  font-size: 16px;
+  background-color: white;
+  color: black;
+  border: 2px solid #777777;
+  border-radius: 4px; }
+
 .ui-tabs .ui-panel {
   display: none;
   border-radius: 4px; }
@@ -1813,9 +1839,9 @@ button:last-child {
   overflow: auto; }
 *[data-role=markup-resource] > aside {
   float: left !important;
-  width: 200px !important; }
+  width: 242px !important; }
 *[data-role=markup-resource] > div {
-  margin-left: 204px;
+  margin-left: 246px;
   background-color: #606060;
   border-radius: 4px; }
 

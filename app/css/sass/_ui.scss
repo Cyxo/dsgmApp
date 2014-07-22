@@ -21,3 +21,21 @@ span.fa {
   margin: 0;
   padding: $padding;
 }
+
+.ui-form-control {
+  margin-bottom: $padding;
+  > * {
+    display: block;
+    width: 100%;
+  }
+  label {
+    padding-top: $padding / 2;
+    padding-bottom: $padding;
+    // margin-bottom: $padding;
+    // border-bottom: 2px solid $mid-gray-color;
+  }
+  label.indent {
+    padding-left: $padding + 2;
+    padding-right: $padding + 2;
+  }
+}

@@ -9,3 +9,4 @@ function BackgroundClass(name) {
   if (name) _self.name = name;
 
 }
+BackgroundClass.prototype = new GenericClass();

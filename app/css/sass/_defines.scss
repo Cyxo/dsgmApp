@@ -25,13 +25,14 @@ $foreground-color: white;
 $obvious-color: #FFC300;
 $background-color-invert: white;
 $foreground-color-invert: black;
+$mid-gray-color: #777777;
 
 //Sizes
 $padding: 4px;
 $header-size: 64px;
 $status-size: $header-size / 2;
 $tabs-changer-size: $header-size / 2;
-$resources-size: 200px;
+$fixed-width: 242px;
 $tabber-size: 400px;
 $work-size: 148px;
 

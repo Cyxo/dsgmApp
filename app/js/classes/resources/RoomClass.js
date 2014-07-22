@@ -9,3 +9,4 @@ function RoomClass(name) {
   if (name) _self.name = name;
 
 }
+RoomClass.prototype = new GenericClass();

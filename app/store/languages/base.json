@@ -4,6 +4,7 @@
     "yes": "Yes",
     "no": "No",
     "ok": "OK",
+    "name": "Name",
     "properties": "Properties",
     "about-software": "About DS Game Maker",
     "project": "Project",
@@ -24,7 +25,7 @@
       "copy-resource": "Copy Resource",
       "delete-resource": "Delete Resource",
     "tools": "Tools",
-      "game-options": "Game Options",
+      "project-options": "Project Options",
       "global-variables": "Global Variables",
       "global-structures": "Global Structures",
       "global-arrays": "Global Arrays",
@@ -39,10 +40,12 @@
       "website": "Website",
       "tutorials": "Tutorials",
       "forum": "Forum",
-      "about": "About",
     "delete-resource-error-resource": "The resource couldn't be deleted.",
     "delete-resource-error-name": "&lsquo;[0]&rsquo; couldn't be deleted.",
-    "load-resource-error": "&lsquo;[0]&rsquo; couldn't be loaded.",
+    "load-resource-error-resource": "The resource couldn't be loaded.",
+    "load-resource-error-name": "&lsquo;[0]&rsquo; couldn't be loaded.",
+    "rename-resource-error-resource": "The resource couldn't be renamed.",
+    "rename-resource-error-name": "&lsquo;[0]&rsquo; couldn't be renamed.",
     "delete-are-you-sure": "Are you sure you would like to delete &lsquo;[0]&rsquo;?"
   }
 }

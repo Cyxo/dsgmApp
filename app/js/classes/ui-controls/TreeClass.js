@@ -37,6 +37,7 @@ function TreeItemClass(text, icon) {
 
   var _self = this;
   _self._element = null;
+  _self.isSelected = false;
 
   _self.makeElement = function() {
     var s = "<li><span></span><ul></ul></li>";
@@ -46,9 +47,9 @@ function TreeItemClass(text, icon) {
 
   _self.refresh = function() {
     var thisSpan = $($("> span", _self._element)[0]);
-    thisSpan.attr("data-icon", _self.icon);
     thisSpan.html(_self.text);
-    MyApplication.UI.iconify(thisSpan);
+    thisSpan.attr("data-icon", _self.icon);
+    MyApplication.UI.iconify(thisSpan, !_self.isSelected);
     $("> ul", _self._element).empty();
     $.each(_self.items, function(index, item) {
       $("> ul", _self._element).append(item.getElement());
@@ -81,6 +82,7 @@ function TreeItemClass(text, icon) {
 
   _self.unselectifyHelper = function(item) {
     MyApplication.UI.selectify(false, item.getElement());
+    item.isSelected = false;
     if (item.items) {
       $.each(item.items, function(index, subItem) {
         _self.unselectifyHelper(subItem);
@@ -104,6 +106,7 @@ function TreeItemClass(text, icon) {
       MyApplication.UI.selectify(true, _self.getElement(), doFade);
       _self.expand();
       _self._tree.selectedItem = _self;
+      _self.isSelected = true;
       if (_self.handler != undefined) _self.handler(_self);
     });
     $.each(_self.items, function(index, item) {

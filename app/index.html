@@ -21,15 +21,18 @@
     <script src="js/classes/ProjectClass.js"></script>
     <script src="js/classes/LinksClass.js"></script>
     <script src="js/classes/UIClass.js"></script>
+    <script src="js/classes/MenuHandlerClass.js"></script>
     <!-- JavaScript: UI Classes -->
     <script src="js/classes/ui-controls/ButtonClass.js"></script>
     <script src="js/classes/ui-controls/DialogueClass.js"></script>
     <script src="js/classes/ui-controls/MenuClass.js"></script>
     <script src="js/classes/ui-controls/OrbClass.js"></script>
     <script src="js/classes/ui-controls/StatusBarClass.js"></script>
-    <!-- (Tabber) -->
+    <script src="js/classes/ui-controls/TextBoxClass.js"></script>
+    <!-- <script src="js/classes/ui-controls/TabberClass.js"></script> -->
     <script src="js/classes/ui-controls/TreeClass.js"></script>
     <!-- JavaScript: Resource Classes -->
+    <script src="js/classes/resources/GenericClass.js"></script>
     <script src="js/classes/resources/SpriteClass.js"></script>
     <script src="js/classes/resources/BackgroundClass.js"></script>
     <script src="js/classes/resources/RoomClass.js"></script>
@@ -48,6 +51,7 @@
       <div class="foreground-invert"></div>
       <div class="background"></div>
       <div class="background-light"></div>
+      <div class="mid-gray"></div>
       <div class="obvious"></div>
     </div>
     <div id="Command" class="hidden">
@@ -78,16 +82,7 @@
       </div>
       <div data-role="markup-resource">
         <aside>
-          <div class="ui ui-tabs">
-            <div class="ui-tabs-changer">
-              <div class="selected"><span data-role="resource-name"></span></div>
-            </div>
-            <div class="ui ui-panel selected">
-              <p>
-                <!-- Resource Properties -->
-              </p>
-            </div>
-          </div>
+          <!-- Resource Properties -->
         </aside>
         <div class="ui-panel">
           <!-- Resource Main -->
@@ -99,7 +94,7 @@
         </div>
         <div>
           <p>
-            Version <span class="version"></span> by <a href="#" data-link="james-garner">James Garner</a> and <a href="#" data-link="chris-ertl">Chris Ertl</a>.
+            Version <span class="version"></span> by <a href="#" data-link="james-garner">James Garner</a> and Chris Ertl.
           </p>
           <p>
             Sample graphics by <a href="#" data-link="andreas-propst">Andreas Propst</a> and Cilein Kearns.
@@ -117,6 +112,8 @@
             <a href="#" data-link="website">www.dsgamemaker.com</a>
           </p>
         </div>
+      </div>
+      <div data-role="markup-options">
       </div>
     </div>
     <header class="ui">

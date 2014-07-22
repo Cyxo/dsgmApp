@@ -4,6 +4,7 @@
     "yes": "Ja",
     "no": "Nein",
     "ok": "OK",
+    "name": "Name",
     "properties": "Eigenschaften",
     "about-software": "&Uuml;ber DS Game Maker",
     "project": "Projekt",
@@ -24,7 +25,7 @@
       "copy-resource": "Ressource Kopieren",
       "delete-resource": "Ressource L&ouml;schen",
     "tools": "Werkzeuge",
-      "game-options": "Spieleinstellungen",
+      "project-options": "Projekteinstellungen",
       "global-variables": "Globale Variablen",
       "global-structures": "Globale Strukturen",
       "global-arrays": "Globale Arrays",
@@ -41,7 +42,10 @@
       "forum": "Forum",
     "delete-resource-error-resource": "Die Ressource k&ouml;nnte nicht gel&ouml;scht werden.",
     "delete-resource-error-name": "&lsquo;[0]&rsquo; k&ouml;nnte nicht gel&ouml;scht werden.",
-    "load-resource-error": "&lsquo;[0]&rsquo; k&ouml;nnte nicht geladen werden.",
+    "load-resource-error-resource": "Die Ressource k&ouml;nnte nicht geladen werden.",
+    "load-resource-error-name": "&lsquo;[0]&rsquo; k&ouml;nnte nicht geladen werden.",
+    "rename-resource-error-resource": "Die Ressource k&ouml;nnte nicht umbenannt werden.",
+    "rename-resource-error-name": "&lsquo;[0]&rsquo; k&ouml;nnte nicht umbenannt werden.",
     "delete-are-you-sure": "Sind Sie sicher, dass Sie &lsquo;[0]&rsquo; l&oumlschen m&ouml;chten?"
   }
 }

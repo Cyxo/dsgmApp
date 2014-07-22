@@ -148,11 +148,13 @@ function UIClass(callback) {
     })[0];
     return icon;
   }
-  this.iconify = function(element) {
+  this.iconify = function(element, doChangeColor) {
     if (element.attr("data-icon") == undefined) return;
+    var doChangeColor = doChangeColor;
+    if (doChangeColor == undefined) doChangeColor = true;
     var icon = _self.getIcon(element.attr("data-icon"));
     if (icon == undefined) icon = _self._icons[0];
-    element.prepend("<span class=\"" + icon.classes + "\" style=\"color: " + icon.color + ";\"></span>");
+    element.prepend("<span class=\"" + icon.classes + "\"" + (doChangeColor ? " style=\"color: " + icon.color + ";\"" : "") + "></span>");
   }
   $("*[data-icon]").each(function(index, element) {
     element = $(element);
@@ -228,7 +230,7 @@ function UIClass(callback) {
   this.switchMainMarkup = function(identifier) {
     $("main > div").empty();
     var newElement = _self.getMarkup(identifier);
-    newElement.appendTo($("main > div"));
+    $("main > div").append(newElement);
     return newElement;
   }
 
@@ -254,6 +256,9 @@ function UIClass(callback) {
   }
 
   this.makeMainMenu = function() {
+
+    var menuHandler = new MenuHandlerClass();
+
     _self.mainMenu = new MenuClass();
     $("body > header > div > nav").append(_self.mainMenu.getElement());
 
@@ -319,22 +324,13 @@ function UIClass(callback) {
         var copyMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("copy-resource"), "copy");
         resourcesGroup3.addItem(copyMenuItem);
         copyMenuItem.setHandler(function() {
-          var selectedResource = _self.isResourceSelected();
-          if (!selectedResource) return;
-          MyApplication.currentProject.copyResource(selectedResource);
+          menuHandler.copyResource(_self);
         });
         //Delete
         var deleteMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("delete-resource"), "no");
         resourcesGroup3.addItem(deleteMenuItem);
         deleteMenuItem.setHandler(function() {
-          var selectedResource = _self.isResourceSelected();
-          if (!selectedResource) return;
-          var response = _self.Dialogue.askYesNo(
-            MyApplication.Language.getTerm("delete-are-you-sure", [selectedResource.name]),
-            "alert",
-            function() {
-              MyApplication.currentProject.deleteResource(selectedResource);
-            });
+          menuHandler.deleteResource(_self);
         });
 
     //Tools
@@ -343,9 +339,9 @@ function UIClass(callback) {
       //Group 1
       var toolsGroup1 = new MenuGroupClass();
       toolsMenuItem.addGroup(toolsGroup1);
-        //Game Options
-        var gameOptionsMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("game-options"), "wrench");
-        toolsGroup1.addItem(gameOptionsMenuItem);
+        //Project Options
+        var projectOptionsMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("project-options"), "wrench");
+        toolsGroup1.addItem(projectOptionsMenuItem);
         //Global Variables
         var globalVariablesMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("global-variables"));
         toolsGroup1.addItem(globalVariablesMenuItem);
@@ -361,6 +357,9 @@ function UIClass(callback) {
         //Options
         var optionsMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("options"), "wrench");
         toolsGroup2.addItem(optionsMenuItem);
+        optionsMenuItem.setHandler(function() {
+          menuHandler.options(_self);
+        });
       //Group 3
       var toolsGroup3 = new MenuGroupClass();
       toolsMenuItem.addGroup(toolsGroup3);
@@ -423,9 +422,7 @@ function UIClass(callback) {
         var aboutMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("about-software"), "info");
         helpGroup2.addItem(aboutMenuItem);
         aboutMenuItem.setHandler(function() {
-          var markup = _self.getMarkup("about");
-          var aboutDialogue = new DialogueClass(markup, null, MyApplication.Language.getTerm("about-software"), [], 450, 520, true);
-          aboutDialogue.show();
+          menuHandler.about(_self);
         });
   }
 
@@ -460,7 +457,7 @@ function UIClass(callback) {
     if (dropSpeed === undefined) dropSpeed = _self.genericSpeed;
     var topElFade = function(isDown, speed, callback) {
       topEl.stop().animate({
-        backgroundColor: MyApplication.UI.getColor(isDown ? "obvious" : "background-light")
+        backgroundColor: _self.getColor(isDown ? "obvious" : "background-light")
       }, speed, callback);
     };
     var subElState = function(isDown, speed, doFade, callback) {
@@ -501,8 +498,8 @@ function UIClass(callback) {
     var exteriorSpan = $("> span", element);
     var iconSpan = $("> span", exteriorSpan);
     var iconColor = _self.getIcon(exteriorSpan.attr("data-icon")).color;
-    backgroundColor = (backgroundColor ? backgroundColor : MyApplication.UI.getColor(!isSelected ? "foreground" : "obvious"));
-    foregroundColor = (foregroundColor ? foregroundColor : MyApplication.UI.getColor(!isSelected ? "foreground-invert" : "foreground"));
+    backgroundColor = (backgroundColor ? backgroundColor : _self.getColor(!isSelected ? "foreground" : "obvious"));
+    foregroundColor = (foregroundColor ? foregroundColor : _self.getColor(!isSelected ? "foreground-invert" : "foreground"));
     if (speed === undefined) speed = _self.genericSpeed;
     if (isSelected) {
       element.addClass("selected");
@@ -522,6 +519,23 @@ function UIClass(callback) {
       exteriorSpan.stop().css({"background-color": backgroundColor, "color": foregroundColor});
       iconSpan.stop().css("color", iconColor);
     }
+  }
+
+  _self.bindBorderFocus = function(element) {
+    element.unbind("focusin");
+    element.bind("focusin", function() {
+      var obviousColor = _self.getColor("obvious");
+      element.stop().animate({
+        borderColor: obviousColor,
+      }, _self.slowSpeed);
+    });
+    element.unbind("focusout");
+    element.bind("focusout", function() {
+      var midGrayColor = _self.getColor("mid-gray");
+      element.stop().animate({
+        borderColor: midGrayColor,
+      }, _self.slowSpeed);
+    });
   }
 
   callback();
@@ -584,6 +598,13 @@ var UIPrototype = function() {
 
   this.emptyItems = function() {
     this.items.length = 0;
+  }
+
+  this.setLabel = function(text) {
+    var labelElement = $("> label", this._element);
+    labelElement.empty();
+    if (text) labelElement.html(text);
+    labelElement.css("display", (text ? "block" : "none"));
   }
 
 }
