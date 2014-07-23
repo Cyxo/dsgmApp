@@ -456,8 +456,9 @@ function UIClass(callback) {
     if (fadeSpeed === undefined) fadeSpeed = _self.genericSpeed;
     if (dropSpeed === undefined) dropSpeed = _self.genericSpeed;
     var topElFade = function(isDown, speed, callback) {
+      var backgroundColor = _self.getColor(isDown ? "obvious" : "background-light");
       topEl.stop().animate({
-        backgroundColor: _self.getColor(isDown ? "obvious" : "background-light")
+        backgroundColor: backgroundColor
       }, speed, callback);
     };
     var subElState = function(isDown, speed, doFade, callback) {
@@ -536,6 +537,11 @@ function UIClass(callback) {
         borderColor: midGrayColor,
       }, _self.slowSpeed);
     });
+  }
+
+  _self.setTitle = function(title, appendApplicationName) {
+    var appendApplicationName = (appendApplicationName != undefined  ? appendApplicationName : true);
+    MyApplication.Command.request("setTitle", [title, appendApplicationName])
   }
 
   callback();

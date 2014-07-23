@@ -27,9 +27,9 @@ import org.w3c.dom.events.EventTarget;
 
 public class DSGameMaker extends Application {
 
+  public static String appName = "DS Game Maker";
   private static int appWidth = 1024;
   private static int appHeight = 768;
-  private static String appTitle = "DS Game Maker";
 
   //Stage Object Reference
   private static Stage mainStage;
@@ -41,6 +41,10 @@ public class DSGameMaker extends Application {
 
   private Handler handler;
 
+  public static void setTitle(String title) {
+    mainStage.setTitle(title);
+  }
+
   //Override Application Start
   @Override public void start(final Stage passedStage) throws MalformedURLException {
 
@@ -49,7 +53,7 @@ public class DSGameMaker extends Application {
     handler.setHostServices(this.getHostServices());
 
     //Stage Object Reference
-    this.mainStage = passedStage;
+    mainStage = passedStage;
 
     //Create Pane and add Controls
     Pane thePane = new Pane();
@@ -102,9 +106,9 @@ public class DSGameMaker extends Application {
     Scene theScene = new Scene(thePane);
 
     //Configure Stage to use Scene
-    this.mainStage.setTitle(this.appTitle);
-    this.mainStage.setScene(theScene);
-    this.mainStage.show();
+    setTitle(appName);
+    mainStage.setScene(theScene);
+    mainStage.show();
 
   }
 

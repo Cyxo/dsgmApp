@@ -12,9 +12,9 @@ function ButtonClass(text, icon, handler) {
     _self._element.bind("mouseenter", function() {
       if (_self.hasBeenClicked) return;
       var buttonElement = $(this);
-      var foregroundColorCache = MyApplication.UI.getColor("foreground");
+      var foregroundColor = MyApplication.UI.getColor("foreground");
       buttonElement.stop().animate({
-        borderColor: foregroundColorCache
+        borderColor: foregroundColor
       }, MyApplication.UI.genericSpeed);
       // var iconElement = $("> span.fa", buttonElement);
       // iconElement.stop().animate({

@@ -16,7 +16,12 @@ public class Handler {
   }
 
 
-  public String readFile(String path) {
+  public Boolean stringToBoolean(String value) {
+    return (!(value.equals("false") || value.equals("0")));
+  }
+
+
+  private String readFile(String path) {
     try {
       return new String(Files.readAllBytes(Paths.get(path)), StandardCharsets.UTF_8);
     } catch (IOException error) {
@@ -25,7 +30,7 @@ public class Handler {
   }
 
 
-  public void openUrl(String url) {
+  private void openUrl(String url) {
     hostServices.showDocument(url);
   }
 
@@ -45,6 +50,12 @@ public class Handler {
         break;
       case "readFile":
         response = readFile("app/" + arguments[0]);
+        break;
+      case "setTitle":
+        String title = arguments[0];
+        Boolean appendApplicationName = stringToBoolean(arguments[1]);
+        if (appendApplicationName) title += " - " + DSGameMaker.appName;
+        DSGameMaker.setTitle(title);
         break;
     }
 

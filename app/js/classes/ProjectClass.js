@@ -110,5 +110,6 @@ function ProjectClass() {
   }
 
   _self.addResourceByNameAndType(null, "object", true);
+  MyApplication.UI.setTitle("New Project");
 
 }

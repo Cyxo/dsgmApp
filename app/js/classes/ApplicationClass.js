@@ -14,6 +14,7 @@ function ApplicationClass(name, commandHandler) {
     function(next) {
       _self.Links = new LinksClass();
       _self.Command = new CommandClass(commandHandler);
+      _self.Command.request("setTitle", [_self.name, false]);
       _self.Options = new OptionsClass(next);
     },
     function(next) {

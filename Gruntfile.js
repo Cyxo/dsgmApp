@@ -39,10 +39,25 @@ module.exports = function(grunt) {
       runJava: {
         command: 'java -jar <%= directories.build %>/DSGameMaker.jar'
       },
+      // copyJava: {
+      //   command: 'java -jar <%= directories.build %>/DSGameMaker.jar'
+      // },
       cleanAppFolder: {
         command: [
           'rm -rf <%= directories.build %>/app/css/sass',
           'rm -rf <%= directories.build %>/app/css/sass-cache'
+        ].join("&&")
+      },
+      stats: {
+        command: [
+          'rm <%= directories.build %>/app/css/myApplication.css',
+          'rm -rf <%= directories.build %>/app/css/sass-cache',
+          'rm -rf <%= directories.build %>/app/css/fonts',
+          'rm <%= directories.build %>/app/js/*.*',
+          'rm -rf <%= directories.build %>/app/store',
+          'rm -rf <%= directories.build %>/app/img',
+          'mkdir <%= directories.build %>/java',
+          'cp source/*.* <%= directories.build %>/java',
         ].join("&&")
       },
       cleanAppAPIFolder: {
@@ -105,6 +120,14 @@ module.exports = function(grunt) {
     'shell:cleanAppFolder',
     'shell:moveAppFolderContentsUp1',
     'shell:moveAppFolderContentsUp2'
+  ]);
+
+  grunt.registerTask('stats', [
+    'shell:wipeBuild',
+    'shell:createBuild',
+    'copy:copyAppFolder',
+    'shell:stats'
+    //'shell:copyJava'
   ]);
 
   grunt.registerTask('run', [

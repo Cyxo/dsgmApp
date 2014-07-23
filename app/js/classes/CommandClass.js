@@ -8,7 +8,7 @@ function DesktopHandler() {
       .attr("data-command", command)
       .empty();
     $.each(arguments, function(index, argument) {
-      $("#CommandRequest").append($("<li data-argument=\"" + argument + "\"></li>"));
+      $("#CommandRequest").append($("<li data-argument=\"" + argument.toString() + "\"></li>"));
     });
     $("#CommandRequest").click();
   }
@@ -35,6 +35,14 @@ function RemoteHandler() {
         $.each(arguments, function(index, argument) {
           console.log(argument);
         });
+        MyApplication.Command.respond(false);
+        return;
+        break;
+      case "setTitle":
+        var title = arguments[0];
+        var appendApplicationName = arguments[1];
+        if (appendApplicationName) title += " - " + MyApplication.name;
+        document.title = title;
         MyApplication.Command.respond(false);
         return;
         break;
