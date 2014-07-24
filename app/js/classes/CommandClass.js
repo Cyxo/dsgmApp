@@ -66,9 +66,11 @@ function RemoteHandler() {
     if (document.location.hostname.length == 0) {
       url = "http://localhost/";
     } else {
-      url = "http://" + document.location.hostname + "/zero/app/";
+      url = "http://" + document.location.hostname + "/cloud/";
     }
-    url += "api-v1/?command=" + commandString + "&arguments=" + argumentsString;
+    url += "?command=" + commandString + "&arguments=" + argumentsString;
+    //Debug
+    console.log(url);
     //Request
     var ajaxRequest = $.ajax(url);
     //Success

@@ -1,6 +1,5 @@
 function LanguageClass(language, callback) {
 
-  var _languages_path = "store/languages/";
   var _language_pairs;
   var _base_object;
   var _language_object;
@@ -44,7 +43,7 @@ function LanguageClass(language, callback) {
   async.waterfall([
     function(next) {
       MyApplication.Command.request(
-        "readFile", [_languages_path + "base.json"],
+        "getLanguage", ["base"],
         function(response) {
           base_object = JSON.parse(response);
           next();
@@ -53,7 +52,7 @@ function LanguageClass(language, callback) {
     },
     function(next) {
       MyApplication.Command.request(
-        "readFile", [_languages_path + language + ".json"],
+        "getLanguage", [language],
         function(response) {
           language_object = JSON.parse(response);
           next();

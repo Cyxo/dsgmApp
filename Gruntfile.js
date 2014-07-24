@@ -60,9 +60,6 @@ module.exports = function(grunt) {
           'cp source/*.* <%= directories.build %>/java',
         ].join("&&")
       },
-      cleanAppAPIFolder: {
-        command: 'rm -rf <%= directories.build %>/app/api-v1'
-      },
       moveAppFolderContentsUp1: {
         command: [
           'cp -rf . ..',
@@ -108,7 +105,6 @@ module.exports = function(grunt) {
     'shell:cleanJava',
     'copy:copyAppFolder',
     'shell:cleanAppFolder',
-    'shell:cleanAppAPIFolder',
     'shell:runJava'
   ]);
 

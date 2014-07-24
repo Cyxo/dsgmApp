@@ -1,12 +1,11 @@
 function OptionsClass(callback) {
 
   var _options;
-  var _options_path = "store/options.json";
 
   //Load
   this.load = function(callback) {
     MyApplication.Command.request(
-      "readFile", [_options_path],
+      "getOptions", [],
       function(response) {
         _options = JSON.parse(response);
         callback();
@@ -19,7 +18,7 @@ function OptionsClass(callback) {
 
   //Save
   this.save = function(callback) {
-    MyApplication.Comms.request("writeFile", JSON.stringify(_options), callback);
+    MyApplication.Comms.request("setOptions", JSON.stringify(_options), callback);
   }
 
   //Get
