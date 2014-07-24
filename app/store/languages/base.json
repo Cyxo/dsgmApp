@@ -46,6 +46,7 @@
     "load-resource-error-name": "&lsquo;[0]&rsquo; couldn't be loaded.",
     "rename-resource-error-resource": "The resource couldn't be renamed.",
     "rename-resource-error-name": "&lsquo;[0]&rsquo; couldn't be renamed.",
-    "delete-are-you-sure": "Are you sure you would like to delete &lsquo;[0]&rsquo;?"
+    "delete-are-you-sure": "Are you sure you would like to delete &lsquo;[0]&rsquo;?",
+    "new-are-you-sure": "Your changes will be lost. Are you sure?"
   }
 }

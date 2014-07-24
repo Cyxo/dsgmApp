@@ -46,6 +46,7 @@
     "load-resource-error-name": "&lsquo;[0]&rsquo; k&ouml;nnte nicht geladen werden.",
     "rename-resource-error-resource": "Die Ressource k&ouml;nnte nicht umbenannt werden.",
     "rename-resource-error-name": "&lsquo;[0]&rsquo; k&ouml;nnte nicht umbenannt werden.",
-    "delete-are-you-sure": "Sind Sie sicher, dass Sie &lsquo;[0]&rsquo; l&oumlschen m&ouml;chten?"
+    "delete-are-you-sure": "Sind Sie sicher, dass Sie &lsquo;[0]&rsquo; l&oumlschen m&ouml;chten?",
+    "new-are-you-sure": "Ihre Ver&auml;nderungen werden verloren werden. Sind Sie sicher?"
   }
 }

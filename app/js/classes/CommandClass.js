@@ -46,6 +46,11 @@ function RemoteHandler() {
         MyApplication.Command.respond(false);
         return;
         break;
+      case "openProject":
+        var projectIdentifier = "silly billy";
+        MyApplication.Command.respond(projectIdentifier);
+        return;
+        break;
     }
     //Arguments
     arguments = $.map(arguments, function(argument, index) {

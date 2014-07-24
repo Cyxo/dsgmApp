@@ -10,14 +10,16 @@ function TextBoxClass(text, handler, label, handleImmediately) {
   }
 
   _self.setHandler = function(handler) {
-    if (handler) _self.handler = handler;
-    var typeName = (_self.handleImmediately ? "keyup" : "blur");
-    _self.getInnerInput().unbind(typeName);
-    _self.getInnerInput().bind(typeName, function() {
-      _self.text = $(this).val();
-      if (_self.handler) _self.handler(_self.text);
-    });
-    MyApplication.UI.bindBorderFocus(_self.getInnerInput());
+    if (handler) {
+      _self.handler = handler;
+      var typeName = (_self.handleImmediately ? "keyup" : "blur");
+      _self.getInnerInput().unbind(typeName);
+      _self.getInnerInput().bind(typeName, function() {
+        _self.text = $(this).val();
+        _self.handler(_self.text);
+      });
+      MyApplication.UI.bindBorderFocus(_self.getInnerInput());
+    }
   }
 
   _self.makeElement = function() {

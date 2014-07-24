@@ -1,9 +1,35 @@
-function ProjectClass() {
+function ProjectClass(name) {
 
 	var _self = this;
 
-	_self.name = "";
+	_self.name = (name ? name : "New Project");
+  _self.path = "";
 	_self._resources = [];
+
+  _self.cleanFresh = function() {
+    //Clear Resources Tree
+    $.each(MyApplication.UI.resourcesTree.items, function(index, item) {
+      item.emptyItems();
+    });
+  }
+
+  _self.loadFromString = function(string) {
+    _self.cleanFresh();
+    var jsonObject = $.parseJSON(string);
+    _self.name = jsonObject.name;
+    MyApplication.UI.setTitle(_self.name);
+    $.each(jsonObject.resources, function(index, resource) {
+      console.log(resource);
+    });
+  }
+
+  _self.saveToString = function(string) {
+    var jsonObject = {
+      "name": _self.name,
+      "resources": _self._resources
+    };
+    return JSON.stringify(jsonObject);
+  }
 
 	_self.getResourceByNameAndType = function(name, type) {
 		return $.grep(_self._resources, function(resource) {
@@ -27,8 +53,9 @@ function ProjectClass() {
     MyApplication.UI.statusBar.setAlert(text);
   }
 
-	_self.addResource = function(resource, doSelect) {
-		doSelect = (doSelect ? doSelect : false);
+	_self.addResource = function(resource, doSelect, doMakeAChange) {
+    var doSelect = (doSelect != undefined ? doSelect : true);
+    var doMakeAChange = (doMakeAChange != undefined ? doMakeAChange : true);
 		_self._resources.push(resource);
 		var masterTreeItem = MyApplication.UI.resourcesTree.findItemByAttr("resource-type", resource.type);
 		var newTreeItem = new TreeItemClass(resource.name, resource.icon);
@@ -40,11 +67,13 @@ function ProjectClass() {
 		masterTreeItem.addItem(newTreeItem);
 		if (doSelect) newTreeItem.select(true);
 		masterTreeItem.expand(true);
+    if (doMakeAChange) _self.makeAChange();
 		return resource;
 	}
 
-  _self.addResourceByNameAndType = function(name, type, doSelect) {
-    doSelect = (doSelect ? doSelect : false);
+  _self.addResourceByNameAndType = function(name, type, doSelect, doMakeAChange) {
+    var doSelect = (doSelect != undefined ? doSelect : true);
+    var doMakeAChange = (doMakeAChange != undefined ? doMakeAChange : true);
     var newResource = MyApplication.Resources.createResourceClassFromTypeName(type);
     if (name == null) {
       var i = 1;
@@ -55,7 +84,7 @@ function ProjectClass() {
       }
     }
     newResource.name = name;
-    return _self.addResource(newResource, doSelect);
+    return _self.addResource(newResource, doSelect, doMakeAChange);
   }
 
   _self.copyResource = function(resource) {
@@ -75,6 +104,7 @@ function ProjectClass() {
     resourceTreeItem.setText(newName);
     resourceTreeItem.setAttr("resource-name", newName);
     resource.name = newName;
+    _self.makeAChange();
   }
 
   _self.deleteResource = function(resource) {
@@ -97,6 +127,7 @@ function ProjectClass() {
     }
     MyApplication.UI.resourcesTree.selectedItem = null;
     MyApplication.UI.switchMainMarkup("blank");
+    _self.makeAChange();
   }
 
   _self.loadResourceByNameAndType = function(name, type) {
@@ -109,7 +140,20 @@ function ProjectClass() {
     resource.show();
   }
 
-  _self.addResourceByNameAndType(null, "object", true);
-  MyApplication.UI.setTitle("New Project");
+  _self.changeMade = false;
+  _self.makeAChange = function() {
+    MyApplication.UI.setTitle(_self.name + "*");
+    _self.changeMade = true;
+  }
+
+  //Clean Fresh
+  _self.cleanFresh();
+
+  //Set Title
+  MyApplication.UI.setTitle(_self.name);
+
+  //Add Sample Resources
+  _self.addResourceByNameAndType(null, "room", false, false);
+  _self.addResourceByNameAndType(null, "object", true, false);
 
 }

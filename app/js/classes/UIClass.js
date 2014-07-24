@@ -114,7 +114,7 @@ function UIClass(callback) {
     },
     {
       "name": "room",
-      "classes": "fa fa-fw fa-square-o",
+      "classes": "fa fa-fw fa-square",
       "color": _self.colors.lightgray
     },
     {
@@ -247,7 +247,7 @@ function UIClass(callback) {
   this.makeResourcesTree = function() {
     _self.resourcesTree = new TreeClass();
     $("body > main > aside").append(_self.resourcesTree.getElement());
-    _self.resourcesTree.emptyItems();
+    _self.resourcesTree.emptyItems(false);
     $.each(MyApplication.Resources.getStaticResources(), function(index, staticResource) {
       var newItem = new TreeItemClass(staticResource.typePlural, "folder");
       newItem.setAttr("resource-type", staticResource.type);
@@ -271,9 +271,15 @@ function UIClass(callback) {
         //New
         var newMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("new"), "page");
         projectGroup1.addItem(newMenuItem);
+        newMenuItem.setHandler(function() {
+          menuHandler.newProject(MyApplication.UI);
+        });
         //Open
         var openMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("open"), "folder");
         projectGroup1.addItem(openMenuItem);
+        openMenuItem.setHandler(function() {
+          menuHandler.openProject(MyApplication.UI);
+        });
         //Open Last Project
         var openLastProjectMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("open-last-project"));
         projectGroup1.addItem(openLastProjectMenuItem);
@@ -602,8 +608,10 @@ var UIPrototype = function() {
     this.refresh();
   }
 
-  this.emptyItems = function() {
+  this.emptyItems = function(doCallRefresh) {
+    var doCallRefresh = (doCallRefresh != undefined ? doCallRefresh : true);
     this.items.length = 0;
+    if (doCallRefresh) this.refresh();
   }
 
   this.setLabel = function(text) {
