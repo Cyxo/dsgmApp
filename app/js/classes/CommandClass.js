@@ -26,15 +26,15 @@ function RemoteHandler() {
     commandString = $.base64.encode(command);
     //Special Handling
     switch(command) {
-      case "link":
-        window.open(arguments[0]);
-        MyApplication.Command.respond(false);
-        return;
-        break;
       case "print":
         $.each(arguments, function(index, argument) {
           console.log(argument);
         });
+        MyApplication.Command.respond(false);
+        return;
+        break;
+      case "link":
+        window.open(arguments[0]);
         MyApplication.Command.respond(false);
         return;
         break;
@@ -46,12 +46,64 @@ function RemoteHandler() {
         MyApplication.Command.respond(false);
         return;
         break;
-      case "openProject":
-        var projectIdentifier = "silly billy";
-        MyApplication.Command.respond(projectIdentifier);
+      case "getOptions":
+        //Handle remotely
+        break;
+      case "getLanguage":
+        //Handle remotely
+        break;
+      case "getVersion":
+        //Handle remotely
+        break;
+      case "openProjectGetIdentifier":
+        //to do: error handling
+        var projects;
+        async.waterfall([
+          function(next) {
+            _self.ajax("getProjects", [],
+              function(response) {
+                projects = $.parseJSON(response);
+                next();
+              },
+              function(response) {
+                //error handling
+                //code to break from aysnc waterfall
+                return;
+              });
+          },
+          function(next) {
+            MyApplication.Command.respond(projects[0]);
+          }
+        ]);
         return;
         break;
+      case "getProjects":
+        //Handle remotely
+        break;
+      case "openProjectGetStringFromIdentifier":
+        //Handle remotely
+        break;
+      case "saveProject":
+        //Handle remotely
+        break;
     }
+
+    _self.ajax(command, arguments,
+      function(response) {
+        //Done
+        MyApplication.Command.respond(response);
+      },
+      function(response) {
+        //Failure
+        MyApplication.Command.respond(false);
+      }
+    );
+
+  }
+
+  _self.ajax = function(command, arguments, doneCallback, failureCallback) {
+    //Command
+    commandString = $.base64.encode(command);
     //Arguments
     arguments = $.map(arguments, function(argument, index) {
       return $.base64.encode(argument);
@@ -70,16 +122,16 @@ function RemoteHandler() {
     }
     url += "?command=" + commandString + "&arguments=" + argumentsString;
     //Debug
-    console.log(url);
+    //console.log(url);
     //Request
     var ajaxRequest = $.ajax(url);
-    //Success
+    //Done
     ajaxRequest.done(function(response) {
-      MyApplication.Command.respond(response);
+      doneCallback(response);
     });
     //Failure
-    ajaxRequest.fail(function() {
-      MyApplication.Command.respond(false);
+    ajaxRequest.fail(function(response) {
+      failureCallback(false);
     });
   }
 

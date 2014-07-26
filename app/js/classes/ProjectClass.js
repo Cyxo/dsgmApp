@@ -7,19 +7,22 @@ function ProjectClass(name) {
 	_self._resources = [];
 
   _self.cleanFresh = function() {
+    MyApplication.UI.switchMainMarkup("blank");
+    //Clear Resources
+    _self._resources.length = 0;
     //Clear Resources Tree
     $.each(MyApplication.UI.resourcesTree.items, function(index, item) {
       item.emptyItems();
     });
   }
 
-  _self.loadFromString = function(string) {
+  _self.openFromString = function(string) {
     _self.cleanFresh();
     var jsonObject = $.parseJSON(string);
     _self.name = jsonObject.name;
     MyApplication.UI.setTitle(_self.name);
     $.each(jsonObject.resources, function(index, resource) {
-      console.log(resource);
+      _self.addResourceByNameAndType(resource.name, resource.type, (index == resourceCount - 1), false);
     });
   }
 
@@ -29,6 +32,13 @@ function ProjectClass(name) {
       "resources": _self._resources
     };
     return JSON.stringify(jsonObject);
+  }
+
+  _self.save = function(path) {
+    if (path != null) _self.path = path;
+    MyApplication.Command.request("saveProject", [_self.path, _self.saveToString()], function(response) {
+      console.log(response);
+    });
   }
 
 	_self.getResourceByNameAndType = function(name, type) {
@@ -68,7 +78,7 @@ function ProjectClass(name) {
 		if (doSelect) newTreeItem.select(true);
 		masterTreeItem.expand(true);
     if (doMakeAChange) _self.makeAChange();
-		return resource;
+		return newTreeItem;
 	}
 
   _self.addResourceByNameAndType = function(name, type, doSelect, doMakeAChange) {
@@ -152,7 +162,7 @@ function ProjectClass(name) {
   //Set Title
   MyApplication.UI.setTitle(_self.name);
 
-  //Add Sample Resources
+  //Add Default Resources
   _self.addResourceByNameAndType(null, "room", false, false);
   _self.addResourceByNameAndType(null, "object", true, false);
 

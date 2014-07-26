@@ -298,6 +298,9 @@ function UIClass(callback) {
         //Save
         var saveMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("save"), "disk");
         projectGroup3.addItem(saveMenuItem);
+        saveMenuItem.setHandler(function() {
+          menuHandler.saveProject();
+        });
         //Save As
         var saveAsMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("save-as"));
         projectGroup3.addItem(saveAsMenuItem);
@@ -611,6 +614,7 @@ var UIPrototype = function() {
   this.emptyItems = function(doCallRefresh) {
     var doCallRefresh = (doCallRefresh != undefined ? doCallRefresh : true);
     this.items.length = 0;
+    this.selectedItem = null;
     if (doCallRefresh) this.refresh();
   }
 

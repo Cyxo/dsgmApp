@@ -21,10 +21,41 @@ function MenuHandlerClass(callback) {
   }
 
   _self.openProject = function(UIClass) {
-    var projectIdentifier = MyApplication.Command.request("openProject", [], function(response) {
+    //to do: error handling here
+    var projectIdentifier;
+    var projectString;
+    async.waterfall([
+      function(next) {
+        MyApplication.Command.request("openProjectGetIdentifier", [], function(response) {
+          projectIdentifier = response;
+          next();
+        });
+      },
+      function(next) {
+        //console.log("project identifier: " + projectIdentifier);
+        next();
+      },
+      function(next) {
+        MyApplication.Command.request("openProjectGetStringFromIdentifier", [projectIdentifier], function(response) {
+          projectString = response;
+          next();
+        });
+      },
+      function(next) {
+        MyApplication.currentProject.openFromString(projectString);
+      }
+    ]);
+  }
 
-    });
-    console.log(projectIdentifier);
+  _self.saveProject = function(UIClass) {
+    if (MyApplication.currentProject.path.length == 0) {
+      _self.saveProjectAs(UIClass);
+      return; 
+    }
+  }
+
+  _self.saveProjectAs = function(UIClass) {
+    MyApplication.currentProject.save(null);
   }
 
   _self.copyResource = function(UIClass) {

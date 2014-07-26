@@ -3,9 +3,13 @@ function ResourcesClass() {
   var _self = this;
   _self._resourceTypes = [SpriteClass, BackgroundClass, ObjectClass, RoomClass, SoundClass];
 
+  _self.influentialResourceTypeName = "room";
+  _self.influentialResourceType = null;
+
   _self._resourceTypeClasses = [];
   $.each(_self._resourceTypes, function(index, resourceType) {
-    _self._resourceTypeClasses.push(new resourceType());
+    var newResource = new resourceType();
+    _self._resourceTypeClasses.push(newResource);
   });
 
   _self.getStaticResources = function(property) {
