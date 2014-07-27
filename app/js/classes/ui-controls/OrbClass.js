@@ -8,16 +8,16 @@ function OrbClass() {
     var s = "";
     s += "<div class=\"ui ui-orb\">";
     s += "  <div>";
-    s += "    <img src=\"img/orb.png\" alt=\"Orb\">";
+    s += "    <span>&nbsp;</span>";
     s += "    <div><div>&nbsp;</div></div>"
     s += "  </div>";
     s += "</div>";
     var element = $(s);
     element.bind("mouseenter", function() {
-      MyApplication.UI.dropUpDown(true, $("> div > img", this), $("> div > div", $(this)));
+      MyApplication.UI.dropUpDown(true, $("> div > span", this), $("> div > div", $(this)));
     });
     element.bind("mouseleave", function() {
-      MyApplication.UI.dropUpDown(false, $("> div > img", this), $("> div > div", $(this)));
+      MyApplication.UI.dropUpDown(false, $("> div > span", this), $("> div > div", $(this)));
     });
     return element;
   }
