@@ -1,20 +1,24 @@
 function LinksClass() {
 
   var _self = this;
-  //_self._link_base = "http://dsgamemaker.com";
-  _self._link_base = "http://dsgamemaker.com/zero";
+  //_self._link_base = "http://dsgamemaker.com/";
+  _self._link_base = "http://dsgamemaker.com/zero/";
   _self._links = [
     {
       "identifier": "website",
-      "url": _self._link_base + "/"
+      "url": _self._link_base
     },
     {
       "identifier": "tutorials",
-      "url": _self._link_base + "/tutorials/"
+      "url": _self._link_base + "tutorials/"
     },
     {
       "identifier": "forum",
-      "url": _self._link_base + "/forum/"
+      "url": _self._link_base + "forum/"
+    },
+    {
+      "identifier": "cloud",
+      "url": _self._link_base + "cloud/"
     },
     {
       "identifier": "james-garner",

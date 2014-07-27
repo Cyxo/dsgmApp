@@ -4,7 +4,7 @@
  */
 @font-face {
   font-family: 'FontAwesome';
-  src: url("fonts/fontawesome-webfont.woff") format("woff");
+  src: url("fonts/font-awesome.woff") format("woff");
   font-weight: normal;
   font-style: normal; }
 .fa {
@@ -1487,13 +1487,8 @@
 @font-face {
   font-family: "Source Sans Pro";
   font-style: normal;
-  font-weight: 400;
-  src: url("fonts/Source Sans Pro.woff") format("woff"); }
-@font-face {
-  font-family: "Source Sans Pro";
-  font-style: normal;
-  font-weight: 700;
-  src: url("fonts/Source Sans Pro Bold.woff") format("woff"); }
+  font-weight: normal;
+  src: url("fonts/source-sans-pro-light.woff") format("woff"); }
 p {
   margin: 8px 0 8px 0;
   padding: 0;
@@ -1511,7 +1506,7 @@ a {
 h1 {
   padding-top: 6px;
   padding-bottom: 6px;
-  font-size: 20px;
+  font-size: 18.75px;
   text-align: center;
   font-weight: normal;
   text-shadow: 0 0 2px rgba(0, 0, 0, 0.75); }
@@ -1595,21 +1590,21 @@ body > header {
     #Work div p:nth-child(1), #Work div p:nth-child(1) span {
       height: 148px;
       line-height: 148px;
-      font-size: 64px; }
+      font-size: 60px; }
     #Work div p:nth-child(2) {
       position: absolute;
       bottom: 0;
       width: 100%;
       height: 37px;
       line-height: 37px;
-      font-size: 20px; }
+      font-size: 18.75px; }
 
 #Work.show-status {
   top: -32px; }
 
 .ui {
   font-family: "Source Sans Pro", "Arial", "Helvetica", sans-serif;
-  font-size: 16px;
+  font-size: 15px;
   background-color: #303030;
   color: white;
   cursor: default; }
@@ -1620,7 +1615,7 @@ body > header {
 span.fa {
   margin-left: 2px;
   margin-right: 6px;
-  font-size: 19.2px;
+  font-size: 18px;
   vertical-align: -1.2; }
 
 .ui-panel {
@@ -1645,7 +1640,7 @@ button {
   padding-left: 8px;
   padding-right: 8px;
   font-family: "Source Sans Pro", "Arial", "Helvetica", sans-serif;
-  font-size: 16px;
+  font-size: 15px;
   min-width: 48px;
   background-color: #303030;
   color: white;
@@ -1678,9 +1673,9 @@ button:last-child {
     #Dialogue > div > div > div.contents-line {
       padding-left: 16px;
       padding-right: 16px;
-      font-size: 20px; }
+      font-size: 18.75px; }
       #Dialogue > div > div > div.contents-line span.fa {
-        font-size: 32px;
+        font-size: 30px;
         vertical-align: middle;
         margin-right: 12px; }
     #Dialogue > div > div > div.buttons {
@@ -1788,7 +1783,7 @@ input[type=text] {
   padding-left: 6px;
   padding-right: 6px;
   font-family: "Source Sans Pro", "Arial", "Helvetica", sans-serif;
-  font-size: 16px;
+  font-size: 15px;
   background-color: white;
   color: black;
   border: 2px solid #777777;
@@ -1830,7 +1825,7 @@ input[type=text] {
     display: block;
     margin-bottom: 4px;
     padding: 4px;
-    line-height: 24px; }
+    line-height: 22.5px; }
   .ui-tree .selected span {
     border-radius: 4px; }
 

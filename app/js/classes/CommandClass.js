@@ -21,6 +21,9 @@ function RemoteHandler() {
   var _self = this;
   _self.name = "remote";
 
+  _self.cloudUrl = MyApplication.Links.getLink("cloud").url;
+  // _self.cloudUrl = "http://" + document.location.hostname + "/cloud/";
+
   _self.handle = function(command, arguments) {
     //Command
     commandString = $.base64.encode(command);
@@ -114,15 +117,9 @@ function RemoteHandler() {
     });
     argumentsString = argumentsString.substr(0, argumentsString.length - 1);
     //URL
-    var url;
-    if (document.location.hostname.length == 0) {
-      url = "http://localhost/";
-    } else {
-      url = "http://" + document.location.hostname + "/cloud/";
-    }
-    url += "?command=" + commandString + "&arguments=" + argumentsString;
+    var url = _self.cloudUrl + "?command=" + commandString + "&arguments=" + argumentsString;
     //Debug
-    //console.log(url);
+    console.log(url);
     //Request
     var ajaxRequest = $.ajax(url);
     //Done

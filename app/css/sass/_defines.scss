@@ -1,21 +1,14 @@
 //Fonts
 $font-name: "Source Sans Pro";
 $font-family: $font-name, "Arial", "Helvetica", sans-serif;
-$font-size: 16px;
+$font-size: 15px;
 
 //Google Fonts
 @font-face {
   font-family: $font-name;
   font-style: normal;
-  font-weight: 400;
-  src: url("fonts/" + $font-name + ".woff") format("woff");
-}
-
-@font-face {
-  font-family: $font-name;
-  font-style: normal;
-  font-weight: 700;
-  src: url("fonts/" + $font-name + " Bold.woff") format("woff");
+  font-weight: normal;
+  src: url("fonts/source-sans-pro-light.woff") format("woff");
 }
 
 //Colors
