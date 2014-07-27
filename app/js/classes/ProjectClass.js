@@ -22,9 +22,9 @@ function ProjectClass(name) {
     _self.name = jsonObject.name;
     MyApplication.UI.setTitle(_self.name);
     $.each(jsonObject.resources, function(index, resource) {
-      //here
       _self.addResourceByNameAndType(resource.name, resource.type, false, false);
     });
+    MyApplication.Resources.influentialSelect();
   }
 
   _self.saveToString = function(string) {
@@ -164,7 +164,10 @@ function ProjectClass(name) {
   MyApplication.UI.setTitle(_self.name);
 
   //Add Default Resources
+  _self.addResourceByNameAndType(null, "object", false, false);
   _self.addResourceByNameAndType(null, "room", false, false);
-  _self.addResourceByNameAndType(null, "object", true, false);
+
+  //Select One
+  MyApplication.Resources.influentialSelect();
 
 }

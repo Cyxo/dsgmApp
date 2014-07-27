@@ -3,8 +3,7 @@ function ResourcesClass() {
   var _self = this;
   _self._resourceTypes = [SpriteClass, BackgroundClass, ObjectClass, RoomClass, SoundClass];
 
-  _self.influentialResourceTypeName = "room";
-  _self.influentialResourceType = null;
+  _self.influentialResourceType = "room";
 
   _self._resourceTypeClasses = [];
   $.each(_self._resourceTypes, function(index, resourceType) {
@@ -25,6 +24,16 @@ function ResourcesClass() {
       whichClassIndex++;
     });
     return new _self._resourceTypes[whichClassIndex];
+  }
+
+  _self.influentialSelect = function() {
+    var masterTreeItem = MyApplication.UI.resourcesTree.findItemByAttr(
+      "resource-type",
+      _self.influentialResourceType
+    );
+    if (masterTreeItem.items.length > 0) {
+      masterTreeItem.items[0].select();
+    }
   }
 
 }
