@@ -20,6 +20,7 @@
       border-top-left-radius: 0;
       background-color: $obvious-color;
       border: 2px solid $obvious-color;
+      box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
       > div {
         border-radius: $radius;
         background-color: $background-color-2;

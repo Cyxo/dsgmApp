@@ -10,7 +10,7 @@ function UIClass(callback) {
     "beige": "#EABE5C",
     "lightgray": "rgb(192, 192, 192)",
     "darkgray": "#999999",
-    "blue": "#00B6FF",
+    "blue": "#0BB5FF",
     "brown": "#AE5900",
     "green": "#26D000",
     "red": "rgb(218, 0, 0)",
@@ -283,6 +283,15 @@ function UIClass(callback) {
         //Open Last Project
         var openLastProjectMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("open-last-project"));
         projectGroup1.addItem(openLastProjectMenuItem);
+        //Save
+        var saveMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("save"), "disk");
+        projectGroup1.addItem(saveMenuItem);
+        saveMenuItem.setHandler(function() {
+          menuHandler.saveProject();
+        });
+        //Save As
+        var saveAsMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("save-as"));
+        projectGroup1.addItem(saveAsMenuItem);
       //Group 2
       var projectGroup2 = new MenuGroupClass();
       projectMenuItem.addGroup(projectGroup2);
@@ -295,15 +304,19 @@ function UIClass(callback) {
       //Group 3
       var projectGroup3 = new MenuGroupClass();
       projectMenuItem.addGroup(projectGroup3);
-        //Save
-        var saveMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("save"), "disk");
-        projectGroup3.addItem(saveMenuItem);
-        saveMenuItem.setHandler(function() {
-          menuHandler.saveProject();
-        });
-        //Save As
-        var saveAsMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("save-as"));
-        projectGroup3.addItem(saveAsMenuItem);
+        //Project Options
+        var projectOptionsMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("project-options"), "wrench");
+        projectGroup3.addItem(projectOptionsMenuItem);
+        //Global Variables
+        var globalVariablesMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("global-variables"));
+        projectGroup3.addItem(globalVariablesMenuItem);
+        //Global Structures
+        var globalStructuresMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("global-structures"));
+        projectGroup3.addItem(globalStructuresMenuItem);
+        //Global Arrays
+        var globalArraysMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("global-arrays"));
+        projectGroup3.addItem(globalArraysMenuItem);
+
 
     //Resources
     var resourcesMenuItem = new MenuMasterItemClass(MyApplication.Language.getTerm("resources"));
@@ -348,54 +361,39 @@ function UIClass(callback) {
       //Group 1
       var toolsGroup1 = new MenuGroupClass();
       toolsMenuItem.addGroup(toolsGroup1);
-        //Project Options
-        var projectOptionsMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("project-options"), "wrench");
-        toolsGroup1.addItem(projectOptionsMenuItem);
-        //Global Variables
-        var globalVariablesMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("global-variables"));
-        toolsGroup1.addItem(globalVariablesMenuItem);
-        //Global Structures
-        var globalStructuresMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("global-structures"));
-        toolsGroup1.addItem(globalStructuresMenuItem);
-        //Global Arrays
-        var globalArraysMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("global-arrays"));
-        toolsGroup1.addItem(globalArraysMenuItem);
-      //Group 2
-      var toolsGroup2 = new MenuGroupClass();
-      toolsMenuItem.addGroup(toolsGroup2);
         //Options
         var optionsMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("options"), "wrench");
-        toolsGroup2.addItem(optionsMenuItem);
+        toolsGroup1.addItem(optionsMenuItem);
         optionsMenuItem.setHandler(function() {
           menuHandler.options(_self);
         });
+      //Group 2
+      var toolsGroup2 = new MenuGroupClass();
+      toolsMenuItem.addGroup(toolsGroup2);
+        //Open Compile Folder
+        var openCompileFolderMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("open-compile-folder"), "folder");
+        toolsGroup2.addItem(openCompileFolderMenuItem);
+        //Open Plugins Folder
+        var openPluginsFolderMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("open-plugins-folder"), "folder");
+        toolsGroup2.addItem(openPluginsFolderMenuItem);
       //Group 3
       var toolsGroup3 = new MenuGroupClass();
       toolsMenuItem.addGroup(toolsGroup3);
-        //Open Compile Folder
-        var openCompileFolderMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("open-compile-folder"), "folder");
-        toolsGroup3.addItem(openCompileFolderMenuItem);
-        //Open Plugins Folder
-        var openPluginsFolderMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("open-plugins-folder"), "folder");
-        toolsGroup3.addItem(openPluginsFolderMenuItem);
+        //Edit Actions
+        var editActionsMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("edit-actions"));
+        toolsGroup3.addItem(editActionsMenuItem);
+        //Font Viewer
+        var viewFontsMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("view-fonts"));
+        toolsGroup3.addItem(viewFontsMenuItem);
+        //Start Emulator
+        var startEmulatorMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("start-emulator"));
+        toolsGroup3.addItem(startEmulatorMenuItem);
       //Group 4
       var toolsGroup4 = new MenuGroupClass();
       toolsMenuItem.addGroup(toolsGroup4);
-        //Edit Actions
-        var editActionsMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("edit-actions"));
-        toolsGroup4.addItem(editActionsMenuItem);
-        //Font Viewer
-        var viewFontsMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("view-fonts"));
-        toolsGroup4.addItem(viewFontsMenuItem);
-        //Start Emulator
-        var startEmulatorMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("start-emulator"));
-        toolsGroup4.addItem(startEmulatorMenuItem);
-      //Group 5
-      var toolsGroup5 = new MenuGroupClass();
-      toolsMenuItem.addGroup(toolsGroup5);
         //Debug
         var debugMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("debug"), "help");
-        toolsGroup5.addItem(debugMenuItem);
+        toolsGroup4.addItem(debugMenuItem);
         debugMenuItem.setHandler(function() {
           MyApplication.Command.request("print", ["Hello", "Beautiful", "World"]);
         });

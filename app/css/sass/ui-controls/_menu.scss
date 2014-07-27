@@ -11,8 +11,8 @@
     list-style-type: none;
   }
   li > span {
-    padding-left: $padding + 3px;
-    padding-right: $padding + 3px;
+    padding-left: $padding * 2;
+    padding-right: $padding * 2;
   }
   //Master Item
   > li {
@@ -30,6 +30,7 @@
       border: 2px solid $obvious-color;
       border-radius: $radius;
       border-top-left-radius: 0;
+      box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
       //Master Item List
       > ul {
         //Group

@@ -78,7 +78,7 @@ function MenuHandlerClass(callback) {
 
   _self.about = function(UIClass) {
     var markup = UIClass.getMarkup("about");
-    var aboutDialogue = new DialogueClass(markup, null, MyApplication.Language.getTerm("about-software"), [], 450, 520, true);
+    var aboutDialogue = new DialogueClass(markup, null, MyApplication.Language.getTerm("about-software"), [], 350, 450, true);
     aboutDialogue.show();
   }
 

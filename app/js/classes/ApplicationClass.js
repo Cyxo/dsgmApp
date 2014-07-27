@@ -24,6 +24,10 @@ function ApplicationClass(name, commandHandler) {
       _self.UI = new UIClass(next);
     },
     function(next) {
+      //Start Loading
+      _self.UI.startWork(null, false, next, _self.UI.workBlackoutFull);
+    },
+    function(next) {
       //Get Version
       _self.Command.request("getVersion", [], function(version) {
         if (version.length == 0) version = "?.?.?";
@@ -31,10 +35,6 @@ function ApplicationClass(name, commandHandler) {
         _self.version = version;
         next();
       });
-    },
-    function(next) {
-      //Start Loading
-      _self.UI.startWork(null, false, next, _self.UI.workBlackoutFull);
     },
     function(next) {
       //Term Validation
