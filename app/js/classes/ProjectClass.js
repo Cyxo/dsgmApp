@@ -22,7 +22,8 @@ function ProjectClass(name) {
     _self.name = jsonObject.name;
     MyApplication.UI.setTitle(_self.name);
     $.each(jsonObject.resources, function(index, resource) {
-      _self.addResourceByNameAndType(resource.name, resource.type, (index == resourceCount - 1), false);
+      //here
+      _self.addResourceByNameAndType(resource.name, resource.type, false, false);
     });
   }
 
