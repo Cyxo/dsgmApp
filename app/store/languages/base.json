@@ -16,6 +16,7 @@
       "save": "Save",
       "save-as": "Save As",
     "resources": "Resources",
+      "resource": "Resource",
       "add-sprite": "Add Sprite",
       "add-background": "Add Background",
       "add-room": "Add Room",
@@ -46,6 +47,7 @@
     "load-resource-error-name": "&lsquo;[0]&rsquo; couldn't be loaded.",
     "rename-resource-error-resource": "The resource couldn't be renamed.",
     "rename-resource-error-name": "&lsquo;[0]&rsquo; couldn't be renamed.",
+    "find-resource-error": "&lsquo;[0]&rsquo; couldn't be found.",
     "delete-are-you-sure": "Are you sure you would like to delete &lsquo;[0]&rsquo;?",
     "new-are-you-sure": "Your changes will be lost. Are you sure?"
   }

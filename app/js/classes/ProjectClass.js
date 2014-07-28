@@ -24,7 +24,6 @@ function ProjectClass(name) {
     $.each(jsonObject.resources, function(index, resource) {
       _self.addResourceByNameAndType(resource.name, resource.type, false, false);
     });
-    MyApplication.Resources.influentialSelect();
   }
 
   _self.saveToString = function(string) {
@@ -42,9 +41,16 @@ function ProjectClass(name) {
     });
   }
 
-	_self.getResourceByNameAndType = function(name, type) {
+	_self.getResourceByNameAndType = function(name, type, doLooseMatch) {
+    var doLooseMatch = (doLooseMatch != undefined ? doLooseMatch : false);
+    var getName = (doLooseMatch ? name.toLowerCase() : name);
 		return $.grep(_self._resources, function(resource) {
-			return (resource.name == name && resource.type == type);
+      var resourceName = (doLooseMatch ? resource.name.toLowerCase() : resource.name);
+      if (type != null) {
+        return ((resourceName == getName) && resource.type == type);
+      } else {
+        return (resourceName == getName);
+      }
 		})[0];
 	}
 
@@ -68,7 +74,7 @@ function ProjectClass(name) {
     var doSelect = (doSelect != undefined ? doSelect : true);
     var doMakeAChange = (doMakeAChange != undefined ? doMakeAChange : true);
 		_self._resources.push(resource);
-		var masterTreeItem = MyApplication.UI.resourcesTree.findItemByAttr("resource-type", resource.type);
+		var masterTreeItem = resource.getMasterTreeItem();
 		var newTreeItem = new TreeItemClass(resource.name, resource.icon);
 		newTreeItem.setAttr("resource-name", resource.name);
 		newTreeItem.setAttr("resource-type", resource.type);
@@ -110,8 +116,7 @@ function ProjectClass(name) {
       _self.resourceOperationError(resource, "rename");
       return;
     }
-    var masterTreeItem = MyApplication.UI.resourcesTree.findItemByAttr("resource-type", resource.type);
-    var resourceTreeItem = masterTreeItem.findItemByAttr("resource-name", resource.name);
+    var resourceTreeItem = resource.getTreeItem();
     resourceTreeItem.setText(newName);
     resourceTreeItem.setAttr("resource-name", newName);
     resource.name = newName;
@@ -130,8 +135,8 @@ function ProjectClass(name) {
       return;
     }
     _self._resources.splice(resourceIndex, 1);
-    var masterTreeItem = MyApplication.UI.resourcesTree.findItemByAttr("resource-type", resource.type);
-    var resourceTreeItem = masterTreeItem.findItemByAttr("resource-name", resource.name);
+    var masterTreeItem = resource.getMasterTreeItem();
+    var resourceTreeItem = resource.getTreeItem();
     if (!masterTreeItem.removeItem(resourceTreeItem)) {
       error();
       return;
@@ -166,8 +171,5 @@ function ProjectClass(name) {
   //Add Default Resources
   _self.addResourceByNameAndType(null, "object", false, false);
   _self.addResourceByNameAndType(null, "room", false, false);
-
-  //Select One
-  MyApplication.Resources.influentialSelect();
 
 }

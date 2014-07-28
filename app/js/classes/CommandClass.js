@@ -29,6 +29,7 @@ function RemoteHandler() {
     commandString = $.base64.encode(command);
     //Special Handling
     switch(command) {
+
       case "print":
         $.each(arguments, function(index, argument) {
           console.log(argument);
@@ -36,11 +37,13 @@ function RemoteHandler() {
         MyApplication.Command.respond(false);
         return;
         break;
+
       case "link":
         window.open(arguments[0]);
         MyApplication.Command.respond(false);
         return;
         break;
+
       case "setTitle":
         var title = arguments[0];
         var appendApplicationName = arguments[1];
@@ -49,15 +52,19 @@ function RemoteHandler() {
         MyApplication.Command.respond(false);
         return;
         break;
+
       case "getOptions":
         //Handle remotely
         break;
+
       case "getLanguage":
         //Handle remotely
         break;
+
       case "getVersion":
         //Handle remotely
         break;
+
       case "openProjectGetIdentifier":
         //to do: error handling
         var projects;
@@ -69,6 +76,7 @@ function RemoteHandler() {
                 next();
               },
               function(response) {
+                //to do
                 //error handling
                 //code to break from aysnc waterfall
                 return;
@@ -80,12 +88,15 @@ function RemoteHandler() {
         ]);
         return;
         break;
+
       case "getProjects":
         //Handle remotely
         break;
+
       case "openProjectGetStringFromIdentifier":
         //Handle remotely
         break;
+
       case "saveProject":
         //Handle remotely
         break;

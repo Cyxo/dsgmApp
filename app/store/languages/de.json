@@ -16,6 +16,7 @@
       "save": "Speichern",
       "save-as": "Speichern Unter",
     "resources": "Ressourcen",
+      "resource": "Ressource",
       "add-sprite": "Sprite Hinzuf&uuml;gen",
       "add-background": "Background Hinzuf&uuml;gen",
       "add-room": "Room Hinzuf&uuml;gen",
@@ -46,6 +47,7 @@
     "load-resource-error-name": "&lsquo;[0]&rsquo; k&ouml;nnte nicht geladen werden.",
     "rename-resource-error-resource": "Die Ressource k&ouml;nnte nicht umbenannt werden.",
     "rename-resource-error-name": "&lsquo;[0]&rsquo; k&ouml;nnte nicht umbenannt werden.",
+    "find-resource-error": "&lsquo;[0]&rsquo; k&ouml;nnte nicht gefunden werden.",
     "delete-are-you-sure": "Sind Sie sicher, dass Sie &lsquo;[0]&rsquo; l&oumlschen m&ouml;chten?",
     "new-are-you-sure": "Ihre Ver&auml;nderungen werden verloren werden. Sind Sie sicher?"
   }

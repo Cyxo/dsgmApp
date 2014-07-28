@@ -16,6 +16,7 @@ function MenuHandlerClass(callback) {
         }
       }, function(next) {
         MyApplication.currentProject = new ProjectClass();
+        MyApplication.Resources.influentialSelect();
       }
     ]);
   }
@@ -32,7 +33,6 @@ function MenuHandlerClass(callback) {
         });
       },
       function(next) {
-        //console.log("project identifier: " + projectIdentifier);
         next();
       },
       function(next) {
@@ -43,6 +43,7 @@ function MenuHandlerClass(callback) {
       },
       function(next) {
         MyApplication.currentProject.openFromString(projectString);
+        MyApplication.Resources.influentialSelect();
       }
     ]);
   }
@@ -56,6 +57,26 @@ function MenuHandlerClass(callback) {
 
   _self.saveProjectAs = function(UIClass) {
     MyApplication.currentProject.save(null);
+  }
+
+  _self.findResource = function(UIClass) {
+    var findElement = UIClass.getMarkup("find-resource");
+    findElement.empty(); //weird fix
+    var findTextBox = new TextBoxClass("", null, MyApplication.Language.getTerm("resource"), true);
+    findElement.append(findTextBox.getElement());
+    var findDialogue = new DialogueClass(findElement, null, MyApplication.Language.getTerm("find-resource"), [], null, null, true);
+    findDialogue.buttons[0].setHandler(function() {
+      var findText = findTextBox.getText();
+      var resource = MyApplication.currentProject.getResourceByNameAndType(findText, null, true);
+      if (resource != undefined) {
+        resource.getTreeItem().select();
+      } else {
+        MyApplication.UI.Dialogue.showAlert(MyApplication.Language.getTerm("find-resource-error", [findText]));
+      }
+    });
+    findDialogue.show(function() {
+      findTextBox.focus();
+    });
   }
 
   _self.copyResource = function(UIClass) {

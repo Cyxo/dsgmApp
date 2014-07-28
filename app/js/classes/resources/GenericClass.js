@@ -24,4 +24,12 @@ function GenericClass() {
     nameTextBox.focus();
   }
 
+  this.getMasterTreeItem = function() {
+    return MyApplication.UI.resourcesTree.findItemByAttr("resource-type", this.type);
+  }
+
+  this.getTreeItem = function() {
+    return this.getMasterTreeItem().findItemByAttr("resource-name", this.name);
+  }
+
 }

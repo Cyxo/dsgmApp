@@ -27,13 +27,8 @@ function ResourcesClass() {
   }
 
   _self.influentialSelect = function() {
-    var masterTreeItem = MyApplication.UI.resourcesTree.findItemByAttr(
-      "resource-type",
-      _self.influentialResourceType
-    );
-    if (masterTreeItem.items.length > 0) {
-      masterTreeItem.items[0].select();
-    }
+    var influentialResources = MyApplication.currentProject.getResourcesByType(_self.influentialResourceType);
+    if (influentialResources.length > 0) influentialResources[0].getTreeItem().select();
   }
 
 }

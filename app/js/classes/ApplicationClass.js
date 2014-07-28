@@ -49,6 +49,7 @@ function ApplicationClass(name, commandHandler) {
       _self.UI.makeStatusBar();
       //New Project
       _self.currentProject = new ProjectClass();
+      _self.Resources.influentialSelect();
       //Bind Links
       _self.Links.bindLinks(document.body);
       //Next

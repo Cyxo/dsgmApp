@@ -56,7 +56,7 @@ DialogueClass.prototype.askYesNoCancel = function(content, icon, yesCallback, no
   _self.show();
 }
 
-DialogueClass.prototype.show = function() {
+DialogueClass.prototype.show = function(callback) {
   var _self = this;
   var dialogueDiv = $("#Dialogue > div");
   var headerDiv = $("#Dialogue > div header");
@@ -113,8 +113,14 @@ DialogueClass.prototype.show = function() {
         },
         function(next2) {
           $("#Dialogue > div").fadeIn(MyApplication.UI.genericSpeed, next2);
+        },
+        function(next2) {
+          next();
         }
       ]);
+    },
+    function(next) {
+      if (callback) callback();
     }
   ]);
 }

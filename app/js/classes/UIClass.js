@@ -339,6 +339,9 @@ function UIClass(callback) {
         //Find
         var findMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("find-resource"), "search");
         resourcesGroup2.addItem(findMenuItem);
+        findMenuItem.setHandler(function() {
+          menuHandler.findResource(_self);
+        });
       //Group 3
       var resourcesGroup3 = new MenuGroupClass();
       resourcesMenuItem.addGroup(resourcesGroup3);
@@ -382,21 +385,12 @@ function UIClass(callback) {
         //Edit Actions
         var editActionsMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("edit-actions"));
         toolsGroup3.addItem(editActionsMenuItem);
-        //Font Viewer
+        //View Fonts
         var viewFontsMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("view-fonts"));
         toolsGroup3.addItem(viewFontsMenuItem);
         //Start Emulator
         var startEmulatorMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("start-emulator"));
         toolsGroup3.addItem(startEmulatorMenuItem);
-      //Group 4
-      var toolsGroup4 = new MenuGroupClass();
-      toolsMenuItem.addGroup(toolsGroup4);
-        //Debug
-        var debugMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("debug"), "help");
-        toolsGroup4.addItem(debugMenuItem);
-        debugMenuItem.setHandler(function() {
-          MyApplication.Command.request("print", ["Hello", "Beautiful", "World"]);
-        });
 
     //Help
     var helpMenuItem = new MenuMasterItemClass(MyApplication.Language.getTerm("help"));
