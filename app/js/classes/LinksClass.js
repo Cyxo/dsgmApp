@@ -1,9 +1,9 @@
 function LinksClass() {
 
   var _self = this;
-  //_self._link_base = "http://dsgamemaker.com/";
   _self._link_base = "http://dsgamemaker.com/zero/";
-  _self._link_base = "http://localhost/"
+  //_self._link_base = "http://dsgamemaker.com/";
+  //_self._link_base = "http://localhost/"
   _self._links = [
     {
       "identifier": "website",
@@ -19,7 +19,7 @@ function LinksClass() {
     },
     {
       "identifier": "cloud",
-      "url": _self._link_base + "cloud/../"
+      "url": _self._link_base + "cloud/"
     },
     {
       "identifier": "james-garner",

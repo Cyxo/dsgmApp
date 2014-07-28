@@ -280,18 +280,12 @@ function UIClass(callback) {
         openMenuItem.setHandler(function() {
           menuHandler.openProject(MyApplication.UI);
         });
-        //Open Last Project
-        var openLastProjectMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("open-last-project"));
-        projectGroup1.addItem(openLastProjectMenuItem);
         //Save
         var saveMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("save"), "disk");
         projectGroup1.addItem(saveMenuItem);
         saveMenuItem.setHandler(function() {
           menuHandler.saveProject();
         });
-        //Save As
-        var saveAsMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("save-as"));
-        projectGroup1.addItem(saveAsMenuItem);
       //Group 2
       var projectGroup2 = new MenuGroupClass();
       projectMenuItem.addGroup(projectGroup2);
