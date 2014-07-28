@@ -25,6 +25,9 @@ import org.w3c.dom.events.Event;
 import org.w3c.dom.events.EventListener;
 import org.w3c.dom.events.EventTarget;
 
+//Icon
+import javafx.scene.image.Image;
+
 public class DSGameMaker extends Application {
 
   public static String appName = "DS Game Maker";
@@ -105,8 +108,14 @@ public class DSGameMaker extends Application {
     //Create Scene
     Scene theScene = new Scene(thePane);
 
-    //Configure Stage to use Scene
+    //Set Icon
+    Image applicationIcon = new Image("file:app/img/icon.png");
+    mainStage.getIcons().add(applicationIcon);
+
+    //Set Title
     setTitle(appName);
+
+    //Configure Stage to use Scene
     mainStage.setScene(theScene);
     mainStage.show();
 
