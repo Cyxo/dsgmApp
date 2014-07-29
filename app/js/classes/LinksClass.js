@@ -3,7 +3,7 @@ function LinksClass() {
   var _self = this;
   _self._link_base = "http://dsgamemaker.com/zero/";
   //_self._link_base = "http://dsgamemaker.com/";
-  //_self._link_base = "http://localhost/"
+  _self._link_base = "http://localhost:1024/"
   _self._links = [
     {
       "identifier": "website",

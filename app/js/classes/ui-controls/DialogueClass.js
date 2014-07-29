@@ -18,44 +18,6 @@ function DialogueClass(content, icon, title, buttons, width, height, customEleme
 
 }
 
-DialogueClass.prototype.showGeneric = function(content, icon, callback) {
-  var _self = this;
-  _self.content = content;
-  _self.icon = icon;
-  _self.buttons = [_self.okButton];
-  _self.buttons[0].setHandler(callback);
-  _self.show();
-}
-
-DialogueClass.prototype.showInfo = function(content, callback) {
-  this.showGeneric(content, "info", callback);
-}
-
-DialogueClass.prototype.showAlert = function(content, callback) {
-  this.showGeneric(content, "alert", callback);
-}
-
-DialogueClass.prototype.askYesNo = function(content, icon, yesCallback, noCallback) {
-  var _self = this;
-  _self.content = content;
-  _self.icon = (icon || "help");
-  var yesButton = _self.yesButton; yesButton.setHandler(yesCallback);
-  var noButton = _self.noButton; noButton.setHandler(noCallback);
-  _self.buttons = [_self.yesButton, _self.noButton];
-  _self.show();
-}
-
-DialogueClass.prototype.askYesNoCancel = function(content, icon, yesCallback, noCallback, cancelCallback) {
-  var _self = this;
-  _self.content = content;
-  _self.icon = (icon || "help");
-  var yesButton = _self.yesButton; yesButton.setHandler(yesCallback);
-  var noButton = _self.noButton; noButton.setHandler(noCallback);
-  var cancelButton = _self.cancelButton; cancelButton.setHandler(cancelCallback);
-  _self.buttons = [yesButton, noButton, cancelButton];
-  _self.show();
-}
-
 DialogueClass.prototype.show = function(callback) {
   var _self = this;
   var dialogueDiv = $("#Dialogue > div");

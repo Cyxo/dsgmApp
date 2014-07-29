@@ -433,9 +433,9 @@ function UIClass(callback) {
     }
   }
 
-  //Make Dialogue Singleton
-  this.makeDialogue = function() {
-    _self.Dialogue = new DialogueClass();
+  //Make Dialogue Helper Singleton
+  this.makeDialogueHelper = function() {
+    _self.DialogueHelper = new DialogueHelperClass();
   }
 
   //Make Status Bar

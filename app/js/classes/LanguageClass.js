@@ -1,13 +1,14 @@
 function LanguageClass(language, callback) {
 
-  var _language_pairs;
-  var _base_object;
-  var _language_object;
   var _self = this;
+
+  _self._language_pairs = {};
+  _self._base_data = {};
+  _self._language_data = {};
 
   //Translate
   this.getTerm = function(term, replacements) {
-    var t = _language_pairs[term];
+    var t = _self._language_pairs[term];
     if (t == undefined) {
       var words = $.map(term.split("-"), function(word, index) {
         switch(word.toLowerCase()) {
@@ -45,7 +46,7 @@ function LanguageClass(language, callback) {
       MyApplication.Command.request(
         "getLanguage", ["base"],
         function(response) {
-          base_object = JSON.parse(response);
+          _self._base_data = JSON.parse(response);
           next();
         }
       );
@@ -54,17 +55,17 @@ function LanguageClass(language, callback) {
       MyApplication.Command.request(
         "getLanguage", [language],
         function(response) {
-          language_object = JSON.parse(response);
+          _self._language_data = JSON.parse(response);
           next();
         }
       );
     },
     function(next) {
       //Populate language pairs with base object terms
-      _language_pairs = base_object.data;
+      _self._language_pairs = _self._base_data;
       //Overwrite language pairs with language object terms
-      $.each(language_object.data, function(term, value) {
-        _language_pairs[term] = value;
+      $.each(_self._language_data, function(term, value) {
+        _self._language_pairs[term] = value;
       });
       //Perform Translation
       $("*[data-translate]").each(function(index, element) {

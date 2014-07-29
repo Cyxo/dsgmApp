@@ -1842,7 +1842,7 @@ input[type=text] {
   width: 50%; }
 
 *[data-role=markup-find-resource] > div {
-  padding: 8px;
+  padding: 16px;
   padding-top: 12px;
   padding-bottom: 12px; }
 

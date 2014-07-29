@@ -100,6 +100,7 @@ function RemoteHandler() {
       case "saveProject":
         //Handle remotely
         break;
+
     }
 
     _self.ajax(command, arguments,
@@ -128,7 +129,7 @@ function RemoteHandler() {
     });
     argumentsString = argumentsString.substr(0, argumentsString.length - 1);
     //URL
-    var url = _self.cloudUrl + "?command=" + commandString + "&arguments=" + argumentsString;
+    var url = _self.cloudUrl + commandString + "/" + argumentsString;
     //Debug
     console.log(url);
     //Request

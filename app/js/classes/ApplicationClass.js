@@ -45,7 +45,7 @@ function ApplicationClass(name, commandHandler) {
       _self.UI.makeOrb();
       _self.UI.makeMainMenu();
       _self.UI.makeResourcesTree();
-      _self.UI.makeDialogue();
+      _self.UI.makeDialogueHelper();
       _self.UI.makeStatusBar();
       //New Project
       _self.currentProject = new ProjectClass();
