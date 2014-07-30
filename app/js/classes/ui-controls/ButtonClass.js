@@ -39,7 +39,8 @@ function ButtonClass(text, icon, handler) {
     _self._element.bind("click", function() {
       _self.hasBeenClicked = true;
       var buttonElement = $(this);
-      var iconColor = MyApplication.UI.getIcon(buttonElement.attr("data-icon")).color;
+      var icon = MyApplication.UI.getIcon(buttonElement.attr("data-icon"));
+      var iconColor = (icon ? icon.color : MyApplication.UI.getColor("mid-gray"));
       buttonElement.stop().animate({
         borderColor: iconColor
       }, MyApplication.UI.slowSpeed, function() { handler(_self) });

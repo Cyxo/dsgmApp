@@ -41,12 +41,8 @@ function ApplicationClass(name, commandHandler) {
       _self.initTermValidation();
       //Resources
       _self.Resources = new ResourcesClass();
-      //Make UI Controls
-      _self.UI.makeOrb();
-      _self.UI.makeMainMenu();
-      _self.UI.makeResourcesTree();
-      _self.UI.makeDialogueHelper();
-      _self.UI.makeStatusBar();
+      //Make User Interface
+      _self.UI.makeUI();
       //New Project
       _self.currentProject = new ProjectClass();
       _self.Resources.influentialSelect();

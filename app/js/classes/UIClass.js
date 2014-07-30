@@ -421,16 +421,12 @@ function UIClass(callback) {
         });
   }
 
-  _self.isResourceSelected = function() {
-    var selectedItem = _self.resourcesTree.selectedItem;
-    if (!(selectedItem == null || !selectedItem.getAttr("resource-name"))) {
-      var resourceName = selectedItem.getAttr("resource-name");
-      var resourceType = selectedItem.getAttr("resource-type");
-      var resource = MyApplication.currentProject.getResourceByNameAndType(resourceName, resourceType);
-      return resource;
-    } else {
-      return false;
-    }
+  _self.makeUI = function() {
+    _self.makeOrb();
+    _self.makeMainMenu();
+    _self.makeResourcesTree();
+    _self.makeDialogueHelper();
+    _self.makeStatusBar();
   }
 
   //Make Dialogue Helper Singleton
@@ -442,6 +438,19 @@ function UIClass(callback) {
   this.makeStatusBar = function() {
     _self.statusBar = new StatusBarClass();
     $(document.body).append(_self.statusBar.getElement());
+  }
+
+  //Is Resource Selected?
+  _self.isResourceSelected = function() {
+    var selectedItem = _self.resourcesTree.selectedItem;
+    if (!(selectedItem == null || !selectedItem.getAttr("resource-name"))) {
+      var resourceName = selectedItem.getAttr("resource-name");
+      var resourceType = selectedItem.getAttr("resource-type");
+      var resource = MyApplication.currentProject.getResourceByNameAndType(resourceName, resourceType);
+      return resource;
+    } else {
+      return false;
+    }
   }
 
   //Drop Down Element
