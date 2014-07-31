@@ -60,33 +60,18 @@ function MenuHandlerClass(callback) {
   }
 
   _self.findResource = function(UIClass) {
-    var findElement = UIClass.getMarkup("find-resource");
-    findElement.empty();
-    var findTextBox = new TextBoxClass("", null, MyApplication.Language.getTerm("resource"), true);
-    findElement.append(findTextBox.getElement());
-    var findDialogue = new DialogueClass(findElement, null, MyApplication.Language.getTerm("find-resource"), [], 372, null, true);
-    findDialogue.buttons = [findDialogue.okButton, findDialogue.cancelButton];
-    var findText;
-    var findTextWritten = function() {
-      if (findText.length == 0) return;
-      var resource = MyApplication.currentProject.getResourceByNameAndType(findText, null, true);
-      if (resource != undefined) {
-        resource.getTreeItem().select();
-      } else {
-        UIClass.DialogueHelper.showAlert(MyApplication.Language.getTerm("find-resource-error", [findText]));
+    MyApplication.UI.DialogueHelper.getInput(
+      MyApplication.Language.getTerm("resource"),
+      function(input) {
+        if (input.length == 0) return;
+        var resource = MyApplication.currentProject.getResourceByNameAndType(input, null, true);
+        if (resource != undefined) {
+          resource.getTreeItem().select();
+        } else {
+          UIClass.DialogueHelper.showAlert(MyApplication.Language.getTerm("find-resource-error", [input]));
+        }
       }
-    }
-    findDialogue.buttons[0].setHandler(function() {
-      findText = findTextBox.getText();
-      findTextWritten();
-    });
-    findDialogue.buttons[1].setHandler(function() {
-      findText = "";
-      findTextWritten();
-    });
-    findDialogue.show(function() {
-      findTextBox.focus();
-    });
+    );
   }
 
   _self.copyResource = function(UIClass) {

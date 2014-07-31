@@ -1841,7 +1841,7 @@ input[type=text] {
 *[data-role=markup-about] > div.logo > img {
   width: 50%; }
 
-*[data-role=markup-find-resource] > div {
+*[data-role=markup-get-input] > div {
   padding: 16px;
   padding-top: 12px;
   padding-bottom: 12px; }

@@ -10,12 +10,16 @@ function DialogueClass(content, icon, title, buttons, width, height, customEleme
   _self.content = (content || "");
   _self.icon = icon;
   _self.title = (title || MyApplication.name);
+  _self.setSize(width, height);
   if (!buttons || buttons.length == 0) buttons = [_self.okButton];
   _self.buttons = buttons;
-  _self.width = (width || 620);
-  _self.height = (height || 180);
   _self.customElement = ((customElement != undefined) ? customElement : false);
 
+}
+
+DialogueClass.prototype.setSize = function(width, height) {
+  this.width = (width || 620);
+  this.height = (height || 180);
 }
 
 DialogueClass.prototype.show = function(callback) {
