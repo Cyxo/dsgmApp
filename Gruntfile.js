@@ -10,17 +10,6 @@ module.exports = function(grunt) {
     },
 
     shell: {
-      versionize: {
-        command: [
-          'rm -rf',
-          'touch "<%= pkg.version %>"'
-        ].join("&&"),
-        options: {
-          execOptions: {
-            cwd: 'app/store/version'
-          }
-        }
-      },
       wipeBuild: {
         command: 'rm -rf <%= directories.build %>'
       },
@@ -97,7 +86,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
 
   grunt.registerTask('default', [
-    'shell:versionize',
     'shell:wipeBuild',
     'shell:createBuild',
     'shell:compileJava',
@@ -109,7 +97,6 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('server', [
-    'shell:versionize',
     'shell:wipeBuild',
     'shell:createBuild',
     'copy:copyAppFolder',

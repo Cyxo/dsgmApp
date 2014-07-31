@@ -67,11 +67,6 @@ public class Handler {
         response = readFile("languages/" + arguments[0] + ".json");
         break;
 
-      case "getVersion":
-        //To Do
-        response = "x.y.z";
-        break;
-
       case "openProjectGetIdentifier":
         response = "Mario Quest";
         break;

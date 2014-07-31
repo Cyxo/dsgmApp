@@ -22,7 +22,9 @@ function RemoteHandler() {
   _self.name = "remote";
 
   _self.cloudUrl = MyApplication.Links.getLink("cloud").url;
-  // _self.cloudUrl = "http://" + document.location.hostname + "/cloud/";
+  if (document.location.hostname.length == 0) {
+    _self.cloudUrl = MyApplication.Links.getLink("cloud-local").url;
+  }
 
   _self.handle = function(command, arguments) {
     //Command
@@ -58,10 +60,6 @@ function RemoteHandler() {
         break;
 
       case "getLanguage":
-        //Handle remotely
-        break;
-
-      case "getVersion":
         //Handle remotely
         break;
 
