@@ -17,7 +17,7 @@ function LinksClass() {
     },
     {
       "identifier": "cloud",
-      "url": _self._link_base + "cloud/"
+      "url": "http://dsgmcloud.herokuapp.com/cloud/"
     },
     {
       "identifier": "cloud-local",
