@@ -90,6 +90,7 @@ public class DSGameMaker extends Application {
               }
               String response = handler.request(command, arguments);
               response = response.replace("'", "\\'");
+              response = response.replace("\"", "\\\"");
               response = response.replace(System.getProperty("line.separator"), "\\n");
               response = response.replace("\n", "\\n");
               response = response.replace("\r", "\\n");

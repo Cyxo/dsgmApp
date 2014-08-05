@@ -26,15 +26,23 @@ module.exports = function(grunt) {
         command: 'rm -rf <%= directories.build %>/*.class'
       },
       runJava: {
-        command: 'java -jar <%= directories.build %>/DSGameMaker.jar'
+        command: 'java -jar DSGameMaker.jar',
+        options: {
+          execOptions: {
+            cwd: '<%= directories.build %>'
+          }
+        }
       },
-      // copyJava: {
-      //   command: 'java -jar <%= directories.build %>/DSGameMaker.jar'
-      // },
       cleanAppFolder: {
         command: [
           'rm -rf <%= directories.build %>/app/css/sass',
           'rm -rf <%= directories.build %>/app/css/sass-cache'
+        ].join("&&")
+      },
+      downloadOfflineData: {
+        command: [
+          'mkdir <%= directories.build %>/store',
+          'cp -rf /home/james/Dropbox/Projects/DSGameMaker/store <%= directories.build %>'
         ].join("&&")
       },
       stats: {
@@ -43,7 +51,6 @@ module.exports = function(grunt) {
           'rm -rf <%= directories.build %>/app/css/sass-cache',
           'rm -rf <%= directories.build %>/app/css/fonts',
           'rm <%= directories.build %>/app/js/*.*',
-          'rm -rf <%= directories.build %>/app/store',
           'rm -rf <%= directories.build %>/app/img',
           'mkdir <%= directories.build %>/java',
           'cp source/*.* <%= directories.build %>/java',
@@ -92,6 +99,7 @@ module.exports = function(grunt) {
     'shell:packageJava',
     'shell:cleanJava',
     'copy:copyAppFolder',
+    'shell:downloadOfflineData',
     'shell:cleanAppFolder',
     'shell:runJava'
   ]);
@@ -110,7 +118,6 @@ module.exports = function(grunt) {
     'shell:createBuild',
     'copy:copyAppFolder',
     'shell:stats'
-    //'shell:copyJava'
   ]);
 
   grunt.registerTask('run', [

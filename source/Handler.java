@@ -22,7 +22,7 @@ public class Handler {
 
 
   private String readFile(String path) {
-    path = "app/store/" + path;
+    path = "store/" + path;
     try {
       return new String(Files.readAllBytes(Paths.get(path)), StandardCharsets.UTF_8);
     } catch (IOException error) {

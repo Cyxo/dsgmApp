@@ -44,9 +44,9 @@ function LanguageClass(language, callback) {
   async.waterfall([
     function(next) {
       MyApplication.Command.request(
-        "getLanguage", ["base"],
+        "getLanguage", ["Base"],
         function(response) {
-          _self._base_data = JSON.parse(response);
+          _self._base_data = JSON.parse(response).data;
           next();
         }
       );
@@ -55,7 +55,7 @@ function LanguageClass(language, callback) {
       MyApplication.Command.request(
         "getLanguage", [language],
         function(response) {
-          _self._language_data = JSON.parse(response);
+          _self._language_data = JSON.parse(response).data;
           next();
         }
       );
