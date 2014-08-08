@@ -40,6 +40,12 @@ function ProjectClass(name) {
       console.log(response);
     });
   }
+  
+  _self.compile = function() {
+    MyApplication.Command.request("compileProject", null, function(response) {
+      console.log(response);
+    });
+  }
 
 	_self.getResourceByNameAndType = function(name, type, doLooseMatch) {
     var doLooseMatch = (doLooseMatch != undefined ? doLooseMatch : false);
