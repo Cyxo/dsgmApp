@@ -99,6 +99,9 @@ function RemoteHandler() {
         //Handle remotely
         break;
 
+      case "compileProject":
+        console.log("compile");
+        break;
     }
 
     _self.ajax(command, arguments,

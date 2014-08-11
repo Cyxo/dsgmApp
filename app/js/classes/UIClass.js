@@ -295,6 +295,9 @@ function UIClass(callback) {
         //Compile
         var compileMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("compile"), "play");
         projectGroup2.addItem(compileMenuItem);
+		compileMenuItem.setHandler(function() {
+		  menuHandler.compileProject();
+        });
       //Group 3
       var projectGroup3 = new MenuGroupClass();
       projectMenuItem.addGroup(projectGroup3);

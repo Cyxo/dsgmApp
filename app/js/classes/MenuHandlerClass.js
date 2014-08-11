@@ -58,6 +58,10 @@ function MenuHandlerClass(callback) {
   _self.saveProjectAs = function(UIClass) {
     MyApplication.currentProject.save(null);
   }
+  
+  _self.compileProject = function(UIClass) {
+    MyApplication.currentProject.compile();
+  }
 
   _self.findResource = function(UIClass) {
     MyApplication.UI.DialogueHelper.getInput(
