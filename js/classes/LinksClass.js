@@ -17,11 +17,7 @@ function LinksClass() {
     },
     {
       "identifier": "cloud",
-      "url": "http://dsgmcloud.herokuapp.com/cloud/"
-    },
-    {
-      "identifier": "cloud-local",
-      "url": "http://localhost:1024/cloud/"
+      "url": "http://dsgm.io/cloud/"
     },
     {
       "identifier": "james-garner",

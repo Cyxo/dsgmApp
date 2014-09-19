@@ -1,19 +1,19 @@
-function DesktopHandler() {
+// function DesktopHandler() {
 
-  var _self = this;
-  _self.name = "desktop";
+//   var _self = this;
+//   _self.name = "desktop";
 
-  _self.handle = function(command, arguments) {
-    $("#CommandRequest")
-      .attr("data-command", command)
-      .empty();
-    $.each(arguments, function(index, argument) {
-      $("#CommandRequest").append($("<li data-argument=\"" + argument.toString() + "\"></li>"));
-    });
-    $("#CommandRequest").click();
-  }
+//   _self.handle = function(command, arguments) {
+//     $("#CommandRequest")
+//       .attr("data-command", command)
+//       .empty();
+//     $.each(arguments, function(index, argument) {
+//       $("#CommandRequest").append($("<li data-argument=\"" + argument.toString() + "\"></li>"));
+//     });
+//     $("#CommandRequest").click();
+//   }
 
-}
+// }
 
 
 function RemoteHandler() {
@@ -22,9 +22,9 @@ function RemoteHandler() {
   _self.name = "remote";
 
   _self.cloudUrl = MyApplication.Links.getLink("cloud").url;
-  if (document.location.hostname.length == 0) {
-    _self.cloudUrl = MyApplication.Links.getLink("cloud-local").url;
-  }
+  // if (document.location.hostname.length == 0) {
+  //   _self.cloudUrl = MyApplication.Links.getLink("cloud-local").url;
+  // }
 
   _self.handle = function(command, arguments) {
     //Command
@@ -130,7 +130,7 @@ function RemoteHandler() {
     });
     argumentsString = argumentsString.substr(0, argumentsString.length - 1);
     //URL
-    var url = _self.cloudUrl + commandString + "/" + argumentsString;
+    var url = _self.cloudUrl + "secret/" + commandString + "/" + argumentsString;
     //Debug
     console.log(url);
     //Request
@@ -153,7 +153,8 @@ function CommandClass(handlerName) {
   var _self = this;
 
   _self.handler = null;
-  _self._handlers = [new DesktopHandler(), new RemoteHandler()];
+  // _self._handlers = [new DesktopHandler(), new RemoteHandler()];
+  _self._handlers = [new RemoteHandler()];
   _self._callback = null;
 
   _self.getHandlerByName = function(name) {
