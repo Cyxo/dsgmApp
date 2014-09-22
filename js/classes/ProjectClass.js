@@ -1,10 +1,10 @@
 function ProjectClass(name) {
 
-	var _self = this;
+  var _self = this;
 
-	_self.name = (name ? name : "New Project");
+  _self.name = (name ? name : "New Project");
   _self.path = "";
-	_self._resources = [];
+  _self._resources = [];
 
   _self.cleanFresh = function() {
     MyApplication.UI.switchMainMarkup("blank");
@@ -47,24 +47,24 @@ function ProjectClass(name) {
     });
   }
 
-	_self.getResourceByNameAndType = function(name, type, doLooseMatch) {
+  _self.getResourceByNameAndType = function(name, type, doLooseMatch) {
     var doLooseMatch = (doLooseMatch != undefined ? doLooseMatch : false);
     var getName = (doLooseMatch ? name.toLowerCase() : name);
-		return $.grep(_self._resources, function(resource) {
+    return $.grep(_self._resources, function(resource) {
       var resourceName = (doLooseMatch ? resource.name.toLowerCase() : resource.name);
       if (type != null) {
         return ((resourceName == getName) && resource.type == type);
       } else {
         return (resourceName == getName);
       }
-		})[0];
-	}
+    })[0];
+  }
 
-	_self.getResourcesByType = function(type) {
-		return $.grep(_self._resources, function(resource) {
-			return (resource.type == type);
-		});
-	}
+  _self.getResourcesByType = function(type) {
+    return $.grep(_self._resources, function(resource) {
+      return (resource.type == type);
+    });
+  }
 
   _self.resourceOperationError = function(resource, operation) {
     var text;
@@ -76,23 +76,23 @@ function ProjectClass(name) {
     MyApplication.UI.statusBar.setAlert(text);
   }
 
-	_self.addResource = function(resource, doSelect, doMakeAChange) {
+  _self.addResource = function(resource, doSelect, doMakeAChange) {
     var doSelect = (doSelect != undefined ? doSelect : true);
     var doMakeAChange = (doMakeAChange != undefined ? doMakeAChange : true);
-		_self._resources.push(resource);
-		var masterTreeItem = resource.getMasterTreeItem();
-		var newTreeItem = new TreeItemClass(resource.name, resource.icon);
-		newTreeItem.setAttr("resource-name", resource.name);
-		newTreeItem.setAttr("resource-type", resource.type);
-		newTreeItem.setHandler(function(whichItem) {
-			_self.loadResourceByNameAndType(whichItem.getAttr("resource-name"), whichItem.getAttr("resource-type"));
-		});
-		masterTreeItem.addItem(newTreeItem);
-		if (doSelect) newTreeItem.select(true);
-		masterTreeItem.expand(true);
+    _self._resources.push(resource);
+    var masterTreeItem = resource.getMasterTreeItem();
+    var newTreeItem = new TreeItemClass(resource.name, resource.icon);
+    newTreeItem.setAttr("resource-name", resource.name);
+    newTreeItem.setAttr("resource-type", resource.type);
+    newTreeItem.setHandler(function(whichItem) {
+      _self.loadResourceByNameAndType(whichItem.getAttr("resource-name"), whichItem.getAttr("resource-type"));
+    });
+    masterTreeItem.addItem(newTreeItem);
+    if (doSelect) newTreeItem.select(true);
+    masterTreeItem.expand(true);
     if (doMakeAChange) _self.makeAChange();
-		return newTreeItem;
-	}
+    return newTreeItem;
+  }
 
   _self.addResourceByNameAndType = function(name, type, doSelect, doMakeAChange) {
     var doSelect = (doSelect != undefined ? doSelect : true);
