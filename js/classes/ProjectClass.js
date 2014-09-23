@@ -149,16 +149,18 @@ function ProjectClass(name) {
     
     header += "\n";
     
-    // for every object {
-      //header += "typedef struct {\n";
-      //header += "  DSGM_ObjectInstanceBase;\n";
-      //header += "  struct {\n";
-      // for every custom variable in object {
-        //header += variable.type + " " + variable.name + " = " variable.defaultValue + ";\n";
-      // }
-      //header += "  } *variables;\n";
-      //header += "} " + object.name + "ObjectInstance;\n";
-    // }
+    /*
+	for every object {
+      header += "typedef struct {\n";
+      header += "  DSGM_ObjectInstanceBase;\n";
+      header += "  struct {\n";
+      for every custom variable in object {
+        header += variable.type + " " + variable.name + " = " + variable.defaultValue + ";\n";
+      }
+      header += "  } *variables;\n";
+      header += "} " + object.name + "ObjectInstance;\n";
+    }
+	*/
     
     header += "\n";
     
