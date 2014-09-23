@@ -47,6 +47,16 @@ function ProjectClass(name) {
     });
   }
 
+  _self.generateHeader = function() {
+    var header = "";
+	return header;
+  }
+  
+  _self.generateSource = function() {
+    var source = "";
+	return source;
+  }
+  
   _self.getResourceByNameAndType = function(name, type, doLooseMatch) {
     var doLooseMatch = (doLooseMatch != undefined ? doLooseMatch : false);
     var getName = (doLooseMatch ? name.toLowerCase() : name);
