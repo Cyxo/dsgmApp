@@ -48,8 +48,153 @@ function ProjectClass(name) {
   }
 
   _self.generateHeader = function() {
-    var header = "";
-	return header;
+    var header = "#pragma once\n";
+    
+    header += "\n";
+    
+    header += "#define DSGM_SOUND_STREAM_COUNT " + 0 + "\n";
+    header += "#define DSGM_SOUND_EFFECT_COUNT " + 0 + "\n";
+    header += "#define DSGM_SOUND_COUNT (DSGM_SOUND_STREAM_COUNT + DSGM_SOUND_EFFECT_COUNT)" + "\n";
+    header += "#define DSGM_BACKGROUND_COUNT " + 0 + "\n";
+    header += "#define DSGM_PALETTE_COUNT " + 0 + "\n";
+    header += "#define DSGM_SPRITE_COUNT " + 0 + "\n";
+    header += "#define DSGM_OBJECT_COUNT " + 0 + "\n";
+    header += "#define DSGM_ROOM_COUNT " + 0 + "\n";
+    
+    header += "\n";
+    
+    /*
+    for every background to be loaded from RAM {
+      header += '#include "' + background.name + '_Tiles_bin"\n';
+      header += '#include "' + background.name + '_Map_bin"\n';
+      header += '#include "' + background.name + '_Pal_bin"\n';
+    }
+    */
+    
+    header += "\n";
+    
+    /*
+    for every sprite to be loaded from RAM {
+      header += '#include "' + sprite.name + '_Sprite_bin"\n';
+    }
+    */
+    
+    header += "\n";
+    
+    /*
+    for every sprite palette to be loaded from RAM {
+      header += '#include "' + palette.name + '_Pal_bin"\n';
+    }
+    */
+    
+    header += "\n";
+    
+    // if more than one sound {
+      header += "typedef enum {";
+        /*
+        for every sound {
+          header += sound.name + ",\n";
+        }
+        */
+      header += "} DSGM_SoundNames;\n";
+    // }
+    
+    header += "\n";
+    
+    // if more than one background {
+      header += "typedef enum {";
+        /*
+        for every background {
+          header += background.name + ",\n";
+        }
+        */
+      header += "} DSGM_BackgroundNames;\n";
+    // }
+    
+    header += "\n";
+    
+    // if more than one palette
+      header += "typedef enum {";
+        /*
+        for every palette {
+          header += palette.name + ",\n";
+        }
+        */
+      header += "} DSGM_PaletteNames;\n";
+    // }
+    
+    header += "\n";
+    
+    // if more than one sprite
+      header += "typedef enum {";
+        /*
+        for every sprite {
+          header += sprite.name + ",\n";
+        }
+        */
+      header += "} DSGM_SpriteNames;\n";
+    // }
+    
+    header += "\n";
+    
+    // if more than one object
+      header += "typedef enum {";
+        /*
+        for every object {
+          header += object.name + ",\n";
+        }
+        */
+      header += "} DSGM_ObjectNames;\n";
+    // }
+    
+    header += "\n";
+    
+    // for every object {
+      //header += "typedef struct {\n";
+      //header += "  DSGM_ObjectInstanceBase;\n";
+      //header += "  struct {\n";
+      // for every custom variable in object {
+        //header += variable.type + " " + variable.name + " = " variable.defaultValue + ";\n";
+      // }
+      //header += "  } *variables;\n";
+      //header += "} " + object.name + "ObjectInstance;\n";
+    // }
+    
+    header += "\n";
+    
+    // if more than one room
+      header += "typedef enum {";
+        /*
+        for every room {
+          header += room.name + ",\n";
+        }
+        */
+      header += "} DSGM_RoomNames;\n";
+    // }
+    
+    header += "\n";
+    
+    header += "extern DSGM_Sound DSGM_Sounds[DSGM_SOUND_COUNT];\n";
+    header += "extern DSGM_Background DSGM_Backgrounds[DSGM_BACKGROUND_COUNT];\n";
+    header += "extern DSGM_Palette DSGM_Palettes[DSGM_PALETTE_COUNT];\n";
+    header += "extern DSGM_Sprite DSGM_Sprites[DSGM_SPRITE_COUNT];\n";
+    header += "extern DSGM_Object DSGM_Objects[DSGM_OBJECT_COUNT];\n";
+    header += "extern DSGM_Room DSGM_Rooms[DSGM_ROOM_COUNT];\n";
+    header += "\n";
+    header += "extern int DSGM_currentRoom;\n";
+    header += "\n";
+    header += "void DSGM_SetupRooms(int room);\n";
+    
+    // for every object {
+      // for every normal event {
+        // header += "void " + object.name + "_" + event.name + "(" + object.name + "ObjectInstance *me");\n";
+      // }
+      // for every collision event {
+        // header += "void " + object.name + "_collide_" + collisionObject.name + "(" + object.name + "ObjectInstance *me, " + collisionObject.name + "ObjectInstance *collider");\n";
+      // }
+    // }
+    
+    return header;
   }
   
   _self.generateSource = function() {
