@@ -90,7 +90,7 @@ function ProjectClass(name) {
     header += "\n";
     
     // if more than one sound {
-      header += "typedef enum {";
+      header += "typedef enum {\n";
         /*
         for every sound {
           header += sound.name + ",\n";
@@ -102,7 +102,7 @@ function ProjectClass(name) {
     header += "\n";
     
     // if more than one background {
-      header += "typedef enum {";
+      header += "typedef enum {\n";
         /*
         for every background {
           header += background.name + ",\n";
@@ -114,7 +114,7 @@ function ProjectClass(name) {
     header += "\n";
     
     // if more than one palette
-      header += "typedef enum {";
+      header += "typedef enum {\n";
         /*
         for every palette {
           header += palette.name + ",\n";
@@ -126,7 +126,7 @@ function ProjectClass(name) {
     header += "\n";
     
     // if more than one sprite
-      header += "typedef enum {";
+      header += "typedef enum {\n";
         /*
         for every sprite {
           header += sprite.name + ",\n";
@@ -138,7 +138,7 @@ function ProjectClass(name) {
     header += "\n";
     
     // if more than one object
-      header += "typedef enum {";
+      header += "typedef enum {\n";
         /*
         for every object {
           header += object.name + ",\n";
@@ -165,7 +165,7 @@ function ProjectClass(name) {
     header += "\n";
     
     // if more than one room
-      header += "typedef enum {";
+      header += "typedef enum {\n";
         /*
         for every room {
           header += room.name + ",\n";
