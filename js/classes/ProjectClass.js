@@ -182,7 +182,17 @@ function ProjectClass(name) {
     header += "extern DSGM_Sprite DSGM_Sprites[DSGM_SPRITE_COUNT];\n";
     header += "extern DSGM_Object DSGM_Objects[DSGM_OBJECT_COUNT];\n";
     header += "extern DSGM_Room DSGM_Rooms[DSGM_ROOM_COUNT];\n";
+	
     header += "\n";
+	
+	/*
+    for every global variable {
+      source += "extern " + variable.type + " " + variable.name + " = " variable.defaultValue + ";\n";
+    }
+    */
+	
+	header += "\n";
+	
     header += "extern int DSGM_currentRoom;\n";
     header += "\n";
     header += "void DSGM_SetupRooms(int room);\n";
