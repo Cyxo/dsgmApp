@@ -36,18 +36,32 @@ module.exports = function(grunt) {
           ]
         }
       }
+    },
+
+    htmlmin: {
+      main: {
+        options: {
+          removeComments: true,
+          collapseWhitespace: true
+        },
+        files: {
+          'build/index.html': 'build/index.html'
+        }
+      }
     }
 
   });
 
   grunt.loadNpmTasks('grunt-shell');
   grunt.loadNpmTasks('grunt-copy-to');
+  grunt.loadNpmTasks('grunt-contrib-htmlmin');
 
   grunt.registerTask('default', [
     'shell:wipeBuild',
     'shell:startBuild',
     'copyto:main',
     'shell:endBuild',
+    'htmlmin:main'
   ]);
 
   grunt.registerTask('clean', [
