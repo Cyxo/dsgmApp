@@ -55,14 +55,14 @@ function ProjectClass(name) {
     header += "#define DSGM_SOUND_STREAM_COUNT " + 0 + "\n";
     header += "#define DSGM_SOUND_EFFECT_COUNT " + 0 + "\n";
     header += "#define DSGM_SOUND_COUNT (DSGM_SOUND_STREAM_COUNT + DSGM_SOUND_EFFECT_COUNT)" + "\n";
-    header += "#define DSGM_BACKGROUND_COUNT " + 0 + "\n";
+    header += "#define DSGM_BACKGROUND_COUNT " + _self.getResourcesByType("background").length + "\n";
     header += "#define DSGM_PALETTE_COUNT " + 0 + "\n";
-    header += "#define DSGM_SPRITE_COUNT " + 0 + "\n";
-    header += "#define DSGM_OBJECT_COUNT " + 0 + "\n";
-    header += "#define DSGM_ROOM_COUNT " + 0 + "\n";
+    header += "#define DSGM_SPRITE_COUNT " + _self.getResourcesByType("sprite").length + "\n";
+    header += "#define DSGM_OBJECT_COUNT " + _self.getResourcesByType("object").length + "\n";
+    header += "#define DSGM_ROOM_COUNT " + _self.getResourcesByType("room").length + "\n";
     
     header += "\n";
-    
+  
     /*
     for every background to be loaded from RAM {
       header += '#include "' + background.name + '_Tiles_bin"\n';
@@ -92,7 +92,10 @@ function ProjectClass(name) {
     // if more than one sound {
       header += "typedef enum {\n";
         /*
-        for every sound {
+        for every sound stream {
+          header += sound.name + ",\n";
+        }
+        for every sound effect {
           header += sound.name + ",\n";
         }
         */
@@ -150,7 +153,7 @@ function ProjectClass(name) {
     header += "\n";
     
     /*
-	for every object {
+  for every object {
       header += "typedef struct {\n";
       header += "  DSGM_ObjectInstanceBase;\n";
       header += "  struct {\n";
@@ -160,7 +163,7 @@ function ProjectClass(name) {
       header += "  } *variables;\n";
       header += "} " + object.name + "ObjectInstance;\n";
     }
-	*/
+  */
     
     header += "\n";
     
@@ -182,17 +185,17 @@ function ProjectClass(name) {
     header += "extern DSGM_Sprite DSGM_Sprites[DSGM_SPRITE_COUNT];\n";
     header += "extern DSGM_Object DSGM_Objects[DSGM_OBJECT_COUNT];\n";
     header += "extern DSGM_Room DSGM_Rooms[DSGM_ROOM_COUNT];\n";
-	
+  
     header += "\n";
-	
-	/*
+  
+  /*
     for every global variable {
       source += "extern " + variable.type + " " + variable.name + " = " variable.defaultValue + ";\n";
     }
     */
-	
-	header += "\n";
-	
+  
+  header += "\n";
+  
     header += "extern int DSGM_currentRoom;\n";
     header += "\n";
     header += "void DSGM_SetupRooms(int room);\n";
@@ -211,7 +214,7 @@ function ProjectClass(name) {
   
   _self.generateSource = function() {
     var source = "";
-	return source;
+  return source;
   }
   
   _self.getResourceByNameAndType = function(name, type, doLooseMatch) {
