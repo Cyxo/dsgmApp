@@ -58,6 +58,8 @@ function ProjectClass(name) {
     var objects = _self.getResourcesByType("object");
     var rooms = _self.getResourcesByType("room");
     
+    var newline = false;
+    
     var header = "#pragma once\n";
     
     header += "\n";
@@ -79,28 +81,40 @@ function ProjectClass(name) {
         header += '#include "' + background.name + '_Tiles_bin"\n';
         header += '#include "' + background.name + '_Map_bin"\n';
         header += '#include "' + background.name + '_Pal_bin"\n';
+        newline = true;
       }
     }
     
-    header += "\n";
+    if(newline) {
+      header += "\n";
+      newline = false;
+    }
     
     for(var i = 0; i < sprites.length; i++) {
       var sprite = sprites[i];
       if(sprite.storage == "ram") {
         header += '#include "' + sprite.name + '_Sprite_bin"\n';
+        newline = true;
       }
     }
     
-    header += "\n";
+    if(newline) {
+      header += "\n";
+      newline = false;
+    }
     
     for(var i = 0; i < palettes.length; i++) {
       var palette = palettes[i];
       if(palette.storage == "ram") {
         header += '#include "' + palette.name + '_Pal_bin"\n';
+        newline = true;
       }
     }
     
-    header += "\n";
+    if(newline) {
+      header += "\n";
+      newline = false;
+    }
     
     if(sounds.length > 0) {
       header += "typedef enum {\n";
@@ -113,9 +127,8 @@ function ProjectClass(name) {
         header += effect.name + ",\n";
       }
       header += "} DSGM_SoundNames;\n";
+      header += "\n";
     }
-    
-    header += "\n";
     
     if(backgrounds.length > 0) {
       header += "typedef enum {\n";
@@ -124,9 +137,8 @@ function ProjectClass(name) {
         header += background.name + ",\n";
       }
       header += "} DSGM_BackgroundNames;\n";
+      header += "\n";
     }
-    
-    header += "\n";
     
     if(palettes.length > 0) {
       header += "typedef enum {\n";
@@ -135,9 +147,8 @@ function ProjectClass(name) {
         header += palette.name + ",\n";
       }
       header += "} DSGM_PaletteNames;\n";
+      header += "\n";
     }
-    
-    header += "\n";
     
     if(sprites.length > 0) {
       header += "typedef enum {\n";
@@ -146,9 +157,8 @@ function ProjectClass(name) {
         header += sprite.name + ",\n";
       }
       header += "} DSGM_SpriteNames;\n";
+      header += "\n";
     }
-    
-    header += "\n";
     
     if(objects.length > 0) {
       header += "typedef enum {\n";
@@ -157,9 +167,8 @@ function ProjectClass(name) {
           header += object.name + ",\n";
         }
       header += "} DSGM_ObjectNames;\n";
+      header += "\n";
     }
-    
-    header += "\n";
     
     for(var i = 0; i < objects.length; i++) {
       var object = objects[i];
@@ -179,9 +188,8 @@ function ProjectClass(name) {
       }
       header += "  } *variables;\n";
       header += "} " + object.name + "ObjectInstance;\n";
+      header += "\n";
     }
-    
-    header += "\n";
     
     if(rooms.length > 0) {
       header += "typedef enum {\n";
@@ -190,9 +198,8 @@ function ProjectClass(name) {
         header += room.name + ",\n";
       }
       header += "} DSGM_RoomNames;\n";
+      header += "\n";
     }
-    
-    header += "\n";
     
     header += "extern DSGM_Sound DSGM_Sounds[DSGM_SOUND_COUNT];\n";
     header += "extern DSGM_Background DSGM_Backgrounds[DSGM_BACKGROUND_COUNT];\n";
@@ -213,9 +220,13 @@ function ProjectClass(name) {
       if(!defaultValue) defaultValue = 0;
       
       header += "extern " + type + " " + variable.name + " = " + defaultValue + ";\n";
+      newline = true;
     }
   
-    header += "\n";
+    if(newline) {
+      header += "\n";
+      newline = false;
+    }
   
     header += "extern int DSGM_currentRoom;\n";
     header += "\n";
@@ -225,10 +236,17 @@ function ProjectClass(name) {
       var object = objects[i];
       // for every normal event {
         // header += "void " + object.name + "_" + event.name + "(" + object.name + "ObjectInstance *me");\n";
+        // newline = true;
       // }
       // for every collision event {
         // header += "void " + object.name + "_collide_" + collisionObject.name + "(" + object.name + "ObjectInstance *me, " + collisionObject.name + "ObjectInstance *collider");\n";
+        // newline = true;
       // }
+    }
+    
+    if(newline) {
+      header += "\n";
+      newline = false;
     }
     
     return header;
