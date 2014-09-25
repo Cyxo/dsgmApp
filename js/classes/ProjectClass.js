@@ -48,134 +48,146 @@ function ProjectClass(name) {
   }
 
   _self.generateHeader = function() {
+    var sounds = _self.getResourcesByType("sound");
+    var streams = [];
+    var effects = [];
+    var backgrounds = _self.getResourcesByType("background");
+    var palettes = [];
+    var sprites = _self.getResourcesByType("sprite");
+    var objects = _self.getResourcesByType("object");
+    var rooms = _self.getResourcesByType("room");
+    
     var header = "#pragma once\n";
     
     header += "\n";
     
-    header += "#define DSGM_SOUND_STREAM_COUNT " + 0 + "\n";
-    header += "#define DSGM_SOUND_EFFECT_COUNT " + 0 + "\n";
+    header += "#define DSGM_SOUND_STREAM_COUNT " + streams.length + "\n";
+    header += "#define DSGM_SOUND_EFFECT_COUNT " + effects.length + "\n";
     header += "#define DSGM_SOUND_COUNT (DSGM_SOUND_STREAM_COUNT + DSGM_SOUND_EFFECT_COUNT)" + "\n";
-    header += "#define DSGM_BACKGROUND_COUNT " + _self.getResourcesByType("background").length + "\n";
-    header += "#define DSGM_PALETTE_COUNT " + 0 + "\n";
-    header += "#define DSGM_SPRITE_COUNT " + _self.getResourcesByType("sprite").length + "\n";
-    header += "#define DSGM_OBJECT_COUNT " + _self.getResourcesByType("object").length + "\n";
-    header += "#define DSGM_ROOM_COUNT " + _self.getResourcesByType("room").length + "\n";
+    header += "#define DSGM_BACKGROUND_COUNT " + backgrounds.length + "\n";
+    header += "#define DSGM_PALETTE_COUNT " + palettes.length + "\n";
+    header += "#define DSGM_SPRITE_COUNT " + sprites.length + "\n";
+    header += "#define DSGM_OBJECT_COUNT " + objects.length + "\n";
+    header += "#define DSGM_ROOM_COUNT " + rooms.length + "\n";
     
     header += "\n";
-  
-    /*
-    for every background to be loaded from RAM {
-      header += '#include "' + background.name + '_Tiles_bin"\n';
-      header += '#include "' + background.name + '_Map_bin"\n';
-      header += '#include "' + background.name + '_Pal_bin"\n';
+    
+    for(var i = 0; i < backgrounds.length; i++) {
+      var background = backgrounds[i];
+      /*
+      if(background.storage == RAM) {
+        header += '#include "' + background.name + '_Tiles_bin"\n';
+        header += '#include "' + background.name + '_Map_bin"\n';
+        header += '#include "' + background.name + '_Pal_bin"\n';
+      }
+      */
     }
-    */
     
     header += "\n";
     
-    /*
-    for every sprite to be loaded from RAM {
-      header += '#include "' + sprite.name + '_Sprite_bin"\n';
+    for(var i = 0; i < sprites.length; i++) {
+      var sprite = sprites[i];
+      /*
+      if(sprite.storage == RAM) {
+        header += '#include "' + sprite.name + '_Sprite_bin"\n';
+      }
+      */
     }
-    */
     
     header += "\n";
     
-    /*
-    for every sprite palette to be loaded from RAM {
-      header += '#include "' + palette.name + '_Pal_bin"\n';
+    for(var i = 0; i < palettes.length; i++) {
+      var palette = palettes[i];
+      /*
+      if(palette.storage == RAM) {
+        header += '#include "' + palette.name + '_Pal_bin"\n';
+      }
+      */
     }
-    */
     
     header += "\n";
     
-    // if more than one sound {
+    if(sounds.length > 0) {
       header += "typedef enum {\n";
-        /*
-        for every sound stream {
-          header += sound.name + ",\n";
-        }
-        for every sound effect {
-          header += sound.name + ",\n";
-        }
-        */
+      for(var i = 0; i < streams.length; i++) {
+        var stream = streams[i];
+        header += stream.name + ",\n";
+      }
+      for(var i = 0; i < effects.length; i++) {
+        var effect = effects[i];
+        header += effect.name + ",\n";
+      }
       header += "} DSGM_SoundNames;\n";
-    // }
+    }
     
     header += "\n";
     
-    // if more than one background {
+    if(backgrounds.length > 0) {
       header += "typedef enum {\n";
-        /*
-        for every background {
-          header += background.name + ",\n";
-        }
-        */
+      for(var i = 0; i < backgrounds.length; i++) {
+        var background = backgrounds[i];
+        header += background.name + ",\n";
+      }
       header += "} DSGM_BackgroundNames;\n";
-    // }
+    }
     
     header += "\n";
     
-    // if more than one palette
+    if(palettes.length > 0) {
       header += "typedef enum {\n";
-        /*
-        for every palette {
-          header += palette.name + ",\n";
-        }
-        */
+      for(var i = 0; i < palettes.length; i++) {
+        var palette = palettes[i];
+        header += palette.name + ",\n";
+      }
       header += "} DSGM_PaletteNames;\n";
-    // }
+    }
     
     header += "\n";
     
-    // if more than one sprite
+    if(sprites.length > 0) {
       header += "typedef enum {\n";
-        /*
-        for every sprite {
-          header += sprite.name + ",\n";
-        }
-        */
+      for(var i = 0; i < sprites.length; i++) {
+        var sprite = sprites[i];
+        header += sprite.name + ",\n";
+      }
       header += "} DSGM_SpriteNames;\n";
-    // }
+    }
     
     header += "\n";
     
-    // if more than one object
+    if(objects.length > 0) {
       header += "typedef enum {\n";
-        /*
-        for every object {
+        for(var i = 0; i < objects.length; i++) {
+          var object = objects[i];
           header += object.name + ",\n";
         }
-        */
       header += "} DSGM_ObjectNames;\n";
-    // }
+    }
     
     header += "\n";
     
-    /*
-  for every object {
+    for(var i = 0; i < objects.length; i++) {
+      var object = objects[i];
       header += "typedef struct {\n";
       header += "  DSGM_ObjectInstanceBase;\n";
       header += "  struct {\n";
-      for every custom variable in object {
-        header += variable.type + " " + variable.name + " = " + variable.defaultValue + ";\n";
-      }
+      //for every custom variable in object {
+      //  header += variable.type + " " + variable.name + " = " + variable.defaultValue + ";\n";
+      //}
       header += "  } *variables;\n";
       header += "} " + object.name + "ObjectInstance;\n";
     }
-  */
     
     header += "\n";
     
-    // if more than one room
+    if(rooms.length > 0) {
       header += "typedef enum {\n";
-        /*
-        for every room {
-          header += room.name + ",\n";
-        }
-        */
+      for(var i = 0; i < rooms.length; i++) {
+        var room = rooms[i];
+        header += room.name + ",\n";
+      }
       header += "} DSGM_RoomNames;\n";
-    // }
+    }
     
     header += "\n";
     
@@ -188,33 +200,34 @@ function ProjectClass(name) {
   
     header += "\n";
   
-  /*
+    /*
     for every global variable {
       source += "extern " + variable.type + " " + variable.name + " = " variable.defaultValue + ";\n";
     }
     */
   
-  header += "\n";
+    header += "\n";
   
     header += "extern int DSGM_currentRoom;\n";
     header += "\n";
     header += "void DSGM_SetupRooms(int room);\n";
     
-    // for every object {
+    for(var i = 0; i < objects.length; i++) {
+      var object = objects[i];
       // for every normal event {
         // header += "void " + object.name + "_" + event.name + "(" + object.name + "ObjectInstance *me");\n";
       // }
       // for every collision event {
         // header += "void " + object.name + "_collide_" + collisionObject.name + "(" + object.name + "ObjectInstance *me, " + collisionObject.name + "ObjectInstance *collider");\n";
       // }
-    // }
+    }
     
     return header;
   }
   
   _self.generateSource = function() {
     var source = "";
-  return source;
+    return source;
   }
   
   _self.getResourceByNameAndType = function(name, type, doLooseMatch) {
