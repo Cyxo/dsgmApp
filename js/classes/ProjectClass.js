@@ -253,7 +253,116 @@ function ProjectClass(name) {
   }
   
   _self.generateSource = function() {
-    var source = "";
+    var sounds = _self.getResourcesByType("sound");
+    var streams = [];
+    var effects = [];
+    var backgrounds = _self.getResourcesByType("background");
+    var palettes = [];
+    var sprites = _self.getResourcesByType("sprite");
+    var objects = _self.getResourcesByType("object");
+    var rooms = _self.getResourcesByType("room");
+    
+    var newline = false;
+    
+    var source = '#include "DSGM.h"\n';
+    source += '#include "DSGM_projectHelper.h"\n';
+    
+    source += "\n";
+    
+    source += "DSGM_Sound DSGM_Sounds[DSGM_SOUND_COUNT] = {\n";
+    for(var i = 0; i < streams.count; i++) {
+      var stream = streams[i];
+      source += "\tDSGM_FORM_SOUND_STREAM(" + stream.name + "),\n";
+    }
+    for(var i = 0; i < effects.count; i++) {
+      var effect = effects[i];
+      source += "\tDSGM_FORM_SOUND_EFFECT(" + effect.name + "),\n";
+    }
+    source += "};\n"
+    
+    source += "\n";
+    
+    source += "DSGM_Background DSGM_Backgrounds[DSGM_BACKGROUND_COUNT] = {\n";
+    for(var i = 0; i < backgrounds.count; i++) {
+      var background = backgrounds[i];
+      if(background.storage == "nitro") source += "\tDSGM_FORM_NITRO_BACKGROUND(" + background.name + ", " + background.size + ", " + background.type + "),\n";
+      else if(background.storage == "fat") source += "\tDSGM_FORM_FAT_BACKGROUND(" + background.name + ", " + background.size + ", " + background.type + "),\n";
+      else if(background.storage == "ram") source += "\tDSGM_FORM_RAM_BACKGROUND(" + background.name + ", " + background.size + ", " + background.type + "),\n";
+    }
+    source += "};\n"
+    
+    source += "\n";
+    
+    source += "DSGM_Palette DSGM_Palettes[DSGM_PALETTE_COUNT] = {\n";
+    /*
+    for every palette {
+      if(palette.storage == "nitro") source += "\tDSGM_FORM_NITRO_PALETTE(" + palette.name + "),\n";
+      else if(palette.storage == "fat") source += "\tDSGM_FORM_FAT_PALETTE(" + palette.name + "),\n";
+      else if(palette.storage == "ram") source += "\tDSGM_FORM_RAM_PALETTE(" + palette.name + "),\n";
+    }
+    */
+    source += "};\n"
+    
+    source += "\n";
+    
+    source += "DSGM_Sprite DSGM_Sprites[DSGM_SPRITE_COUNT] = {\n";
+    /*
+    for every sprite {
+      if(sprite.storage == "nitro") source += "\tDSGM_FORM_NITRO_SPRITE(" + sprite.name + ", " + sprite.palette.name + ", " + sprite.size + ", " + sprite.frames + "),\n";
+      else if(sprite.storage == "fat") source += "\tDSGM_FORM_FAT_SPRITE(" + sprite.name + ", " + sprite.palette.name + ", " + sprite.size + ", " + sprite.frames + "),\n";
+      else if(sprite.storage == "ram") source += "\tDSGM_FORM_RAM_SPRITE(" + sprite.name + ", " + sprite.palette.name + ", " + sprite.size + ", " + sprite.frames + "),\n";
+    }
+    */
+    source += "};\n"
+    
+    source += "\n";
+    
+    source += "DSGM_Object DSGM_Objects[DSGM_OBJECT_COUNT] = {\n";
+    /*
+    for every object {
+      source += "\t{\n";
+        if(object.sprite) source += "\t\t&DSGM_Sprites[" + object.sprite.name + "],\n";
+        else source += "\t\tDSGM_NO_SPRITE,\n";
+        
+        if(object.events.create) source += "\t\t(DSGM_EVENT)" + object.name + "_create,\n";
+        else source += "\t\tDSGM_NO_EVENT,\n";
+        
+        if(object.events.loop) source += "\t\t(DSGM_EVENT)" + object.name + "_loop,\n";
+        else source += "\t\tDSGM_NO_EVENT,\n";
+        
+        if(object.events.destroy) source += "\t\t(DSGM_EVENT)" + object.name + "_destroy,\n";
+        else source += "\t\tDSGM_NO_EVENT,\n";
+        
+        if(object.events.touch) source += "\t\t(DSGM_EVENT)" + object.name + "_touch,\n";
+        else source += "\t\tDSGM_NO_EVENT,\n";
+        
+        source += "\t\tNULL, 0,\n";
+        source += "\t\t\n";
+        
+        source += "\t\tsizeof(*((" + object.name + "ObjectInstance *)0)->variables)\n";
+      source += "\t},\n";
+    }
+    */
+    source += "};\n"
+    
+    source += "\n";
+    
+    source += "DSGM_Room DSGM_Rooms[DSGM_ROOM_COUNT] = {\n";
+    /*
+    for every room {
+      
+    }
+    */
+    source += "};\n"
+    
+    source += "\n";
+    
+    /*
+    for every global variable {
+      source += variable.type + " " + variable.name + " = " variable.defaultValue + ";\n";
+    }
+    */
+    
     return source;
   }
   
