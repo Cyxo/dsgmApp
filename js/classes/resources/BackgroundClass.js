@@ -7,7 +7,7 @@ function BackgroundClass(name) {
   _self.icon = "background";
 
   _self.size = "BgSize_T_256x256";
-  _self.type = "BgType_Text8bpp";
+  _self.bgtype = "BgType_Text8bpp";
   _self.storage = "nitro";
 
   if (name) _self.name = name;
