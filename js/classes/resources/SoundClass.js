@@ -8,5 +8,9 @@ function SoundClass(name) {
 
   if (name) _self.name = name;
 
+  _self.showSpecific = function(sideElement, mainElement) {
+    mainElement.html("(Sound-specific UI)");
+  }
+
 }
 SoundClass.prototype = new GenericClass();

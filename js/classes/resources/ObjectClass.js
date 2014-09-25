@@ -8,5 +8,9 @@ function ObjectClass(name) {
 
   if (name) _self.name = name;
 
+  _self.showSpecific = function(sideElement, mainElement) {
+    mainElement.html("(Object-specific UI)");
+  }
+
 }
 ObjectClass.prototype = new GenericClass();

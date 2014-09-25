@@ -8,5 +8,9 @@ function BackgroundClass(name) {
 
   if (name) _self.name = name;
 
+  _self.showSpecific = function(sideElement, mainElement) {
+    mainElement.html("(Background-specific UI)");
+  }
+
 }
 BackgroundClass.prototype = new GenericClass();
