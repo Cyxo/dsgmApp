@@ -13,7 +13,11 @@ function BackgroundClass(name) {
   if (name) _self.name = name;
 
   _self.showSpecific = function(sideElement, mainElement) {
-    mainElement.html("(Background-specific UI)");
+    var html = "(Background-specific UI)<br><br>";
+    html += "Size: " + _self.size + "<br>";
+    html += "Type: " + _self.bgtype + "<br>";
+    html += "Storage: " + _self.storage + "<br>";
+    mainElement.html(html);
   }
 
 }
