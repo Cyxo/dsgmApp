@@ -120,11 +120,11 @@ function ProjectClass(name) {
       header += "typedef enum {\n";
       for(var i = 0; i < streams.length; i++) {
         var stream = streams[i];
-        header += stream.name + ",\n";
+        header += "\t" + stream.name + ",\n";
       }
       for(var i = 0; i < effects.length; i++) {
         var effect = effects[i];
-        header += effect.name + ",\n";
+        header += "\t" + effect.name + ",\n";
       }
       header += "} DSGM_SoundNames;\n";
       header += "\n";
@@ -134,7 +134,7 @@ function ProjectClass(name) {
       header += "typedef enum {\n";
       for(var i = 0; i < backgrounds.length; i++) {
         var background = backgrounds[i];
-        header += background.name + ",\n";
+        header += "\t" + background.name + ",\n";
       }
       header += "} DSGM_BackgroundNames;\n";
       header += "\n";
@@ -144,7 +144,7 @@ function ProjectClass(name) {
       header += "typedef enum {\n";
       for(var i = 0; i < palettes.length; i++) {
         var palette = palettes[i];
-        header += palette.name + ",\n";
+        header += "\t" + palette.name + ",\n";
       }
       header += "} DSGM_PaletteNames;\n";
       header += "\n";
@@ -154,7 +154,7 @@ function ProjectClass(name) {
       header += "typedef enum {\n";
       for(var i = 0; i < sprites.length; i++) {
         var sprite = sprites[i];
-        header += sprite.name + ",\n";
+        header += "\t" + sprite.name + ",\n";
       }
       header += "} DSGM_SpriteNames;\n";
       header += "\n";
@@ -164,7 +164,7 @@ function ProjectClass(name) {
       header += "typedef enum {\n";
         for(var i = 0; i < objects.length; i++) {
           var object = objects[i];
-          header += object.name + ",\n";
+          header += "\t" + object.name + ",\n";
         }
       header += "} DSGM_ObjectNames;\n";
       header += "\n";
@@ -173,8 +173,8 @@ function ProjectClass(name) {
     for(var i = 0; i < objects.length; i++) {
       var object = objects[i];
       header += "typedef struct {\n";
-      header += "  DSGM_ObjectInstanceBase;\n";
-      header += "  struct {\n";
+      header += "\tDSGM_ObjectInstanceBase;\n";
+      header += "\tstruct {\n";
       for(var i = 0; i < object.variables.length; i++) {
         var variable = object.variables[i];
         
@@ -184,9 +184,9 @@ function ProjectClass(name) {
         var defaultValue = variable.defaultValue;
         if(!defaultValue) defaultValue = 0;
         
-        header += type + " " + variable.name + " = " + defaultValue + ";\n";
+        header += "\t\t" + type + " " + variable.name + " = " + defaultValue + ";\n";
       }
-      header += "  } *variables;\n";
+      header += "\t} *variables;\n";
       header += "} " + object.name + "ObjectInstance;\n";
       header += "\n";
     }
@@ -195,7 +195,7 @@ function ProjectClass(name) {
       header += "typedef enum {\n";
       for(var i = 0; i < rooms.length; i++) {
         var room = rooms[i];
-        header += room.name + ",\n";
+        header += "\t" + room.name + ",\n";
       }
       header += "} DSGM_RoomNames;\n";
       header += "\n";
