@@ -166,9 +166,17 @@ function ProjectClass(name) {
       header += "typedef struct {\n";
       header += "  DSGM_ObjectInstanceBase;\n";
       header += "  struct {\n";
-      //for every custom variable in object {
-      //  header += variable.type + " " + variable.name + " = " + variable.defaultValue + ";\n";
-      //}
+      for(var i = 0; i < object.variables.length; i++) {
+        var variable = object.variables[i];
+        
+        var type = variable.type;
+        if(!type) type = "int";
+        
+        var defaultValue = variable.defaultValue;
+        if(!defaultValue) defaultValue = 0;
+        
+        header += type + " " + variable.name + " = " + defaultValue + ";\n";
+      }
       header += "  } *variables;\n";
       header += "} " + object.name + "ObjectInstance;\n";
     }
@@ -195,11 +203,17 @@ function ProjectClass(name) {
   
     header += "\n";
   
-    /*
-    for every global variable {
-      source += "extern " + variable.type + " " + variable.name + " = " variable.defaultValue + ";\n";
+    for(var i = 0; i < _self.globalVariables.length; i++) {
+      var variable = _self.globalVariables[i];
+      
+      var type = variable.type;
+      if(!type) type = "int";
+      
+      var defaultValue = variable.defaultValue;
+      if(!defaultValue) defaultValue = 0;
+      
+      header += "extern " + type + " " + variable.name + " = " + defaultValue + ";\n";
     }
-    */
   
     header += "\n";
   
