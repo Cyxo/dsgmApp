@@ -5,6 +5,7 @@ function ProjectClass(name) {
   _self.name = (name ? name : "New Project");
   _self.path = "";
   _self._resources = [];
+  _self.globalVariables = [];
 
   _self.cleanFresh = function() {
     MyApplication.UI.switchMainMarkup("blank");

@@ -6,6 +6,8 @@ function ObjectClass(name) {
   _self.typePlural = "Objects";
   _self.icon = "object";
 
+  self.variables = [];
+
   if (name) _self.name = name;
 
   _self.showSpecific = function(sideElement, mainElement) {
