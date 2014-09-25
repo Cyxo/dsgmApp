@@ -6,6 +6,8 @@ function SpriteClass(name) {
   _self.typePlural = "Sprites";
   _self.icon = "sprite";
 
+  _self.storage = "nitro";
+
   if (name) _self.name = name;
 
   _self.showSpecific = function(sideElement, mainElement) {

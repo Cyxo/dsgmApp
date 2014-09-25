@@ -74,35 +74,29 @@ function ProjectClass(name) {
     
     for(var i = 0; i < backgrounds.length; i++) {
       var background = backgrounds[i];
-      /*
-      if(background.storage == RAM) {
+      if(background.storage == "ram") {
         header += '#include "' + background.name + '_Tiles_bin"\n';
         header += '#include "' + background.name + '_Map_bin"\n';
         header += '#include "' + background.name + '_Pal_bin"\n';
       }
-      */
     }
     
     header += "\n";
     
     for(var i = 0; i < sprites.length; i++) {
       var sprite = sprites[i];
-      /*
-      if(sprite.storage == RAM) {
+      if(sprite.storage == "ram") {
         header += '#include "' + sprite.name + '_Sprite_bin"\n';
       }
-      */
     }
     
     header += "\n";
     
     for(var i = 0; i < palettes.length; i++) {
       var palette = palettes[i];
-      /*
-      if(palette.storage == RAM) {
+      if(palette.storage == "ram") {
         header += '#include "' + palette.name + '_Pal_bin"\n';
       }
-      */
     }
     
     header += "\n";
