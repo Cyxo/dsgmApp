@@ -270,11 +270,11 @@ function ProjectClass(name) {
     source += "\n";
     
     source += "DSGM_Sound DSGM_Sounds[DSGM_SOUND_COUNT] = {\n";
-    for(var i = 0; i < streams.count; i++) {
+    for(var i = 0; i < streams.length; i++) {
       var stream = streams[i];
       source += "\tDSGM_FORM_SOUND_STREAM(" + stream.name + "),\n";
     }
-    for(var i = 0; i < effects.count; i++) {
+    for(var i = 0; i < effects.length; i++) {
       var effect = effects[i];
       source += "\tDSGM_FORM_SOUND_EFFECT(" + effect.name + "),\n";
     }
@@ -283,11 +283,11 @@ function ProjectClass(name) {
     source += "\n";
     
     source += "DSGM_Background DSGM_Backgrounds[DSGM_BACKGROUND_COUNT] = {\n";
-    for(var i = 0; i < backgrounds.count; i++) {
+    for(var i = 0; i < backgrounds.length; i++) {
       var background = backgrounds[i];
-      if(background.storage == "nitro") source += "\tDSGM_FORM_NITRO_BACKGROUND(" + background.name + ", " + background.size + ", " + background.type + "),\n";
-      else if(background.storage == "fat") source += "\tDSGM_FORM_FAT_BACKGROUND(" + background.name + ", " + background.size + ", " + background.type + "),\n";
-      else if(background.storage == "ram") source += "\tDSGM_FORM_RAM_BACKGROUND(" + background.name + ", " + background.size + ", " + background.type + "),\n";
+      if(background.storage == "nitro") source += "\tDSGM_FORM_NITRO_BACKGROUND(" + background.name + ", " + background.size + ", " + background.bgtype + "),\n";
+      else if(background.storage == "fat") source += "\tDSGM_FORM_FAT_BACKGROUND(" + background.name + ", " + background.size + ", " + background.bgtype + "),\n";
+      else if(background.storage == "ram") source += "\tDSGM_FORM_RAM_BACKGROUND(" + background.name + ", " + background.size + ", " + background.bgtype + "),\n";
     }
     source += "};\n"
     
