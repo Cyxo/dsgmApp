@@ -109,7 +109,24 @@ function MenuHandlerClass(callback) {
   }
 
   _self.globalVariables = function(UIClass) {
+    var variables = MyApplication.currentProject.globalVariables;
+    var variablesContent = "";
     var markup = UIClass.getMarkup("global-variables");
+    
+    if(variables.length > 0) {
+      variablesContent += "<ul>";
+      for(var i = 0; i < variables.length; i++) {
+        var variable = variables[i];
+        variablesContent += "<li>" + variable.type + " " +variable.name + " = " + variable.defaultValue + "</li>";
+      }
+      variablesContent += "</ul>";
+    }
+    else {
+      variablesContent += "<p>No variables</p>";
+    }
+    
+    markup.prepend(variablesContent);
+    
     var globalVariablesDialogue = new DialogueClass(markup, null, MyApplication.Language.getTerm("global-variables"), [], 350, 450, true);
     globalVariablesDialogue.show();
   }
