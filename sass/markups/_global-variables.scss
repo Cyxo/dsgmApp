@@ -1,0 +1,5 @@
+*[data-role=markup-global-variables] {
+  > div, > p {
+    padding: $padding * 2;
+  }
+}
