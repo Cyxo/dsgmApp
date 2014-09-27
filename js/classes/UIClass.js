@@ -295,8 +295,8 @@ function UIClass(callback) {
         //Compile
         var compileMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("compile"), "play");
         projectGroup2.addItem(compileMenuItem);
-		compileMenuItem.setHandler(function() {
-		  menuHandler.compileProject();
+        compileMenuItem.setHandler(function() {
+          menuHandler.compileProject();
         });
       //Group 3
       var projectGroup3 = new MenuGroupClass();
@@ -307,6 +307,9 @@ function UIClass(callback) {
         //Global Variables
         var globalVariablesMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("global-variables"));
         projectGroup3.addItem(globalVariablesMenuItem);
+        globalVariablesMenuItem.setHandler(function() {
+          menuHandler.globalVariables(_self);
+        });
         //Global Structures
         var globalStructuresMenuItem = new MenuGroupItemClass(MyApplication.Language.getTerm("global-structures"));
         projectGroup3.addItem(globalStructuresMenuItem);

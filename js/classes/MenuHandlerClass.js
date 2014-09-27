@@ -108,4 +108,10 @@ function MenuHandlerClass(callback) {
     optionsDialogue.show();
   }
 
+  _self.globalVariables = function(UIClass) {
+    var markup = UIClass.getMarkup("global-variables");
+    var globalVariablesDialogue = new DialogueClass(markup, null, MyApplication.Language.getTerm("global-variables"), [], 350, 450, true);
+    globalVariablesDialogue.show();
+  }
+
 }
