@@ -111,7 +111,9 @@ function MenuHandlerClass(callback) {
   _self.globalVariables = function(UIClass) {
     var variables = MyApplication.currentProject.globalVariables;
     var variablesContent = "";
-    var markup = UIClass.getMarkup("global-variables");
+    
+    var markup = $("<div></div>");
+    markup.append(UIClass.getMarkup("global-variables").html());
     
     if(variables.length > 0) {
       variablesContent += "<ul>";
