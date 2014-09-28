@@ -115,17 +115,17 @@ function MenuHandlerClass(callback) {
     var markup = $("<div data-role=markup-global-variables></div>");
     markup.append(UIClass.getMarkup("global-variables-template").html());
     
+    variablesContent += "<ul>";
     if(variables.length > 0) {
-      variablesContent += "<ul>";
       for(var i = 0; i < variables.length; i++) {
         var variable = variables[i];
         variablesContent += "<li>" + variable.type + " " +variable.name + " = " + variable.defaultValue + "</li>";
       }
-      variablesContent += "</ul>";
     }
     else {
-      variablesContent += "<p>No variables</p>";
+      variablesContent += "No variables";
     }
+    variablesContent += "</ul>";
     
     markup.prepend(variablesContent);
     

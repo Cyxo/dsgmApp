@@ -1,5 +1,10 @@
 *[data-role=markup-global-variables] {
-  > div, > p {
+  > div, > ul {
     padding: $padding * 2;
+  }
+  > ul {
+    list-style-type: none;
+    color: $background-color;
+    background-color: $foreground-color;
   }
 }
